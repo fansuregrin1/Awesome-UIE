@@ -79,7 +79,6 @@ Year,Pub,Type,Title,URL,Code,Project
 2023,Displays,Hybrid,Underwater image co-enhancement based on physical-guided transformer interaction,https://www.sciencedirect.com/science/article/pii/S0141938223001385,,
 2023,ACM-MM,Hybrid,WaterFlow: Heuristic Normalizing Flow for Underwater Image Enhancement and Beyond,https://dl.acm.org/doi/10.1145/3581783.3611727,,
 2023,arXiv,CNN,DGNet: Dynamic Gradient-guided Network with Noise Suppression for Underwater Image Enhancement,https://arxiv.org/abs/2312.06999,,
-2023,arXiv,CNN,IA2U: A Transfer Plugin with Multi-Prior for In-Air Model to Underwater,https://arxiv.org/abs/2312.06955,,
 2023,arXiv,CNN,Physics-Aware Semi-Supervised Underwater Image Enhancement,https://arxiv.org/abs/2307.11470,,
 2024,AAAI,CNN,Synergistic Multiscale Detail Refinement via Intrinsic Supervision for Underwater Image Enhancement,https://ojs.aaai.org/index.php/AAAI/article/view/28530,https://github.com/zhoujingchun03/SMDR-IS,
 2024,Neurocomputing,Hybrid,LUIE: Learnable physical model-guided underwater image enhancement with bi-directional unsupervised domain adaptatio,https://www.sciencedirect.com/science/article/pii/S0925231224010579,,
@@ -95,7 +94,6 @@ Year,Pub,Type,Title,URL,Code,Project
 2024,arXiv,CNN,LU2Net: A Lightweight Network for Real-time Underwater Image Enhancement,https://arxiv.org/abs/2406.14973,,
 2024,arXiv,Mamba,WaterMamba: Visual State Space Model for Underwater Image Enhancement,https://arxiv.org/abs/2405.08419,https://github.com/Guan-MS/WaterMamba,
 2024,arXiv,Review,A Comprehensive Survey on Underwater Image Enhancement Based on Deep Learning,https://arxiv.org/abs/2405.19684,https://github.com/YuZhao1999/UIE,
-2024,arXiv,Diffusion,Underwater Image Enhancement by Diffusion Model with Customized CLIP-Classifier,https://arxiv.org/abs/2405.16214,https://github.com/OUCVisionGroup/CLIP-UIE,https://oucvisiongroup.github.io/CLIP-UIE.html/
 2024,arXiv,CNN,A Physical Model-Guided Framework for Underwater Image Enhancement and Depth Estimation,https://arxiv.org/abs/2407.04230,,
 2025,ICASSP,CNN,Underwater Image Restoration via Polymorphic Large Kernel CNNs,https://arxiv.org/abs/2412.18459,https://github.com/CXH-Research/UIR-PolyKernel,
 2025,IJCV,Hybrid,HUPE: Heuristic Underwater Perceptual Enhancement with Semantic Collaborative Learning,https://link.springer.com/article/10.1007/s11263-024-02318-x,https://github.com/ZengxiZhang/HUPE,
@@ -116,6 +114,8 @@ Year,Pub,Type,Title,URL,Code,Project
 2025,arXiv,Hybrid,OceanLens: An Adaptive Backscatter and Edge Correction using Deep Learning Model for Enhanced Underwater Imaging,https://arxiv.org/abs/2411.13230,https://github.com/AIRLabIISc/OceanLens,
 2025,TCSVT,Traditional,High-Turbidity Underwater Image Enhancement via Turbidity Suppression Fusion,https://ieeexplore.ieee.org/document/10770246,,
 2025,TCSVT,Traditional,An Underwater Image Restoration Method With Polarization Imaging Optimization Model for Poor Visible Conditions,https://ieeexplore.ieee.org/document/10781421,https://github.com/liyafengLYF/UIRPIOM,
+2025,TIP,CNN,Multi-Prior Fusion Transfer Plugin for Adapting In-Air Models to Underwater Image Enhancement and Detection,https://ieeexplore.ieee.org/document/11267029,https://github.com/zhoujingchun03/IA2U,
+2026,PR,Diffusion,Underwater Image Enhancement by Diffusion Model with Customized CLIP-Classifier,https://www.sciencedirect.com/science/article/abs/pii/S0031320325008933,https://github.com/OUCVisionGroup/CLIP-UIE,https://oucvisiongroup.github.io/CLIP-UIE.html/
 2026,TIP,Task-Driven,Task-Driven Underwater Image Enhancement via Hierarchical Semantic Refinement,https://ieeexplore.ieee.org/document/11321080,https://github.com/gemyumeng/HSRUIE,
 2026,TMM,CNN,PyUIE: A Coarse-to-Fine Deep Pyramid Network for Underwater Image Enhancement,https://ieeexplore.ieee.org/document/11330175,https://github.com/ttttllt/PyUIE,
 2026,TIP,Diffusion,DCD-UIE: Decoupled Chromatic Diffusion Model for Underwater Image Enhancement,https://ieeexplore.ieee.org/document/11339364,https://github.com/zy-world/DCD-UIE,

@@ -12,6 +12,7 @@ Welcome to pull request to update or correct this collection. 🥰
 - **TMM** (Diffusion) [Color Correction Meets Cross-Spectral Refinement: A Distribution-Aware Diffusion for Underwater Image Restoration](https://ieeexplore.ieee.org/document/11353942).
 - **TIP** (Diffusion) [DCD-UIE: Decoupled Chromatic Diffusion Model for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/11339364). [[code]](https://github.com/zy-world/DCD-UIE) 
 - **TCSVT** (Diffusion) [UPI2Diff: Restoring Underwater Polarization Image and Information in Turbid Conditions via Polarization Guided Diffusion Model](https://ieeexplore.ieee.org/document/11361112).
+- **PR** (Diffusion) [Underwater Image Enhancement by Diffusion Model with Customized CLIP-Classifier](https://www.sciencedirect.com/science/article/abs/pii/S0031320325008933). [[code]](https://github.com/OUCVisionGroup/CLIP-UIE)  [[project]](https://oucvisiongroup.github.io/CLIP-UIE.html/) 
 - **TMM** (CNN) [PyUIE: A Coarse-to-Fine Deep Pyramid Network for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/11330175). [[code]](https://github.com/ttttllt/PyUIE) 
 ## Year 2025
 - **WACV** (Transformer) [Phaseformer: Phase-based Attention Mechanism for Underwater Image Restoration and Beyond](https://arxiv.org/abs/2412.01456). [[code]](https://github.com/Mdraqibkhan/Phaseformer) 
@@ -28,6 +29,7 @@ Welcome to pull request to update or correct this collection. 🥰
 - **Neurocomputing** (Diffusion) [BDMUIE: Underwater image enhancement based on Bayesian diffusion model](https://www.sciencedirect.com/science/article/pii/S0925231224020459).
 - **TCSVT** (CNN;Transformer) [FDCE-Net: Underwater Image Enhancement With Embedding Frequency and Dual Color Encoder](https://ieeexplore.ieee.org/document/10720919). [[code]](https://github.com/Alexande-rChan/FDCE-Net) 
 - **TMM** (CNN) [Underwater Image Enhancement with Cascaded Contrastive Learning](https://ieeexplore.ieee.org/document/10814077). [[code]](https://github.com/lewis081/CCL-Net) 
+- **TIP** (CNN) [Multi-Prior Fusion Transfer Plugin for Adapting In-Air Models to Underwater Image Enhancement and Detection](https://ieeexplore.ieee.org/document/11267029). [[code]](https://github.com/zhoujingchun03/IA2U) 
 - **TGARS** (CNN) [MDA-Net: A Multidistribution Aware Network for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10829689).
 - **TGARS** (CNN) [CDF-UIE: Leveraging Cross-Domain Fusion for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10937076). [[code]](https://github.com/hpzhan66/CDF-UIE) 
 - **JOE** (CNN) [DAPNet: Dual Attention Probabilistic Network for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10753015).
@@ -41,7 +43,6 @@ Welcome to pull request to update or correct this collection. 🥰
 - **Neurocomputing** (Hybrid) [LUIE: Learnable physical model-guided underwater image enhancement with bi-directional unsupervised domain adaptatio](https://www.sciencedirect.com/science/article/pii/S0925231224010579).
 - **JOE** (Hybrid) [UIE-SFIFormer: Underwater Image Enhancement Based on Physical-Guided Spatial-Frequency Interaction Transformer](https://ieeexplore.ieee.org/document/10805568).
 - **TGARS** (GAN) [NPT-UL: An Underwater Image Enhancement Framework Based on Nonphysical Transformation and Unsupervised Learning](https://ieeexplore.ieee.org/document/10423039).
-- **arXiv** (Diffusion) [Underwater Image Enhancement by Diffusion Model with Customized CLIP-Classifier](https://arxiv.org/abs/2405.16214). [[code]](https://github.com/OUCVisionGroup/CLIP-UIE)  [[project]](https://oucvisiongroup.github.io/CLIP-UIE.html/) 
 - **TMM** (Diffusion) [DiffUIE: Learning Latent Global Priors in Diffusion Models for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10812849).
 - **TGARS** (Diffusion) [DCGF: Diffusion-Color-Guided Framework for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10816000).
 - **arXiv** (CNN) [LU2Net: A Lightweight Network for Real-time Underwater Image Enhancement](https://arxiv.org/abs/2406.14973).
@@ -69,7 +70,6 @@ Welcome to pull request to update or correct this collection. 🥰
 - **ESWA** (Diffusion) [UIEDP: Boosting underwater image enhancement with diffusion prior](https://www.sciencedirect.com/science/article/pii/S0957417424021389). [[project]](https://ddz16.github.io/) 
 - **ACM-MM** (Diffusion) [Underwater Image Enhancement by Transformer-based Diffusion Model with Non-uniform Sampling for Skip Strategy](https://dl.acm.org/doi/10.1145/3581783.3612378). [[code]](https://github.com/piggy2009/DM_underwater) 
 - **arXiv** (CNN) [DGNet: Dynamic Gradient-guided Network with Noise Suppression for Underwater Image Enhancement](https://arxiv.org/abs/2312.06999).
-- **arXiv** (CNN) [IA2U: A Transfer Plugin with Multi-Prior for In-Air Model to Underwater](https://arxiv.org/abs/2312.06955).
 - **arXiv** (CNN) [Physics-Aware Semi-Supervised Underwater Image Enhancement](https://arxiv.org/abs/2307.11470).
 - **TCSVT** (CNN) [UIALN: Enhancement for Underwater Image With Artificial Light](https://ieeexplore.ieee.org/document/10019314). [[code]](https://github.com/lilala0/UIALN) 
 - **ICRA** (CNN) [SyreaNet: A Physically Guided Underwater Image Enhancement Framework Integrating Synthetic and Real Images](https://ieeexplore.ieee.org/document/10161531). [[code]](https://github.com/rockwenjj/syreanet) 
