@@ -2,9 +2,9 @@
 
 A curated list of Underwater Image Enhancement (UIE) papers and resources, inspired by [Awesome-Inpainting-Tech](https://github.com/zengyh1900/Awesome-Image-Inpainting).
 
-This `README.md` is automatically generated from [`.dev_scripts/collection.csv`](.dev_scripts/collection.csv). 
+This `README.md` is automatically generated from [`.dev_scripts/collection.csv`](.dev_scripts/collection.csv).
 
-We provide [scripts](.dev_scripts/main.py) to automatically generate `README.md` from CSV file or vice versa. 
+We provide [scripts](.dev_scripts/main.py) to automatically generate `README.md` from CSV file or vice versa.
 
 Welcome to pull request to update or correct this collection. 🥰
 ## Year 2025
