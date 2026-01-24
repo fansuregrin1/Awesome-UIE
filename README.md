@@ -7,12 +7,20 @@ This `README.md` is automatically generated from [`.dev_scripts/collection.csv`]
 We provide [scripts](.dev_scripts/main.py) to automatically generate `README.md` from CSV file or vice versa.
 
 Welcome to pull request to update or correct this collection. 🥰
+## Year 2026
+- **TIP** (Task-Driven) [Task-Driven Underwater Image Enhancement via Hierarchical Semantic Refinement](https://ieeexplore.ieee.org/document/11321080). [[code]](https://github.com/gemyumeng/HSRUIE) 
+- **TMM** (Diffusion) [Color Correction Meets Cross-Spectral Refinement: A Distribution-Aware Diffusion for Underwater Image Restoration](https://ieeexplore.ieee.org/document/11353942).
+- **TIP** (Diffusion) [DCD-UIE: Decoupled Chromatic Diffusion Model for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/11339364). [[code]](https://github.com/zy-world/DCD-UIE) 
+- **TCSVT** (Diffusion) [UPI2Diff: Restoring Underwater Polarization Image and Information in Turbid Conditions via Polarization Guided Diffusion Model](https://ieeexplore.ieee.org/document/11361112).
+- **TMM** (CNN) [PyUIE: A Coarse-to-Fine Deep Pyramid Network for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/11330175). [[code]](https://github.com/ttttllt/PyUIE) 
 ## Year 2025
 - **WACV** (Transformer) [Phaseformer: Phase-based Attention Mechanism for Underwater Image Restoration and Beyond](https://arxiv.org/abs/2412.01456). [[code]](https://github.com/Mdraqibkhan/Phaseformer) 
 - **TCSVT** (Transformer) [TAFormer: A Transmission-Aware Transformer for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10669071).
 - **TCSVT** (Transformer) [Globally Deformable Information Selection Transformer for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10659034).
 - **JOE** (Transformer) [Histoformer: Histogram-Based Transformer for Efficient Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10762843). [[code]](https://github.com/ytpeng-aimlab/Histoformer) 
 - **TCSVT** (Traditional) [Underwater Image Enhancement via Wavelet Decomposition Fusion of Advantage Contrast](https://ieeexplore.ieee.org/document/10902578). [[code]](https://www.researchgate.net/publication/386508762_2024WFAC) 
+- **TCSVT** (Traditional) [High-Turbidity Underwater Image Enhancement via Turbidity Suppression Fusion](https://ieeexplore.ieee.org/document/10770246).
+- **TCSVT** (Traditional) [An Underwater Image Restoration Method With Polarization Imaging Optimization Model for Poor Visible Conditions](https://ieeexplore.ieee.org/document/10781421). [[code]](https://github.com/liyafengLYF/UIRPIOM) 
 - **TGARS** (Large-Model) [Large Foundation Model Empowered Discriminative Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10824846). [[code]](https://gitee.com/wanghaoupc/UIE_SAM) 
 - **arXiv** (Hybrid) [OceanLens: An Adaptive Backscatter and Edge Correction using Deep Learning Model for Enhanced Underwater Imaging](https://arxiv.org/abs/2411.13230). [[code]](https://github.com/AIRLabIISc/OceanLens) 
 - **IJCV** (Hybrid) [HUPE: Heuristic Underwater Perceptual Enhancement with Semantic Collaborative Learning](https://link.springer.com/article/10.1007/s11263-024-02318-x). [[code]](https://github.com/ZengxiZhang/HUPE) 
@@ -39,7 +47,7 @@ Welcome to pull request to update or correct this collection. 🥰
 - **arXiv** (CNN) [LU2Net: A Lightweight Network for Real-time Underwater Image Enhancement](https://arxiv.org/abs/2406.14973).
 - **arXiv** (CNN) [A Physical Model-Guided Framework for Underwater Image Enhancement and Depth Estimation](https://arxiv.org/abs/2407.04230).
 - **TMM** (CNN) [UIERL: Internal-External Representation Learning Network for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10496814/). [[code]](https://github.com/zyWang-Power/UIERL) 
-- **TCSVT** (CNN) [See Through Water: Heuristic Modeling towards Color Correction for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10798483).
+- **TCSVT** (CNN) [See Through Water: Heuristic Modeling towards Color Correction for Underwater Image Enhancement](https://ieeexplore.ieee.org/document/10798483). [[code]](https://github.com/JunyuFan/MJPNet) 
 - **ICVGIP** (CNN) [IDA-UIE: An Iterative Framework for Deep Network-based Degradation Aware Underwater Image Enhancement](https://dl.acm.org/doi/10.1145/3702250.3702252).
 - **AAAI** (CNN) [Synergistic Multiscale Detail Refinement via Intrinsic Supervision for Underwater Image Enhancement](https://ojs.aaai.org/index.php/AAAI/article/view/28530). [[code]](https://github.com/zhoujingchun03/SMDR-IS) 
 ## Year 2023
