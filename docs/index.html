@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Awesome Underwater Image Enhancement (UIE)</title>
+  <meta name="description" content="A searchable list of underwater image enhancement (UIE) papers and resources.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Awesome Underwater Image Enhancement</h1>
+    <p class="subtitle">
+      A searchable list of <span id="total-count">&hellip;</span> UIE papers,
+      auto-generated from <code>papers.yaml</code>.
+    </p>
+    <nav class="site-links" aria-label="Project links">
+      <a href="https://github.com/fansuregrin1/Awesome-UIE" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/fansuregrin1/Awesome-UIE#readme" target="_blank" rel="noopener">README</a>
+      <a href="https://github.com/fansuregrin1/Awesome-UIE/blob/main/papers.bib" target="_blank" rel="noopener">BibTeX</a>
+      <a href="https://github.com/fansuregrin1/Awesome-UIE/blob/main/papers.json" target="_blank" rel="noopener">JSON</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Search and filters">
+      <div class="field field-search">
+        <label for="search">Search</label>
+        <input id="search" type="search" placeholder="Title, venue or tag&hellip;" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="year">Year</label>
+        <select id="year"><option value="">All</option></select>
+      </div>
+
+      <div class="field">
+        <label for="type">Type</label>
+        <select id="type"><option value="">All</option></select>
+      </div>
+
+      <div class="field">
+        <label for="venue">Venue</label>
+        <select id="venue"><option value="">All</option></select>
+      </div>
+
+      <div class="field">
+        <label for="tag">Tag</label>
+        <select id="tag"><option value="">All</option></select>
+      </div>
+
+      <div class="field field-check">
+        <input id="has-code" type="checkbox">
+        <label for="has-code">Has code</label>
+      </div>
+
+      <div class="field">
+        <label for="sort">Sort</label>
+        <select id="sort">
+          <option value="year-desc">Year (newest)</option>
+          <option value="year-asc">Year (oldest)</option>
+          <option value="venue">Venue</option>
+          <option value="type">Type</option>
+        </select>
+      </div>
+
+      <button id="reset" type="button" class="reset">Reset</button>
+    </section>
+
+    <p id="result-count" class="result-count" role="status"></p>
+
+    <section id="results" class="results" aria-live="polite"></section>
+    <p id="empty" class="empty" hidden>No papers match your filters.</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Data source:
+      <a href="https://github.com/fansuregrin1/Awesome-UIE/blob/main/.dev_scripts/papers.yaml" target="_blank" rel="noopener">.dev_scripts/papers.yaml</a>.
+      This page is auto-generated &mdash; do not edit the data by hand.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

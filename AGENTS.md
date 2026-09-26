@@ -17,6 +17,7 @@ from it.
   - `papers.json`
   - `papers.bib`
   - `llms.txt`
+  - `docs/data/papers.json`
 
 After changing `papers.yaml`, regenerate everything:
 

@@ -29,6 +29,8 @@ This `README.md` is automatically generated from [`.dev_scripts/papers.yaml`](.d
 
 We provide [scripts](.dev_scripts/uie) to generate `README.md` (plus `collection.csv`, `papers.json`, `papers.bib` and `llms.txt`) from the YAML data file.
 
+🌐 **Browse online:** <https://fansuregrin1.github.io/Awesome-UIE/>
+
 Welcome to pull request to update or correct this collection. 🥰
 """
 
@@ -187,7 +189,11 @@ def write_all(root: Path | str, papers: List[Paper]) -> List[Path]:
         root / "papers.json": render_json(papers),
         root / "papers.bib": render_bib(papers),
         root / "llms.txt": render_llms(papers),
+        # Duplicated into the GitHub Pages site, which can only serve files
+        # below the published folder (docs/).
+        root / "docs" / "data" / "papers.json": render_json(papers),
     }
     for path, content in outputs.items():
+        path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
     return list(outputs)

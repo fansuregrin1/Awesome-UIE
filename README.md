@@ -11,6 +11,8 @@ This `README.md` is automatically generated from [`.dev_scripts/papers.yaml`](.d
 
 We provide [scripts](.dev_scripts/uie) to generate `README.md` (plus `collection.csv`, `papers.json`, `papers.bib` and `llms.txt`) from the YAML data file.
 
+🌐 **Browse online:** <https://fansuregrin1.github.io/Awesome-UIE/>
+
 Welcome to pull request to update or correct this collection. 🥰
 ## Year 2026
 - **PR** (DeepLearning) [Underwater Image Enhancement by Diffusion Model with Customized CLIP-Classifier](https://www.sciencedirect.com/science/article/abs/pii/S0031320325008933). `Diffusion` [[code]](https://github.com/OUCVisionGroup/CLIP-UIE) [[project]](https://oucvisiongroup.github.io/CLIP-UIE.html/)
