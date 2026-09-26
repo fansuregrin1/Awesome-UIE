@@ -120,12 +120,11 @@ def write(result: EnrichResult, titles: Dict[str, str], md_path, json_path) -> t
 
 def _candidate_dict(candidate: Candidate) -> Dict:
     record = candidate.record
-    venue = record.venue or ("arXiv" if record.source == "arxiv" else record.source)
     return {
         "id": candidate.suggested_id,
         "title": record.title,
         "year": record.year,
-        "venue": venue,
+        "venue": candidate.venue,
         "type": candidate.suggested_type,
         "tags": candidate.suggested_tags,
         "url": record.url,
@@ -170,9 +169,12 @@ def render_discover_markdown(result: DiscoverResult) -> str:
         lines.append("")
     for candidate in result.new:
         record = candidate.record
+        venue_note = candidate.venue or "—"
+        if candidate.venue_unknown:
+            venue_note += " (unmapped)"
         lines.append(f"### {record.title}")
         lines.append(
-            f"- year {record.year} · venue {record.venue or '—'} · source {record.source} · "
+            f"- year {record.year} · venue {venue_note} · source {record.source} · "
             f"relevance {candidate.relevance:.2f}"
         )
         if record.date:
@@ -207,6 +209,17 @@ def render_discover_markdown(result: DiscoverResult) -> str:
     else:
         lines.append("_none_")
     lines.append("")
+
+    lines.append("## Unmapped venues")
+    lines.append("")
+    if result.unknown_venues:
+        lines.append("Add these to `config/venues.yaml` so future runs use a short code:")
+        lines.append("")
+        for venue in result.unknown_venues:
+            lines.append(f"- {venue}")
+    else:
+        lines.append("_none_")
+    lines.append("")
     return "\n".join(lines)
 
 
@@ -218,6 +231,7 @@ def render_discover_json(result: DiscoverResult) -> str:
         "new": [asdict(candidate) for candidate in result.new],
         "similar": [asdict(candidate) for candidate in result.similar],
         "existing": [asdict(candidate) for candidate in result.existing],
+        "unknown_venues": result.unknown_venues,
     }
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
 

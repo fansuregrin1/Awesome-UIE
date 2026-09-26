@@ -22,6 +22,7 @@ import yaml
 from . import discover as discover_module
 from . import enrich as enrich_module
 from . import links, proposals, render, validate
+from . import venues as venues_module
 from .schema import Paper, dump_papers, load_papers
 from .sources.http import DEFAULT_TTL, HttpClient
 
@@ -31,6 +32,7 @@ PAPERS_YAML = ROOT / PAPERS_REL
 ALLOWLIST_YAML = ROOT / ".dev_scripts" / "validation-allowlist.yaml"
 LINK_CACHE = ROOT / ".dev_scripts" / ".link-cache.json"
 CONFIG_YAML = ROOT / ".dev_scripts" / "config" / "discovery.yaml"
+VENUES_YAML = ROOT / ".dev_scripts" / "config" / "venues.yaml"
 CACHE_DIR = ROOT / ".dev_scripts" / ".cache"
 
 
@@ -67,7 +69,7 @@ def cmd_validate(args: argparse.Namespace) -> int:
         changed = validate.changed_ids(PAPERS_REL, args.base, ROOT)
         papers = [paper for paper in papers if paper.id in changed]
 
-    issues += validate.validate_papers(papers, _load_allowlist())
+    issues += validate.validate_papers(papers, _load_allowlist(), registry=venues_module.load_registry(VENUES_YAML))
 
     if args.format == "text":
         print(f"validated {len(papers)} papers")
@@ -206,6 +208,7 @@ def cmd_discover(args: argparse.Namespace) -> int:
         client=client,
         since_days=args.since,
         limit_per_source=args.limit,
+        registry=venues_module.load_registry(VENUES_YAML),
     )
 
     md_path, json_path = proposals.write_discover(result, args.report, args.json)
@@ -217,6 +220,23 @@ def cmd_discover(args: argparse.Namespace) -> int:
     )
     print(f"wrote {md_path}")
     print(f"wrote {json_path}")
+    return 0
+
+
+def cmd_venues(args: argparse.Namespace) -> int:
+    papers = load_papers(PAPERS_YAML)
+    registry = venues_module.load_registry(VENUES_YAML)
+    if registry is None:
+        print("no config/venues.yaml found")
+        return 1
+
+    registered = sum(1 for paper in papers if registry.known(paper.venue))
+    unknown = sorted({paper.venue for paper in papers if not registry.known(paper.venue)})
+    print(f"{registered}/{len(papers)} papers use a registered venue ({len(registry.codes)} codes known)")
+    if unknown:
+        print("unregistered venues:")
+        for venue in unknown:
+            print(f"  - {venue}")
     return 0
 
 
@@ -265,6 +285,9 @@ def build_parser() -> argparse.ArgumentParser:
     disc.add_argument("--ttl", type=int, help="cache TTL in seconds")
     disc.add_argument("--refresh", action="store_true", help="bypass the response cache")
     disc.set_defaults(func=cmd_discover)
+
+    venues = sub.add_parser("venues", help="audit venues against config/venues.yaml")
+    venues.set_defaults(func=cmd_venues)
 
     return parser
 

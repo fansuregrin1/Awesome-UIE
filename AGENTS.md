@@ -40,6 +40,7 @@ python -m uie.cli validate --format json   # machine-readable report
 python -m uie.cli check-links              # link / repo liveness (network)
 python -m uie.cli enrich                   # suggest missing metadata (network, read-only)
 python -m uie.cli discover                 # find new papers (network, read-only)
+python -m uie.cli venues                   # audit venues against the registry
 ```
 
 Run the offline tests from the repository root:
@@ -68,6 +69,20 @@ candidate. It is read-only; add accepted candidates to `papers.yaml` (as
 ```bash
 python -m uie.cli discover --since 90 --limit 25
 ```
+
+## Venues
+
+`venue` is the collection's short code (`TIP`, `CVPR`, `Neurocomputing`, ...). The
+APIs only return full names (and ISO abbreviations), so short codes are resolved
+through the curated registry `.dev_scripts/config/venues.yaml`:
+
+- Matching order: **ISSN → full name → alias → code**.
+- `validate` warns (`unknown-venue`) for any `venue` not in the registry.
+- `discover` maps a candidate's source venue to a code, or keeps the raw full
+  name and lists it under "Unmapped venues" in the report.
+- Add new venues to the registry (code + full name + optional ISSN/aliases) when
+  the warning appears. Bootstrap drafted the initial entries from the existing
+  DOIs via `bootstrap_venues.py`.
 
 `validate --changed-only --base origin/main` checks only entries changed versus
 the base revision.
