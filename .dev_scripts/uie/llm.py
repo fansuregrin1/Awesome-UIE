@@ -34,6 +34,7 @@ class LlmSuggestion:
     tags: List[str]
     new_tags: List[str]
     model: str
+    current_tags: List[str] = field(default_factory=list)
 
 
 @dataclass
@@ -138,18 +139,29 @@ class LlmClient:
         return parse_json(self.complete(system, user))
 
 
-def build_prompt(paper: Paper, abstract: str, known_tags: Sequence[str] = KNOWN_TAGS, max_tags: int = 5) -> tuple:
+def build_prompt(
+    paper: Paper,
+    abstract: str,
+    known_tags: Sequence[str] = KNOWN_TAGS,
+    max_tags: int = 5,
+    current_tags: Optional[Sequence[str]] = None,
+) -> tuple:
     vocabulary = ", ".join(known_tags)
+    current = ", ".join(current_tags) if current_tags else "(none)"
     user = (
         f"Title: {paper.title}\n"
         f"Year: {paper.year}\n"
         f"Venue: {paper.venue}\n"
         f"Abstract: {abstract}\n\n"
+        f"Current tags: {current}\n\n"
+        "Review the current tags and return a corrected set.\n"
         "Return a JSON object with these keys:\n"
         '- "tldr": one sentence (at most 30 words) describing the method and its main contribution. '
         "No marketing language, no first person.\n"
         f'- "type": exactly one of {TYPES}.\n'
-        f'- "tags": an array (at most {max_tags}) chosen only from this controlled vocabulary: {vocabulary}\n'
+        f'- "tags": the final recommended tags (at most {max_tags}), chosen only from this '
+        f"controlled vocabulary: {vocabulary}. "
+        "Keep a current tag only if the title/abstract supports it, drop it otherwise, and add any missing ones.\n"
         '- "new_tags": an array of any additional useful tags not in the vocabulary, each '
         "lowercase words joined with hyphens (may be empty)."
     )
@@ -197,7 +209,9 @@ def summarize_papers(
         if not abstract:
             result.skipped_no_abstract.append(paper.id)
             continue
-        system, user = build_prompt(paper, abstract, known_tags=known_tags, max_tags=max_tags)
+        system, user = build_prompt(
+            paper, abstract, known_tags=known_tags, max_tags=max_tags, current_tags=paper.tags
+        )
         try:
             data = llm.complete_json(system, user)
         except Exception as exc:  # noqa: BLE001 - report per-paper failures
@@ -205,7 +219,12 @@ def summarize_papers(
             continue
         parsed = parse_suggestion(data)
         result.suggestions.append(
-            LlmSuggestion(paper_id=paper.id, model=getattr(llm, "model", ""), **parsed)
+            LlmSuggestion(
+                paper_id=paper.id,
+                model=getattr(llm, "model", ""),
+                current_tags=list(paper.tags),
+                **parsed,
+            )
         )
     return result
 
@@ -214,8 +233,14 @@ def apply_llm_suggestions(
     papers: Sequence[Paper],
     suggestions: Sequence[LlmSuggestion],
     fields: Sequence[str] = ("tldr",),
+    tag_mode: str = "fill",
 ) -> List[tuple]:
-    """Apply fill-only ``tldr`` / ``tags`` suggestions in place."""
+    """Apply ``tldr`` / ``tags`` suggestions in place.
+
+    ``tldr`` is always fill-only. ``tag_mode`` controls tags:
+    ``fill`` (only when empty), ``merge`` (union with the reviewed set) or
+    ``replace`` (use the reviewed set verbatim).
+    """
     by_id = {paper.id: paper for paper in papers}
     wanted = set(fields)
     applied: List[tuple] = []
@@ -226,7 +251,20 @@ def apply_llm_suggestions(
         if "tldr" in wanted and suggestion.tldr and not paper.tldr:
             paper.tldr = suggestion.tldr
             applied.append((paper.id, "tldr", suggestion.tldr))
-        if "tags" in wanted and suggestion.tags and not paper.tags:
-            paper.tags = list(suggestion.tags)
-            applied.append((paper.id, "tags", suggestion.tags))
+        if "tags" not in wanted or not suggestion.tags:
+            continue
+        if tag_mode == "replace":
+            new_tags = list(suggestion.tags)
+        elif tag_mode == "merge":
+            new_tags = list(paper.tags)
+            for tag in suggestion.tags:
+                if tag not in new_tags:
+                    new_tags.append(tag)
+        elif paper.tags:
+            new_tags = list(paper.tags)
+        else:
+            new_tags = list(suggestion.tags)
+        if list(paper.tags) != new_tags:
+            paper.tags = new_tags
+            applied.append((paper.id, "tags", new_tags))
     return applied
