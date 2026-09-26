@@ -1,0 +1,50 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    name: validate data & generated files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run deterministic validation
+        working-directory: .dev_scripts
+        run: python -m uie.cli validate --format text
+
+      - name: Ensure generated files are up to date
+        run: |
+          (cd .dev_scripts && python -m uie.cli build)
+          git diff --exit-code
+
+  links:
+    name: check links & repositories
+    runs-on: ubuntu-latest
+    # Link checks are best-effort: network flakiness should never block a PR.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check links and repositories
+        working-directory: .dev_scripts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python -m uie.cli check-links --format text --no-fail

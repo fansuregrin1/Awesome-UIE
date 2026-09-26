@@ -1,0 +1,8 @@
+# Validation exceptions. Keep this list minimal and always add a reason.
+#
+# URLs that CI cannot reliably reach (bot protection, rate limits, ...).
+# Each entry is reported as a warning instead of an error.
+link_warnings: []
+
+# URLs intentionally shared by more than one paper.
+duplicate_urls: []
