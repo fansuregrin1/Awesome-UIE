@@ -14,7 +14,7 @@ from collections import Counter
 from pathlib import Path
 from typing import List
 
-from .schema import Paper, PaperType
+from .schema import Paper, PaperType, Status
 
 HEAD = (
     "<!-- AUTO-GENERATED FILE - DO NOT EDIT.\n"
@@ -63,6 +63,11 @@ _README_CSV_COLUMNS = ["Year", "Pub", "Type", "Tags", "Title", "URL", "Code", "P
 
 def _sorted(papers: List[Paper]) -> List[Paper]:
     return sorted(papers, key=lambda paper: paper.sort_key())
+
+
+def published(papers: List[Paper]) -> List[Paper]:
+    """Only ``status: verified`` entries are exposed in generated artifacts."""
+    return [paper for paper in papers if paper.status == Status.VERIFIED]
 
 
 def _readme_line(paper: Paper) -> str:
@@ -189,6 +194,7 @@ def render_llms(papers: List[Paper]) -> str:
 def write_all(root: Path | str, papers: List[Paper]) -> List[Path]:
     """Generate every artifact. Returns the list of written paths."""
     root = Path(root)
+    papers = published(papers)
     outputs = {
         root / "README.md": render_readme(papers),
         root / ".dev_scripts" / "collection.csv": render_csv(papers),

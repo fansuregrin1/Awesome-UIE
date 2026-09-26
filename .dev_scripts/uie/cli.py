@@ -228,6 +228,15 @@ def cmd_discover(args: argparse.Namespace) -> int:
     )
     print(f"wrote {md_path}")
     print(f"wrote {json_path}")
+
+    if args.apply:
+        added = discover_module.candidates_to_papers(papers, result)
+        if added:
+            dump_papers(PAPERS_YAML, papers + added)
+            render.write_all(ROOT, papers + added)
+            print(f"added {len(added)} candidate papers (status: candidate, hidden from README/site)")
+        else:
+            print("nothing to add")
     return 0
 
 
@@ -359,6 +368,7 @@ def build_parser() -> argparse.ArgumentParser:
     disc.add_argument("--mailto", help="contact e-mail for the API polite pools")
     disc.add_argument("--ttl", type=int, help="cache TTL in seconds")
     disc.add_argument("--refresh", action="store_true", help="bypass the response cache")
+    disc.add_argument("--apply", action="store_true", help="append new candidates to papers.yaml as status: candidate")
     disc.set_defaults(func=cmd_discover)
 
     venues = sub.add_parser("venues", help="audit venues against config/venues.yaml")

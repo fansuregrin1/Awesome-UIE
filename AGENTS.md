@@ -63,12 +63,18 @@ python -m uie.cli enrich --apply --fields authors --min-score 0.97
 
 `discover` searches the same sources for **new** papers using the keywords in
 `.dev_scripts/config/discovery.yaml`, deduplicates against the collection, and
-writes `proposals/discover.md` + `.json` with a ready-to-paste YAML snippet per
-candidate. It is read-only; add accepted candidates to `papers.yaml` (as
-`status: candidate`) by hand.
+writes `proposals/discover.md` + `.json` (a ready-to-paste YAML snippet per
+candidate). With `--apply` it also appends the new candidates to `papers.yaml` as
+`status: candidate`.
+
+Candidates are **isolated**: generated artifacts (README, site, `papers.json`,
+BibTeX, CSV) only include `status: verified` entries, so unreviewed candidates
+stay out of the public output until you flip their status to `verified` and
+rebuild.
 
 ```bash
-python -m uie.cli discover --since 90 --limit 25
+python -m uie.cli discover --since 90 --limit 25            # report only
+python -m uie.cli discover --since 90 --limit 25 --apply    # also ingest candidates
 ```
 
 ## Venues
