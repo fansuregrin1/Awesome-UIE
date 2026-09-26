@@ -189,11 +189,114 @@
     return article;
   }
 
+  function countBy(list, keyFn) {
+    var counts = {};
+    list.forEach(function (item) {
+      var key = keyFn(item);
+      if (key === null || key === undefined || key === "") return;
+      counts[key] = (counts[key] || 0) + 1;
+    });
+    return counts;
+  }
+
+  function entriesFrom(counts, limit) {
+    var entries = Object.keys(counts).map(function (key) {
+      return { label: key, value: counts[key] };
+    });
+    entries.sort(function (a, b) {
+      return b.value - a.value || a.label.localeCompare(b.label);
+    });
+    return limit ? entries.slice(0, limit) : entries;
+  }
+
+  function renderBarChart(container, entries) {
+    container.textContent = "";
+    if (!entries.length) return;
+    var max = entries[0].value;
+    entries.forEach(function (entry) {
+      var row = document.createElement("div");
+      row.className = "stat-row";
+
+      var label = document.createElement("span");
+      label.className = "stat-label";
+      label.textContent = entry.label;
+      label.title = entry.label;
+
+      var track = document.createElement("span");
+      track.className = "stat-track";
+      var bar = document.createElement("span");
+      bar.className = "stat-bar";
+      bar.style.width = (entry.value / max) * 100 + "%";
+      track.appendChild(bar);
+
+      var value = document.createElement("span");
+      value.className = "stat-value";
+      value.textContent = entry.value;
+
+      row.appendChild(label);
+      row.appendChild(track);
+      row.appendChild(value);
+      container.appendChild(row);
+    });
+  }
+
+  function renderYearChart(container, papers) {
+    container.textContent = "";
+    var counts = countBy(papers, function (paper) { return paper.year; });
+    var years = Object.keys(counts).map(Number).sort(function (a, b) { return a - b; });
+    if (!years.length) return;
+    var max = Math.max.apply(null, years.map(function (year) { return counts[year]; }));
+    years.forEach(function (year) {
+      var column = document.createElement("div");
+      column.className = "year-col";
+      column.title = year + ": " + counts[year];
+
+      var wrap = document.createElement("div");
+      wrap.className = "year-bar-wrap";
+      var bar = document.createElement("div");
+      bar.className = "year-bar";
+      bar.style.height = (counts[year] / max) * 100 + "%";
+      wrap.appendChild(bar);
+
+      var label = document.createElement("span");
+      label.className = "year-label";
+      label.textContent = String(year).slice(2);
+
+      column.appendChild(wrap);
+      column.appendChild(label);
+      container.appendChild(column);
+    });
+  }
+
+  function renderStats(papers) {
+    renderYearChart(el("chart-years"), papers);
+
+    var typeCounts = countBy(papers, function (paper) { return paper.type; });
+    var typeEntries = Object.keys(typeCounts)
+      .sort(function (a, b) { return (TYPE_ORDER[a] || 0) - (TYPE_ORDER[b] || 0); })
+      .map(function (type) { return { label: type, value: typeCounts[type] }; });
+    // keep bar-chart scaling meaningful even though the order is fixed
+    renderBarChart(el("chart-types"), typeEntries);
+
+    var authorCounts = {};
+    papers.forEach(function (paper) {
+      (paper.authors || []).forEach(function (author) {
+        authorCounts[author] = (authorCounts[author] || 0) + 1;
+      });
+    });
+    renderBarChart(el("chart-authors"), entriesFrom(authorCounts, 8));
+
+    var venueCounts = countBy(papers, function (paper) { return paper.venue; });
+    renderBarChart(el("chart-venues"), entriesFrom(venueCounts, 8));
+  }
+
   function render() {
     var filtered = sorted(state.all.filter(matches));
     el("result-count").textContent =
       filtered.length + " of " + state.all.length + " papers";
     el("empty").hidden = filtered.length > 0;
+    el("stats").hidden = filtered.length === 0;
+    renderStats(filtered);
 
     var container = el("results");
     container.textContent = "";
