@@ -14,7 +14,7 @@ from datetime import date, timedelta
 from typing import Dict, List, Optional, Sequence, Tuple
 
 from .enrich import normalize_arxiv, normalize_doi, similarity
-from .schema import KNOWN_TAGS, make_id
+from .schema import KNOWN_TAGS, Paper, Status, make_id
 from .sources.arxiv import ArxivSource
 from .sources.base import SourceRecord
 from .sources.crossref import CrossrefSource
@@ -279,3 +279,51 @@ def discover(
     result.new.sort(key=lambda candidate: (candidate.record.date or "", candidate.relevance), reverse=True)
     result.unknown_venues = sorted(unknown_venues)
     return result
+
+
+def candidate_to_paper(
+    candidate: Candidate,
+    existing_ids: set,
+    today: Optional[date] = None,
+) -> Optional[Paper]:
+    """Convert a new candidate into a ``status: candidate`` Paper, or None if unusable."""
+    record = candidate.record
+    url = f"https://doi.org/{record.doi}" if record.doi else record.url
+    if not url or not record.year or not (2000 <= record.year <= 2100):
+        return None
+
+    paper_id = candidate.suggested_id or make_id(record.year, record.title)
+    if paper_id in existing_ids:
+        suffix = 2
+        while f"{paper_id}-{suffix}" in existing_ids:
+            suffix += 1
+        paper_id = f"{paper_id}-{suffix}"
+    existing_ids.add(paper_id)
+
+    return Paper(
+        id=paper_id,
+        title=record.title,
+        year=record.year,
+        venue=candidate.venue,
+        type=candidate.suggested_type,
+        tags=list(candidate.suggested_tags),
+        url=url,
+        doi=record.doi,
+        arxiv_id=record.arxiv_id,
+        authors=list(record.authors),
+        status=Status.CANDIDATE,
+        added=today or date.today(),
+    )
+
+
+def candidates_to_papers(
+    papers: Sequence, result: DiscoverResult, today: Optional[date] = None
+) -> List[Paper]:
+    """Turn the new candidates of a discovery run into candidate papers (not added)."""
+    existing_ids = {paper.id for paper in papers}
+    added: List[Paper] = []
+    for candidate in result.new:
+        paper = candidate_to_paper(candidate, existing_ids, today=today)
+        if paper is not None:
+            added.append(paper)
+    return added

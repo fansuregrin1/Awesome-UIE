@@ -9,6 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / ".dev_scripts"))
 
 from uie.discover import (  # noqa: E402
+    Candidate,
+    candidates_to_papers,
     discover,
     is_relevant,
     keyword_tokens,
@@ -16,7 +18,8 @@ from uie.discover import (  # noqa: E402
     relevance,
     suggest_classification,
 )
-from uie.schema import Paper, PaperType  # noqa: E402
+from uie.render import published  # noqa: E402
+from uie.schema import Paper, PaperType, Status  # noqa: E402
 from uie.sources.base import SourceRecord  # noqa: E402
 
 
@@ -42,6 +45,31 @@ def make_paper(**overrides):
     )
     base.update(overrides)
     return Paper(**base)
+
+
+def make_candidate(candidate_id="2026-demo", url="https://arxiv.org/abs/2601.00001", doi=None):
+    record = SourceRecord(
+        source="arxiv",
+        title="A New Underwater Image Enhancement Method",
+        year=2026,
+        date="2026-08-01",
+        venue="arXiv",
+        doi=doi,
+        arxiv_id="2601.00001",
+        authors=["A B"],
+        url=url,
+    )
+    return Candidate(
+        record=record,
+        relevance=0.9,
+        status="new",
+        matched_id=None,
+        suggested_type="DeepLearning",
+        suggested_tags=["CNN"],
+        suggested_id=candidate_id,
+        venue="arXiv",
+        venue_unknown=False,
+    )
 
 
 class KeywordTest(unittest.TestCase):
@@ -209,6 +237,37 @@ class DiscoverTest(unittest.TestCase):
             today=date(2026, 9, 27),
         )
         self.assertEqual(result.summary()["found"], 0)
+
+
+class ApplyDiscoverTest(unittest.TestCase):
+    def test_candidates_to_papers(self):
+        from uie.discover import DiscoverResult
+
+        result = DiscoverResult(since="2026-06-29", queries=["q"], new=[make_candidate()])
+        added = candidates_to_papers([], result, today=date(2026, 9, 27))
+        self.assertEqual(len(added), 1)
+        self.assertEqual(added[0].status, Status.CANDIDATE)
+        self.assertEqual(added[0].venue, "arXiv")
+        self.assertEqual(added[0].tags, ["CNN"])
+
+    def test_duplicate_id_gets_suffix(self):
+        from uie.discover import DiscoverResult
+
+        existing = make_paper(id="2026-demo")
+        result = DiscoverResult(since="2026-06-29", queries=["q"], new=[make_candidate(candidate_id="2026-demo")])
+        added = candidates_to_papers([existing], result, today=date(2026, 9, 27))
+        self.assertEqual(added[0].id, "2026-demo-2")
+
+    def test_skips_without_url(self):
+        from uie.discover import DiscoverResult
+
+        result = DiscoverResult(since="2026-06-29", queries=["q"], new=[make_candidate(url=None)])
+        self.assertEqual(candidates_to_papers([], result), [])
+
+    def test_published_filters_candidates(self):
+        verified = make_paper(id="verified")
+        candidate = make_paper(id="candidate", status=Status.CANDIDATE, url="https://example.org/c")
+        self.assertEqual([paper.id for paper in published([verified, candidate])], ["verified"])
 
 
 if __name__ == "__main__":
