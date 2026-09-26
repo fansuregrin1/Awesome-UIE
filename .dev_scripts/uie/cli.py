@@ -271,8 +271,12 @@ def build_parser() -> argparse.ArgumentParser:
     enrich.add_argument("--mailto", help="contact e-mail for the API polite pools")
     enrich.add_argument("--ttl", type=int, help="cache TTL in seconds (0 = refetch)")
     enrich.add_argument("--refresh", action="store_true", help="bypass the response cache")
-    enrich.add_argument("--apply", action="store_true", help="write high-confidence fill-only suggestions to papers.yaml")
-    enrich.add_argument("--fields", default="doi,authors", help="comma-separated fields to apply (default: doi,authors)")
+    enrich.add_argument(
+        "--apply", action="store_true", help="write high-confidence fill-only suggestions to papers.yaml"
+    )
+    enrich.add_argument(
+        "--fields", default="doi,authors", help="comma-separated fields to apply (default: doi,authors)"
+    )
     enrich.add_argument("--min-score", type=float, help="minimum match score required to apply (default: threshold)")
     enrich.set_defaults(func=cmd_enrich)
 

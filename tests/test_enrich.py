@@ -49,8 +49,13 @@ class NormalizeTest(unittest.TestCase):
         self.assertEqual(normalize_doi("10.1109/ABC"), "10.1109/abc")
         self.assertIsNone(normalize_doi(None))
 
-    def test_normalize_arxiv(self):
-        self.assertEqual(normalize_arxiv("2405.08419v2"), "2405.08419")
+    def test_normalize_doi_http_prefix(self):
+        self.assertEqual(normalize_doi("http://doi.org/10.1/AbC"), "10.1/abc")
+        self.assertEqual(normalize_doi("doi:10.1/XyZ"), "10.1/xyz")
+
+    def test_normalize_arxiv_edges(self):
+        self.assertIsNone(normalize_arxiv(None))
+        self.assertEqual(normalize_arxiv("2405.08419v10"), "2405.08419")
 
     def test_similarity(self):
         self.assertEqual(similarity(TITLE, TITLE), 1.0)
@@ -132,6 +137,10 @@ class ApplyTest(unittest.TestCase):
         applied = apply_suggestions([paper], result, fields=["authors"])
         self.assertEqual([entry[1] for entry in applied], ["authors"])
         self.assertIsNone(paper.doi)
+
+    def test_apply_empty_suggestions(self):
+        result = enrich_papers([make_paper()], sources=[FakeSource([])])
+        self.assertEqual(apply_suggestions([make_paper()], result), [])
 
 
 if __name__ == "__main__":

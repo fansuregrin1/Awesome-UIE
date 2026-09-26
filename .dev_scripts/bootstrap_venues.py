@@ -9,7 +9,7 @@ names/aliases/types by hand; after that the registry is maintained via the
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 import yaml
 
@@ -110,7 +110,11 @@ def main() -> int:
                 {
                     "code": paper.venue,
                     "name": paper.venue,
-                    "type": "conference" if paper.venue in CONFERENCES else ("preprint" if paper.venue == "arXiv" else "journal"),
+                    "type": (
+                        "conference"
+                        if paper.venue in CONFERENCES
+                        else ("preprint" if paper.venue == "arXiv" else "journal")
+                    ),
                     "issn": None,
                     "aliases": [],
                 }
