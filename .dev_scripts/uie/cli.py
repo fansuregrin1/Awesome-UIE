@@ -250,7 +250,7 @@ def cmd_venues(args: argparse.Namespace) -> int:
 
 def cmd_llm(args: argparse.Namespace) -> int:
     config = _load_llm_config()
-    key_env = config.get("api_key_env", "OPENAI_API_KEY")
+    key_env = args.api_key_env or config.get("api_key_env", "OPENAI_API_KEY")
     api_key = os.environ.get(key_env)
     if not api_key:
         print(f"error: environment variable {key_env} is not set (see config/llm.yaml)")
@@ -371,6 +371,7 @@ def build_parser() -> argparse.ArgumentParser:
     llm.add_argument("--limit", type=int, help="only process the first N papers")
     llm.add_argument("--model", help="override the model from config/llm.yaml")
     llm.add_argument("--base-url", help="override the OpenAI-compatible base URL")
+    llm.add_argument("--api-key-env", help="override the API-key environment variable name")
     llm.add_argument("--all", action="store_true", help="include papers that already have a tldr")
     llm.add_argument("--apply", action="store_true", help="write fill-only tldr/tags to papers.yaml")
     llm.add_argument("--fields", default="tldr", help="comma-separated fields to apply (default: tldr)")

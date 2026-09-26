@@ -1,7 +1,10 @@
 # LLM settings for `python -m uie.cli llm` (Phase 3).
 #
 # Opt-in: the command needs an API key in the environment. Any OpenAI-compatible
-# chat-completions endpoint works (OpenAI, Azure, local servers, ...).
+# chat-completions endpoint works. Examples:
+#   OpenAI   -> model: gpt-4o-mini    base_url: https://api.openai.com/v1    api_key_env: OPENAI_API_KEY
+#   DeepSeek -> model: deepseek-chat  base_url: https://api.deepseek.com/v1  api_key_env: DEEPSEEK_API_KEY
+# You can also override model / base_url / api_key_env on the command line.
 
 provider: openai
 model: gpt-4o-mini
