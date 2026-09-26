@@ -19,6 +19,7 @@ from typing import Any, Dict, List
 
 import yaml
 
+from . import discover as discover_module
 from . import enrich as enrich_module
 from . import links, proposals, render, validate
 from .schema import Paper, dump_papers, load_papers
@@ -191,6 +192,34 @@ def cmd_enrich(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_discover(args: argparse.Namespace) -> int:
+    config = _load_config()
+    papers = load_papers(PAPERS_YAML)
+
+    mailto = args.mailto or config.get("mailto")
+    ttl = 0 if args.refresh else (args.ttl or int(config.get("cache_ttl", DEFAULT_TTL)))
+    client = HttpClient(cache_dir=CACHE_DIR, ttl=ttl, mailto=mailto)
+
+    result = discover_module.discover(
+        papers,
+        config,
+        client=client,
+        since_days=args.since,
+        limit_per_source=args.limit,
+    )
+
+    md_path, json_path = proposals.write_discover(result, args.report, args.json)
+
+    summary = result.summary()
+    print(
+        f"discovered: found {summary['found']}, new {summary['new']}, "
+        f"similar {summary['similar']}, already in collection {summary['existing']}"
+    )
+    print(f"wrote {md_path}")
+    print(f"wrote {json_path}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="uie.cli", description="Awesome-UIE tooling")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -226,6 +255,16 @@ def build_parser() -> argparse.ArgumentParser:
     enrich.add_argument("--fields", default="doi,authors", help="comma-separated fields to apply (default: doi,authors)")
     enrich.add_argument("--min-score", type=float, help="minimum match score required to apply (default: threshold)")
     enrich.set_defaults(func=cmd_enrich)
+
+    disc = sub.add_parser("discover", help="find new papers from arXiv/OpenAlex/Crossref")
+    disc.add_argument("--report", default=str(ROOT / "proposals" / "discover.md"), help="Markdown report path")
+    disc.add_argument("--json", default=str(ROOT / "proposals" / "discover.json"), help="JSON report path")
+    disc.add_argument("--since", type=int, help="look back N days (default from config)")
+    disc.add_argument("--limit", type=int, default=25, help="max results per source query")
+    disc.add_argument("--mailto", help="contact e-mail for the API polite pools")
+    disc.add_argument("--ttl", type=int, help="cache TTL in seconds")
+    disc.add_argument("--refresh", action="store_true", help="bypass the response cache")
+    disc.set_defaults(func=cmd_discover)
 
     return parser
 

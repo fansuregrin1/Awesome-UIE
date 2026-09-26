@@ -39,6 +39,7 @@ python -m uie.cli validate                 # deterministic checks
 python -m uie.cli validate --format json   # machine-readable report
 python -m uie.cli check-links              # link / repo liveness (network)
 python -m uie.cli enrich                   # suggest missing metadata (network, read-only)
+python -m uie.cli discover                 # find new papers (network, read-only)
 ```
 
 Run the offline tests from the repository root:
@@ -56,6 +57,16 @@ artifacts and is meant to be reviewed via git diff / PR:
 ```bash
 python -m uie.cli enrich --apply                 # doi + authors
 python -m uie.cli enrich --apply --fields authors --min-score 0.97
+```
+
+`discover` searches the same sources for **new** papers using the keywords in
+`.dev_scripts/config/discovery.yaml`, deduplicates against the collection, and
+writes `proposals/discover.md` + `.json` with a ready-to-paste YAML snippet per
+candidate. It is read-only; add accepted candidates to `papers.yaml` (as
+`status: candidate`) by hand.
+
+```bash
+python -m uie.cli discover --since 90 --limit 25
 ```
 
 `validate --changed-only --base origin/main` checks only entries changed versus

@@ -13,6 +13,7 @@ class SourceRecord:
     source: str
     title: Optional[str] = None
     year: Optional[int] = None
+    date: Optional[str] = None  # ISO publication date (YYYY-MM-DD)
     venue: Optional[str] = None
     doi: Optional[str] = None
     arxiv_id: Optional[str] = None

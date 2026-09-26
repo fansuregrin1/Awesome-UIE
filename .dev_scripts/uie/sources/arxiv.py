@@ -49,6 +49,7 @@ def parse_feed(xml_text: str) -> List[SourceRecord]:
                 source="arxiv",
                 title=title,
                 year=year,
+                date=published[:10] or None,
                 venue=_text(entry.find("arxiv:journal_ref", NS)),
                 doi=_text(entry.find("arxiv:doi", NS)),
                 arxiv_id=arxiv_id,
@@ -79,5 +80,15 @@ class ArxivSource:
             params = {"search_query": f'ti:"{title}"', "max_results": 5}
         else:
             return []
+        text = self.client.get_text(API, params=params, min_interval=MIN_INTERVAL)
+        return parse_feed(text)
+
+    def search(self, query: str, since: Optional[str] = None, limit: int = 25) -> List[SourceRecord]:
+        params = {
+            "search_query": f'all:"{query}"',
+            "sortBy": "submittedDate",
+            "sortOrder": "descending",
+            "max_results": limit,
+        }
         text = self.client.get_text(API, params=params, min_interval=MIN_INTERVAL)
         return parse_feed(text)
