@@ -22,6 +22,7 @@ import yaml
 from . import discover as discover_module
 from . import enrich as enrich_module
 from . import links, proposals, render, validate
+from . import llm as llm_module
 from . import venues as venues_module
 from .schema import Paper, dump_papers, load_papers
 from .sources.http import DEFAULT_TTL, HttpClient
@@ -33,6 +34,7 @@ ALLOWLIST_YAML = ROOT / ".dev_scripts" / "validation-allowlist.yaml"
 LINK_CACHE = ROOT / ".dev_scripts" / ".link-cache.json"
 CONFIG_YAML = ROOT / ".dev_scripts" / "config" / "discovery.yaml"
 VENUES_YAML = ROOT / ".dev_scripts" / "config" / "venues.yaml"
+LLM_CONFIG_YAML = ROOT / ".dev_scripts" / "config" / "llm.yaml"
 CACHE_DIR = ROOT / ".dev_scripts" / ".cache"
 
 
@@ -143,6 +145,12 @@ def _load_config() -> Dict[str, Any]:
     return yaml.safe_load(CONFIG_YAML.read_text(encoding="utf-8")) or {}
 
 
+def _load_llm_config() -> Dict[str, Any]:
+    if not LLM_CONFIG_YAML.exists():
+        return {}
+    return yaml.safe_load(LLM_CONFIG_YAML.read_text(encoding="utf-8")) or {}
+
+
 def cmd_enrich(args: argparse.Namespace) -> int:
     config = _load_config()
     papers = load_papers(PAPERS_YAML)
@@ -240,6 +248,69 @@ def cmd_venues(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_llm(args: argparse.Namespace) -> int:
+    config = _load_llm_config()
+    key_env = args.api_key_env or config.get("api_key_env", "OPENAI_API_KEY")
+    api_key = os.environ.get(key_env)
+    if not api_key:
+        print(f"error: environment variable {key_env} is not set (see config/llm.yaml)")
+        return 1
+
+    papers = load_papers(PAPERS_YAML)
+    if args.ids:
+        wanted = {value.strip() for value in args.ids.split(",") if value.strip()}
+        papers = [paper for paper in papers if paper.id in wanted]
+    if args.limit:
+        papers = papers[: args.limit]
+
+    http = HttpClient(
+        cache_dir=CACHE_DIR,
+        ttl=0 if args.refresh_abstracts else int(config.get("cache_ttl", DEFAULT_TTL)),
+    )
+    abstracts = enrich_module.collect_abstracts(papers, http)
+
+    llm = llm_module.LlmClient(
+        model=args.model or config.get("model", "gpt-4o-mini"),
+        api_key=api_key,
+        base_url=args.base_url or config.get("base_url", "https://api.openai.com/v1"),
+        cache_dir=CACHE_DIR,
+        ttl=int(config.get("cache_ttl", DEFAULT_TTL)),
+    )
+    result = llm_module.summarize_papers(
+        papers,
+        llm,
+        abstracts,
+        only_missing=not args.all,
+        max_tags=int(config.get("max_tags", 5)),
+    )
+
+    titles = {paper.id: paper.title for paper in papers}
+    md_path, json_path = proposals.write_llm(result, titles, args.report, args.json)
+
+    summary = result.summary()
+    print(
+        f"llm ({llm.model}): papers {summary['total']}, suggestions {summary['suggestions']}, "
+        f"skipped {summary['skipped_no_abstract']}, errors {summary['errors']}"
+    )
+    print(f"wrote {md_path}")
+    print(f"wrote {json_path}")
+
+    if args.apply:
+        fields = [field.strip() for field in args.fields.split(",") if field.strip()]
+        applied = llm_module.apply_llm_suggestions(papers, result.suggestions, fields=fields)
+        if applied:
+            dump_papers(PAPERS_YAML, papers)
+            render.write_all(ROOT, papers)
+            by_field: Dict[str, int] = {}
+            for _, field, _ in applied:
+                by_field[field] = by_field.get(field, 0) + 1
+            detail = ", ".join(f"{field} {count}" for field, count in sorted(by_field.items()))
+            print(f"applied {len(applied)} fields ({detail})")
+        else:
+            print("nothing to apply (fill-only)")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="uie.cli", description="Awesome-UIE tooling")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -292,6 +363,20 @@ def build_parser() -> argparse.ArgumentParser:
 
     venues = sub.add_parser("venues", help="audit venues against config/venues.yaml")
     venues.set_defaults(func=cmd_venues)
+
+    llm = sub.add_parser("llm", help="LLM-assisted tldr/tags (needs an API key)")
+    llm.add_argument("--report", default=str(ROOT / "proposals" / "llm.md"), help="Markdown report path")
+    llm.add_argument("--json", default=str(ROOT / "proposals" / "llm.json"), help="JSON report path")
+    llm.add_argument("--ids", help="comma-separated paper ids to limit the run")
+    llm.add_argument("--limit", type=int, help="only process the first N papers")
+    llm.add_argument("--model", help="override the model from config/llm.yaml")
+    llm.add_argument("--base-url", help="override the OpenAI-compatible base URL")
+    llm.add_argument("--api-key-env", help="override the API-key environment variable name")
+    llm.add_argument("--all", action="store_true", help="include papers that already have a tldr")
+    llm.add_argument("--apply", action="store_true", help="write fill-only tldr/tags to papers.yaml")
+    llm.add_argument("--fields", default="tldr", help="comma-separated fields to apply (default: tldr)")
+    llm.add_argument("--refresh-abstracts", action="store_true", help="bypass the source response cache")
+    llm.set_defaults(func=cmd_llm)
 
     return parser
 

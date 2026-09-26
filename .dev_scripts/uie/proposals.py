@@ -16,6 +16,7 @@ import yaml
 
 from .discover import Candidate, DiscoverResult
 from .enrich import EnrichResult
+from .llm import LlmResult
 
 
 def _fmt(value: object) -> str:
@@ -243,4 +244,67 @@ def write_discover(result: DiscoverResult, md_path, json_path) -> tuple[Path, Pa
     json_path.parent.mkdir(parents=True, exist_ok=True)
     md_path.write_text(render_discover_markdown(result), encoding="utf-8")
     json_path.write_text(render_discover_json(result), encoding="utf-8")
+    return md_path, json_path
+
+
+def render_llm_markdown(result: LlmResult, titles: Dict[str, str]) -> str:
+    summary = result.summary()
+    lines = ["# LLM enrichment report", ""]
+    lines.append(
+        f"papers {summary['total']} · suggestions {summary['suggestions']} · "
+        f"skipped (no abstract) {summary['skipped_no_abstract']} · errors {summary['errors']}"
+    )
+    lines.append("")
+
+    lines.append("## Suggestions")
+    lines.append("")
+    if not result.suggestions:
+        lines.append("_none_")
+        lines.append("")
+    for suggestion in result.suggestions:
+        lines.append(f"### `{suggestion.paper_id}`")
+        lines.append(f"_{titles.get(suggestion.paper_id, '')}_")
+        lines.append("")
+        lines.append(f"- type: {suggestion.type or '—'}")
+        lines.append(f"- tags: {', '.join(suggestion.tags) if suggestion.tags else '—'}")
+        if suggestion.new_tags:
+            lines.append(f"- new tag candidates: {', '.join(suggestion.new_tags)}")
+        lines.append("")
+        lines.append(f"> {suggestion.tldr or '—'}")
+        lines.append("")
+
+    if result.skipped_no_abstract:
+        lines.append("## Skipped (no abstract available)")
+        lines.append("")
+        for paper_id in result.skipped_no_abstract:
+            lines.append(f"- `{paper_id}` — {titles.get(paper_id, '')}")
+        lines.append("")
+
+    if result.errors:
+        lines.append("## Errors")
+        lines.append("")
+        for error in result.errors:
+            lines.append(f"- {error}")
+        lines.append("")
+
+    return "\n".join(lines)
+
+
+def render_llm_json(result: LlmResult) -> str:
+    payload = {
+        "summary": result.summary(),
+        "suggestions": [asdict(suggestion) for suggestion in result.suggestions],
+        "skipped_no_abstract": result.skipped_no_abstract,
+        "errors": result.errors,
+    }
+    return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+
+
+def write_llm(result: LlmResult, titles: Dict[str, str], md_path, json_path) -> tuple[Path, Path]:
+    md_path = Path(md_path)
+    json_path = Path(json_path)
+    md_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    md_path.write_text(render_llm_markdown(result, titles), encoding="utf-8")
+    json_path.write_text(render_llm_json(result), encoding="utf-8")
     return md_path, json_path

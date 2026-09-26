@@ -41,6 +41,7 @@ python -m uie.cli check-links              # link / repo liveness (network)
 python -m uie.cli enrich                   # suggest missing metadata (network, read-only)
 python -m uie.cli discover                 # find new papers (network, read-only)
 python -m uie.cli venues                   # audit venues against the registry
+python -m uie.cli llm                      # LLM tldr/tags (needs an API key)
 ```
 
 Run the offline tests from the repository root:
@@ -83,6 +84,18 @@ through the curated registry `.dev_scripts/config/venues.yaml`:
 - Add new venues to the registry (code + full name + optional ISSN/aliases) when
   the warning appears. Bootstrap drafted the initial entries from the existing
   DOIs via `bootstrap_venues.py`.
+
+## LLM enrichment
+
+`python -m uie.cli llm` fetches each paper's abstract (arXiv/OpenAlex/Crossref),
+asks an OpenAI-compatible chat model for a one-sentence `tldr`, a `type` check
+and tags from the controlled vocabulary, and writes a report to `proposals/`.
+Every model response is cached under `.dev_scripts/.cache/`.
+
+- Requires the API key named in `config/llm.yaml` (`OPENAI_API_KEY` by default).
+- `--model` / `--base-url` override the config (any OpenAI-compatible endpoint).
+- `--apply` writes fill-only `tldr` (default) or `--fields tldr,tags`, then
+  regenerates artifacts.
 
 `validate --changed-only --base origin/main` checks only entries changed versus
 the base revision.

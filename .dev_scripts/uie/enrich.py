@@ -232,6 +232,21 @@ def enrich_papers(
     return result
 
 
+def collect_abstracts(
+    papers: Sequence[Paper], client: HttpClient, threshold: float = 0.9
+) -> Dict[str, str]:
+    """Return the best-matching source abstract for each paper (reference text)."""
+    sources = build_sources(client)
+    abstracts: Dict[str, str] = {}
+    for paper in papers:
+        candidates = gather_candidates(paper, sources)
+        accepted = [candidate for candidate in candidates if candidate.score >= threshold and candidate.record.abstract]
+        if accepted:
+            best = max(accepted, key=lambda candidate: candidate.score)
+            abstracts[paper.id] = best.record.abstract or ""
+    return abstracts
+
+
 def apply_suggestions(
     papers: Sequence[Paper],
     result: EnrichResult,
