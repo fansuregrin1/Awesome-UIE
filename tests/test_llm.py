@@ -57,6 +57,10 @@ class ParseJsonTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             parse_json("no json here")
 
+    def test_empty(self):
+        with self.assertRaises(ValueError):
+            parse_json("")
+
 
 class ParseSuggestionTest(unittest.TestCase):
     def test_filters_and_normalizes(self):
@@ -75,6 +79,17 @@ class ParseSuggestionTest(unittest.TestCase):
 
     def test_invalid_type(self):
         self.assertIsNone(parse_suggestion({"type": "Whatever"})["type"])
+
+    def test_missing_keys(self):
+        parsed = parse_suggestion({})
+        self.assertIsNone(parsed["tldr"])
+        self.assertIsNone(parsed["type"])
+        self.assertEqual(parsed["tags"], [])
+        self.assertEqual(parsed["new_tags"], [])
+
+    def test_new_tags_capped(self):
+        parsed = parse_suggestion({"new_tags": ["a", "b", "c", "d", "e", "f", "g"]})
+        self.assertLessEqual(len(parsed["new_tags"]), 5)
 
 
 class PromptTest(unittest.TestCase):
@@ -116,8 +131,19 @@ class SummarizeTest(unittest.TestCase):
         )
         self.assertEqual(result.summary()["errors"], 1)
 
+    def test_summary_counts(self):
+        paper = make_paper()
+        result = summarize_papers([paper], FakeLlm(self.RESPONSE), {paper.id: "abstract"})
+        self.assertEqual(
+            result.summary(),
+            {"total": 1, "suggestions": 1, "skipped_no_abstract": 0, "errors": 0},
+        )
+
 
 class ApplyTest(unittest.TestCase):
+    def test_apply_empty(self):
+        self.assertEqual(apply_llm_suggestions([make_paper()], []), [])
+
     def test_fill_only(self):
         paper = make_paper(tldr="keep")
         suggestion = LlmSuggestion(
