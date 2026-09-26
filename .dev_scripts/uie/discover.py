@@ -61,6 +61,8 @@ class Candidate:
     suggested_type: str
     suggested_tags: List[str]
     suggested_id: str
+    venue: str = ""
+    venue_unknown: bool = False
 
 
 @dataclass
@@ -71,6 +73,7 @@ class DiscoverResult:
     new: List[Candidate] = field(default_factory=list)
     similar: List[Candidate] = field(default_factory=list)
     existing: List[Candidate] = field(default_factory=list)
+    unknown_venues: List[str] = field(default_factory=list)
 
     def summary(self) -> Dict[str, int]:
         return {
@@ -186,6 +189,7 @@ def discover(
     config: Dict,
     client: Optional[HttpClient] = None,
     sources: Optional[Sequence[object]] = None,
+    registry: Optional[object] = None,
     since_days: Optional[int] = None,
     limit_per_source: int = 25,
     min_relevance: float = 0.25,
@@ -207,6 +211,7 @@ def discover(
     dois, arxiv_ids, titles = build_index(papers)
     result = DiscoverResult(since=since_iso, queries=keywords)
     seen = set()
+    unknown_venues = set()
 
     for source in sources:
         for keyword in keywords:
@@ -233,6 +238,20 @@ def discover(
 
                 status, matched = match_status(record, dois, arxiv_ids, titles)
                 paper_type, tags = suggest_classification(record)
+
+                code = None
+                if registry is not None:
+                    code, _ = registry.resolve(record.venue, record.issn)
+                if record.source == "arxiv" and not record.venue:
+                    venue_value, venue_unknown = "arXiv", False
+                elif code:
+                    venue_value, venue_unknown = code, False
+                else:
+                    venue_value = record.venue or record.source
+                    venue_unknown = registry is not None
+                if venue_unknown:
+                    unknown_venues.add(venue_value)
+
                 candidate = Candidate(
                     record=record,
                     relevance=score,
@@ -241,6 +260,8 @@ def discover(
                     suggested_type=paper_type,
                     suggested_tags=tags,
                     suggested_id=make_id(record.year or today.year, record.title),
+                    venue=venue_value,
+                    venue_unknown=venue_unknown,
                 )
                 result.found += 1
                 if status == "new":
@@ -251,4 +272,5 @@ def discover(
                     result.existing.append(candidate)
 
     result.new.sort(key=lambda candidate: (candidate.record.date or "", candidate.relevance), reverse=True)
+    result.unknown_venues = sorted(unknown_venues)
     return result

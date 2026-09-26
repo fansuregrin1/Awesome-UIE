@@ -1,0 +1,188 @@
+# Venue registry: full name / ISSN / aliases -> the short code used in the collection.
+# Maintained via the `unknown-venue` validation warning.
+
+- code: AAAI
+  name: Proceedings of the AAAI Conference on Artificial Intelligence
+  type: conference
+  issn: null
+  aliases: []
+- code: ACCV
+  name: Asian Conference on Computer Vision
+  type: conference
+  issn: null
+  aliases: []
+- code: ACM-MM
+  name: ACM International Conference on Multimedia
+  type: conference
+  issn: null
+  aliases: []
+- code: C&G
+  name: Computers & Graphics
+  type: journal
+  issn: 0097-8493
+  aliases: []
+- code: CVPR
+  name: IEEE/CVF Conference on Computer Vision and Pattern Recognition
+  type: conference
+  issn: null
+  aliases: []
+- code: CVPRW
+  name: IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops
+  type: conference
+  issn: null
+  aliases: []
+- code: Displays
+  name: Displays
+  type: journal
+  issn: 0141-9382
+  aliases: []
+- code: EAAI
+  name: Engineering Applications of Artificial Intelligence
+  type: journal
+  issn: 0952-1976
+  aliases: []
+- code: ECCV
+  name: European Conference on Computer Vision
+  type: conference
+  issn: null
+  aliases: []
+- code: ESWA
+  name: Expert Systems with Applications
+  type: journal
+  issn: 0957-4174
+  aliases: []
+- code: Electronics
+  name: Electronics
+  type: journal
+  issn: 2079-9292
+  aliases: []
+- code: Frontiers in Marine Science
+  name: Frontiers in Marine Science
+  type: journal
+  issn: 2296-7745
+  aliases:
+  - Front. Mar. Sci.
+- code: ICASSP
+  name: IEEE International Conference on Acoustics, Speech and Signal Processing
+  type: conference
+  issn: null
+  aliases: []
+- code: ICCV
+  name: IEEE/CVF International Conference on Computer Vision
+  type: conference
+  issn: null
+  aliases: []
+- code: ICCVW
+  name: IEEE/CVF International Conference on Computer Vision Workshops
+  type: conference
+  issn: null
+  aliases: []
+- code: ICIP
+  name: IEEE International Conference on Image Processing
+  type: conference
+  issn: null
+  aliases: []
+- code: ICME
+  name: IEEE International Conference on Multimedia and Expo
+  type: conference
+  issn: null
+  aliases: []
+- code: ICRA
+  name: IEEE International Conference on Robotics and Automation
+  type: conference
+  issn: null
+  aliases: []
+- code: ICVGIP
+  name: Indian Conference on Computer Vision, Graphics and Image Processing
+  type: conference
+  issn: null
+  aliases: []
+- code: IJCV
+  name: International Journal of Computer Vision
+  type: journal
+  issn: 0920-5691
+  aliases:
+  - Int J Comput Vis
+- code: IMAGE
+  name: 'Signal Processing: Image Communication'
+  type: journal
+  issn: 0923-5965
+  aliases: []
+- code: JOE
+  name: IEEE Journal of Oceanic Engineering
+  type: journal
+  issn: 0364-9059
+  aliases:
+  - IEEE J. Oceanic Eng.
+- code: JVCIR
+  name: Journal of Visual Communication and Image Representation
+  type: journal
+  issn: 1047-3203
+  aliases: []
+- code: Neurocomputing
+  name: Neurocomputing
+  type: journal
+  issn: 0925-2312
+  aliases: []
+- code: PR
+  name: Pattern Recognition
+  type: journal
+  issn: 0031-3203
+  aliases: []
+- code: PRL
+  name: Pattern Recognition Letters
+  type: journal
+  issn: 0167-8655
+  aliases: []
+- code: RA-L
+  name: IEEE Robotics and Automation Letters
+  type: journal
+  issn: 2377-3766
+  aliases:
+  - IEEE Robot. Autom. Lett.
+- code: SPL
+  name: IEEE Signal Processing Letters
+  type: journal
+  issn: 1070-9908
+  aliases:
+  - IEEE Signal Process. Lett.
+- code: TCSVT
+  name: IEEE Transactions on Circuits and Systems for Video Technology
+  type: journal
+  issn: 1051-8215
+  aliases:
+  - IEEE Trans. Circuits Syst. Video Technol.
+- code: TGARS
+  name: IEEE Transactions on Geoscience and Remote Sensing
+  type: journal
+  issn: 0196-2892
+  aliases:
+  - IEEE Trans. Geosci. Remote Sensing
+- code: TIP
+  name: IEEE Transactions on Image Processing
+  type: journal
+  issn: 1057-7149
+  aliases:
+  - IEEE Trans. on Image Process.
+- code: TMM
+  name: IEEE Transactions on Multimedia
+  type: journal
+  issn: 1520-9210
+  aliases:
+  - IEEE Trans. Multimedia
+- code: TPAMI
+  name: IEEE Transactions on Pattern Analysis and Machine Intelligence
+  type: journal
+  issn: 0162-8828
+  aliases:
+  - IEEE Trans. Pattern Anal. Mach. Intell.
+- code: WACV
+  name: IEEE/CVF Winter Conference on Applications of Computer Vision
+  type: conference
+  issn: null
+  aliases: []
+- code: arXiv
+  name: arXiv
+  type: preprint
+  issn: null
+  aliases: []
