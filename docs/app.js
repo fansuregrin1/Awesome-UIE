@@ -8,6 +8,12 @@
 
   var DATA_URL = "data/papers.json";
   var THEME_KEY = "uie-theme";
+  var THEME_MODES = ["system", "light", "dark"];
+  var THEME_LABELS = {
+    system: "Theme: system (click to switch)",
+    light: "Theme: light (click to switch)",
+    dark: "Theme: dark (click to switch)",
+  };
   var TYPE_ORDER = { Traditional: 0, DeepLearning: 1, Hybrid: 2 };
 
   var state = {
@@ -231,36 +237,41 @@
     var button = el("theme-toggle");
     var media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
 
-    function storedTheme() {
-      try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
+    function getMode() {
+      try { return localStorage.getItem(THEME_KEY) || "system"; } catch (e) { return "system"; }
     }
 
-    function apply(theme, persist) {
-      document.documentElement.setAttribute("data-theme", theme);
+    function resolve(mode) {
+      if (mode === "system") return media && media.matches ? "dark" : "light";
+      return mode;
+    }
+
+    function apply(mode, persist) {
+      document.documentElement.setAttribute("data-mode", mode);
+      document.documentElement.setAttribute("data-theme", resolve(mode));
       if (persist) {
-        try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+        try { localStorage.setItem(THEME_KEY, mode); } catch (e) {}
       }
       if (button) {
-        var dark = theme === "dark";
-        button.textContent = dark ? "\u2600\uFE0F" : "\uD83C\uDF19";
-        button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
-        button.title = dark ? "Switch to light mode" : "Switch to dark mode";
+        var label = THEME_LABELS[mode] || THEME_LABELS.system;
+        button.setAttribute("aria-label", label);
+        button.title = label;
       }
     }
 
-    apply(document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light", false);
+    apply(getMode(), false);
 
     if (button) {
       button.addEventListener("click", function () {
-        var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        var next = THEME_MODES[(THEME_MODES.indexOf(getMode()) + 1) % THEME_MODES.length];
         apply(next, true);
       });
     }
 
-    // Keep following the system preference until the user makes a choice.
+    // While in "system" mode, follow the OS preference live.
     if (media) {
-      var onSystemChange = function (event) {
-        if (!storedTheme()) apply(event.matches ? "dark" : "light", false);
+      var onSystemChange = function () {
+        if (getMode() === "system") apply("system", false);
       };
       if (media.addEventListener) media.addEventListener("change", onSystemChange);
       else if (media.addListener) media.addListener(onSystemChange);

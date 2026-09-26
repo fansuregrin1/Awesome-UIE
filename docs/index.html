@@ -9,11 +9,13 @@
     // Apply the saved theme before first paint to avoid a flash of the wrong theme.
     (function () {
       try {
-        var stored = localStorage.getItem("uie-theme");
-        var dark = stored
-          ? stored === "dark"
-          : window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+        var mode = localStorage.getItem("uie-theme") || "system";
+        var dark =
+          mode === "dark" ||
+          (mode === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        var root = document.documentElement;
+        root.setAttribute("data-mode", mode);
+        root.setAttribute("data-theme", dark ? "dark" : "light");
       } catch (e) {}
     })();
   </script>
@@ -31,7 +33,25 @@
       <a href="https://github.com/fansuregrin1/Awesome-UIE#readme" target="_blank" rel="noopener">README</a>
       <a href="https://github.com/fansuregrin1/Awesome-UIE/blob/main/papers.bib" target="_blank" rel="noopener">BibTeX</a>
       <a href="https://github.com/fansuregrin1/Awesome-UIE/blob/main/papers.json" target="_blank" rel="noopener">JSON</a>
-      <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">&#127769;</button>
+      <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Theme: system (click to switch)" title="Theme: system (click to switch)">
+        <span class="icon icon-system" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+            <path d="M8 21h8M12 17v4"></path>
+          </svg>
+        </span>
+        <span class="icon icon-light" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+        </span>
+        <span class="icon icon-dark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </span>
+      </button>
     </nav>
   </header>
 

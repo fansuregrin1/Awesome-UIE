@@ -84,9 +84,19 @@ main,
   font-size: 1.05rem;
   line-height: 1;
   cursor: pointer;
+  padding: 0;
 }
 
 .theme-toggle:hover { background: var(--accent-soft); }
+
+.theme-toggle .icon { display: none; align-items: center; justify-content: center; }
+.theme-toggle .icon-system { display: inline-flex; } /* fallback when JS is unavailable */
+
+html[data-mode="light"] .theme-toggle .icon-system,
+html[data-mode="dark"] .theme-toggle .icon-system { display: none; }
+html[data-mode="light"] .theme-toggle .icon-light { display: inline-flex; }
+html[data-mode="dark"] .theme-toggle .icon-dark { display: inline-flex; }
+html[data-mode="system"] .theme-toggle .icon-system { display: inline-flex; }
 
 .controls {
   display: flex;
