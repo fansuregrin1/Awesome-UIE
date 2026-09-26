@@ -89,6 +89,8 @@
         paper.venue,
         String(paper.year),
         (paper.tags || []).join(" "),
+        (paper.authors || []).join(" "),
+        paper.doi || "",
       ]
         .join(" ")
         .toLowerCase();
@@ -147,6 +149,23 @@
     article.appendChild(top);
     article.appendChild(title);
 
+    if (paper.authors && paper.authors.length) {
+      var authors = document.createElement("p");
+      authors.className = "card-authors";
+      var shown = paper.authors.slice(0, 4).join(", ");
+      if (paper.authors.length > 4) shown += " et al.";
+      authors.textContent = shown;
+      authors.title = paper.authors.join(", ");
+      article.appendChild(authors);
+    }
+
+    if (paper.tldr) {
+      var tldr = document.createElement("p");
+      tldr.className = "card-tldr";
+      tldr.textContent = paper.tldr;
+      article.appendChild(tldr);
+    }
+
     if (paper.tags && paper.tags.length) {
       var tags = document.createElement("div");
       tags.className = "tags";
@@ -164,6 +183,7 @@
     links.appendChild(externalLink("Paper", paper.url));
     if (paper.code) links.appendChild(externalLink("Code", paper.code));
     if (paper.project) links.appendChild(externalLink("Project", paper.project));
+    if (paper.doi) links.appendChild(externalLink("DOI", "https://doi.org/" + paper.doi));
     article.appendChild(links);
 
     return article;
