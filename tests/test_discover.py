@@ -47,11 +47,11 @@ def make_paper(**overrides):
     return Paper(**base)
 
 
-def make_candidate(candidate_id="2026-demo", url="https://arxiv.org/abs/2601.00001", doi=None):
+def make_candidate(candidate_id="2026-demo", url="https://arxiv.org/abs/2601.00001", doi=None, year=2026):
     record = SourceRecord(
         source="arxiv",
         title="A New Underwater Image Enhancement Method",
-        year=2026,
+        year=year,
         date="2026-08-01",
         venue="arXiv",
         doi=doi,
@@ -262,6 +262,20 @@ class ApplyDiscoverTest(unittest.TestCase):
         from uie.discover import DiscoverResult
 
         result = DiscoverResult(since="2026-06-29", queries=["q"], new=[make_candidate(url=None)])
+        self.assertEqual(candidates_to_papers([], result), [])
+
+    def test_uses_doi_url(self):
+        from uie.discover import DiscoverResult
+
+        candidate = make_candidate(url="https://openalex.org/W1", doi="10.1/x")
+        result = DiscoverResult(since="2026-06-29", queries=["q"], new=[candidate])
+        added = candidates_to_papers([], result)
+        self.assertEqual(str(added[0].url), "https://doi.org/10.1/x")
+
+    def test_skips_out_of_range_year(self):
+        from uie.discover import DiscoverResult
+
+        result = DiscoverResult(since="2026-06-29", queries=["q"], new=[make_candidate(year=1990)])
         self.assertEqual(candidates_to_papers([], result), [])
 
     def test_published_filters_candidates(self):
