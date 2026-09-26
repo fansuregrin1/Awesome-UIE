@@ -208,6 +208,10 @@ select:focus {
 .card-title a { color: var(--text); }
 .card-title a:hover { color: var(--accent); }
 
+.card-authors { margin: 0; color: var(--muted); font-size: 0.84rem; line-height: 1.4; }
+
+.card-tldr { margin: 0; font-size: 0.88rem; color: var(--text); }
+
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
 .tag {
