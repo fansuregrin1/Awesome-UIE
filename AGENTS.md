@@ -48,8 +48,15 @@ python -m unittest discover -s tests -v
 ```
 
 `enrich` queries arXiv / OpenAlex / Crossref and writes reports under
-`proposals/` (gitignored). It never edits `papers.yaml`; a human applies the
-suggestions.
+`proposals/` (gitignored). By default it is read-only and a human applies the
+suggestions. `enrich --apply` writes high-confidence, fill-only `doi`/`authors`
+suggestions directly (never overwriting existing values), regenerates the
+artifacts and is meant to be reviewed via git diff / PR:
+
+```bash
+python -m uie.cli enrich --apply                 # doi + authors
+python -m uie.cli enrich --apply --fields authors --min-score 0.97
+```
 
 `validate --changed-only --base origin/main` checks only entries changed versus
 the base revision.

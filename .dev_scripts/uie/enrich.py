@@ -230,3 +230,30 @@ def enrich_papers(
             result.references[paper.id] = best_abstract.record.abstract or ""
 
     return result
+
+
+def apply_suggestions(
+    papers: Sequence[Paper],
+    result: EnrichResult,
+    fields: Sequence[str] = FILL_FIELDS,
+    min_score: float = 0.0,
+) -> List[tuple]:
+    """Apply high-confidence, fill-only suggestions in place.
+
+    Only fills fields that are currently empty and only for suggestions at or
+    above ``min_score``. Returns the list of applied ``(paper_id, field, value)``.
+    """
+    by_id = {paper.id: paper for paper in papers}
+    wanted = set(fields)
+    applied: List[tuple] = []
+    for suggestion in result.suggestions:
+        if suggestion.field not in wanted or suggestion.score < min_score:
+            continue
+        paper = by_id.get(suggestion.paper_id)
+        if paper is None:
+            continue
+        if not _is_empty(getattr(paper, suggestion.field, None)):
+            continue
+        setattr(paper, suggestion.field, suggestion.suggested)
+        applied.append((suggestion.paper_id, suggestion.field, suggestion.suggested))
+    return applied

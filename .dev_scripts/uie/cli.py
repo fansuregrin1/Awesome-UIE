@@ -21,7 +21,7 @@ import yaml
 
 from . import enrich as enrich_module
 from . import links, proposals, render, validate
-from .schema import Paper, load_papers
+from .schema import Paper, dump_papers, load_papers
 from .sources.http import DEFAULT_TTL, HttpClient
 
 ROOT = Path(__file__).resolve().parents[2]          # repository root
@@ -171,6 +171,23 @@ def cmd_enrich(args: argparse.Namespace) -> int:
     )
     print(f"wrote {md_path}")
     print(f"wrote {json_path}")
+
+    if args.apply:
+        fields = [field.strip() for field in args.fields.split(",") if field.strip()]
+        min_score = args.min_score if args.min_score is not None else threshold
+        applied = enrich_module.apply_suggestions(papers, result, fields=fields, min_score=min_score)
+        if applied:
+            dump_papers(PAPERS_YAML, papers)
+            render.write_all(ROOT, papers)
+            by_field: Dict[str, int] = {}
+            for _, field, _ in applied:
+                by_field[field] = by_field.get(field, 0) + 1
+            detail = ", ".join(f"{field} {count}" for field, count in sorted(by_field.items()))
+            print(f"applied {len(applied)} fields ({detail}) at min_score {min_score}")
+            print("updated papers.yaml and regenerated artifacts")
+        else:
+            print("nothing to apply")
+
     return 0
 
 
@@ -205,6 +222,9 @@ def build_parser() -> argparse.ArgumentParser:
     enrich.add_argument("--mailto", help="contact e-mail for the API polite pools")
     enrich.add_argument("--ttl", type=int, help="cache TTL in seconds (0 = refetch)")
     enrich.add_argument("--refresh", action="store_true", help="bypass the response cache")
+    enrich.add_argument("--apply", action="store_true", help="write high-confidence fill-only suggestions to papers.yaml")
+    enrich.add_argument("--fields", default="doi,authors", help="comma-separated fields to apply (default: doi,authors)")
+    enrich.add_argument("--min-score", type=float, help="minimum match score required to apply (default: threshold)")
     enrich.set_defaults(func=cmd_enrich)
 
     return parser

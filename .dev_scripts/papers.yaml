@@ -5,11 +5,13 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/1315078
-  doi: null
+  doi: 10.1109/cvpr.2004.1315078
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yoav Y. Schechner
+  - Nir Karpel
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -21,11 +23,13 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/1593804
-  doi: null
+  doi: 10.1109/joe.2005.850871
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yoav Y. Schechner
+  - Nir Karpel
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -37,11 +41,15 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/6247661
-  doi: null
+  doi: 10.1109/cvpr.2012.6247661
   arxiv_id: null
   code: https://github.com/bilityniu/underwater_image_fusion
   project: null
-  authors: []
+  authors:
+  - Cosmin Ancuți
+  - Cosmin Ancuți
+  - Tom Haber
+  - Philippe Bekaert
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -53,11 +61,13 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/6241430
-  doi: null
+  doi: 10.1109/tip.2012.2208978
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Tali Treibitz
+  - Yoav Y. Schechner
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -69,11 +79,13 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/6104148
-  doi: null
+  doi: 10.1109/tip.2011.2179666
   arxiv_id: null
   code: https://github.com/mohitkumarahuja/Underwater-Image-Enhancement-by-Wavelength-Compensation-and-Dehazing
   project: null
-  authors: []
+  authors:
+  - John Y. Chiang
+  - Ying-Ching Chen
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -85,11 +97,16 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/6755982
-  doi: null
+  doi: 10.1109/iccvw.2013.113
   arxiv_id: null
   code: https://github.com/bilityniu/underwater_dark_chennel
   project: null
-  authors: []
+  authors:
+  - Paulo Drews
+  - Erickson R. Nascimento
+  - FABIOLA FIDELIZ GOMES DE MORAES
+  - Sílvia Silva da Costa Botelho
+  - Mário F. M. Campos
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -101,11 +118,17 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/7025927
-  doi: null
+  doi: 10.1109/icip.2014.7025927
   arxiv_id: null
   code: https://xueyangfu.github.io/paper/2014/ICIP/underwater.zip
   project: https://xueyangfu.github.io/projects/icip2014.html
-  authors: []
+  authors:
+  - Xueyang Fu
+  - Peixian Zhuang
+  - Yue Huang
+  - Yinghao Liao
+  - Xiao-Ping Steven Zhang
+  - Xinghao Ding
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -117,11 +140,14 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/6907416
-  doi: null
+  doi: 10.1109/icra.2014.6907416
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Martin Röser
+  - Matthew D. Dunbabin
+  - Andreas Geiger
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -133,11 +159,15 @@
   type: Traditional
   tags: []
   url: https://csms.haifa.ac.il/profiles/tTreibitz/datasets/sea_thru/index.html
-  doi: null
+  doi: 10.1016/j.jvcir.2014.11.006
   arxiv_id: null
   code: https://github.com/agaldran/UnderWater
   project: null
-  authors: []
+  authors:
+  - Adrián Galdrán
+  - David Pardo
+  - Artzai Picón
+  - Aitor Álvarez-Gila
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -149,11 +179,16 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/7574330
-  doi: null
+  doi: 10.1109/tip.2016.2612882
   arxiv_id: null
   code: https://github.com/Li-Chongyi/TIP2016-code
   project: null
-  authors: []
+  authors:
+  - Chongyi Li
+  - Jichang Guo
+  - Runmin Cong
+  - Yanwei Pang
+  - Bo Wang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -165,11 +200,17 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/7532707
-  doi: null
+  doi: 10.1109/icip.2016.7532707
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Chongyi Li
+  - Jichang Guo
+  - Shanji Chen
+  - Yibin Tang
+  - Yanwei Pang
+  - Jian Wang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -182,11 +223,15 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/8296508
-  doi: null
+  doi: 10.1109/icip.2017.8296508
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yang Wang
+  - Jing Zhang
+  - Yang Hua Cao
+  - Zengfu Wang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -198,11 +243,16 @@
   type: Traditional
   tags: []
   url: https://www.sciencedirect.com/science/article/pii/S016786551730171X
-  doi: null
+  doi: 10.1016/j.patrec.2017.05.023
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Chongyi Li
+  - Jichang Guo
+  - Chunle Guo
+  - Runmin Cong
+  - Jiachang Gong
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -214,11 +264,17 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/8237525
-  doi: null
+  doi: 10.1109/iccv.2017.263
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Jiandong Tian
+  - Zak Murez
+  - Tong Cui
+  - Zhen Zhang
+  - David Kriegman
+  - Ravi Ramamoorthi
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -230,11 +286,15 @@
   type: Traditional
   tags: []
   url: https://www.sciencedirect.com/science/article/pii/S0925231217305246
-  doi: null
+  doi: 10.1016/j.neucom.2017.03.029
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Shu Zhang
+  - Ting Wang
+  - Junyu Dong
+  - Hui Ling Yu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -246,11 +306,13 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/7840002
-  doi: null
+  doi: 10.1109/tip.2017.2663846
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yan‐Tsung Peng
+  - Pamela C. Cosman
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -262,11 +324,13 @@
   type: Traditional
   tags: []
   url: https://openaccess.thecvf.com/content_cvpr_2018/papers/Akkaynak_A_Revised_Underwater_CVPR_2018_paper.pdf
-  doi: null
+  doi: 10.1109/cvpr.2018.00703
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Derya Akkaynak
+  - Tali Treibitz
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -278,11 +342,15 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/8058463
-  doi: null
+  doi: 10.1109/tip.2017.2759252
   arxiv_id: null
   code: https://github.com/bilityniu/underimage-fusion-enhancement
   project: null
-  authors: []
+  authors:
+  - Codruta Orniana Ancuti
+  - Cosmin Ancuți
+  - Christophe De Vleeschouwer
+  - Philippe Bekaert
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -295,11 +363,14 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/document/8253820
-  doi: null
+  doi: 10.1109/lsp.2018.2792050
   arxiv_id: null
   code: https://github.com/djjandXMU/CycleGAN-and-modification
   project: https://li-chongyi.github.io/proj_Emerging_water.html
-  authors: []
+  authors:
+  - Chongyi Li
+  - Jichang Guo
+  - Chunle Guo
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -312,11 +383,14 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/document/8460552
-  doi: null
+  doi: 10.1109/icra.2018.8460552
   arxiv_id: null
   code: https://github.com/IRVLab/UGAN
   project: https://irvlab.cs.umn.edu/underwater-image-restoration
-  authors: []
+  authors:
+  - Cameron Fabbri
+  - Jahidul Islam
+  - Junaed Sattar
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -329,11 +403,15 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/document/7995024
-  doi: null
+  doi: 10.1109/lra.2017.2730363
   arxiv_id: null
   code: https://github.com/kskin/WaterGAN
   project: null
-  authors: []
+  authors:
+  - Jie Li
+  - Katherine A. Skinner
+  - Ryan M. Eustice
+  - Matthew Johnson-Roberson
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -350,7 +428,10 @@
   arxiv_id: null
   code: https://github.com/VITA-Group/All-In-One-Underwater-Image-Enhancement-using-Domain-Adversarial-Learning
   project: null
-  authors: []
+  authors:
+  - Pritish Uplavikar
+  - Zhenyu Wu
+  - Zhangyang Wang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -362,11 +443,13 @@
   type: Traditional
   tags: []
   url: https://openaccess.thecvf.com/content_CVPR_2019/papers/Akkaynak_Sea-Thru_A_Method_for_Removing_Water_From_Underwater_Images_CVPR_2019_paper.pdf
-  doi: null
+  doi: 10.1109/cvpr.2019.00178
   arxiv_id: null
   code: https://github.com/hainh/sea-thru
   project: https://csms.haifa.ac.il/profiles/tTreibitz/datasets/sea_thru/index.html
-  authors: []
+  authors:
+  - Derya Akkaynak
+  - Tali Treibitz
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -383,7 +466,12 @@
   arxiv_id: '1912.10269'
   code: https://github.com/infrontofme/UWGAN_UIE
   project: null
-  authors: []
+  authors:
+  - Nan Wang
+  - Yabin Zhou
+  - Fenglei Han
+  - Haitao Zhu
+  - Yao, Jingzheng
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -396,11 +484,18 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/8917818
-  doi: null
+  doi: 10.1109/tip.2019.2955241
   arxiv_id: null
   code: https://github.com/Li-Chongyi/Water-Net_Code
   project: https://li-chongyi.github.io/proj_benchmark.html
-  authors: []
+  authors:
+  - Chongyi Li
+  - Chunle Guo
+  - Wenqi Ren
+  - Runmin Cong
+  - Junhui Hou
+  - Sam Kwong
+  - Dacheng Tao
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -413,11 +508,13 @@
   tags:
   - Survey
   url: https://www.sciencedirect.com/science/article/pii/S0923596520301478
-  doi: null
+  doi: 10.1016/j.image.2020.115978
   arxiv_id: null
   code: https://github.com/saeed-anwar/UWSurvey
   project: null
-  authors: []
+  authors:
+  - Saeed Anwar
+  - Chongyi Li
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -430,11 +527,14 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/document/9001231
-  doi: null
+  doi: 10.1109/lra.2020.2974710
   arxiv_id: null
   code: https://github.com/xahidbuffon/FUnIE-GAN
   project: https://experts.umn.edu/en/publications/fast-underwater-image-enhancement-for-improved-visual-perception
-  authors: []
+  authors:
+  - Md Jahidul Islam
+  - Youya Xia
+  - Junaed Sattar
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -446,11 +546,13 @@
   type: Traditional
   tags: []
   url: https://openaccess.thecvf.com/content_CVPRW_2020/html/w31/Marques_L2UWE_A_Framework_for_the_Efficient_Enhancement_of_Low-Light_Underwater_CVPRW_2020_paper.html
-  doi: null
+  doi: 10.1109/cvprw50498.2020.00277
   arxiv_id: null
   code: https://github.com/tunai/l2uwe
   project: null
-  authors: []
+  authors:
+  - Tunai Porto Marques
+  - Alexandra Branzan Albu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -463,11 +565,16 @@
   tags:
   - Benchmark
   url: https://ieeexplore.ieee.org/document/8949763
-  doi: null
+  doi: 10.1109/tcsvt.2019.2963772
   arxiv_id: null
   code: https://github.com/dlut-dimt/Realworld-Underwater-Image-Enhancement-RUIE-Benchmark
   project: null
-  authors: []
+  authors:
+  - Risheng Liu
+  - Xin Fan
+  - Ming Bo Zhu
+  - Minjun Hou
+  - Zhongxuan Luo
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -480,11 +587,14 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/document/8730425
-  doi: null
+  doi: 10.1109/joe.2019.2911447
   arxiv_id: null
   code: https://github.com/IPNUISTlegal/Underwater-Image-Enhancement-Using-a-Multiscale-Dense-Generative-Adversarial-Network
   project: null
-  authors: []
+  authors:
+  - Yecai Guo
+  - Hanyu Li
+  - Peixian Zhuang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -497,11 +607,13 @@
   tags:
   - CNN
   url: https://www.sciencedirect.com/science/article/pii/S0923596520300965
-  doi: null
+  doi: 10.1016/j.image.2020.115892
   arxiv_id: null
   code: https://xueyangfu.github.io/paper/2020/SPIC/code.zip
   project: https://xueyangfu.github.io/projects/spic2020.html
-  authors: []
+  authors:
+  - Xueyang Fu
+  - Xiangyong Cao
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -514,11 +626,14 @@
   tags:
   - CNN
   url: https://www.sciencedirect.com/science/article/pii/S0031320319303401
-  doi: null
+  doi: 10.1016/j.patcog.2019.107038
   arxiv_id: null
   code: https://github.com/saeed-anwar/UWCNN
   project: https://li-chongyi.github.io/proj_underwater_image_synthesis.html
-  authors: []
+  authors:
+  - Chongyi Li
+  - Saeed Anwar
+  - Fatih Porikli
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -530,11 +645,15 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/9257110
-  doi: null
+  doi: 10.1109/tgrs.2020.3033407
   arxiv_id: null
   code: https://github.com/bilityniu/cbm_tgrs
   project: null
-  authors: []
+  authors:
+  - Jieyu Yuan
+  - Wei Cao
+  - Zhanchuan Cai
+  - Binghua Su
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -546,11 +665,14 @@
   type: Traditional
   tags: []
   url: https://www.sciencedirect.com/science/article/pii/S095219762100018X
-  doi: null
+  doi: 10.1016/j.engappai.2021.104171
   arxiv_id: null
   code: https://github.com/zhuangpeixian/Bayesian-Retinex-Underwater-Enhancement
   project: null
-  authors: []
+  authors:
+  - Peixian Zhuang
+  - Chongyi Li
+  - Jiamin Wu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -562,11 +684,14 @@
   type: Hybrid
   tags: []
   url: https://www.sciencedirect.com/science/article/pii/S0925231220315678
-  doi: null
+  doi: 10.1016/j.neucom.2020.07.130
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Xiaodong Liu
+  - Zhi Yang Gao
+  - Ben M. Chen
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -578,11 +703,19 @@
   type: Hybrid
   tags: []
   url: https://ieeexplore.ieee.org/document/9245532
-  doi: null
+  doi: 10.1109/tcsvt.2020.3035108
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Long Chen
+  - Zheheng Jiang
+  - Lei Tong
+  - Zhihua Liu
+  - Aite Zhao
+  - Qianni Zhang
+  - Junyu Dong
+  - Huiyu Zhou
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -595,11 +728,16 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/document/9496260
-  doi: null
+  doi: 10.1109/lsp.2021.3099746
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Junkang Hu
+  - Qiuping Jiang
+  - Runmin Cong
+  - Wei Gao
+  - Feng Shao
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -612,11 +750,15 @@
   tags:
   - CNN
   url: https://www.sciencedirect.com/science/article/pii/S0923596521001004
-  doi: null
+  doi: 10.1016/j.image.2021.116250
   arxiv_id: null
   code: https://github.com/BIGWangYuDong/UWEnhancement
   project: null
-  authors: []
+  authors:
+  - Yudong Wang
+  - Jichang Guo
+  - Huan Gao
+  - Huihui Yue
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -629,11 +771,17 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/9426457
-  doi: null
+  doi: 10.1109/tip.2021.3076367
   arxiv_id: null
   code: https://github.com/Li-Chongyi/Ucolor
   project: https://li-chongyi.github.io/Proj_Ucolor.html
-  authors: []
+  authors:
+  - Chongyi Li
+  - Saeed Anwar
+  - Junhui Hou
+  - Runmin Cong
+  - Chunle Guo
+  - Wenqi Ren
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -645,11 +793,14 @@
   type: Hybrid
   tags: []
   url: https://ieeexplore.ieee.org/document/9547341
-  doi: null
+  doi: 10.1109/joe.2021.3104055
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yuan Zhou
+  - Kangming Yan
+  - Xiaofeng Li
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -661,11 +812,15 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/9020130
-  doi: null
+  doi: 10.1109/tpami.2020.2977624
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Dana Berman
+  - Deborah L. Levy
+  - Shai Avidan
+  - Tali Treibitz
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -678,11 +833,16 @@
   tags:
   - GAN
   url: https://openaccess.thecvf.com/content/CVPR2022W/PBVS/papers/Desai_AquaGAN_Restoration_of_Underwater_Images_CVPRW_2022_paper.pdf
-  doi: null
+  doi: 10.1109/cvprw56347.2022.00044
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Chaitra Desai
+  - Badduri Sai Sudheer Reddy
+  - Ramesh Ashok Tabib
+  - Ujwala Patil
+  - Uma Mudenagudi
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -695,11 +855,16 @@
   tags:
   - Transformer
   url: https://openaccess.thecvf.com/content/ACCV2022/html/Tang_AutoEnhancer_Transformer_on_U-Net_Architecture_search_for_Underwater_Image_Enhancement_ACCV_2022_paper.html
-  doi: null
+  doi: 10.1007/978-3-031-26313-2_8
   arxiv_id: null
   code: https://github.com/piggy2009/autoEnhancer
   project: null
-  authors: []
+  authors:
+  - Yi Tang
+  - Takafumi Iwaguchi
+  - Hiroshi Kawasaki
+  - Ryusuke Sagawa
+  - Ryo Furukawa
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -712,11 +877,15 @@
   tags:
   - CNN
   url: https://www.frontiersin.org/articles/10.3389/fmars.2022.921492/full
-  doi: null
+  doi: 10.3389/fmars.2022.921492
   arxiv_id: null
   code: https://github.com/yuxiao17/LDS-Net
   project: null
-  authors: []
+  authors:
+  - Yaofeng Xie
+  - Zhibin Yu
+  - Xiao Yu
+  - Bing Zheng
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -729,11 +898,15 @@
   tags:
   - GAN
   url: https://www.sciencedirect.com/science/article/abs/pii/S0141938222001779
-  doi: null
+  doi: 10.1016/j.displa.2022.102359
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Zifan Ivan Wang
+  - Chaofeng Li
+  - Yaozong Mo
+  - Shaopeng Shang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -746,11 +919,18 @@
   tags:
   - Transformer
   url: https://ieeexplore.ieee.org/document/9881581
-  doi: null
+  doi: 10.1109/tgrs.2022.3205061
   arxiv_id: null
   code: https://github.com/TingdiRen/URSCT-SESR
   project: null
-  authors: []
+  authors:
+  - Tingdi Ren
+  - Haiyong Xu
+  - Gangyi Jiang
+  - Mei Yu
+  - Xuan Zhang
+  - Biao Wang
+  - Ting Luo
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -763,11 +943,17 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/9930878
-  doi: null
+  doi: 10.1109/tip.2022.3216208
   arxiv_id: null
   code: https://github.com/trentqq/SGUIE-Net_Simple
   project: https://trentqq.github.io/SGUIE-Net.html
-  authors: []
+  authors:
+  - Qi Qi
+  - Kunqian Li
+  - Haiyong Zheng
+  - Xiang Gao
+  - Guojia Hou
+  - Kun Sun
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -780,11 +966,16 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/abstract/document/9774330
-  doi: null
+  doi: 10.1109/tcsvt.2022.3174817
   arxiv_id: null
   code: https://github.com/Jzy2017/TOPAL
   project: null
-  authors: []
+  authors:
+  - Zhiying Jiang
+  - Zhuoxiao Li
+  - Shuzhou Yang
+  - Xin Fan
+  - Risheng Liu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -796,11 +987,14 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/9559904
-  doi: null
+  doi: 10.1109/tgrs.2021.3110575
   arxiv_id: null
   code: https://github.com/bilityniu/TEBCF_tgrs
   project: null
-  authors: []
+  authors:
+  - Jieyu Yuan
+  - Zhanchuan Cai
+  - Wei Cao
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -813,11 +1007,15 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/document/9832540
-  doi: null
+  doi: 10.1109/tip.2022.3190209
   arxiv_id: null
   code: https://github.com/Jzy2017/TACL
   project: null
-  authors: []
+  authors:
+  - Risheng Liu
+  - Zhiying Jiang
+  - Shuzhou Yang
+  - Xin Fan
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -830,11 +1028,17 @@
   tags:
   - GAN
   url: https://www.sciencedirect.com/science/article/pii/S0031320321005045
-  doi: null
+  doi: 10.1016/j.patcog.2021.108324
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Qun Jiang
+  - Yunfeng Zhang
+  - Fangxun Bao
+  - Xiuyang Zhao
+  - Caiming Zhang
+  - Пэйдэ Лю
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -847,11 +1051,16 @@
   tags:
   - CNN
   url: https://dl.acm.org/doi/abs/10.1007/978-3-031-19797-0_27
-  doi: null
+  doi: 10.1007/978-3-031-19797-0_27
   arxiv_id: null
   code: https://github.com/zhenqifu/PUIE-Net
   project: null
-  authors: []
+  authors:
+  - Zhenqi Fu
+  - Wu Wang
+  - Yue Huang
+  - Xinghao Ding
+  - Kai‐Kuang Ma
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -863,11 +1072,14 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/9744022
-  doi: null
+  doi: 10.1109/joe.2022.3140563
   arxiv_id: null
   code: https://github.com/Li-Chongyi/JOE2021_ACDC
   project: null
-  authors: []
+  authors:
+  - Weidong Zhang
+  - Yudong Wang
+  - Chongyi Li
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -879,11 +1091,17 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/9788535
-  doi: null
+  doi: 10.1109/tip.2022.3177129
   arxiv_id: null
   code: https://github.com/Li-Chongyi/MMLE_code
   project: https://li-chongyi.github.io/proj_MMLE
-  authors: []
+  authors:
+  - Weidong Zhang
+  - Peixian Zhuang
+  - Hai-Han Sun
+  - Guohou Li
+  - Sam Kwong
+  - Chongyi Li
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -895,11 +1113,15 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/9854113
-  doi: null
+  doi: 10.1109/tip.2022.3196546
   arxiv_id: null
   code: https://github.com/zhuangpeixian/HLRP
   project: null
-  authors: []
+  authors:
+  - Peixian Zhuang
+  - Jiamin Wu
+  - Fatih Porikli
+  - Chongyi Li
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -912,11 +1134,16 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/9547730
-  doi: null
+  doi: 10.1109/tmm.2021.3115442
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Nanfeng Jiang
+  - Weiling Chen
+  - Yu‐Ting Lin
+  - Tiesong Zhao
+  - Chia‐Wen Lin
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -929,11 +1156,18 @@
   tags:
   - CNN
   url: https://ojs.aaai.org/index.php/AAAI/article/view/19944
-  doi: null
+  doi: 10.1609/aaai.v36i1.19944
   arxiv_id: null
   code: https://github.com/zhenqifu/USUIR
   project: null
-  authors: []
+  authors:
+  - Zhenqi Fu
+  - Huangxing Lin
+  - Yang Yan
+  - Shu Chai
+  - Liyan Sun
+  - Yue Huang
+  - Xinghao Ding
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -945,11 +1179,17 @@
   type: Hybrid
   tags: []
   url: https://dl.acm.org/doi/abs/10.1145/3581783.3612323
-  doi: null
+  doi: 10.1145/3581783.3612323
   arxiv_id: null
   code: https://github.com/shiningZZ/GUPDM
   project: null
-  authors: []
+  authors:
+  - Pan Mu
+  - Hanning Xu
+  - Zheyuan Liu
+  - Zheng Wang
+  - Sixian Chan
+  - Cong Bai
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -961,11 +1201,17 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/9895452
-  doi: null
+  doi: 10.1109/tcsvt.2022.3208100
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yaozu Kang
+  - Qiuping Jiang
+  - Chongyi Li
+  - Wenqi Ren
+  - Hantao Liu
+  - Pengjun Wang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -978,11 +1224,16 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10204411
-  doi: null
+  doi: 10.1109/cvpr52729.2023.01740
   arxiv_id: null
   code: https://github.com/Huang-ShiRui/Semi-UIR
   project: null
-  authors: []
+  authors:
+  - Shirui Huang
+  - Keyan Wang
+  - Huan Liu
+  - Jun Chen
+  - Yunsong Li
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1012,11 +1263,17 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/document/10048777
-  doi: null
+  doi: 10.1109/tip.2023.3244647
   arxiv_id: null
   code: https://github.com/zyWang-Power/TUDA
   project: null
-  authors: []
+  authors:
+  - Zhengyong Wang
+  - Liquan Shen
+  - Mai Xu
+  - Mei Yu
+  - Kun Wang
+  - Yufei Lin
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1028,11 +1285,15 @@
   type: Traditional
   tags: []
   url: https://www.sciencedirect.com/science/article/pii/S0952197623014033
-  doi: null
+  doi: 10.1016/j.engappai.2023.107219
   arxiv_id: null
   code: https://github.com/An-Shunmin/HFM
   project: null
-  authors: []
+  authors:
+  - Shunmin An
+  - Lihong Xu
+  - Zhichao Deng
+  - Hua-Peng Zhang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1045,11 +1306,15 @@
   tags:
   - CNN
   url: https://www.sciencedirect.com/science/article/abs/pii/S0952197623001306
-  doi: null
+  doi: 10.1016/j.engappai.2023.105946
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Jingchun Zhou
+  - Jiaming Sun
+  - Weishi Zhang
+  - Zifan Lin
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1078,11 +1343,18 @@
   type: Hybrid
   tags: []
   url: https://ieeexplore.ieee.org/document/10155564
-  doi: null
+  doi: 10.1109/tip.2023.3286263
   arxiv_id: null
   code: https://github.com/rmcong/PUGAN_TIP2023
   project: https://rmcong.github.io/proj_PUGAN.html
-  authors: []
+  authors:
+  - Runmin Cong
+  - Wenyu Yang
+  - Wei Zhang
+  - Chongyi Li
+  - Chunle Guo
+  - Qingming Huang
+  - Sam Kwong
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1095,11 +1367,15 @@
   tags:
   - Diffusion
   url: https://ieeexplore.ieee.org/document/10250851
-  doi: null
+  doi: 10.1109/tcsvt.2023.3314767
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Siqi Lu
+  - Fengxu Guan
+  - Hanyu Zhang
+  - Haitao Lai
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1112,11 +1388,18 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10161531
-  doi: null
+  doi: 10.1109/icra48891.2023.10161531
   arxiv_id: null
   code: https://github.com/rockwenjj/syreanet
   project: null
-  authors: []
+  authors:
+  - Junjie Wen
+  - Jinqiang Cui
+  - Zhenjun Zhao
+  - Ruixin Yan
+  - Zhi Yang Gao
+  - Lihua Dou
+  - Ben M. Chen
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1129,11 +1412,15 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10219946
-  doi: null
+  doi: 10.1109/icme55011.2023.00232
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Pan Mu
+  - Jing Fang
+  - Haotian Qian
+  - Cong Bai
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1146,11 +1433,14 @@
   tags:
   - Transformer
   url: https://ieeexplore.ieee.org/document/10129222
-  doi: null
+  doi: 10.1109/tip.2023.3276332
   arxiv_id: null
   code: https://github.com/LintaoPeng/U-shape_Transformer_for_Underwater_Image_Enhancement
   project: https://bianlab.github.io/index.html
-  authors: []
+  authors:
+  - Lintao Peng
+  - Chunli Zhu
+  - Liheng Bian
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1163,11 +1453,16 @@
   tags:
   - Transformer
   url: https://www.sciencedirect.com/science/article/pii/S0097849323000109
-  doi: null
+  doi: 10.2139/ssrn.4162640
   arxiv_id: null
   code: https://github.com/ShenZhen0502/UDAformer
   project: null
-  authors: []
+  authors:
+  - Zhen Shen
+  - Haiyong Xu
+  - Ting Luo
+  - Yang Song
+  - Zhouyan He
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1180,11 +1475,17 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10019314
-  doi: null
+  doi: 10.1109/tcsvt.2023.3237993
   arxiv_id: null
   code: https://github.com/lilala0/UIALN
   project: null
-  authors: []
+  authors:
+  - Mengyao Li
+  - Kun Wang
+  - Liquan Shen
+  - Yufei Lin
+  - Zhengyong Wang
+  - Qijie Zhao
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1197,11 +1498,18 @@
   tags:
   - Diffusion
   url: https://www.sciencedirect.com/science/article/pii/S0957417424021389
-  doi: null
+  doi: 10.1016/j.eswa.2024.125271
   arxiv_id: null
   code: null
   project: https://ddz16.github.io/
-  authors: []
+  authors:
+  - Dazhao Du
+  - Enhan Li
+  - Lingyu Si
+  - Wenlong Zhai
+  - Fanjiang Xu
+  - Jianwei Niu
+  - Fuchun Sun
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1213,11 +1521,19 @@
   type: Hybrid
   tags: []
   url: https://www.sciencedirect.com/science/article/pii/S0141938223001385
-  doi: null
+  doi: 10.1016/j.displa.2023.102505
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Biao Wang
+  - Haiyong Xu
+  - Gangyi Jiang
+  - Mei Yu
+  - Yeyao Chen
+  - Longwei Ding
+  - Xuebo Zhang
+  - Ting Luo
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1230,11 +1546,14 @@
   tags:
   - Diffusion
   url: https://dl.acm.org/doi/10.1145/3581783.3612378
-  doi: null
+  doi: 10.1145/3581783.3612378
   arxiv_id: null
   code: https://github.com/piggy2009/DM_underwater
   project: null
-  authors: []
+  authors:
+  - Yi Tang
+  - Hiroshi Kawasaki
+  - Takafumi Iwaguchi
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1247,11 +1566,15 @@
   tags:
   - Diffusion
   url: https://www.sciencedirect.com/science/article/pii/S1047320323001761
-  doi: null
+  doi: 10.2139/ssrn.4341086
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Siqi Lu
+  - Fengxu Guan
+  - Hanyu Zhang
+  - Haitao Lai
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1263,11 +1586,14 @@
   type: Hybrid
   tags: []
   url: https://www.mdpi.com/2079-9292/12/13/2882
-  doi: null
+  doi: 10.3390/electronics12132882
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Shuangshuang Chang
+  - Farong Gao
+  - Qizhong Zhang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1279,11 +1605,16 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/10065491
-  doi: null
+  doi: 10.1109/lsp.2023.3255005
   arxiv_id: null
   code: https://github.com/Li-Chongyi/PCDE
   project: null
-  authors: []
+  authors:
+  - Weidong Zhang
+  - Songlin Jin
+  - Peixian Zhuang
+  - Zheng Liang
+  - Chongyi Li
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1295,11 +1626,18 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/10196309
-  doi: null
+  doi: 10.1109/tcsvt.2023.3299314
   arxiv_id: null
   code: https://github.com/Li-Chongyi/WWPF_code
   project: null
-  authors: []
+  authors:
+  - Weidong Zhang
+  - Ling Zhou
+  - Peixian Zhuang
+  - Guohou Li
+  - Xipeng Pan
+  - Wenyi Zhao
+  - Chongyi Li
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1311,11 +1649,17 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/10189844
-  doi: null
+  doi: 10.1109/tcsvt.2023.3297524
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Zheng Liang
+  - Weidong Zhang
+  - Rui Ruan
+  - Peixian Zhuang
+  - Xiwang Xie
+  - Chongyi Li
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1327,11 +1671,16 @@
   type: Hybrid
   tags: []
   url: https://dl.acm.org/doi/10.1145/3581783.3611727
-  doi: null
+  doi: 10.1145/3581783.3611727
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Zengxi Zhang
+  - Zhiying Jiang
+  - Jinyuan Liu
+  - Xin Fan
+  - Risheng Liu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1344,11 +1693,16 @@
   tags:
   - Survey
   url: https://arxiv.org/abs/2405.19684
-  doi: null
+  doi: 10.1109/tetci.2026.3668671
   arxiv_id: '2405.19684'
   code: https://github.com/YuZhao1999/UIE
   project: null
-  authors: []
+  authors:
+  - Xiaofeng Cong
+  - Yu Zhao
+  - Jie Gui
+  - Junming Hou
+  - Dacheng Tao
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1361,11 +1715,16 @@
   tags:
   - CNN
   url: https://arxiv.org/abs/2407.04230
-  doi: null
+  doi: 10.1109/tcsvt.2026.3674091
   arxiv_id: '2407.04230'
   code: null
   project: null
-  authors: []
+  authors:
+  - Dazhao Du
+  - Lingyu Si
+  - Fanjiang Xu
+  - Jianwei Niu
+  - Fuchun Sun
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1378,11 +1737,18 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10753015
-  doi: null
+  doi: 10.1109/joe.2024.3458351
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Xueyong Li
+  - Rui Yu
+  - Weidong Zhang
+  - Huimin Lu
+  - Wenyi Zhao
+  - Guojia Hou
+  - Zheng Liang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1395,11 +1761,15 @@
   tags:
   - Diffusion
   url: https://ieeexplore.ieee.org/document/10812849
-  doi: null
+  doi: 10.1109/tmm.2024.3521710
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yuhao Qing
+  - Si Liu
+  - Hai Wang
+  - Yueying Wang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1412,11 +1782,13 @@
   tags:
   - CNN
   url: https://dl.acm.org/doi/10.1145/3702250.3702252
-  doi: null
+  doi: 10.1145/3702250.3702252
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Pranjali Singh
+  - Prithwijit Guha
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1433,7 +1805,11 @@
   arxiv_id: '2406.14973'
   code: null
   project: null
-  authors: []
+  authors:
+  - Haodong Yang
+  - Jisheng Xu
+  - Zhiliang Lin
+  - Jianping He
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1445,11 +1821,15 @@
   type: Hybrid
   tags: []
   url: https://www.sciencedirect.com/science/article/pii/S0925231224010579
-  doi: null
+  doi: 10.1016/j.neucom.2024.128286
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Jingyi Pan
+  - Zeyu Duan
+  - Jianghua Duan
+  - Zhe Wang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1462,11 +1842,16 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/document/10423039
-  doi: null
+  doi: 10.1109/tgrs.2024.3363037
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Dan Liang
+  - Jae-Woo Chu
+  - Yuguo Cui
+  - Zhanhu Zhai
+  - Dingcai Wang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1478,11 +1863,14 @@
   type: Hybrid
   tags: []
   url: https://ieeexplore.ieee.org/document/10484357
-  doi: null
+  doi: 10.1109/wacv57701.2024.00153
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Aditya Chandrasekar
+  - Manogna Sreenivas
+  - Soma Biswas
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1495,11 +1883,15 @@
   tags:
   - Mamba
   url: https://openaccess.thecvf.com/content/ACCV2024/papers/Lin_PixMamba_Leveraging_State_Space_Models_in_a_Dual-Level_Architecture_for_ACCV_2024_paper.pdf
-  doi: null
+  doi: 10.1007/978-981-96-0911-6_11
   arxiv_id: null
   code: https://github.com/weitunglin/pixmamba
   project: null
-  authors: []
+  authors:
+  - Wei-Tung Lin
+  - Yong-Xiang Lin
+  - Jyun-Wei Chen
+  - Kai‐Lung Hua
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1512,11 +1904,16 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10798483
-  doi: null
+  doi: 10.1109/tcsvt.2024.3516781
   arxiv_id: null
   code: https://github.com/JunyuFan/MJPNet
   project: null
-  authors: []
+  authors:
+  - Junyu Fan
+  - Jie Xu
+  - Jingchun Zhou
+  - Danling Meng
+  - Yi Lin
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1529,11 +1926,16 @@
   tags:
   - CNN
   url: https://ojs.aaai.org/index.php/AAAI/article/view/28530
-  doi: null
+  doi: 10.1609/aaai.v38i7.28530
   arxiv_id: null
   code: https://github.com/zhoujingchun03/SMDR-IS
   project: null
-  authors: []
+  authors:
+  - Dehuan Zhang
+  - Jingchun Zhou
+  - Chunle Guo
+  - Weishi Zhang
+  - Chongyi Li
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1545,11 +1947,17 @@
   type: Hybrid
   tags: []
   url: https://ieeexplore.ieee.org/document/10805568
-  doi: null
+  doi: 10.1109/joe.2024.3458109
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yuan Zhou
+  - Haiyong Xu
+  - Gangyi Jiang
+  - Mei Yu
+  - Yeyao Chen
+  - Ting Luo
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1562,11 +1970,15 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10496814/
-  doi: null
+  doi: 10.1109/tmm.2024.3387760/mm5
   arxiv_id: null
   code: https://github.com/zyWang-Power/UIERL
   project: null
-  authors: []
+  authors:
+  - Zhengyong Wang
+  - Liquan Shen
+  - Yihan Yu
+  - Hui Yuan
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1579,11 +1991,16 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10814077
-  doi: null
+  doi: 10.1109/tmm.2024.3521739
   arxiv_id: null
   code: https://github.com/lewis081/CCL-Net
   project: null
-  authors: []
+  authors:
+  - Yi Liu
+  - Qiuping Jiang
+  - Xinyi Wang
+  - Ting Luo
+  - Jingchun Zhou
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1600,7 +2017,14 @@
   arxiv_id: '2405.08419'
   code: https://github.com/Guan-MS/WaterMamba
   project: null
-  authors: []
+  authors:
+  - Meisheng Guan
+  - Haiyong Xu
+  - Gangyi Jiang
+  - Mei Ling Yu
+  - Yeyao Chen
+  - Ting Luo
+  - Yang Song
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1612,11 +2036,16 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/10781421
-  doi: null
+  doi: 10.1109/tcsvt.2024.3512600
   arxiv_id: null
   code: https://github.com/liyafengLYF/UIRPIOM
   project: null
-  authors: []
+  authors:
+  - Yafeng Li
+  - Yuehan Chen
+  - Jiqing Zhang
+  - Yan Li
+  - Xianping Fu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1629,11 +2058,16 @@
   tags:
   - Diffusion
   url: https://www.sciencedirect.com/science/article/pii/S0925231224020459
-  doi: null
+  doi: 10.1016/j.neucom.2024.129274
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Lingfeng Chen
+  - Zhihan Xu
+  - Zhihan Xu
+  - Chao Yi Wei
+  - Yuanxin Xu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1646,11 +2080,17 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10937076
-  doi: null
+  doi: 10.1109/tgrs.2025.3553557
   arxiv_id: null
   code: https://github.com/hpzhan66/CDF-UIE
   project: null
-  authors: []
+  authors:
+  - Haopeng Zhang
+  - Hongli Xu
+  - Xiaosheng Yu
+  - Xiangyue Zhang
+  - Xiujing Gao
+  - Chengdong Wu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1663,11 +2103,14 @@
   tags:
   - Diffusion
   url: https://ieeexplore.ieee.org/document/10816000
-  doi: null
+  doi: 10.1109/tgrs.2024.3522685/v2/review2
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yuhan Zhang
+  - Jieyu Yuan
+  - Zhanchuan Cai
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1680,11 +2123,15 @@
   tags:
   - CNN
   url: https://www.sciencedirect.com/science/article/pii/S0957417424031841
-  doi: null
+  doi: 10.1016/j.eswa.2024.126317
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Guodong Fan
+  - Jingchun Zhou
+  - Chengpei Xu
+  - Zheng Cheng
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1698,11 +2145,16 @@
   - CNN
   - Transformer
   url: https://ieeexplore.ieee.org/document/10720919
-  doi: null
+  doi: 10.1109/tcsvt.2024.3482548
   arxiv_id: null
   code: https://github.com/Alexande-rChan/FDCE-Net
   project: null
-  authors: []
+  authors:
+  - Zheng Cheng
+  - Guodong Fan
+  - Jingchun Zhou
+  - Min Gan
+  - C. L. Philip Chen
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1715,11 +2167,15 @@
   tags:
   - Transformer
   url: https://ieeexplore.ieee.org/document/10659034
-  doi: null
+  doi: 10.1109/tcsvt.2024.3451553
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Junbin Zhuang
+  - Yan Zheng
+  - Baolong Guo
+  - Yunyi Yan
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1731,11 +2187,16 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/10770246
-  doi: null
+  doi: 10.1109/tcsvt.2024.3508102
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yuchao Zheng
+  - Huimin Lu
+  - Jingyi Wang
+  - Weidong Zhang
+  - Mohsen Guizani
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1748,11 +2209,15 @@
   tags:
   - Transformer
   url: https://ieeexplore.ieee.org/document/10762843
-  doi: null
+  doi: 10.1109/joe.2024.3474919
   arxiv_id: null
   code: https://github.com/ytpeng-aimlab/Histoformer
   project: null
-  authors: []
+  authors:
+  - Yan‐Tsung Peng
+  - Yen-Rong Chen
+  - Guan-Rong Chen
+  - Chun-Jung Liao
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1764,11 +2229,17 @@
   type: Hybrid
   tags: []
   url: https://link.springer.com/article/10.1007/s11263-024-02318-x
-  doi: null
+  doi: 10.1007/s11263-024-02318-x
   arxiv_id: null
   code: https://github.com/ZengxiZhang/HUPE
   project: null
-  authors: []
+  authors:
+  - Zengxi Zhang
+  - Zhiying Jiang
+  - Long Ma
+  - Jinyuan Liu
+  - Xin Fan
+  - Risheng Liu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1780,11 +2251,15 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/11313551/
-  doi: null
+  doi: 10.1109/tgrs.2025.3647506
   arxiv_id: null
   code: https://zenodo.org/records/17511319
   project: null
-  authors: []
+  authors:
+  - Dongfang Ma
+  - Yun Xu
+  - Fanghao Huang
+  - Zheng Chen
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1797,11 +2272,14 @@
   tags:
   - Large-Model
   url: https://ieeexplore.ieee.org/document/10824846
-  doi: null
+  doi: 10.1109/tgrs.2025.3525962
   arxiv_id: null
   code: https://gitee.com/wanghaoupc/UIE_SAM
   project: null
-  authors: []
+  authors:
+  - Hao Wang
+  - Kevin Köser
+  - Peng Fei Ren
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1814,11 +2292,16 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10829689
-  doi: null
+  doi: 10.1109/tgrs.2024.3524758
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Xiaokai Liu
+  - Yutong Jiang
+  - Yangyang Wang
+  - Taifei Liu
+  - Jie Wang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1831,11 +2314,16 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/11267029
-  doi: null
+  doi: 10.1109/tip.2025.3634001
   arxiv_id: null
   code: https://github.com/zhoujingchun03/IA2U
   project: null
-  authors: []
+  authors:
+  - Jingchun Zhou
+  - Dehuan Zhang
+  - Zongxin He
+  - Qilin Gai
+  - Qiuping Jiang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1848,11 +2336,17 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/11296899
-  doi: null
+  doi: 10.1109/tgrs.2025.3642296
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Xu Liu
+  - Yang Zhao
+  - Yuan Chen
+  - Kaichen Chi
+  - Xingguang Li
+  - Wei Jia
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1868,7 +2362,11 @@
   arxiv_id: '2411.13230'
   code: https://github.com/AIRLabIISc/OceanLens
   project: null
-  authors: []
+  authors:
+  - Rajini Makam
+  - Dhatri Shankari T M
+  - Sharanya Patil
+  - Sundram, Suresh
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1881,11 +2379,17 @@
   tags:
   - Transformer
   url: https://arxiv.org/abs/2412.01456
-  doi: null
+  doi: 10.1109/wacv61041.2025.00931
   arxiv_id: '2412.01456'
   code: https://github.com/Mdraqibkhan/Phaseformer
   project: null
-  authors: []
+  authors:
+  - MD Raqib Khan
+  - Anshul Negi
+  - Ashutosh Kulkarni
+  - Shruti S. Phutke
+  - Santosh Kumar Vipparthi
+  - Subrahmanyam Murala
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1898,11 +2402,16 @@
   tags:
   - Transformer
   url: https://ieeexplore.ieee.org/document/10669071
-  doi: null
+  doi: 10.1109/tcsvt.2024.3455353
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Yuanyuan Li
+  - Zetian Mi
+  - Yulin Wang
+  - Shuaiyong Jiang
+  - Xianping Fu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1914,11 +2423,16 @@
   type: Traditional
   tags: []
   url: https://ieeexplore.ieee.org/document/10902578
-  doi: null
+  doi: 10.1109/tcsvt.2025.3545595
   arxiv_id: null
   code: https://www.researchgate.net/publication/386508762_2024WFAC
   project: null
-  authors: []
+  authors:
+  - Weidong Zhang
+  - Qingmin Liu
+  - Huimin Lu
+  - Jianping Wang
+  - Jing Liang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1931,11 +2445,18 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/10890803
-  doi: null
+  doi: 10.1109/icassp49660.2025.10890803
   arxiv_id: null
   code: https://github.com/CXH-Research/UIR-PolyKernel
   project: null
-  authors: []
+  authors:
+  - Xiaojiao Guo
+  - Yihang Dong
+  - Xuhang Chen
+  - Weiwen Chen
+  - Zimeng Li
+  - FuChen Zheng
+  - Chi‐Man Pun
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1948,11 +2469,15 @@
   tags:
   - Diffusion
   url: https://ieeexplore.ieee.org/document/11353942
-  doi: null
+  doi: 10.1109/tmm.2026.3654357
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Laibin Chang
+  - Yunke Wang
+  - Bo Du
+  - Chang Xu
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1965,11 +2490,17 @@
   tags:
   - GAN
   url: https://ieeexplore.ieee.org/document/11322545
-  doi: null
+  doi: 10.1109/tgrs.2025.3650077
   arxiv_id: null
   code: https://github.com/littlebearRedgood/DAGAN
   project: null
-  authors: []
+  authors:
+  - Xiaopeng Liu
+  - Honghao Xu
+  - Yakun Ju
+  - Shengke Wang
+  - Cong Liu
+  - L F Chen
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1982,11 +2513,18 @@
   tags:
   - Diffusion
   url: https://ieeexplore.ieee.org/document/11339364
-  doi: null
+  doi: 10.1109/tip.2025.3648875
   arxiv_id: null
   code: https://github.com/zy-world/DCD-UIE
   project: null
-  authors: []
+  authors:
+  - Guodong Fan
+  - Yu Zhou
+  - Jingchun Zhou
+  - Yakun Ju
+  - GuangYong Chen
+  - Jinjiang Li
+  - Alex C. Kot
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -1999,11 +2537,17 @@
   tags:
   - CNN
   url: https://ieeexplore.ieee.org/document/11330175
-  doi: null
+  doi: 10.1109/tmm.2026.3651111
   arxiv_id: null
   code: https://github.com/ttttllt/PyUIE
   project: null
-  authors: []
+  authors:
+  - Wenchao Jiang
+  - Yingqing Tan
+  - Zhenxuan Qiu
+  - Zhihua Wang
+  - Yang Yu
+  - Qiuping Jiang
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -2016,11 +2560,16 @@
   tags:
   - Task-Driven
   url: https://ieeexplore.ieee.org/document/11321080
-  doi: null
+  doi: 10.1109/tip.2025.3647323
   arxiv_id: null
   code: https://github.com/gemyumeng/HSRUIE
   project: null
-  authors: []
+  authors:
+  - Yu Meng
+  - Liquan Shen
+  - Yihan Yu
+  - Yu Zhang
+  - Rui Le
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -2033,11 +2582,15 @@
   tags:
   - Diffusion
   url: https://www.sciencedirect.com/science/article/abs/pii/S0031320325008933
-  doi: null
+  doi: 10.2139/ssrn.5165323
   arxiv_id: null
   code: https://github.com/OUCVisionGroup/CLIP-UIE
   project: https://oucvisiongroup.github.io/CLIP-UIE.html/
-  authors: []
+  authors:
+  - Shuaixin Liu
+  - Kunqian Li
+  - Yilin Ding
+  - Qi Qi
   tldr: null
   status: verified
   added: '2026-09-26'
@@ -2050,11 +2603,17 @@
   tags:
   - Diffusion
   url: https://ieeexplore.ieee.org/document/11361112
-  doi: null
+  doi: 10.1109/tcsvt.2026.3656897
   arxiv_id: null
   code: null
   project: null
-  authors: []
+  authors:
+  - Hedong Liu
+  - Meiying Qiu
+  - Haotian Cao
+  - Qianwen Ma
+  - Xiaobo Li
+  - Haofeng Hu
   tldr: null
   status: verified
   added: '2026-09-26'
