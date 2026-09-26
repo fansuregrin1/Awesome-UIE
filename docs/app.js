@@ -15,6 +15,7 @@
     dark: "Theme: dark (click to switch)",
   };
   var TYPE_ORDER = { Traditional: 0, DeepLearning: 1, Hybrid: 2 };
+  var MAX_BAR_PX = 90; // max pixel height of a year bar (avoids WebKit %-height issues)
 
   var state = {
     all: [],
@@ -212,7 +213,9 @@
   function renderBarChart(container, entries) {
     container.textContent = "";
     if (!entries.length) return;
-    var max = entries[0].value;
+    var max = entries.reduce(function (current, entry) {
+      return Math.max(current, entry.value);
+    }, 0) || 1;
     entries.forEach(function (entry) {
       var row = document.createElement("div");
       row.className = "stat-row";
@@ -245,7 +248,9 @@
     var counts = countBy(papers, function (paper) { return paper.year; });
     var years = Object.keys(counts).map(Number).sort(function (a, b) { return a - b; });
     if (!years.length) return;
-    var max = Math.max.apply(null, years.map(function (year) { return counts[year]; }));
+    var max = years.reduce(function (current, year) {
+      return Math.max(current, counts[year]);
+    }, 0) || 1;
     years.forEach(function (year) {
       var column = document.createElement("div");
       column.className = "year-col";
@@ -255,7 +260,9 @@
       wrap.className = "year-bar-wrap";
       var bar = document.createElement("div");
       bar.className = "year-bar";
-      bar.style.height = (counts[year] / max) * 100 + "%";
+      // Use pixel heights: percentage heights inside a flex item are unreliable
+      // in WebKit (the bars can collapse to zero).
+      bar.style.height = Math.max(2, Math.round((counts[year] / max) * MAX_BAR_PX)) + "px";
       wrap.appendChild(bar);
 
       var label = document.createElement("span");
