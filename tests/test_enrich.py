@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / ".dev_scripts"))
 
 from uie.enrich import (  # noqa: E402
+    apply_suggestions,
     enrich_papers,
     normalize_arxiv,
     normalize_doi,
@@ -102,6 +103,35 @@ class EnrichTest(unittest.TestCase):
     def test_unmatched_when_no_candidates(self):
         result = enrich_papers([make_paper()], sources=[FakeSource([])])
         self.assertEqual(result.summary()["unmatched"], 1)
+
+
+class ApplyTest(unittest.TestCase):
+    def test_apply_fills_empty_fields(self):
+        record = SourceRecord(source="crossref", title=TITLE, year=2024, doi="10.1109/new", authors=["A B"])
+        paper = make_paper()
+        result = enrich_papers([paper], sources=[FakeSource([record])])
+        applied = apply_suggestions([paper], result)
+        self.assertIn(("2024-watermamba", "doi", "10.1109/new"), applied)
+        self.assertEqual(paper.doi, "10.1109/new")
+        self.assertEqual(paper.authors, ["A B"])
+
+    def test_apply_respects_min_score(self):
+        record = SourceRecord(
+            source="crossref",
+            title="WaterMamba: Visual State Space Model for Underwater Image",
+            year=2024,
+            doi="10.1109/new",
+        )
+        result = enrich_papers([make_paper()], sources=[FakeSource([record])], threshold=0.5)
+        self.assertEqual(apply_suggestions([make_paper()], result, min_score=0.999), [])
+
+    def test_apply_limited_to_fields(self):
+        record = SourceRecord(source="crossref", title=TITLE, year=2024, doi="10.1109/new", authors=["A B"])
+        paper = make_paper()
+        result = enrich_papers([paper], sources=[FakeSource([record])])
+        applied = apply_suggestions([paper], result, fields=["authors"])
+        self.assertEqual([entry[1] for entry in applied], ["authors"])
+        self.assertIsNone(paper.doi)
 
 
 if __name__ == "__main__":
