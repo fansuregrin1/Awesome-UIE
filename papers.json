@@ -60,7 +60,11 @@
       "venue": "TGARS",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Transformer",
+        "CNN",
+        "Color-Correction",
+        "Contrast-Enhancement"
       ],
       "url": "https://ieeexplore.ieee.org/document/11322545",
       "doi": "10.1109/tgrs.2025.3650077",
@@ -75,7 +79,7 @@
         "Cong Liu",
         "L F Chen"
       ],
-      "tldr": null,
+      "tldr": "DA-GAN uses dual attention with a hybrid CNN-attention bottleneck, transformer channel attention, and multi-color-space loss to enhance contrast and correct color in underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -87,7 +91,10 @@
       "venue": "TIP",
       "type": "DeepLearning",
       "tags": [
-        "Diffusion"
+        "Diffusion",
+        "Color-Correction",
+        "Dehazing",
+        "Physical-Model"
       ],
       "url": "https://ieeexplore.ieee.org/document/11339364",
       "doi": "10.1109/tip.2025.3648875",
@@ -103,7 +110,7 @@
         "Jinjiang Li",
         "Alex C. Kot"
       ],
-      "tldr": null,
+      "tldr": "A decoupled chromatic diffusion model uses HSV color and structure guidance with separate losses to enhance underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -115,7 +122,11 @@
       "venue": "TIP",
       "type": "DeepLearning",
       "tags": [
-        "Task-Driven"
+        "Task-Driven",
+        "Self-supervised",
+        "Multiscale-Fusion",
+        "Foundation-Model",
+        "Image-Fusion"
       ],
       "url": "https://ieeexplore.ieee.org/document/11321080",
       "doi": "10.1109/tip.2025.3647323",
@@ -129,7 +140,7 @@
         "Yu Zhang",
         "Rui Le"
       ],
-      "tldr": null,
+      "tldr": "A task-driven underwater image enhancement framework uses self-supervised disentanglement and hierarchical semantic refinement to restore machine-interpretable semantics for downstream vision tasks.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -141,7 +152,10 @@
       "venue": "TMM",
       "type": "DeepLearning",
       "tags": [
-        "Diffusion"
+        "Diffusion",
+        "Color-Correction",
+        "Multiscale-Fusion",
+        "Physical-Model"
       ],
       "url": "https://ieeexplore.ieee.org/document/11353942",
       "doi": "10.1109/tmm.2026.3654357",
@@ -154,7 +168,7 @@
         "Bo Du",
         "Chang Xu"
       ],
-      "tldr": null,
+      "tldr": "DiffColor combines global color correction with wavelet-domain diffusion and cross-spectral detail refinement to improve underwater image restoration robustness and efficiency.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -166,7 +180,11 @@
       "venue": "TMM",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Multiscale-Fusion",
+        "Lightweight"
       ],
       "url": "https://ieeexplore.ieee.org/document/11330175",
       "doi": "10.1109/tmm.2026.3651111",
@@ -181,7 +199,7 @@
         "Yang Yu",
         "Qiuping Jiang"
       ],
-      "tldr": null,
+      "tldr": "PyUIE uses a Laplacian pyramid to separate low-frequency color and high-frequency detail, enhancing details coarse-to-fine with multi-scale supervision.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -192,7 +210,13 @@
       "year": 2025,
       "venue": "TCSVT",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Polarization",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Backscatter-Removal",
+        "Contrast-Enhancement"
+      ],
       "url": "https://ieeexplore.ieee.org/document/10781421",
       "doi": "10.1109/tcsvt.2024.3512600",
       "arxiv_id": null,
@@ -205,7 +229,7 @@
         "Yan Li",
         "Xianping Fu"
       ],
-      "tldr": null,
+      "tldr": "A polarization imaging optimization model fuses backscatter degree and angle of polarization with adaptive particle swarm and polynomial fitting for underwater image restoration.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -216,7 +240,13 @@
       "year": 2025,
       "venue": "TCSVT",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Dark-Channel-Prior",
+        "Physical-Model",
+        "Image-Fusion"
+      ],
       "url": "https://ieeexplore.ieee.org/document/10770246",
       "doi": "10.1109/tcsvt.2024.3508102",
       "arxiv_id": null,
@@ -229,7 +259,7 @@
         "Weidong Zhang",
         "Mohsen Guizani"
       ],
-      "tldr": null,
+      "tldr": "A turbidity suppression fusion method combines adaptive color correction, threshold-based histogram equalization, and turbidity-aware dark channel prior to enhance highly turbid underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -240,7 +270,12 @@
       "year": 2025,
       "venue": "TCSVT",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Image-Fusion",
+        "Multiscale-Fusion"
+      ],
       "url": "https://ieeexplore.ieee.org/document/10902578",
       "doi": "10.1109/tcsvt.2025.3545595",
       "arxiv_id": null,
@@ -253,7 +288,7 @@
         "Jianping Wang",
         "Jing Liang"
       ],
-      "tldr": null,
+      "tldr": "WFAC enhances underwater images by color transfer, global and local contrast adjustment, and wavelet decomposition fusion of the enhanced images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -264,7 +299,13 @@
       "year": 2025,
       "venue": "TGARS",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Color-Correction",
+        "Image-Fusion",
+        "Real-time",
+        "Image-Formation-Model"
+      ],
       "url": "https://ieeexplore.ieee.org/document/11313551/",
       "doi": "10.1109/tgrs.2025.3647506",
       "arxiv_id": null,
@@ -276,7 +317,7 @@
         "Fanghao Huang",
         "Zheng Chen"
       ],
-      "tldr": null,
+      "tldr": "ICAD-UIE uses inter-channel attenuation differences to guide a dewatering model and naturalness-preserving fusion for real-time underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -313,7 +354,9 @@
       "venue": "ICASSP",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Lightweight",
+        "Multiscale-Fusion"
       ],
       "url": "https://ieeexplore.ieee.org/document/10890803",
       "doi": "10.1109/icassp49660.2025.10890803",
@@ -329,7 +372,7 @@
         "FuChen Zheng",
         "Chi‐Man Pun"
       ],
-      "tldr": null,
+      "tldr": "UIR-PolyKernel uses polymorphic large kernel CNNs with hybrid frequency-spatial attention to restore underwater images, achieving state-of-the-art results with lightweight parameters.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -341,7 +384,10 @@
       "venue": "JOE",
       "type": "DeepLearning",
       "tags": [
-        "Transformer"
+        "Transformer",
+        "GAN",
+        "Color-Correction",
+        "Contrast-Enhancement"
       ],
       "url": "https://ieeexplore.ieee.org/document/10762843",
       "doi": "10.1109/joe.2024.3474919",
@@ -354,7 +400,7 @@
         "Guan-Rong Chen",
         "Chun-Jung Liao"
       ],
-      "tldr": null,
+      "tldr": "Histoformer learns histogram distributions of high-contrast color-corrected underwater images and integrates with a GAN for pixel-level refinement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -393,7 +439,10 @@
       "type": "DeepLearning",
       "tags": [
         "CNN",
-        "Transformer"
+        "Transformer",
+        "Color-Correction",
+        "Image-Fusion",
+        "Multiscale-Fusion"
       ],
       "url": "https://ieeexplore.ieee.org/document/10720919",
       "doi": "10.1109/tcsvt.2024.3482548",
@@ -407,7 +456,7 @@
         "Min Gan",
         "C. L. Philip Chen"
       ],
-      "tldr": null,
+      "tldr": "FDCE-Net enhances underwater images by decoupling degradation factors in the frequency domain and using a dual-color encoder with cross-attention to correct color shift.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -419,7 +468,10 @@
       "venue": "TCSVT",
       "type": "DeepLearning",
       "tags": [
-        "Transformer"
+        "Transformer",
+        "Lightweight",
+        "Real-time",
+        "Multiscale-Fusion"
       ],
       "url": "https://ieeexplore.ieee.org/document/10659034",
       "doi": "10.1109/tcsvt.2024.3451553",
@@ -432,7 +484,7 @@
         "Baolong Guo",
         "Yunyi Yan"
       ],
-      "tldr": null,
+      "tldr": "GS-Transformer uses globally deformable information selection and multiresolution encoder-decoder to enhance underwater images with fewer parameters and faster inference.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -444,7 +496,10 @@
       "venue": "TCSVT",
       "type": "DeepLearning",
       "tags": [
-        "Transformer"
+        "Transformer",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "CNN"
       ],
       "url": "https://ieeexplore.ieee.org/document/10669071",
       "doi": "10.1109/tcsvt.2024.3455353",
@@ -458,7 +513,7 @@
         "Shuaiyong Jiang",
         "Xianping Fu"
       ],
-      "tldr": null,
+      "tldr": "A Swin Transformer with physical perception models underwater image degradation to enhance images, improving long-range dependency capture and inductive bias.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -470,7 +525,10 @@
       "venue": "TGARS",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Image-Fusion",
+        "Multiscale-Fusion",
+        "Domain-Adaptation"
       ],
       "url": "https://ieeexplore.ieee.org/document/10937076",
       "doi": "10.1109/tgrs.2025.3553557",
@@ -485,7 +543,7 @@
         "Xiujing Gao",
         "Chengdong Wu"
       ],
-      "tldr": null,
+      "tldr": "CDF-UIE decouples spatial and frequency features and fuses them via cross-domain attention for underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -497,7 +555,9 @@
       "venue": "TGARS",
       "type": "DeepLearning",
       "tags": [
-        "Diffusion"
+        "Diffusion",
+        "Color-Correction",
+        "Low-Light-Enhancement"
       ],
       "url": "https://ieeexplore.ieee.org/document/10816000",
       "doi": "10.1109/tgrs.2024.3522685/v2/review2",
@@ -509,7 +569,7 @@
         "Jieyu Yuan",
         "Zhanchuan Cai"
       ],
-      "tldr": null,
+      "tldr": "A diffusion-color-guided framework combines a diffusion model with a color correction module to reduce color deviation and restore degraded underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -521,7 +581,11 @@
       "venue": "TGARS",
       "type": "DeepLearning",
       "tags": [
-        "Large-Model"
+        "Large-Model",
+        "Foundation-Model",
+        "Color-Correction",
+        "Image-Fusion",
+        "Contrast-Enhancement"
       ],
       "url": "https://ieeexplore.ieee.org/document/10824846",
       "doi": "10.1109/tgrs.2025.3525962",
@@ -533,7 +597,7 @@
         "Kevin Köser",
         "Peng Fei Ren"
       ],
-      "tldr": null,
+      "tldr": "Uses Segment Anything Model to separate foreground and background, applies adaptive color compensation and high-frequency edge fusion for discriminative underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -545,7 +609,10 @@
       "venue": "TGARS",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Low-Light-Enhancement"
       ],
       "url": "https://ieeexplore.ieee.org/document/10829689",
       "doi": "10.1109/tgrs.2024.3524758",
@@ -559,7 +626,7 @@
         "Taifei Liu",
         "Jie Wang"
       ],
-      "tldr": null,
+      "tldr": "MDA-Net uses frequency-aware kernel selection and a gamma-based illumination balancer to adaptively enhance local regions with multiple spatial frequency and illumination distributions.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -571,7 +638,11 @@
       "venue": "TGARS",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Image-Fusion",
+        "Task-Driven"
       ],
       "url": "https://ieeexplore.ieee.org/document/11296899",
       "doi": "10.1109/tgrs.2025.3642296",
@@ -586,7 +657,7 @@
         "Xingguang Li",
         "Wei Jia"
       ],
-      "tldr": null,
+      "tldr": "A text-image joint learning method with four enhancement branches and implicit interaction fuses multicolor attributes for real-world underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -598,7 +669,11 @@
       "venue": "TIP",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Domain-Adaptation",
+        "Lightweight",
+        "Multiscale-Fusion",
+        "Task-Driven"
       ],
       "url": "https://ieeexplore.ieee.org/document/11267029",
       "doi": "10.1109/tip.2025.3634001",
@@ -612,7 +687,7 @@
         "Qilin Gai",
         "Qiuping Jiang"
       ],
-      "tldr": null,
+      "tldr": "A lightweight plugin injects water type, degradation, and semantic priors into in-air networks to improve underwater image enhancement and detection.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -624,7 +699,11 @@
       "venue": "WACV",
       "type": "DeepLearning",
       "tags": [
-        "Transformer"
+        "Transformer",
+        "Lightweight",
+        "Low-Light-Enhancement",
+        "Color-Correction",
+        "Dehazing"
       ],
       "url": "https://arxiv.org/abs/2412.01456",
       "doi": "10.1109/wacv61041.2025.00931",
@@ -639,7 +718,7 @@
         "Santosh Kumar Vipparthi",
         "Subrahmanyam Murala"
       ],
-      "tldr": null,
+      "tldr": "A lightweight phase-based transformer with phase self-attention restores underwater images and enhances low-light images, outperforming state-of-the-art methods.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -650,7 +729,13 @@
       "year": 2025,
       "venue": "arXiv",
       "type": "Hybrid",
-      "tags": [],
+      "tags": [
+        "CNN",
+        "Physical-Model",
+        "Backscatter-Removal",
+        "Depth-Estimation",
+        "Color-Correction"
+      ],
       "url": "https://arxiv.org/abs/2411.13230",
       "doi": null,
       "arxiv_id": "2411.13230",
@@ -662,7 +747,7 @@
         "Sharanya Patil",
         "Sundram, Suresh"
       ],
-      "tldr": null,
+      "tldr": "OceanLens uses neural networks to model underwater backscatter and attenuation, with adaptive Sobel and LoG edge losses and monocular depth estimation for enhanced underwater imaging.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -673,7 +758,13 @@
       "year": 2025,
       "venue": "IJCV",
       "type": "Hybrid",
-      "tags": [],
+      "tags": [
+        "Task-Driven",
+        "Physical-Model",
+        "Unsupervised",
+        "Image-Formation-Model",
+        "Color-Correction"
+      ],
       "url": "https://link.springer.com/article/10.1007/s11263-024-02318-x",
       "doi": "10.1007/s11263-024-02318-x",
       "arxiv_id": null,
@@ -687,7 +778,7 @@
         "Xin Fan",
         "Risheng Liu"
       ],
-      "tldr": null,
+      "tldr": "HUPE uses an invertible network with Fourier transform and semantic collaborative learning to enhance underwater images while improving downstream task performance.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -699,7 +790,11 @@
       "venue": "AAAI",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Multiscale-Fusion",
+        "Self-supervised",
+        "Contrast-Enhancement",
+        "Benchmark"
       ],
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28530",
       "doi": "10.1609/aaai.v38i7.28530",
@@ -713,7 +808,7 @@
         "Weishi Zhang",
         "Chongyi Li"
       ],
-      "tldr": null,
+      "tldr": "SMDR-IS uses intrinsic supervision and bifocal attention to refine multiscale details across degradation stages for underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -725,7 +820,10 @@
       "venue": "ACCV",
       "type": "DeepLearning",
       "tags": [
-        "Mamba"
+        "Mamba",
+        "Lightweight",
+        "Color-Correction",
+        "Multiscale-Fusion"
       ],
       "url": "https://openaccess.thecvf.com/content/ACCV2024/papers/Lin_PixMamba_Leveraging_State_Space_Models_in_a_Dual-Level_Architecture_for_ACCV_2024_paper.pdf",
       "doi": "10.1007/978-981-96-0911-6_11",
@@ -738,7 +836,7 @@
         "Jyun-Wei Chen",
         "Kai‐Lung Hua"
       ],
-      "tldr": null,
+      "tldr": "PixMamba uses state space models in a dual-level architecture for efficient global modeling and fine-grained underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -750,7 +848,11 @@
       "venue": "arXiv",
       "type": "DeepLearning",
       "tags": [
-        "Survey"
+        "Survey",
+        "Benchmark",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Domain-Adaptation"
       ],
       "url": "https://arxiv.org/abs/2405.19684",
       "doi": "10.1109/tetci.2026.3668671",
@@ -764,7 +866,7 @@
         "Junming Hou",
         "Dacheng Tao"
       ],
-      "tldr": null,
+      "tldr": "This survey reviews deep learning underwater image enhancement, covering models, data, metrics, algorithms, benchmarks, and future directions.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -776,7 +878,11 @@
       "venue": "arXiv",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Physical-Model",
+        "Depth-Estimation",
+        "Image-Formation-Model",
+        "Task-Driven"
       ],
       "url": "https://arxiv.org/abs/2407.04230",
       "doi": "10.1109/tcsvt.2026.3674091",
@@ -790,7 +896,7 @@
         "Jianwei Niu",
         "Fuchun Sun"
       ],
-      "tldr": null,
+      "tldr": "A physical model-guided framework jointly trains a deep degradation model with UIE models to estimate depth and veiling light for underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -802,7 +908,10 @@
       "venue": "arXiv",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Lightweight",
+        "Real-time",
+        "Contrast-Enhancement"
       ],
       "url": "https://arxiv.org/abs/2406.14973",
       "doi": null,
@@ -815,7 +924,7 @@
         "Zhiliang Lin",
         "Jianping He"
       ],
-      "tldr": null,
+      "tldr": "LU2Net is a lightweight U-shaped network using axial depthwise convolution and channel attention for real-time underwater image and video enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -827,7 +936,9 @@
       "venue": "arXiv",
       "type": "DeepLearning",
       "tags": [
-        "Mamba"
+        "Mamba",
+        "Lightweight",
+        "Multiscale-Fusion"
       ],
       "url": "https://arxiv.org/abs/2405.08419",
       "doi": null,
@@ -843,7 +954,7 @@
         "Ting Luo",
         "Yang Song"
       ],
-      "tldr": null,
+      "tldr": "WaterMamba uses a state space model with spatial-channel omnidirectional selective scan blocks for efficient underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -855,7 +966,11 @@
       "venue": "ICVGIP",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Task-Driven",
+        "Low-Light-Enhancement",
+        "Dehazing",
+        "Color-Correction"
       ],
       "url": "https://dl.acm.org/doi/10.1145/3702250.3702252",
       "doi": "10.1145/3702250.3702252",
@@ -866,7 +981,7 @@
         "Pranjali Singh",
         "Prithwijit Guha"
       ],
-      "tldr": null,
+      "tldr": "An iterative framework identifies one dominant degradation condition and selects a condition-specific deep network for underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -878,7 +993,11 @@
       "venue": "JOE",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Low-Light-Enhancement",
+        "Dehazing"
       ],
       "url": "https://ieeexplore.ieee.org/document/10753015",
       "doi": "10.1109/joe.2024.3458351",
@@ -894,7 +1013,7 @@
         "Guojia Hou",
         "Zheng Liang"
       ],
-      "tldr": null,
+      "tldr": "DAPNet enhances underwater images using a dual attention probabilistic network with adaptive instance normalization and Monte Carlo likelihood estimation.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -932,7 +1051,11 @@
       "venue": "TGARS",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Unsupervised",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Image-Synthesis"
       ],
       "url": "https://ieeexplore.ieee.org/document/10423039",
       "doi": "10.1109/tgrs.2024.3363037",
@@ -946,7 +1069,7 @@
         "Zhanhu Zhai",
         "Dingcai Wang"
       ],
-      "tldr": null,
+      "tldr": "NPT-UL combines non-physical data augmentation with an unsupervised contrastive GAN to enhance underwater images, improving color, contrast, and detail.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -958,7 +1081,11 @@
       "venue": "TMM",
       "type": "DeepLearning",
       "tags": [
-        "Diffusion"
+        "Diffusion",
+        "Physical-Model",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Benchmark"
       ],
       "url": "https://ieeexplore.ieee.org/document/10812849",
       "doi": "10.1109/tmm.2024.3521710",
@@ -971,7 +1098,7 @@
         "Hai Wang",
         "Yueying Wang"
       ],
-      "tldr": null,
+      "tldr": "DiffUIE applies a diffusion model with global feature priors and frequency scaling to enhance degraded underwater images, outperforming prior methods.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -983,7 +1110,10 @@
       "venue": "TMM",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Depth-Estimation",
+        "Domain-Adaptation",
+        "Image-Fusion"
       ],
       "url": "https://ieeexplore.ieee.org/document/10496814/",
       "doi": "10.1109/tmm.2024.3387760/mm5",
@@ -996,7 +1126,7 @@
         "Yihan Yu",
         "Hui Yuan"
       ],
-      "tldr": null,
+      "tldr": "An internal-external representation learning network enhances underwater images by depth-based region feature guidance and cross-image external information interaction.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1008,7 +1138,11 @@
       "venue": "TMM",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Color-Correction",
+        "Dehazing",
+        "Contrast-Enhancement",
+        "Self-supervised"
       ],
       "url": "https://ieeexplore.ieee.org/document/10814077",
       "doi": "10.1109/tmm.2024.3521739",
@@ -1022,7 +1156,7 @@
         "Ting Luo",
         "Jingchun Zhou"
       ],
-      "tldr": null,
+      "tldr": "A two-stage deep framework with cascaded contrastive learning performs color correction then haze removal for underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1033,7 +1167,13 @@
       "year": 2024,
       "venue": "JOE",
       "type": "Hybrid",
-      "tags": [],
+      "tags": [
+        "Transformer",
+        "Physical-Model",
+        "Dark-Channel-Prior",
+        "Image-Fusion",
+        "Color-Correction"
+      ],
       "url": "https://ieeexplore.ieee.org/document/10805568",
       "doi": "10.1109/joe.2024.3458109",
       "arxiv_id": null,
@@ -1047,7 +1187,7 @@
         "Yeyao Chen",
         "Ting Luo"
       ],
-      "tldr": null,
+      "tldr": "UIE-SFIFormer uses a physical-guided spatial-frequency interaction Transformer to fuse dark channel priors with spatial and frequency features for underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1081,7 +1221,13 @@
       "year": 2024,
       "venue": "WACV",
       "type": "Hybrid",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Retinex",
+        "Image-Formation-Model",
+        "Backscatter-Removal",
+        "Real-time"
+      ],
       "url": "https://ieeexplore.ieee.org/document/10484357",
       "doi": "10.1109/wacv57701.2024.00153",
       "arxiv_id": null,
@@ -1092,7 +1238,7 @@
         "Manogna Sreenivas",
         "Soma Biswas"
       ],
-      "tldr": null,
+      "tldr": "PhISH-Net combines a physics-based underwater image formation model with a retinex-based deep enhancement module and a wideband attenuation prior for real-time high-resolution underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1126,7 +1272,13 @@
       "year": 2023,
       "venue": "SPL",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Physical-Model",
+        "Low-Light-Enhancement",
+        "Dehazing"
+      ],
       "url": "https://ieeexplore.ieee.org/document/10065491",
       "doi": "10.1109/lsp.2023.3255005",
       "arxiv_id": null,
@@ -1139,7 +1291,7 @@
         "Zheng Liang",
         "Chongyi Li"
       ],
-      "tldr": null,
+      "tldr": "Piecewise color correction with gain factors and dual prior optimized contrast enhancement in HSV space improves underwater image quality and generalizes to fog and low-light images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1150,7 +1302,13 @@
       "year": 2023,
       "venue": "TCSVT",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Image-Fusion",
+        "Contrast-Enhancement",
+        "Color-Correction",
+        "Low-Light-Enhancement",
+        "Dehazing"
+      ],
       "url": "https://ieeexplore.ieee.org/document/9895452",
       "doi": "10.1109/tcsvt.2022.3208100",
       "arxiv_id": null,
@@ -1164,7 +1322,7 @@
         "Hantao Liu",
         "Pengjun Wang"
       ],
-      "tldr": null,
+      "tldr": "A perception-aware structural patch decomposition and fusion framework fuses contrast-corrected and detail-sharpened underwater images to enhance underwater imagery.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1175,7 +1333,13 @@
       "year": 2023,
       "venue": "TCSVT",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Image-Fusion",
+        "Multiscale-Fusion",
+        "Physical-Model"
+      ],
       "url": "https://ieeexplore.ieee.org/document/10196309",
       "doi": "10.1109/tcsvt.2023.3299314",
       "arxiv_id": null,
@@ -1190,7 +1354,7 @@
         "Wenyi Zhao",
         "Chongyi Li"
       ],
-      "tldr": null,
+      "tldr": "WWPF enhances underwater images by attenuation-map-guided color correction and weighted wavelet fusion of global and local contrast-enhanced images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1201,7 +1365,13 @@
       "year": 2023,
       "venue": "TCSVT",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Physical-Model",
+        "Backscatter-Removal",
+        "Image-Formation-Model"
+      ],
       "url": "https://ieeexplore.ieee.org/document/10189844",
       "doi": "10.1109/tcsvt.2023.3297524",
       "arxiv_id": null,
@@ -1215,7 +1385,7 @@
         "Xiwang Xie",
         "Chongyi Li"
       ],
-      "tldr": null,
+      "tldr": "A three-module method restores underwater image color, detail, and contrast using channel compensation, saturation-based detail restoration, and transmission-minimization contrast enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1227,7 +1397,10 @@
       "venue": "ACM-MM",
       "type": "DeepLearning",
       "tags": [
-        "Diffusion"
+        "Diffusion",
+        "Transformer",
+        "Lightweight",
+        "Benchmark"
       ],
       "url": "https://dl.acm.org/doi/10.1145/3581783.3612378",
       "doi": "10.1145/3581783.3612378",
@@ -1239,7 +1412,7 @@
         "Hiroshi Kawasaki",
         "Takafumi Iwaguchi"
       ],
-      "tldr": null,
+      "tldr": "A transformer-based diffusion model with non-uniform skip sampling enhances underwater images efficiently while maintaining competitive performance.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1317,7 +1490,10 @@
       "venue": "CVPR",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Semi-supervised",
+        "Contrast-Enhancement",
+        "Benchmark"
       ],
       "url": "https://ieeexplore.ieee.org/document/10204411",
       "doi": "10.1109/cvpr52729.2023.01740",
@@ -1331,7 +1507,7 @@
         "Jun Chen",
         "Yunsong Li"
       ],
-      "tldr": null,
+      "tldr": "A mean-teacher semi-supervised framework for underwater image restoration uses a reliable bank of best-ever pseudo ground truth and contrastive regularization to reduce confirmation bias.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1396,7 +1572,11 @@
       "venue": "ICME",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Physical-Model",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Multiscale-Fusion"
       ],
       "url": "https://ieeexplore.ieee.org/document/10219946",
       "doi": "10.1109/icme55011.2023.00232",
@@ -1409,7 +1589,7 @@
         "Haotian Qian",
         "Cong Bai"
       ],
-      "tldr": null,
+      "tldr": "ATDCnet uses adaptive transmission and dynamic color modules with an encoder-decoder and multistage fusion to jointly correct color and enhance contrast in underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1421,7 +1601,11 @@
       "venue": "ICRA",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Physical-Model",
+        "Domain-Adaptation",
+        "Image-Synthesis",
+        "Image-Formation-Model"
       ],
       "url": "https://ieeexplore.ieee.org/document/10161531",
       "doi": "10.1109/icra48891.2023.10161531",
@@ -1437,7 +1621,7 @@
         "Lihua Dou",
         "Ben M. Chen"
       ],
-      "tldr": null,
+      "tldr": "SyreaNet integrates synthetic and real underwater images using a revised image formation model and domain adaptation to enhance underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1474,7 +1658,10 @@
       "venue": "TCSVT",
       "type": "DeepLearning",
       "tags": [
-        "Diffusion"
+        "Diffusion",
+        "Real-time",
+        "Image-Fusion",
+        "Color-Correction"
       ],
       "url": "https://ieeexplore.ieee.org/document/10250851",
       "doi": "10.1109/tcsvt.2023.3314767",
@@ -1487,7 +1674,7 @@
         "Hanyu Zhang",
         "Haitao Lai"
       ],
-      "tldr": null,
+      "tldr": "SU-DDPM accelerates a conditional diffusion model for real-time underwater image enhancement by fusing degraded and reference images and reducing denoising iterations.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1499,7 +1686,11 @@
       "venue": "TCSVT",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Retinex",
+        "Color-Correction",
+        "Image-Synthesis",
+        "Physical-Model"
       ],
       "url": "https://ieeexplore.ieee.org/document/10019314",
       "doi": "10.1109/tcsvt.2023.3237993",
@@ -1514,7 +1705,7 @@
         "Zhengyong Wang",
         "Qijie Zhao"
       ],
-      "tldr": null,
+      "tldr": "A luminance correction and artificial-light area self-guided network restores underwater images with non-uniform illumination, plus a synthetic dataset with artificial light.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1526,7 +1717,11 @@
       "venue": "TIP",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Domain-Adaptation",
+        "Unsupervised",
+        "Image-Synthesis",
+        "Task-Driven"
       ],
       "url": "https://ieeexplore.ieee.org/document/10048777",
       "doi": "10.1109/tip.2023.3244647",
@@ -1541,7 +1736,7 @@
         "Kun Wang",
         "Yufei Lin"
       ],
-      "tldr": null,
+      "tldr": "A two-phase underwater domain adaptation network reduces inter-domain and intra-domain gaps via triple-alignment and rank-based quality assessment.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1553,7 +1748,11 @@
       "venue": "TIP",
       "type": "DeepLearning",
       "tags": [
-        "Transformer"
+        "Transformer",
+        "Benchmark",
+        "Multiscale-Fusion",
+        "Color-Correction",
+        "Contrast-Enhancement"
       ],
       "url": "https://ieeexplore.ieee.org/document/10129222",
       "doi": "10.1109/tip.2023.3276332",
@@ -1565,7 +1764,7 @@
         "Chunli Zhu",
         "Liheng Bian"
       ],
-      "tldr": null,
+      "tldr": "Introduces a U-shape Transformer with channel and spatial attention modules plus a large-scale underwater dataset for image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1576,7 +1775,13 @@
       "year": 2023,
       "venue": "ACM-MM",
       "type": "Hybrid",
-      "tags": [],
+      "tags": [
+        "CNN",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Color-Correction",
+        "Contrast-Enhancement"
+      ],
       "url": "https://dl.acm.org/doi/abs/10.1145/3581783.3612323",
       "doi": "10.1145/3581783.3612323",
       "arxiv_id": null,
@@ -1590,7 +1795,7 @@
         "Sixian Chan",
         "Cong Bai"
       ],
-      "tldr": null,
+      "tldr": "GUPDM uses physical-knowledge-guided dynamic convolutions to adaptively enhance diverse underwater images by simulating varied formation conditions.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1601,7 +1806,12 @@
       "year": 2023,
       "venue": "ACM-MM",
       "type": "Hybrid",
-      "tags": [],
+      "tags": [
+        "Task-Driven",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Unsupervised"
+      ],
       "url": "https://dl.acm.org/doi/10.1145/3581783.3611727",
       "doi": "10.1145/3581783.3611727",
       "arxiv_id": null,
@@ -1614,7 +1824,7 @@
         "Xin Fan",
         "Risheng Liu"
       ],
-      "tldr": null,
+      "tldr": "WaterFlow uses an invertible normalizing flow with heuristic physical priors and detection perception to enhance underwater images and improve downstream detection.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1652,7 +1862,13 @@
       "year": 2023,
       "venue": "Electronics",
       "type": "Hybrid",
-      "tags": [],
+      "tags": [
+        "GAN",
+        "Physical-Model",
+        "Color-Correction",
+        "CNN",
+        "Real-time"
+      ],
       "url": "https://www.mdpi.com/2079-9292/12/13/2882",
       "doi": "10.3390/electronics12132882",
       "arxiv_id": null,
@@ -1663,7 +1879,7 @@
         "Farong Gao",
         "Qizhong Zhang"
       ],
-      "tldr": null,
+      "tldr": "A GAN with channel attention in U-Net estimates simplified underwater physical model parameters, fusing adversarial, perceptual, and global losses for color correction and noise suppression.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1674,7 +1890,13 @@
       "year": 2023,
       "venue": "TIP",
       "type": "Hybrid",
-      "tags": [],
+      "tags": [
+        "GAN",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Color-Correction",
+        "Contrast-Enhancement"
+      ],
       "url": "https://ieeexplore.ieee.org/document/10155564",
       "doi": "10.1109/tip.2023.3286263",
       "arxiv_id": null,
@@ -1689,7 +1911,7 @@
         "Qingming Huang",
         "Sam Kwong"
       ],
-      "tldr": null,
+      "tldr": "PUGAN combines a physical model-guided GAN with dual discriminators and a degradation quantization module to enhance underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1700,7 +1922,13 @@
       "year": 2022,
       "venue": "JOE",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Multiscale-Fusion",
+        "Image-Fusion",
+        "Low-Light-Enhancement"
+      ],
       "url": "https://ieeexplore.ieee.org/document/9744022",
       "doi": "10.1109/joe.2022.3140563",
       "arxiv_id": null,
@@ -1711,7 +1939,7 @@
         "Yudong Wang",
         "Chongyi Li"
       ],
-      "tldr": null,
+      "tldr": "Underwater image enhancement via attenuated color channel correction, dual-histogram contrast enhancement, multiscale fusion, and unsharp masking.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1722,7 +1950,13 @@
       "year": 2022,
       "venue": "TGARS",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Image-Fusion",
+        "Multiscale-Fusion",
+        "Dark-Channel-Prior",
+        "Color-Correction",
+        "Contrast-Enhancement"
+      ],
       "url": "https://ieeexplore.ieee.org/document/9559904",
       "doi": "10.1109/tgrs.2021.3110575",
       "arxiv_id": null,
@@ -1733,7 +1967,7 @@
         "Zhanchuan Cai",
         "Wei Cao"
       ],
-      "tldr": null,
+      "tldr": "A multiscale fusion method combines dark channel prior dehazing in RGB and morphological color compensation in CIELAB to enhance real-world underwater image textures.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1744,7 +1978,13 @@
       "year": 2022,
       "venue": "TIP",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Image-Fusion",
+        "Physical-Model",
+        "Real-time"
+      ],
       "url": "https://ieeexplore.ieee.org/document/9788535",
       "doi": "10.1109/tip.2022.3177129",
       "arxiv_id": null,
@@ -1758,7 +1998,7 @@
         "Sam Kwong",
         "Chongyi Li"
       ],
-      "tldr": null,
+      "tldr": "MLLE enhances underwater images by locally adjusting color via minimum color loss and adaptively improving contrast using integral maps.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1769,7 +2009,12 @@
       "year": 2022,
       "venue": "TIP",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Retinex",
+        "Physical-Model",
+        "Color-Correction",
+        "Contrast-Enhancement"
+      ],
       "url": "https://ieeexplore.ieee.org/document/9854113",
       "doi": "10.1109/tip.2022.3196546",
       "arxiv_id": null,
@@ -1781,7 +2026,7 @@
         "Fatih Porikli",
         "Chongyi Li"
       ],
-      "tldr": null,
+      "tldr": "A retinex variational model using hyper-Laplacian reflectance priors and l2 illumination estimation enhances underwater images via alternating minimization.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1793,7 +2038,11 @@
       "venue": "AAAI",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Unsupervised",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Image-Synthesis"
       ],
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/19944",
       "doi": "10.1609/aaai.v36i1.19944",
@@ -1809,7 +2058,7 @@
         "Yue Huang",
         "Xinghao Ding"
       ],
-      "tldr": null,
+      "tldr": "USUIR restores underwater images unsupervised by estimating latent components and enforcing homology between raw and re-degraded images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1847,7 +2096,10 @@
       "venue": "CVPRW",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Color-Correction"
       ],
       "url": "https://openaccess.thecvf.com/content/CVPR2022W/PBVS/papers/Desai_AquaGAN_Restoration_of_Underwater_Images_CVPRW_2022_paper.pdf",
       "doi": "10.1109/cvprw56347.2022.00044",
@@ -1861,7 +2113,7 @@
         "Ujwala Patil",
         "Uma Mudenagudi"
       ],
-      "tldr": null,
+      "tldr": "AquaGAN estimates attenuation coefficients via learning and uses them as clues in a generative model with combined objectives to restore underwater image colors.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1898,7 +2150,9 @@
       "venue": "ECCV",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Unsupervised",
+        "Domain-Adaptation"
       ],
       "url": "https://dl.acm.org/doi/abs/10.1007/978-3-031-19797-0_27",
       "doi": "10.1007/978-3-031-19797-0_27",
@@ -1912,7 +2166,7 @@
         "Xinghao Ding",
         "Kai‐Kuang Ma"
       ],
-      "tldr": null,
+      "tldr": "A probabilistic network learns the enhancement distribution of degraded underwater images and uses a consensus process to produce deterministic results.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1924,7 +2178,10 @@
       "venue": "Frontiers in Marine Science",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Low-Light-Enhancement",
+        "Backscatter-Removal",
+        "Benchmark"
       ],
       "url": "https://www.frontiersin.org/articles/10.3389/fmars.2022.921492/full",
       "doi": "10.3389/fmars.2022.921492",
@@ -1937,7 +2194,7 @@
         "Xiao Yu",
         "Bing Zheng"
       ],
-      "tldr": null,
+      "tldr": "A deep learning network and first dataset for enhancing low-light underwater images, jointly addressing low illumination and scattering degradation.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1949,7 +2206,10 @@
       "venue": "PR",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Domain-Adaptation",
+        "Dehazing",
+        "Unsupervised"
       ],
       "url": "https://www.sciencedirect.com/science/article/pii/S0031320321005045",
       "doi": "10.1016/j.patcog.2021.108324",
@@ -1964,7 +2224,7 @@
         "Caiming Zhang",
         "Пэйдэ Лю"
       ],
-      "tldr": null,
+      "tldr": "Transfers in-air image dehazing to real-world underwater image enhancement via a two-step domain adaptation framework without synthetic underwater training data.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -1976,7 +2236,11 @@
       "venue": "TCSVT",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Image-Fusion",
+        "Multiscale-Fusion",
+        "Color-Correction",
+        "Contrast-Enhancement"
       ],
       "url": "https://ieeexplore.ieee.org/abstract/document/9774330",
       "doi": "10.1109/tcsvt.2022.3174817",
@@ -1990,7 +2254,7 @@
         "Xin Fan",
         "Risheng Liu"
       ],
-      "tldr": null,
+      "tldr": "A target-oriented perceptual adversarial fusion network combines multi-scale dense boosting, aesthetic rendering, and attention-guided fusion with global-local adversarial learning for underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2002,7 +2266,9 @@
       "venue": "TGARS",
       "type": "DeepLearning",
       "tags": [
-        "Transformer"
+        "Transformer",
+        "CNN",
+        "Multiscale-Fusion"
       ],
       "url": "https://ieeexplore.ieee.org/document/9881581",
       "doi": "10.1109/tgrs.2022.3205061",
@@ -2018,7 +2284,7 @@
         "Biao Wang",
         "Ting Luo"
       ],
-      "tldr": null,
+      "tldr": "A U-Net-based Swin-Convs Transformer block fuses global and local attention for simultaneous underwater image enhancement and super-resolution.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2030,7 +2296,10 @@
       "venue": "TIP",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Task-Driven",
+        "Multiscale-Fusion",
+        "Benchmark"
       ],
       "url": "https://ieeexplore.ieee.org/document/9930878",
       "doi": "10.1109/tip.2022.3216208",
@@ -2045,7 +2314,7 @@
         "Guojia Hou",
         "Kun Sun"
       ],
-      "tldr": null,
+      "tldr": "SGUIE-Net uses semantic region-wise attention with multi-scale perception to guide underwater image enhancement and introduces a paired dataset.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2057,7 +2326,10 @@
       "venue": "TIP",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Unsupervised",
+        "Task-Driven",
+        "Contrast-Enhancement"
       ],
       "url": "https://ieeexplore.ieee.org/document/9832540",
       "doi": "10.1109/tip.2022.3190209",
@@ -2070,7 +2342,7 @@
         "Shuzhou Yang",
         "Xin Fan"
       ],
-      "tldr": null,
+      "tldr": "Proposes object-guided twin adversarial contrastive learning for underwater image enhancement, improving visual quality and detector accuracy via task-aware feedback.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2082,7 +2354,9 @@
       "venue": "TMM",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Lightweight",
+        "Multiscale-Fusion"
       ],
       "url": "https://ieeexplore.ieee.org/document/9547730",
       "doi": "10.1109/tmm.2021.3115442",
@@ -2096,7 +2370,7 @@
         "Tiesong Zhao",
         "Chia‐Wen Lin"
       ],
-      "tldr": null,
+      "tldr": "A lightweight cascaded network based on Laplacian image pyramids progressively predicts high-quality residuals in a coarse-to-fine manner with reused parameters.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2129,7 +2403,10 @@
       "year": 2021,
       "venue": "TGARS",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Contrast-Enhancement",
+        "Color-Correction"
+      ],
       "url": "https://ieeexplore.ieee.org/document/9257110",
       "doi": "10.1109/tgrs.2020.3033407",
       "arxiv_id": null,
@@ -2141,7 +2418,7 @@
         "Zhanchuan Cai",
         "Binghua Su"
       ],
-      "tldr": null,
+      "tldr": "A Contour Bougie morphology method with two structuring elements enhances underwater image contours, details, and RGB white balance.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2152,7 +2429,13 @@
       "year": 2021,
       "venue": "TPAMI",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Color-Correction",
+        "Dehazing",
+        "Benchmark",
+        "Image-Formation-Model"
+      ],
       "url": "https://ieeexplore.ieee.org/document/9020130",
       "doi": "10.1109/tpami.2020.2977624",
       "arxiv_id": null,
@@ -2164,7 +2447,7 @@
         "Shai Avidan",
         "Tali Treibitz"
       ],
-      "tldr": null,
+      "tldr": "A single underwater image color restoration method estimates blue-red and blue-green attenuation ratios, reduces the problem to dehazing, and selects the best water type by color distribution.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2176,7 +2459,10 @@
       "venue": "IMAGE",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Image-Fusion"
       ],
       "url": "https://www.sciencedirect.com/science/article/pii/S0923596521001004",
       "doi": "10.1016/j.image.2021.116250",
@@ -2189,7 +2475,7 @@
         "Huan Gao",
         "Huihui Yue"
       ],
-      "tldr": null,
+      "tldr": "UIEC^2-Net integrates RGB and HSV color spaces in a single CNN with a neural curve layer for underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2201,7 +2487,10 @@
       "venue": "SPL",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "CNN",
+        "Color-Correction",
+        "Contrast-Enhancement"
       ],
       "url": "https://ieeexplore.ieee.org/document/9496260",
       "doi": "10.1109/lsp.2021.3099746",
@@ -2215,7 +2504,7 @@
         "Wei Gao",
         "Feng Shao"
       ],
-      "tldr": null,
+      "tldr": "A two-branch deep network enhances underwater images by separately removing color cast in HS channels with a GAN and enhancing contrast in the V channel with a CNN.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2227,7 +2516,11 @@
       "venue": "TIP",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Physical-Model",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Image-Formation-Model"
       ],
       "url": "https://ieeexplore.ieee.org/document/9426457",
       "doi": "10.1109/tip.2021.3076367",
@@ -2242,7 +2535,7 @@
         "Chunle Guo",
         "Wenqi Ren"
       ],
-      "tldr": null,
+      "tldr": "Ucolor embeds multiple color spaces and uses medium transmission guidance to enhance underwater images, combining physical model and learning-based methods.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2253,7 +2546,13 @@
       "year": 2021,
       "venue": "JOE",
       "type": "Hybrid",
-      "tags": [],
+      "tags": [
+        "GAN",
+        "Domain-Adaptation",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Unsupervised"
+      ],
       "url": "https://ieeexplore.ieee.org/document/9547341",
       "doi": "10.1109/joe.2021.3104055",
       "arxiv_id": null,
@@ -2264,7 +2563,7 @@
         "Kangming Yan",
         "Xiaofeng Li"
       ],
-      "tldr": null,
+      "tldr": "A domain-adaptive adversarial transfer learning framework with physical model feedback improves underwater image enhancement generalization from synthetic to real images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2297,7 +2596,13 @@
       "year": 2021,
       "venue": "TCSVT",
       "type": "Hybrid",
-      "tags": [],
+      "tags": [
+        "Task-Driven",
+        "Physical-Model",
+        "Image-Synthesis",
+        "CNN",
+        "Domain-Adaptation"
+      ],
       "url": "https://ieeexplore.ieee.org/document/9245532",
       "doi": "10.1109/tcsvt.2020.3035108",
       "arxiv_id": null,
@@ -2313,7 +2618,7 @@
         "Junyu Dong",
         "Huiyu Zhou"
       ],
-      "tldr": null,
+      "tldr": "Two perceptual underwater image enhancement models use a detection perceptor to guide a deep enhancement network, with a hybrid physical and data-driven synthesis model for training data.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2324,7 +2629,13 @@
       "year": 2020,
       "venue": "CVPRW",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Contrast-Enhancement",
+        "Image-Fusion",
+        "Multiscale-Fusion",
+        "Low-Light-Enhancement"
+      ],
       "url": "https://openaccess.thecvf.com/content_CVPRW_2020/html/w31/Marques_L2UWE_A_Framework_for_the_Efficient_Enhancement_of_Low-Light_Underwater_CVPRW_2020_paper.html",
       "doi": "10.1109/cvprw50498.2020.00277",
       "arxiv_id": null,
@@ -2334,7 +2645,7 @@
         "Tunai Porto Marques",
         "Alexandra Branzan Albu"
       ],
-      "tldr": null,
+      "tldr": "L^2UWE enhances low-light underwater images by deriving two atmospheric lighting models from local contrast and fusing them with a multi-scale process.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2346,7 +2657,10 @@
       "venue": "IMAGE",
       "type": "DeepLearning",
       "tags": [
-        "Survey"
+        "Survey",
+        "Benchmark",
+        "Image-Formation-Model",
+        "Image-Synthesis"
       ],
       "url": "https://www.sciencedirect.com/science/article/pii/S0923596520301478",
       "doi": "10.1016/j.image.2020.115978",
@@ -2357,7 +2671,7 @@
         "Saeed Anwar",
         "Chongyi Li"
       ],
-      "tldr": null,
+      "tldr": "Surveys deep learning-based underwater image enhancement algorithms, datasets, and metrics, and benchmarks them across diverse datasets.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2392,7 +2706,11 @@
       "venue": "JOE",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Multiscale-Fusion",
+        "Color-Correction",
+        "Dehazing",
+        "CNN"
       ],
       "url": "https://ieeexplore.ieee.org/document/8730425",
       "doi": "10.1109/joe.2019.2911447",
@@ -2404,7 +2722,7 @@
         "Hanyu Li",
         "Peixian Zhuang"
       ],
-      "tldr": null,
+      "tldr": "A multiscale dense GAN with residual dense blocks and combined adversarial, L1, and gradient losses enhances underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2440,7 +2758,11 @@
       "venue": "RA-L",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Real-time",
+        "Unsupervised",
+        "Task-Driven",
+        "Benchmark"
       ],
       "url": "https://ieeexplore.ieee.org/document/9001231",
       "doi": "10.1109/lra.2020.2974710",
@@ -2452,7 +2774,7 @@
         "Youya Xia",
         "Junaed Sattar"
       ],
-      "tldr": null,
+      "tldr": "A conditional GAN with a multi-term perceptual loss enhances underwater images in real time, supported by the EUVP paired and unpaired dataset.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2464,7 +2786,9 @@
       "venue": "TCSVT",
       "type": "DeepLearning",
       "tags": [
-        "Benchmark"
+        "Benchmark",
+        "Color-Correction",
+        "Task-Driven"
       ],
       "url": "https://ieeexplore.ieee.org/document/8949763",
       "doi": "10.1109/tcsvt.2019.2963772",
@@ -2478,7 +2802,7 @@
         "Minjun Hou",
         "Zhongxuan Luo"
       ],
-      "tldr": null,
+      "tldr": "The paper builds a large-scale real-world underwater image enhancement benchmark with three subsets and evaluates algorithms for visibility, color casts, and object detection.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2490,7 +2814,8 @@
       "venue": "TIP",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Benchmark"
       ],
       "url": "https://ieeexplore.ieee.org/document/8917818",
       "doi": "10.1109/tip.2019.2955241",
@@ -2506,7 +2831,7 @@
         "Sam Kwong",
         "Dacheng Tao"
       ],
-      "tldr": null,
+      "tldr": "Introduces the UIEB benchmark of 950 real underwater images with 890 references and a baseline Water-Net CNN for underwater image enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2517,7 +2842,13 @@
       "year": 2019,
       "venue": "CVPR",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Backscatter-Removal",
+        "Color-Correction",
+        "Depth-Estimation"
+      ],
       "url": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Akkaynak_Sea-Thru_A_Method_for_Removing_Water_From_Underwater_Images_CVPR_2019_paper.pdf",
       "doi": "10.1109/cvpr.2019.00178",
       "arxiv_id": null,
@@ -2527,7 +2858,7 @@
         "Derya Akkaynak",
         "Tali Treibitz"
       ],
-      "tldr": null,
+      "tldr": "Sea-thru uses RGBD images and a revised underwater image formation model to remove water and recover color, outperforming atmospheric-model methods.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2539,7 +2870,11 @@
       "venue": "arXiv",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "CNN",
+        "Unsupervised",
+        "Image-Synthesis",
+        "Image-Formation-Model"
       ],
       "url": "https://arxiv.org/abs/1912.10269",
       "doi": null,
@@ -2553,7 +2888,7 @@
         "Haitao Zhu",
         "Yao, Jingzheng"
       ],
-      "tldr": null,
+      "tldr": "An unsupervised GAN synthesizes realistic underwater images from in-air images and depth maps, and a U-Net trained on that data restores color and removes haze.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2565,7 +2900,11 @@
       "venue": "CVPRW",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Domain-Adaptation",
+        "Unsupervised",
+        "Task-Driven",
+        "Color-Correction"
       ],
       "url": "https://openaccess.thecvf.com/content_CVPRW_2019/papers/UG2+%20Prize%20Challenge/Uplavikar_All-in-One_Underwater_Image_Enhancement_Using_Domain-Adversarial_Learning_CVPRW_2019_paper.pdf",
       "doi": null,
@@ -2577,7 +2916,7 @@
         "Zhenyu Wu",
         "Zhangyang Wang"
       ],
-      "tldr": null,
+      "tldr": "A domain-adversarial model disentangles water-type nuisances to enhance underwater images across ten Jerlov water types, improving SSIM, PSNR, and object detection.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2588,7 +2927,11 @@
       "year": 2018,
       "venue": "CVPR",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Backscatter-Removal"
+      ],
       "url": "https://openaccess.thecvf.com/content_cvpr_2018/papers/Akkaynak_A_Revised_Underwater_CVPR_2018_paper.pdf",
       "doi": "10.1109/cvpr.2018.00703",
       "arxiv_id": null,
@@ -2598,7 +2941,7 @@
         "Derya Akkaynak",
         "Tali Treibitz"
       ],
-      "tldr": null,
+      "tldr": "A revised underwater image formation model separates wavelength-dependent backscatter coefficients from direct transmission coefficients, validated with in situ experiments.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2609,7 +2952,12 @@
       "year": 2018,
       "venue": "TIP",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Color-Correction",
+        "Image-Fusion",
+        "Multiscale-Fusion",
+        "Contrast-Enhancement"
+      ],
       "url": "https://ieeexplore.ieee.org/document/8058463",
       "doi": "10.1109/tip.2017.2759252",
       "arxiv_id": null,
@@ -2621,7 +2969,7 @@
         "Christophe De Vleeschouwer",
         "Philippe Bekaert"
       ],
-      "tldr": null,
+      "tldr": "A single-image method fuses two color-compensated and white-balanced derived images with multiscale weight maps to enhance underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2633,7 +2981,9 @@
       "venue": "ICRA",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Image-Synthesis",
+        "Task-Driven"
       ],
       "url": "https://ieeexplore.ieee.org/document/8460552",
       "doi": "10.1109/icra.2018.8460552",
@@ -2645,7 +2995,7 @@
         "Jahidul Islam",
         "Junaed Sattar"
       ],
-      "tldr": null,
+      "tldr": "A GAN-based method enhances underwater images and generates training data, improving visual quality and diver tracking accuracy.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2657,7 +3007,11 @@
       "venue": "RA-L",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Unsupervised",
+        "Color-Correction",
+        "Image-Synthesis",
+        "Physical-Model"
       ],
       "url": "https://ieeexplore.ieee.org/document/7995024",
       "doi": "10.1109/lra.2017.2730363",
@@ -2670,7 +3024,7 @@
         "Ryan M. Eustice",
         "Matthew Johnson-Roberson"
       ],
-      "tldr": null,
+      "tldr": "WaterGAN generates realistic underwater images from in-air images and depth maps, enabling unsupervised color correction of monocular underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2682,7 +3036,10 @@
       "venue": "SPL",
       "type": "DeepLearning",
       "tags": [
-        "GAN"
+        "GAN",
+        "Color-Correction",
+        "Unsupervised",
+        "Domain-Adaptation"
       ],
       "url": "https://ieeexplore.ieee.org/document/8253820",
       "doi": "10.1109/lsp.2018.2792050",
@@ -2694,7 +3051,7 @@
         "Jichang Guo",
         "Chunle Guo"
       ],
-      "tldr": null,
+      "tldr": "A weakly supervised color transfer method using cycle-consistent adversarial networks with multi-term loss corrects underwater image color distortion without paired training data.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2705,7 +3062,13 @@
       "year": 2017,
       "venue": "ICCV",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Backscatter-Removal",
+        "Depth-Estimation",
+        "Image-Fusion",
+        "Image-Formation-Model"
+      ],
       "url": "https://ieeexplore.ieee.org/document/8237525",
       "doi": "10.1109/iccv.2017.263",
       "arxiv_id": null,
@@ -2719,7 +3082,7 @@
         "David Kriegman",
         "Ravi Ramamoorthi"
       ],
-      "tldr": null,
+      "tldr": "Light field imaging with a single-image restoration algorithm, transmission-based depth cue, and multi-view refocusing improves underwater image restoration and depth estimation.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2730,7 +3093,12 @@
       "year": 2017,
       "venue": "Neurocomputing",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Retinex",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Multiscale-Fusion"
+      ],
       "url": "https://www.sciencedirect.com/science/article/pii/S0925231217305246",
       "doi": "10.1016/j.neucom.2017.03.029",
       "arxiv_id": null,
@@ -2742,7 +3110,7 @@
         "Junyu Dong",
         "Hui Ling Yu"
       ],
-      "tldr": null,
+      "tldr": "LAB-MSR modifies multi-scale Retinex using bilateral and trilateral filters on CIELAB channels to enhance underwater images degraded by scattering and absorption.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2777,7 +3145,13 @@
       "year": 2017,
       "venue": "TIP",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Depth-Estimation",
+        "Color-Correction",
+        "Contrast-Enhancement"
+      ],
       "url": "https://ieeexplore.ieee.org/document/7840002",
       "doi": "10.1109/tip.2017.2663846",
       "arxiv_id": null,
@@ -2787,7 +3161,7 @@
         "Yan‐Tsung Peng",
         "Pamela C. Cosman"
       ],
-      "tldr": null,
+      "tldr": "Estimates underwater scene depth from image blurriness and light absorption for image formation model restoration, outperforming dark channel and maximum intensity priors.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2799,7 +3173,11 @@
       "venue": "ICIP",
       "type": "DeepLearning",
       "tags": [
-        "CNN"
+        "CNN",
+        "Color-Correction",
+        "Dehazing",
+        "Image-Synthesis",
+        "Physical-Model"
       ],
       "url": "https://ieeexplore.ieee.org/document/8296508",
       "doi": "10.1109/icip.2017.8296508",
@@ -2812,7 +3190,7 @@
         "Yang Hua Cao",
         "Zengfu Wang"
       ],
-      "tldr": null,
+      "tldr": "An end-to-end CNN trained jointly for color correction and haze removal with a pixel-disrupting strategy and synthetic underwater images.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2823,7 +3201,13 @@
       "year": 2016,
       "venue": "ICIP",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Dehazing",
+        "Contrast-Enhancement",
+        "Color-Correction"
+      ],
       "url": "https://ieeexplore.ieee.org/document/7532707",
       "doi": "10.1109/icip.2016.7532707",
       "arxiv_id": null,
@@ -2837,7 +3221,7 @@
         "Yanwei Pang",
         "Jian Wang"
       ],
-      "tldr": null,
+      "tldr": "Restores underwater images by estimating background light via quad-tree and graph segmentation and transmission using minimum information loss and optical properties.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2848,7 +3232,13 @@
       "year": 2016,
       "venue": "TIP",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Dehazing",
+        "Contrast-Enhancement",
+        "Physical-Model",
+        "Color-Correction",
+        "Image-Formation-Model"
+      ],
       "url": "https://ieeexplore.ieee.org/document/7574330",
       "doi": "10.1109/tip.2016.2612882",
       "arxiv_id": null,
@@ -2861,7 +3251,7 @@
         "Yanwei Pang",
         "Bo Wang"
       ],
-      "tldr": null,
+      "tldr": "A systematic underwater image enhancement method combining minimum information loss dehazing with histogram distribution prior contrast enhancement, producing natural and high-contrast outputs.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2895,7 +3285,13 @@
       "year": 2014,
       "venue": "ICIP",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Retinex",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Low-Light-Enhancement",
+        "Physical-Model"
+      ],
       "url": "https://ieeexplore.ieee.org/document/7025927",
       "doi": "10.1109/icip.2014.7025927",
       "arxiv_id": null,
@@ -2909,7 +3305,7 @@
         "Xiao-Ping Steven Zhang",
         "Xinghao Ding"
       ],
-      "tldr": null,
+      "tldr": "A retinex-based variational method decomposes single underwater images into reflectance and illumination, applying color correction and separate enhancement strategies to address distortion, under-exposure, and fuzz.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2920,7 +3316,13 @@
       "year": 2014,
       "venue": "ICRA",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Contrast-Enhancement",
+        "Depth-Estimation",
+        "Color-Correction"
+      ],
       "url": "https://ieeexplore.ieee.org/document/6907416",
       "doi": "10.1109/icra.2014.6907416",
       "arxiv_id": null,
@@ -2931,7 +3333,7 @@
         "Matthew D. Dunbabin",
         "Andreas Geiger"
       ],
-      "tldr": null,
+      "tldr": "A physical light attenuation model jointly assesses visibility, enhances contrast, and computes stereo disparity for underwater navigation in turbid water.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2942,7 +3344,12 @@
       "year": 2013,
       "venue": "ICCVW",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Dark-Channel-Prior",
+        "Dehazing"
+      ],
       "url": "https://ieeexplore.ieee.org/document/6755982",
       "doi": "10.1109/iccvw.2013.113",
       "arxiv_id": null,
@@ -2955,7 +3362,7 @@
         "Sílvia Silva da Costa Botelho",
         "Mário F. M. Campos"
       ],
-      "tldr": null,
+      "tldr": "Adapts Dark Channel Prior by using blue and green channels to estimate transmission in underwater single images, improving over DCP-based methods.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2966,7 +3373,13 @@
       "year": 2012,
       "venue": "CVPR",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Image-Fusion",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Dehazing",
+        "Physical-Model"
+      ],
       "url": "https://ieeexplore.ieee.org/document/6247661",
       "doi": "10.1109/cvpr.2012.6247661",
       "arxiv_id": null,
@@ -2978,7 +3391,7 @@
         "Tom Haber",
         "Philippe Bekaert"
       ],
-      "tldr": null,
+      "tldr": "A single-image fusion method enhances underwater images and videos by combining color-corrected and contrast-enhanced inputs with four weight maps.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -2989,7 +3402,12 @@
       "year": 2012,
       "venue": "TIP",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Image-Fusion",
+        "Backscatter-Removal",
+        "Contrast-Enhancement"
+      ],
       "url": "https://ieeexplore.ieee.org/document/6241430",
       "doi": "10.1109/tip.2012.2208978",
       "arxiv_id": null,
@@ -2999,7 +3417,7 @@
         "Tali Treibitz",
         "Yoav Y. Schechner"
       ],
-      "tldr": null,
+      "tldr": "Multi-directional illumination frames are fused to reduce backscatter and improve shadow contrast for underwater turbid scene enhancement.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -3010,7 +3428,13 @@
       "year": 2012,
       "venue": "TIP",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Dehazing",
+        "Color-Correction",
+        "Depth-Estimation",
+        "Image-Formation-Model"
+      ],
       "url": "https://ieeexplore.ieee.org/document/6104148",
       "doi": "10.1109/tip.2011.2179666",
       "arxiv_id": null,
@@ -3020,7 +3444,7 @@
         "John Y. Chiang",
         "Ying-Ching Chen"
       ],
-      "tldr": null,
+      "tldr": "A systematic underwater image enhancement method compensates wavelength attenuation and dehazes, accounting for artificial lighting via depth-based foreground-background segmentation.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -3031,7 +3455,13 @@
       "year": 2005,
       "venue": "JOE",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Polarization",
+        "Image-Formation-Model",
+        "Depth-Estimation",
+        "Contrast-Enhancement"
+      ],
       "url": "https://ieeexplore.ieee.org/document/1593804",
       "doi": "10.1109/joe.2005.850871",
       "arxiv_id": null,
@@ -3041,7 +3471,7 @@
         "Yoav Y. Schechner",
         "Nir Karpel"
       ],
-      "tldr": null,
+      "tldr": "A polarization-based computer vision method recovers underwater visibility and scene structure from images taken through a polarizer at different orientations.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
@@ -3052,7 +3482,13 @@
       "year": 2004,
       "venue": "CVPR",
       "type": "Traditional",
-      "tags": [],
+      "tags": [
+        "Physical-Model",
+        "Polarization",
+        "Image-Formation-Model",
+        "Depth-Estimation",
+        "Color-Correction"
+      ],
       "url": "https://ieeexplore.ieee.org/document/1315078",
       "doi": "10.1109/cvpr.2004.1315078",
       "arxiv_id": null,
@@ -3062,7 +3498,7 @@
         "Yoav Y. Schechner",
         "Nir Karpel"
       ],
-      "tldr": null,
+      "tldr": "A polarization-based algorithm inverts the underwater image formation process using two polarizer orientations to recover visibility and derive a distance map.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
