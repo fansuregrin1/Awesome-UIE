@@ -90,7 +90,7 @@ class Paper(BaseModel):
     code: Optional[HttpUrl] = None
     project: Optional[HttpUrl] = None
     authors: List[str] = Field(default_factory=list)
-    abstract: Optional[str] = None
+    tldr: Optional[str] = None
     status: Status = Status.VERIFIED
     added: Optional[date] = None
     notes: Optional[str] = None

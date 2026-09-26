@@ -38,7 +38,18 @@ python -m uie.cli build                    # regenerate all artifacts
 python -m uie.cli validate                 # deterministic checks
 python -m uie.cli validate --format json   # machine-readable report
 python -m uie.cli check-links              # link / repo liveness (network)
+python -m uie.cli enrich                   # suggest missing metadata (network, read-only)
 ```
+
+Run the offline tests from the repository root:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+`enrich` queries arXiv / OpenAlex / Crossref and writes reports under
+`proposals/` (gitignored). It never edits `papers.yaml`; a human applies the
+suggestions.
 
 `validate --changed-only --base origin/main` checks only entries changed versus
 the base revision.
@@ -61,7 +72,7 @@ Each entry is a list item with these fields:
 | `code`      | no       | code repository                                              |
 | `project`   | no       | project page                                                 |
 | `authors`   | no       | list                                                         |
-| `abstract`  | no       |                                                              |
+| `tldr`      | no       | one-sentence summary (filled by enrichment)                  |
 | `status`    | no       | `verified` (default) or `candidate`                          |
 | `added`     | no       | ISO date the entry was added                                 |
 | `notes`     | no       | free text                                                    |

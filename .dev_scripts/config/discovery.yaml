@@ -1,0 +1,33 @@
+# Scope and thresholds for the automated paper pipeline (see .dev_scripts/uie/enrich.py).
+#
+# Used by:  python -m uie.cli enrich   (Phase 0/1)
+# Will also be used by the future `discover` command (Phase 2).
+
+# --- enrichment ---------------------------------------------------------------
+# Contact e-mail for the OpenAlex / Crossref "polite pool" (optional but polite).
+mailto: null
+
+# Minimum title similarity (0-1) for a source match to be accepted.
+match_threshold: 0.9
+
+# A candidate this much below the threshold is reported as "ambiguous" rather
+# than "unmatched", for human review.
+ambiguous_margin: 0.15
+
+# API response cache lifetime, in seconds (default 30 days).
+cache_ttl: 2592000
+
+# --- discovery (Phase 2, not used yet) ----------------------------------------
+keywords:
+  - underwater image enhancement
+  - underwater image restoration
+  - underwater image color correction
+  - underwater image dehazing
+  - underwater image enhancement benchmark
+
+venue_allowlist: []
+sources:
+  - arxiv
+  - openalex
+  - crossref
+discover_since_days: 90

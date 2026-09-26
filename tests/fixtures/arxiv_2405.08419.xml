@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/OyPX7E6aH16BSLrEvRmB/LdXBxY</id>
+  <title>arXiv Query: search_query=&amp;id_list=2405.08419&amp;start=0&amp;max_results=1</title>
+  <updated>2026-09-26T16:22:04Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=1&amp;id_list=2405.08419" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>1</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2405.08419v1</id>
+    <title>WaterMamba: Visual State Space Model for Underwater Image Enhancement</title>
+    <updated>2024-05-14T08:26:29Z</updated>
+    <link href="https://arxiv.org/abs/2405.08419v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2405.08419v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Underwater imaging often suffers from low quality due to factors affecting light propagation and absorption in water. To improve image quality, some underwater image enhancement (UIE) methods based on convolutional neural networks (CNN) and Transformer have been proposed. However, CNN-based UIE methods are limited in modeling long-range dependencies, and Transformer-based methods involve a large number of parameters and complex self-attention mechanisms, posing efficiency challenges. Considering computational complexity and severe underwater image degradation, a state space model (SSM) with linear computational complexity for UIE, named WaterMamba, is proposed. We propose spatial-channel omnidirectional selective scan (SCOSS) blocks comprising spatial-channel coordinate omnidirectional selective scan (SCCOSS) modules and a multi-scale feedforward network (MSFFN). The SCOSS block models pixel and channel information flow, addressing dependencies. The MSFFN facilitates information flow adjustment and promotes synchronized operations within SCCOSS modules. Extensive experiments showcase WaterMamba's cutting-edge performance with reduced parameters and computational resources, outperforming state-of-the-art methods on various datasets, validating its effectiveness and generalizability. The code will be released on GitHub after acceptance.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-05-14T08:26:29Z</published>
+    <arxiv:comment>arXiv admin note: substantial text overlap with arXiv:2403.06098</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Meisheng Guan</name>
+    </author>
+    <author>
+      <name>Haiyong Xu</name>
+    </author>
+    <author>
+      <name>Gangyi Jiang</name>
+    </author>
+    <author>
+      <name>Mei Yu</name>
+    </author>
+    <author>
+      <name>Yeyao Chen</name>
+    </author>
+    <author>
+      <name>Ting Luo</name>
+    </author>
+    <author>
+      <name>Yang Song</name>
+    </author>
+  </entry>
+</feed>
