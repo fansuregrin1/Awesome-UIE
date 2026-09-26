@@ -124,8 +124,13 @@ def suggest_classification(record: SourceRecord) -> Tuple[str, List[str]]:
         if tag not in tags and any(needle in text for needle in needles):
             tags.append(tag)
 
-    learning = any(word in text for word in ("network", "learning", "neural", "cnn", "gan", "transformer", "diffusion", "mamba", "deep"))
-    physical = any(word in text for word in ("physical model", "formation model", "physics", "attenuation", "scattering"))
+    learning_words = (
+        "network", "learning", "neural", "cnn", "gan",
+        "transformer", "diffusion", "mamba", "deep",
+    )
+    physical_words = ("physical model", "formation model", "physics", "attenuation", "scattering")
+    learning = any(word in text for word in learning_words)
+    physical = any(word in text for word in physical_words)
     classical = any(word in text for word in ("retinex", "histogram", "fusion", "dark channel", "prior"))
 
     if learning and physical:

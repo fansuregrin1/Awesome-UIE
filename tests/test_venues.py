@@ -71,6 +71,17 @@ class RegistryTest(unittest.TestCase):
         self.assertEqual(self.reg.resolve("Optics & Laser Technology"), (None, ""))
         self.assertFalse(self.reg.known("Optics & Laser Technology"))
 
+    def test_resolve_empty(self):
+        self.assertEqual(self.reg.resolve(None, None), (None, ""))
+        self.assertEqual(self.reg.resolve("", ""), (None, ""))
+
+
+class EmptyRegistryTest(unittest.TestCase):
+    def test_empty_registry(self):
+        registry = VenueRegistry([])
+        self.assertEqual(registry.resolve("TIP"), (None, ""))
+        self.assertFalse(registry.known("TIP"))
+
 
 class DiscoverVenueTest(unittest.TestCase):
     CONFIG = {"keywords": ["underwater image enhancement"], "discover_since_days": 90}

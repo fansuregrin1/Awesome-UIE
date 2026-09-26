@@ -77,6 +77,9 @@ class RelevanceTest(unittest.TestCase):
         self.assertTrue(ok)
         self.assertGreater(score, 0)
 
+    def test_empty_tokens(self):
+        self.assertEqual(relevance(SourceRecord(source="x", title="Underwater Image"), set()), 0.0)
+
 
 class ClassificationTest(unittest.TestCase):
     def test_diffusion(self):
@@ -142,6 +145,13 @@ class MatchTest(unittest.TestCase):
         )
         self.assertEqual(status, "new")
 
+    def test_no_titles_is_new(self):
+        status, matched = match_status(
+            SourceRecord(source="x", title="Underwater Image Enhancement"), set(), set(), []
+        )
+        self.assertEqual(status, "new")
+        self.assertIsNone(matched)
+
 
 class DiscoverTest(unittest.TestCase):
     def test_end_to_end(self):
@@ -162,8 +172,20 @@ class DiscoverTest(unittest.TestCase):
                 year=2026,
                 date="2026-08-02",
             ),
-            SourceRecord(source="crossref", title="A Novel Image Enhancement Method", doi="10.1234/off", year=2026, date="2026-08-03"),
-            SourceRecord(source="openalex", title="Underwater Image Enhancement Old", doi="10.1234/old", year=2000, date="2000-01-01"),
+            SourceRecord(
+                source="crossref",
+                title="A Novel Image Enhancement Method",
+                doi="10.1234/off",
+                year=2026,
+                date="2026-08-03",
+            ),
+            SourceRecord(
+                source="openalex",
+                title="Underwater Image Enhancement Old",
+                doi="10.1234/old",
+                year=2000,
+                date="2000-01-01",
+            ),
         ]
         config = {"keywords": ["underwater image enhancement"], "discover_since_days": 90}
         result = discover(
@@ -178,6 +200,15 @@ class DiscoverTest(unittest.TestCase):
         self.assertEqual(summary["similar"], 1)
         self.assertEqual(summary["found"], 3)
         self.assertEqual(result.new[0].record.doi, "10.1234/new")
+
+    def test_empty_keywords(self):
+        result = discover(
+            [],
+            {"keywords": [], "discover_since_days": 90},
+            sources=[FakeSource([])],
+            today=date(2026, 9, 27),
+        )
+        self.assertEqual(result.summary()["found"], 0)
 
 
 if __name__ == "__main__":

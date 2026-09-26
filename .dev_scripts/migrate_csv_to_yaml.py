@@ -52,8 +52,10 @@ DROP: set[tuple[str, str]] = {
 # ICAD-UIE and "Multicolor Attribute Information Fusion" shared document/11296899.
 # The latter owns 11296899; ICAD-UIE is document/11313551.
 URL_FIX: Dict[str, str] = {
-    "ICAD-UIE: Naturalness-Ensuring Underwater Image Enhancement With Interchannel Attenuation Difference-Based Dewatering Model":
-        "https://ieeexplore.ieee.org/document/11313551/",
+    (
+        "ICAD-UIE: Naturalness-Ensuring Underwater Image Enhancement With "
+        "Interchannel Attenuation Difference-Based Dewatering Model"
+    ): "https://ieeexplore.ieee.org/document/11313551/",
 }
 # Mojibake in the original CSV.
 TITLE_FIX: Dict[str, str] = {

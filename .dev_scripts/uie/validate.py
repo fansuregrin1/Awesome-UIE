@@ -109,7 +109,9 @@ def validate_papers(
             issues.append(Issue("warning", "duplicate-tag", f"tag appears more than once: '{tag}'", paper.id))
         for tag in paper.tags:
             if tag not in KNOWN_TAGS:
-                issues.append(Issue("warning", "unknown-tag", f"tag '{tag}' is not in the controlled vocabulary", paper.id))
+                issues.append(
+                    Issue("warning", "unknown-tag", f"tag '{tag}' is not in the controlled vocabulary", paper.id)
+                )
 
     # duplicate code / project links
     for attribute in ("code", "project"):

@@ -16,23 +16,29 @@ from typing import List
 
 from .schema import Paper, PaperType
 
-HEAD = """<!-- AUTO-GENERATED FILE - DO NOT EDIT.
-     Edit .dev_scripts/papers.yaml instead, then run from .dev_scripts:
-         python -m uie.cli build
--->
-
-# Awesome Underwater Image Enhancement (UIE) Methods
-
-A curated list of Underwater Image Enhancement (UIE) papers and resources, inspired by [Awesome-Inpainting-Tech](https://github.com/zengyh1900/Awesome-Image-Inpainting).
-
-This `README.md` is automatically generated from [`.dev_scripts/papers.yaml`](.dev_scripts/papers.yaml).
-
-We provide [scripts](.dev_scripts/uie) to generate `README.md` (plus `collection.csv`, `papers.json`, `papers.bib` and `llms.txt`) from the YAML data file.
-
-🌐 **Browse online:** <https://fansuregrin1.github.io/Awesome-UIE/>
-
-Welcome to pull request to update or correct this collection. 🥰
-"""
+HEAD = (
+    "<!-- AUTO-GENERATED FILE - DO NOT EDIT.\n"
+    "     Edit .dev_scripts/papers.yaml instead, then run from .dev_scripts:\n"
+    "         python -m uie.cli build\n"
+    "-->\n"
+    "\n"
+    "# Awesome Underwater Image Enhancement (UIE) Methods\n"
+    "\n"
+    "A curated list of Underwater Image Enhancement (UIE) papers and resources, "
+    "inspired by [Awesome-Inpainting-Tech]"
+    "(https://github.com/zengyh1900/Awesome-Image-Inpainting).\n"
+    "\n"
+    "This `README.md` is automatically generated from "
+    "[`.dev_scripts/papers.yaml`](.dev_scripts/papers.yaml).\n"
+    "\n"
+    "We provide [scripts](.dev_scripts/uie) to generate `README.md` "
+    "(plus `collection.csv`, `papers.json`, `papers.bib` and `llms.txt`) "
+    "from the YAML data file.\n"
+    "\n"
+    "🌐 **Browse online:** <https://fansuregrin1.github.io/Awesome-UIE/>\n"
+    "\n"
+    "Welcome to pull request to update or correct this collection. 🥰\n"
+)
 
 # Venues treated as conferences in the BibTeX export; everything else is a journal.
 CONFERENCE_VENUES = {
