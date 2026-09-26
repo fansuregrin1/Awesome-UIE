@@ -19,14 +19,18 @@ from typing import Any, Dict, List
 
 import yaml
 
-from . import links, render, validate
+from . import enrich as enrich_module
+from . import links, proposals, render, validate
 from .schema import Paper, load_papers
+from .sources.http import DEFAULT_TTL, HttpClient
 
 ROOT = Path(__file__).resolve().parents[2]          # repository root
 PAPERS_REL = ".dev_scripts/papers.yaml"
 PAPERS_YAML = ROOT / PAPERS_REL
 ALLOWLIST_YAML = ROOT / ".dev_scripts" / "validation-allowlist.yaml"
 LINK_CACHE = ROOT / ".dev_scripts" / ".link-cache.json"
+CONFIG_YAML = ROOT / ".dev_scripts" / "config" / "discovery.yaml"
+CACHE_DIR = ROOT / ".dev_scripts" / ".cache"
 
 
 def _load_allowlist() -> Dict[str, Any]:
@@ -130,6 +134,46 @@ def cmd_check_links(args: argparse.Namespace) -> int:
     return 1 if any(issue.level == "error" for issue in all_issues) else 0
 
 
+def _load_config() -> Dict[str, Any]:
+    if not CONFIG_YAML.exists():
+        return {}
+    return yaml.safe_load(CONFIG_YAML.read_text(encoding="utf-8")) or {}
+
+
+def cmd_enrich(args: argparse.Namespace) -> int:
+    config = _load_config()
+    papers = load_papers(PAPERS_YAML)
+
+    if args.ids:
+        wanted = {value.strip() for value in args.ids.split(",") if value.strip()}
+        papers = [paper for paper in papers if paper.id in wanted]
+    if args.limit:
+        papers = papers[: args.limit]
+
+    mailto = args.mailto or config.get("mailto")
+    threshold = args.threshold if args.threshold is not None else float(config.get("match_threshold", 0.9))
+    ambiguous_margin = float(config.get("ambiguous_margin", 0.15))
+    ttl = 0 if args.refresh else (args.ttl or int(config.get("cache_ttl", DEFAULT_TTL)))
+
+    client = HttpClient(cache_dir=CACHE_DIR, ttl=ttl, mailto=mailto)
+    result = enrich_module.enrich_papers(
+        papers, client, threshold=threshold, ambiguous_margin=ambiguous_margin
+    )
+
+    titles = {paper.id: paper.title for paper in papers}
+    md_path, json_path = proposals.write(result, titles, args.report, args.json)
+
+    summary = result.summary()
+    print(
+        f"enriched {summary['total']} papers: matched {summary['matched']}, "
+        f"ambiguous {summary['ambiguous']}, unmatched {summary['unmatched']}, "
+        f"suggestions {summary['suggestions']}"
+    )
+    print(f"wrote {md_path}")
+    print(f"wrote {json_path}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="uie.cli", description="Awesome-UIE tooling")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -151,6 +195,17 @@ def build_parser() -> argparse.ArgumentParser:
     link.add_argument("--skip-repos", action="store_true", help="skip GitHub repository checks")
     link.add_argument("--no-fail", action="store_true", help="report issues but always exit 0")
     link.set_defaults(func=cmd_check_links)
+
+    enrich = sub.add_parser("enrich", help="suggest metadata updates from arXiv/OpenAlex/Crossref")
+    enrich.add_argument("--report", default=str(ROOT / "proposals" / "enrich.md"), help="Markdown report path")
+    enrich.add_argument("--json", default=str(ROOT / "proposals" / "enrich.json"), help="JSON report path")
+    enrich.add_argument("--ids", help="comma-separated paper ids to limit the run")
+    enrich.add_argument("--limit", type=int, help="only process the first N papers")
+    enrich.add_argument("--threshold", type=float, help="override match_threshold from config")
+    enrich.add_argument("--mailto", help="contact e-mail for the API polite pools")
+    enrich.add_argument("--ttl", type=int, help="cache TTL in seconds (0 = refetch)")
+    enrich.add_argument("--refresh", action="store_true", help="bypass the response cache")
+    enrich.set_defaults(func=cmd_enrich)
 
     return parser
 
