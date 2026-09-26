@@ -7,6 +7,7 @@
   "use strict";
 
   var DATA_URL = "data/papers.json";
+  var THEME_KEY = "uie-theme";
   var TYPE_ORDER = { Traditional: 0, DeepLearning: 1, Hybrid: 2 };
 
   var state = {
@@ -226,6 +227,46 @@
     el("result-count").textContent = "";
   }
 
+  function setupTheme() {
+    var button = el("theme-toggle");
+    var media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+    function storedTheme() {
+      try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
+    }
+
+    function apply(theme, persist) {
+      document.documentElement.setAttribute("data-theme", theme);
+      if (persist) {
+        try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+      }
+      if (button) {
+        var dark = theme === "dark";
+        button.textContent = dark ? "\u2600\uFE0F" : "\uD83C\uDF19";
+        button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+        button.title = dark ? "Switch to light mode" : "Switch to dark mode";
+      }
+    }
+
+    apply(document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light", false);
+
+    if (button) {
+      button.addEventListener("click", function () {
+        var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        apply(next, true);
+      });
+    }
+
+    // Keep following the system preference until the user makes a choice.
+    if (media) {
+      var onSystemChange = function (event) {
+        if (!storedTheme()) apply(event.matches ? "dark" : "light", false);
+      };
+      if (media.addEventListener) media.addEventListener("change", onSystemChange);
+      else if (media.addListener) media.addListener(onSystemChange);
+    }
+  }
+
   function init() {
     fetch(DATA_URL, { cache: "no-cache" })
       .then(function (response) {
@@ -244,5 +285,8 @@
       });
   }
 
-  document.addEventListener("DOMContentLoaded", init);
+  document.addEventListener("DOMContentLoaded", function () {
+    setupTheme();
+    init();
+  });
 })();

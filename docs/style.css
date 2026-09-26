@@ -6,8 +6,27 @@
   --border: #dde5ee;
   --accent: #0b6bcb;
   --accent-soft: #e8f1fc;
+  --input-bg: #ffffff;
+  --badge-venue-bg: #eef2f7;
+  --badge-venue-fg: #37475a;
   --shadow: 0 1px 2px rgba(16, 32, 56, 0.06), 0 4px 14px rgba(16, 32, 56, 0.06);
   --radius: 10px;
+}
+
+/* Dark theme is applied via [data-theme="dark"] on <html>. The initial value is
+   set by an inline script in index.html (localStorage or the system setting). */
+:root[data-theme="dark"] {
+  --bg: #0f141a;
+  --surface: #161d26;
+  --text: #e7eef6;
+  --muted: #97a6b6;
+  --border: #26313d;
+  --accent: #64a8f0;
+  --accent-soft: #1c2b3d;
+  --input-bg: #101820;
+  --badge-venue-bg: #222d3a;
+  --badge-venue-fg: #c3d0de;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 * { box-sizing: border-box; }
@@ -48,8 +67,26 @@ main,
   font-size: 0.85em;
 }
 
-.site-links { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 8px; }
+.site-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-bottom: 8px; }
 .site-links a { font-weight: 600; }
+
+.theme-toggle {
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.theme-toggle:hover { background: var(--accent-soft); }
 
 .controls {
   display: flex;
@@ -82,7 +119,7 @@ select {
   padding: 0 10px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: #fff;
+  background: var(--input-bg);
   color: var(--text);
   font-size: 0.92rem;
 }
@@ -148,7 +185,7 @@ select:focus {
   letter-spacing: 0.02em;
 }
 
-.badge.venue { background: #eef2f7; color: #37475a; }
+.badge.venue { background: var(--badge-venue-bg); color: var(--badge-venue-fg); }
 
 .badge.type { color: #fff; }
 .type-Traditional { background: #7a6a56; }
@@ -183,19 +220,4 @@ select:focus {
   color: var(--muted);
   font-size: 0.85rem;
   text-align: center;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f141a;
-    --surface: #161d26;
-    --text: #e7eef6;
-    --muted: #97a6b6;
-    --border: #26313d;
-    --accent: #64a8f0;
-    --accent-soft: #1c2b3d;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  }
-  .badge.venue { background: #222d3a; color: #c3d0de; }
-  input[type="search"], select { background: #101820; color: var(--text); }
 }

@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Awesome Underwater Image Enhancement (UIE)</title>
   <meta name="description" content="A searchable list of underwater image enhancement (UIE) papers and resources.">
+  <script>
+    // Apply the saved theme before first paint to avoid a flash of the wrong theme.
+    (function () {
+      try {
+        var stored = localStorage.getItem("uie-theme");
+        var dark = stored
+          ? stored === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,6 +31,7 @@
       <a href="https://github.com/fansuregrin1/Awesome-UIE#readme" target="_blank" rel="noopener">README</a>
       <a href="https://github.com/fansuregrin1/Awesome-UIE/blob/main/papers.bib" target="_blank" rel="noopener">BibTeX</a>
       <a href="https://github.com/fansuregrin1/Awesome-UIE/blob/main/papers.json" target="_blank" rel="noopener">JSON</a>
+      <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">&#127769;</button>
     </nav>
   </header>
 
