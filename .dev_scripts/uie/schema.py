@@ -70,6 +70,16 @@ KNOWN_TAGS: List[str] = [
     "Domain-Adaptation",
     "Polarization",
     "Foundation-Model",
+    # themes (added after reviewing LLM-proposed tags)
+    "Image-Fusion",
+    "Multiscale-Fusion",
+    "Depth-Estimation",
+    "Retinex",
+    "Image-Formation-Model",
+    "Backscatter-Removal",
+    "Dark-Channel-Prior",
+    "Image-Synthesis",
+    "Low-Light-Enhancement",
 ]
 
 
