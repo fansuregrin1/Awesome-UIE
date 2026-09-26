@@ -262,11 +262,18 @@ def render_llm_markdown(result: LlmResult, titles: Dict[str, str]) -> str:
         lines.append("_none_")
         lines.append("")
     for suggestion in result.suggestions:
+        current = suggestion.current_tags
+        added = [tag for tag in suggestion.tags if tag not in current]
+        removed = [tag for tag in current if tag not in suggestion.tags]
         lines.append(f"### `{suggestion.paper_id}`")
         lines.append(f"_{titles.get(suggestion.paper_id, '')}_")
         lines.append("")
         lines.append(f"- type: {suggestion.type or '—'}")
-        lines.append(f"- tags: {', '.join(suggestion.tags) if suggestion.tags else '—'}")
+        lines.append(f"- current tags: {', '.join(current) if current else '—'}")
+        lines.append(f"- suggested tags: {', '.join(suggestion.tags) if suggestion.tags else '—'}")
+        if added or removed:
+            changes = [f"+{tag}" for tag in added] + [f"-{tag}" for tag in removed]
+            lines.append(f"- changes: {' '.join(changes)}")
         if suggestion.new_tags:
             lines.append(f"- new tag candidates: {', '.join(suggestion.new_tags)}")
         lines.append("")

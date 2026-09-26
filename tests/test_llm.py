@@ -100,6 +100,11 @@ class PromptTest(unittest.TestCase):
         self.assertIn("Diffusion", user)
         self.assertIn("Traditional", user)
 
+    def test_includes_current_tags(self):
+        paper = make_paper(tags=["CNN"])
+        _, user = build_prompt(paper, "abstract", current_tags=paper.tags)
+        self.assertIn("Current tags: CNN", user)
+
 
 class SummarizeTest(unittest.TestCase):
     RESPONSE = {
@@ -143,6 +148,49 @@ class SummarizeTest(unittest.TestCase):
 class ApplyTest(unittest.TestCase):
     def test_apply_empty(self):
         self.assertEqual(apply_llm_suggestions([make_paper()], []), [])
+
+    def test_replace_tags(self):
+        paper = make_paper(tags=["CNN"])
+        suggestion = LlmSuggestion(
+            paper_id=paper.id,
+            tldr=None,
+            type="DeepLearning",
+            tags=["Diffusion", "Transformer"],
+            new_tags=[],
+            model="m",
+            current_tags=["CNN"],
+        )
+        applied = apply_llm_suggestions([paper], [suggestion], fields=("tags",), tag_mode="replace")
+        self.assertEqual(paper.tags, ["Diffusion", "Transformer"])
+        self.assertEqual([entry[1] for entry in applied], ["tags"])
+
+    def test_merge_tags_keeps_existing(self):
+        paper = make_paper(tags=["GAN"])
+        suggestion = LlmSuggestion(
+            paper_id=paper.id,
+            tldr=None,
+            type="DeepLearning",
+            tags=["Domain-Adaptation", "Unsupervised"],
+            new_tags=[],
+            model="m",
+            current_tags=["GAN"],
+        )
+        apply_llm_suggestions([paper], [suggestion], fields=("tags",), tag_mode="merge")
+        self.assertEqual(paper.tags, ["GAN", "Domain-Adaptation", "Unsupervised"])
+
+    def test_fill_only_keeps_existing_tags(self):
+        paper = make_paper(tags=["CNN"])
+        suggestion = LlmSuggestion(
+            paper_id=paper.id,
+            tldr=None,
+            type=None,
+            tags=["Diffusion"],
+            new_tags=[],
+            model="m",
+            current_tags=["CNN"],
+        )
+        self.assertEqual(apply_llm_suggestions([paper], [suggestion], fields=("tags",)), [])
+        self.assertEqual(paper.tags, ["CNN"])
 
     def test_fill_only(self):
         paper = make_paper(tldr="keep")

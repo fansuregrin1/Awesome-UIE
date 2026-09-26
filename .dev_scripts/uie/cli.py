@@ -306,7 +306,9 @@ def cmd_llm(args: argparse.Namespace) -> int:
 
     if args.apply:
         fields = [field.strip() for field in args.fields.split(",") if field.strip()]
-        applied = llm_module.apply_llm_suggestions(papers, result.suggestions, fields=fields)
+        applied = llm_module.apply_llm_suggestions(
+            papers, result.suggestions, fields=fields, tag_mode=args.tag_mode
+        )
         if applied:
             dump_papers(PAPERS_YAML, papers)
             render.write_all(ROOT, papers)
@@ -383,8 +385,14 @@ def build_parser() -> argparse.ArgumentParser:
     llm.add_argument("--base-url", help="override the OpenAI-compatible base URL")
     llm.add_argument("--api-key-env", help="override the API-key environment variable name")
     llm.add_argument("--all", action="store_true", help="include papers that already have a tldr")
-    llm.add_argument("--apply", action="store_true", help="write fill-only tldr/tags to papers.yaml")
+    llm.add_argument("--apply", action="store_true", help="write tldr/tags to papers.yaml")
     llm.add_argument("--fields", default="tldr", help="comma-separated fields to apply (default: tldr)")
+    llm.add_argument(
+        "--tag-mode",
+        choices=["fill", "merge", "replace"],
+        default="fill",
+        help="how to apply tags: fill (only when empty), merge (union), replace (reviewed set)",
+    )
     llm.add_argument("--refresh-abstracts", action="store_true", help="bypass the source response cache")
     llm.set_defaults(func=cmd_llm)
 
