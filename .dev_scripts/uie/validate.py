@@ -59,7 +59,11 @@ def load_and_collect(path: Path | str) -> Tuple[List[Paper], List[Issue]]:
     return papers, issues
 
 
-def validate_papers(papers: Sequence[Paper], allowlist: Optional[Dict[str, Any]] = None) -> List[Issue]:
+def validate_papers(
+    papers: Sequence[Paper],
+    allowlist: Optional[Dict[str, Any]] = None,
+    registry: Optional[object] = None,
+) -> List[Issue]:
     allowlist = allowlist or {}
     allowed_urls = set(allowlist.get("duplicate_urls") or [])
     issues: List[Issue] = []
@@ -118,6 +122,14 @@ def validate_papers(papers: Sequence[Paper], allowlist: Optional[Dict[str, Any]]
             if len(group) > 1:
                 ids = ", ".join(paper.id for paper in group)
                 issues.append(Issue("warning", f"duplicate-{attribute}", f"{attribute} link shared by: {ids}", link))
+
+    # venues not present in the registry (curation signal)
+    if registry is not None:
+        for paper in papers:
+            if not registry.known(paper.venue):
+                issues.append(
+                    Issue("warning", "unknown-venue", f"venue '{paper.venue}' is not in venues.yaml", paper.id)
+                )
 
     # basic title sanity
     for paper in papers:

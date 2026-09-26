@@ -36,12 +36,16 @@ def parse_work(work: Dict[str, Any]) -> SourceRecord:
         for authorship in work.get("authorships", []) or []
     ]
     source = (work.get("primary_location") or {}).get("source") or {}
+    issns = source.get("issn") or []
+    issn = source.get("issn_l") or (issns[0] if issns else None)
     return SourceRecord(
         source="openalex",
         title=work.get("display_name"),
         year=work.get("publication_year"),
         date=work.get("publication_date"),
         venue=source.get("display_name"),
+        venue_short=source.get("abbreviated_title"),
+        issn=issn,
         doi=_strip_doi(work.get("doi")),
         authors=[name for name in authors if name],
         abstract=_abstract_from_inverted(work.get("abstract_inverted_index")),

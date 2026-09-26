@@ -45,12 +45,16 @@ def parse_work(message: Dict[str, Any]) -> SourceRecord:
     doi = _text(message.get("DOI"))
     titles = message.get("title") or []
     container = message.get("container-title") or []
+    issns = message.get("ISSN") or []
+    short_titles = message.get("short-container-title") or []
     return SourceRecord(
         source="crossref",
         title=_text(titles[0]) if titles else None,
         year=_extract_year(message),
         date=_extract_date(message),
         venue=_text(container[0]) if container else None,
+        venue_short=_text(short_titles[0]) if short_titles else None,
+        issn=_text(issns[0]) if issns else None,
         doi=doi,
         authors=authors,
         url=f"https://doi.org/{doi}" if doi else None,
