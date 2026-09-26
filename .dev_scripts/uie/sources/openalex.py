@@ -40,6 +40,7 @@ def parse_work(work: Dict[str, Any]) -> SourceRecord:
         source="openalex",
         title=work.get("display_name"),
         year=work.get("publication_year"),
+        date=work.get("publication_date"),
         venue=source.get("display_name"),
         doi=_strip_doi(work.get("doi")),
         authors=[name for name in authors if name],
@@ -71,6 +72,15 @@ class OpenAlexSource:
         if not title:
             return []
         params: Dict[str, Any] = {"search": title, "per_page": 5}
+        if self.client.mailto:
+            params["mailto"] = self.client.mailto
+        data = self.client.get_json(API, params=params, min_interval=MIN_INTERVAL)
+        return [parse_work(work) for work in data.get("results", []) or []]
+
+    def search(self, query: str, since: Optional[str] = None, limit: int = 25) -> List[SourceRecord]:
+        params: Dict[str, Any] = {"search": query, "per_page": limit, "sort": "publication_date:desc"}
+        if since:
+            params["filter"] = f"from_publication_date:{since}"
         if self.client.mailto:
             params["mailto"] = self.client.mailto
         data = self.client.get_json(API, params=params, min_interval=MIN_INTERVAL)

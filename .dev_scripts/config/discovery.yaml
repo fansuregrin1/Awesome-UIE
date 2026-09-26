@@ -17,7 +17,7 @@ ambiguous_margin: 0.15
 # API response cache lifetime, in seconds (default 30 days).
 cache_ttl: 2592000
 
-# --- discovery (Phase 2, not used yet) ----------------------------------------
+# --- discovery (used by `python -m uie.cli discover`) --------------------------
 keywords:
   - underwater image enhancement
   - underwater image restoration

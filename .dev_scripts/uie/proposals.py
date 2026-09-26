@@ -8,9 +8,13 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict
+from datetime import date
 from pathlib import Path
 from typing import Dict
 
+import yaml
+
+from .discover import Candidate, DiscoverResult
 from .enrich import EnrichResult
 
 
@@ -111,4 +115,118 @@ def write(result: EnrichResult, titles: Dict[str, str], md_path, json_path) -> t
     json_path.parent.mkdir(parents=True, exist_ok=True)
     md_path.write_text(render_markdown(result, titles), encoding="utf-8")
     json_path.write_text(render_json(result), encoding="utf-8")
+    return md_path, json_path
+
+
+def _candidate_dict(candidate: Candidate) -> Dict:
+    record = candidate.record
+    venue = record.venue or ("arXiv" if record.source == "arxiv" else record.source)
+    return {
+        "id": candidate.suggested_id,
+        "title": record.title,
+        "year": record.year,
+        "venue": venue,
+        "type": candidate.suggested_type,
+        "tags": candidate.suggested_tags,
+        "url": record.url,
+        "doi": record.doi,
+        "arxiv_id": record.arxiv_id,
+        "code": None,
+        "project": None,
+        "authors": record.authors,
+        "tldr": None,
+        "status": "candidate",
+        "added": date.today().isoformat(),
+        "notes": None,
+    }
+
+
+def _candidate_yaml(candidate: Candidate) -> str:
+    return yaml.safe_dump(
+        [_candidate_dict(candidate)], sort_keys=False, allow_unicode=True, width=4096
+    ).rstrip()
+
+
+def render_discover_markdown(result: DiscoverResult) -> str:
+    summary = result.summary()
+    lines = ["# Discovery report", ""]
+    lines.append(
+        f"window: since {result.since} · queries {len(result.queries)} · found {summary['found']}"
+    )
+    lines.append(
+        f"new {summary['new']} · similar {summary['similar']} · already in collection {summary['existing']}"
+    )
+    lines.append("")
+
+    lines.append("## Queries")
+    for query in result.queries:
+        lines.append(f"- {query}")
+    lines.append("")
+
+    lines.append("## New candidates")
+    lines.append("")
+    if not result.new:
+        lines.append("_none_")
+        lines.append("")
+    for candidate in result.new:
+        record = candidate.record
+        lines.append(f"### {record.title}")
+        lines.append(
+            f"- year {record.year} · venue {record.venue or '—'} · source {record.source} · "
+            f"relevance {candidate.relevance:.2f}"
+        )
+        if record.date:
+            lines.append(f"- published {record.date}")
+        if record.authors:
+            shown = ", ".join(record.authors[:8])
+            if len(record.authors) > 8:
+                shown += " et al."
+            lines.append(f"- authors: {shown}")
+        if record.doi:
+            lines.append(f"- doi: {record.doi}")
+        if record.arxiv_id:
+            lines.append(f"- arxiv: {record.arxiv_id}")
+        if record.url:
+            lines.append(f"- url: {record.url}")
+        tags = ", ".join(candidate.suggested_tags) if candidate.suggested_tags else "—"
+        lines.append(f"- suggested: type={candidate.suggested_type} · tags={tags}")
+        lines.append("")
+        lines.append("```yaml")
+        lines.append(_candidate_yaml(candidate))
+        lines.append("```")
+        lines.append("")
+
+    lines.append("## Similar (possible duplicates or updates)")
+    lines.append("")
+    if result.similar:
+        for candidate in result.similar:
+            lines.append(
+                f"- `{candidate.matched_id}` ← {candidate.record.title} "
+                f"(relevance {candidate.relevance:.2f}, {candidate.record.source})"
+            )
+    else:
+        lines.append("_none_")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def render_discover_json(result: DiscoverResult) -> str:
+    payload = {
+        "since": result.since,
+        "queries": result.queries,
+        "summary": result.summary(),
+        "new": [asdict(candidate) for candidate in result.new],
+        "similar": [asdict(candidate) for candidate in result.similar],
+        "existing": [asdict(candidate) for candidate in result.existing],
+    }
+    return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+
+
+def write_discover(result: DiscoverResult, md_path, json_path) -> tuple[Path, Path]:
+    md_path = Path(md_path)
+    json_path = Path(json_path)
+    md_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    md_path.write_text(render_discover_markdown(result), encoding="utf-8")
+    json_path.write_text(render_discover_json(result), encoding="utf-8")
     return md_path, json_path
