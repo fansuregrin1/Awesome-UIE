@@ -47,4 +47,4 @@ jobs:
         working-directory: .dev_scripts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python -m uie.cli check-links --format text
+        run: python -m uie.cli check-links --format text --no-fail

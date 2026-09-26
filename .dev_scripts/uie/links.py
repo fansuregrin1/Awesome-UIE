@@ -116,7 +116,9 @@ async def check_github_repos(
         headers["Authorization"] = f"Bearer {token}"
     limits = httpx.Limits(max_connections=concurrency, max_keepalive_connections=concurrency)
     out: Dict[str, Dict[str, Any]] = {}
-    async with httpx.AsyncClient(timeout=timeout, headers=headers, limits=limits) as client:
+    async with httpx.AsyncClient(
+        timeout=timeout, headers=headers, limits=limits, follow_redirects=True
+    ) as client:
         semaphore = asyncio.Semaphore(concurrency)
 
         async def worker(repo: str):
@@ -131,6 +133,9 @@ async def check_github_repos(
                             "stars": data.get("stargazers_count"),
                             "pushed_at": data.get("pushed_at"),
                         }
+                    # 301/302 mean the repository was renamed or moved, not deleted.
+                    if response.status_code in (301, 302, 307, 308):
+                        return repo, {"ok": True, "moved": True, "status": response.status_code}
                     return repo, {"ok": False, "status": response.status_code}
                 except Exception as exc:  # noqa: BLE001
                     return repo, {"ok": None, "error": f"{type(exc).__name__}: {str(exc)[:120]}"}

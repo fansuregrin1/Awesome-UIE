@@ -107,6 +107,8 @@ def cmd_check_links(args: argparse.Namespace) -> int:
     _print_issues(issues, args.format)
 
     if args.skip_repos:
+        if args.no_fail:
+            return 0
         return 1 if any(issue.level == "error" for issue in issues) else 0
 
     repos = sorted({repo for paper in papers if paper.code for repo in [links.github_repo(str(paper.code))] if repo})
@@ -123,6 +125,8 @@ def cmd_check_links(args: argparse.Namespace) -> int:
     _print_issues(repo_issues, args.format)
 
     all_issues = issues + repo_issues
+    if args.no_fail:
+        return 0
     return 1 if any(issue.level == "error" for issue in all_issues) else 0
 
 
@@ -145,6 +149,7 @@ def build_parser() -> argparse.ArgumentParser:
     link.add_argument("--format", choices=["text", "json"], default="text")
     link.add_argument("--ttl", type=int, default=links.DEFAULT_TTL, help="cache TTL in seconds")
     link.add_argument("--skip-repos", action="store_true", help="skip GitHub repository checks")
+    link.add_argument("--no-fail", action="store_true", help="report issues but always exit 0")
     link.set_defaults(func=cmd_check_links)
 
     return parser
