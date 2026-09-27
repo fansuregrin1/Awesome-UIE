@@ -30,7 +30,7 @@ This list is **data-driven**: a single YAML file ([`.dev_scripts/papers.yaml`](.
 | --- | --- |
 | Papers | 152 |
 | Year range | 2004–2026 |
-| With code | 73 |
+| With code | 89 |
 | With DOI | 145 |
 | Traditional | 37 |
 | Deep learning | 97 |
