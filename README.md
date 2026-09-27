@@ -5,7 +5,7 @@
 
 # Awesome Underwater Image Enhancement (UIE)
 
-> A curated, machine-readable collection of **underwater image enhancement** papers — 124 entries spanning 2004–2026, with venues, authors, DOIs, code links, controlled tags and one-sentence summaries.
+> A curated, machine-readable collection of **underwater image enhancement** papers — 152 entries spanning 2004–2026, with venues, authors, DOIs, code links, controlled tags and one-sentence summaries.
 
 This list is **data-driven**: a single YAML file ([`.dev_scripts/papers.yaml`](.dev_scripts/papers.yaml)) is the source of truth, and the paper list, exports and website are all generated from it.
 
@@ -17,7 +17,7 @@ This list is **data-driven**: a single YAML file ([`.dev_scripts/papers.yaml`](.
 
 ## ✨ Highlights
 
-- **124 papers** (2004–2026), curated and deduplicated.
+- **152 papers** (2004–2026), curated and deduplicated.
 - **Rich metadata**: venue, year, authors, DOI, tags, code/project links and an LLM-written **TL;DR**.
 - **Coarse `type` + fine-grained `tags`** — `type` stays stable (`Traditional` / `DeepLearning` / `Hybrid`); `tags` capture architecture (`CNN`, `GAN`, `Diffusion`, `Transformer`, `Mamba`, …) and themes (`Color-Correction`, `Physical-Model`, `Dehazing`, `Image-Fusion`, …).
 - **Machine-readable**: JSON, BibTeX and CSV exports plus an `llms.txt` index.
@@ -28,13 +28,13 @@ This list is **data-driven**: a single YAML file ([`.dev_scripts/papers.yaml`](.
 
 | Metric | Value |
 | --- | --- |
-| Papers | 124 |
+| Papers | 152 |
 | Year range | 2004–2026 |
 | With code | 73 |
-| With DOI | 117 |
-| Traditional | 35 |
-| Deep learning | 76 |
-| Hybrid | 13 |
+| With DOI | 145 |
+| Traditional | 37 |
+| Deep learning | 97 |
+| Hybrid | 18 |
 
 See the [interactive site](https://fansuregrin1.github.io/Awesome-UIE/) for charts and filtering.
 

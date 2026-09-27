@@ -3035,7 +3035,7 @@
   - Yue Yin
   - Cheng Qian
   tldr: KLDD corrects underwater color casts via KL-divergence-driven statistical transfer and fuses multistage luminance, contrast, and detail enhancements using cross-scale consistency-guided DWT fusion.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2026-dual-branch-underwater-image-enhancement-via-bidirectional-s
@@ -3062,7 +3062,7 @@
   - Jiayi Cui
   - Xinnan Fan
   tldr: A dual-branch network jointly estimates reflectance and illumination with bidirectional supervision, contrastive learning, and style transfer for underwater image enhancement.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2026-decoupling-color-and-structure-via-dual-branch-learning-for
@@ -3086,7 +3086,7 @@
   - Linlin Qi
   - Tao Liu
   tldr: UDHE decouples color and structure via parallel RGB-grayscale branches with wavelet high-frequency enhancement, cross-scale attention, and dynamic fusion for underwater image restoration.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2026-enhancing-underwater-image-clarity-a-multi-branch-network-wi
@@ -3104,7 +3104,7 @@
   - Xiaofan Lin
   - Yinghuai Yu
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2026-prior-guided-anchor-conditioned-diffusion-for-underwater-ima
@@ -3124,7 +3124,7 @@
   - Yakun Ju
   - Junyu Dong
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2026-task-tailored-semi-supervised-underwater-image-enhancement-w
@@ -3147,7 +3147,7 @@
   - Hao Feng
   - Dayu Jia
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2026-underwater-image-enhancement-by-dark-channel-dehazing-and-li
@@ -3200,7 +3200,7 @@
   - Huilong Zhong
   - Shaoji Huang
   tldr: Phys-Mamba uses physics-informed selective state-space modulation and cross-scale fusion for efficient multi-scale underwater image restoration.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2026-component-aware-variational-three-component-decomposition-fo
@@ -3275,7 +3275,7 @@
   - Shouren Huang
   - Masatoshi Ishikawa
   tldr: Dynamic SpectraFormer uses a frequency-domain transformer with sparse spectrum attention and adaptive band selection to enhance ultra-high-definition underwater images.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2026-sub-a-physics-informed-synthetic-underwater-benchmark-datase
@@ -3507,7 +3507,7 @@
   - Chih-yung Wen
   - Bing Wang
   tldr: A transfer-learning UIE method decomposes enhancement into color correction, dehazing, and denoising, using cross-domain priors as supervision without paired underwater labels.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2026-a-dual-branch-collaborative-framework-for-joint-optimization
@@ -3957,7 +3957,7 @@
   - Liwei Lin
   - Xun Guan
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-uncore-an-underwater-lightweight-image-enhancement-via-neutr
@@ -3976,7 +3976,7 @@
   - M. Suresh Kumar
   - N. Ramesh Babu
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-a-graph-aware-color-correction-and-texture-restoration-frame
@@ -3997,7 +3997,7 @@
   - Hui Li
   - Xiaoshuang Xing
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-underwater-image-color-correction-via-global-and-local-two-s
@@ -4019,7 +4019,7 @@
   - Peixian Zhuang
   - Weidong Zhang
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-progressive-color-correction-and-vision-inspired-adaptive-fr
@@ -4043,7 +4043,7 @@
   - Ji Wang
   - Yuqiang Yang
   tldr: A progressive color correction and vision-inspired decomposition framework enhances underwater images by correcting color, boosting detail, and fusing pathways.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-multi-scale-diffusion-model-for-underwater-image-restoration
@@ -4067,7 +4067,7 @@
   - Qianyi Li
   - Kai Wang
   tldr: A multi-scale diffusion model combining physical priors with deep learning for underwater image restoration, improving PSNR, SSIM, and UIQM.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-a-cutting-edge-ensemble-model-for-enhanced-underwater-image
@@ -4090,7 +4090,7 @@
   - A. Sarala
   - C. Vinoth kumar
   tldr: An ensemble of pyramid CNNs and a deep channel-prior dehazing network restores underwater images via sequential or parallel fusion, improving PSNR, SSIM, and UIQM.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-underwater-image-enhancement-using-dynamic-color-correction
@@ -4114,7 +4114,7 @@
   - Da Yuan
   - Xiandong Feng
   tldr: A dynamic gray-world color correction module followed by a lightweight attention-embedded SRResNet improves underwater image color and contrast efficiently.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-domain-guided-multi-frequency-underwater-image-enhancement-n
@@ -4135,7 +4135,7 @@
   - Xinyu Wang
   - Yiliang Chen
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-underwater-image-dehazing-using-a-hybrid-gan-with-bottleneck
@@ -4159,7 +4159,7 @@
   - Shalli Rani
   - Mohammad Shabaz
   tldr: A hybrid GAN with bottleneck attention and improved Retinex enhances underwater images, improving dehazing, color, and contrast on the UIEB dataset.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-uievus-an-underwater-image-enhancement-method-for-various-un
@@ -4181,7 +4181,7 @@
   - Tao Ma
   - Kun Yu
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-robust-underwater-imaging-model-and-automatic-parameter-opti
@@ -4202,7 +4202,7 @@
   - Zhengxu Zhao
   - Mingxing Lin
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-auied3k-a-new-andaman-underwater-image-enhancement-dataset-f
@@ -4226,7 +4226,7 @@
   - Navjot Singh
   - Anshu S. Anand
   tldr: A new 3000-image real-world Andaman underwater dataset and a lightweight CNN dehazing model using scene radiance and transmission map.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-swincnet-leveraging-swin-transformer-v2-and-cnn-for-precise
@@ -4252,7 +4252,7 @@
   - Jiahang Wang
   - Hexiang Zhai
   tldr: SwinCNet combines Swin Transformer V2 with CNNs for underwater image restoration, using dual-path extraction and adaptive fusion to improve color and detail.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-uniuir-considering-underwater-image-restoration-as-an-all-in
@@ -4279,7 +4279,7 @@
   - Lefei Zhang
   - Bo Du
   tldr: UniUIR restores underwater images with mixed distortions using a Mamba mixture-of-experts, spatial-frequency prompts, and depth priors.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-mact-underwater-image-color-correction-via-minimally-attenua
@@ -4300,7 +4300,7 @@
   - Peng Ren
   - Weidong Zhang
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-underwater-image-enhancement-via-brightness-mask-guided-mult
@@ -4320,7 +4320,7 @@
   - Peng Lin
   - Xianping Fu
   tldr: null
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-jdpnet-a-network-based-on-joint-degradation-processing-for-u
@@ -4736,7 +4736,7 @@
   - Gangyi Jiang
   - Weisi Lin
   tldr: A CLIP perception loss and curriculum contrastive regularization guide underwater image enhancement to improve perceptual quality and content restoration.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-adaptive-dual-domain-learning-for-underwater-image-enhanceme
@@ -4758,7 +4758,7 @@
   - Lingtao Peng
   - Liheng Bian
   tldr: SS-UIE combines spatial multi-scale cycle selective scan and spectral self-attention with a frequency-wise loss for adaptive underwater image enhancement.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-ukdm-underwater-keypoint-detection-and-matching-using-underw
