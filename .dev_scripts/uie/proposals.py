@@ -10,10 +10,11 @@ import json
 from dataclasses import asdict
 from datetime import date
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List
 
 import yaml
 
+from .code import CodeMatch
 from .discover import Candidate, DiscoverResult
 from .enrich import EnrichResult
 from .llm import LlmResult
@@ -339,4 +340,34 @@ def write_llm(result: LlmResult, titles: Dict[str, str], md_path, json_path) -> 
     json_path.parent.mkdir(parents=True, exist_ok=True)
     md_path.write_text(render_llm_markdown(result, titles), encoding="utf-8")
     json_path.write_text(render_llm_json(result), encoding="utf-8")
+    return md_path, json_path
+
+
+def render_code_markdown(matches: List[CodeMatch], titles: Dict[str, str]) -> str:
+    lines = ["# Code / project link report", "", f"matches: {len(matches)}", ""]
+    for match in matches:
+        lines.append(f"### `{match.paper_id}`")
+        lines.append(f"_{titles.get(match.paper_id, '')}_")
+        lines.append("")
+        lines.append(f"- code: {match.code or '—'}")
+        if match.project:
+            lines.append(f"- project: {match.project}")
+        lines.append(f"- source: {match.source} · score {match.score:.2f} · {match.reason}")
+        if match.repo:
+            lines.append(f"- repo: {match.repo}")
+        lines.append("")
+    return "\n".join(lines)
+
+
+def render_code_json(matches: List[CodeMatch]) -> str:
+    return json.dumps([asdict(match) for match in matches], ensure_ascii=False, indent=2) + "\n"
+
+
+def write_code(matches: List[CodeMatch], titles: Dict[str, str], md_path, json_path) -> tuple[Path, Path]:
+    md_path = Path(md_path)
+    json_path = Path(json_path)
+    md_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    md_path.write_text(render_code_markdown(matches, titles), encoding="utf-8")
+    json_path.write_text(render_code_json(matches), encoding="utf-8")
     return md_path, json_path
