@@ -21,6 +21,7 @@ from typing import Any, Dict, List
 
 import yaml
 
+from . import code as code_module
 from . import discover as discover_module
 from . import enrich as enrich_module
 from . import links, proposals, render, validate
@@ -361,6 +362,43 @@ def cmd_llm(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_code(args: argparse.Namespace) -> int:
+    all_papers = load_papers(PAPERS_YAML)
+
+    selected = all_papers
+    if args.ids:
+        wanted = {value.strip() for value in args.ids.split(",") if value.strip()}
+        selected = [paper for paper in selected if paper.id in wanted]
+    if not args.include_existing:
+        selected = [paper for paper in selected if not paper.code]
+    if args.limit:
+        selected = selected[: args.limit]
+
+    token = os.environ.get(args.token_env) if args.token_env else None
+    client = HttpClient(cache_dir=CACHE_DIR, ttl=args.ttl or DEFAULT_TTL)
+    matches = code_module.find_matches(selected, client, token=token, threshold=args.threshold)
+
+    titles = {paper.id: paper.title for paper in selected}
+    md_path, json_path = proposals.write_code(matches, titles, args.report, args.json)
+    print(f"code: checked {len(selected)} papers, found {len(matches)} matches (token={'yes' if token else 'no'})")
+    print(f"wrote {md_path}")
+    print(f"wrote {json_path}")
+
+    if args.apply:
+        applied = code_module.apply_code_matches(all_papers, matches)
+        if applied:
+            dump_papers(PAPERS_YAML, all_papers)
+            render.write_all(ROOT, all_papers)
+            by_field: Dict[str, int] = {}
+            for _, field, _ in applied:
+                by_field[field] = by_field.get(field, 0) + 1
+            detail = ", ".join(f"{field} {count}" for field, count in sorted(by_field.items()))
+            print(f"applied {len(applied)} fields ({detail})")
+        else:
+            print("nothing to apply (fill-only)")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="uie.cli", description="Awesome-UIE tooling")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -438,6 +476,18 @@ def build_parser() -> argparse.ArgumentParser:
     )
     llm.add_argument("--refresh-abstracts", action="store_true", help="bypass the source response cache")
     llm.set_defaults(func=cmd_llm)
+
+    code = sub.add_parser("code", help="find code repositories and project pages (GitHub)")
+    code.add_argument("--report", default=str(ROOT / "proposals" / "code.md"))
+    code.add_argument("--json", default=str(ROOT / "proposals" / "code.json"))
+    code.add_argument("--ids", help="comma-separated paper ids to limit the run")
+    code.add_argument("--limit", type=int, help="only process the first N papers")
+    code.add_argument("--threshold", type=float, default=0.55, help="minimum repo match score")
+    code.add_argument("--token-env", default="GITHUB_TOKEN", help="env var holding a GitHub token (optional)")
+    code.add_argument("--include-existing", action="store_true", help="also check papers that already have code")
+    code.add_argument("--ttl", type=int, help="cache TTL in seconds")
+    code.add_argument("--apply", action="store_true", help="fill code/project links (fill-only)")
+    code.set_defaults(func=cmd_code)
 
     return parser
 

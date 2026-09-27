@@ -56,6 +56,7 @@ class HttpClient:
         params: Optional[Dict[str, Any]] = None,
         min_interval: float = 0.0,
         retries: int = 3,
+        headers: Optional[Dict[str, str]] = None,
     ) -> str:
         request = httpx.Request("GET", url, params=params)
         full_url = str(request.url)
@@ -78,7 +79,7 @@ class HttpClient:
         last_error = "unknown error"
         for attempt in range(retries):
             try:
-                response = self._client.get(url, params=params)
+                response = self._client.get(url, params=params, headers=headers)
             except httpx.HTTPError as exc:  # network failure
                 last_error = str(exc)
                 time.sleep(1.0 * (attempt + 1))
@@ -114,5 +115,8 @@ class HttpClient:
         params: Optional[Dict[str, Any]] = None,
         min_interval: float = 0.0,
         retries: int = 3,
+        headers: Optional[Dict[str, str]] = None,
     ) -> Any:
-        return json.loads(self.get_text(url, params=params, min_interval=min_interval, retries=retries))
+        return json.loads(
+            self.get_text(url, params=params, min_interval=min_interval, retries=retries, headers=headers)
+        )
