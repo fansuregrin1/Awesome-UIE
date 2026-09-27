@@ -3018,7 +3018,12 @@
   year: 2026
   venue: Optics & Laser Technology
   type: Traditional
-  tags: []
+  tags:
+  - Color-Correction
+  - Contrast-Enhancement
+  - Multiscale-Fusion
+  - Image-Fusion
+  - Low-Light-Enhancement
   url: https://doi.org/10.1016/j.optlastec.2026.116369
   doi: 10.1016/j.optlastec.2026.116369
   arxiv_id: null
@@ -3029,7 +3034,7 @@
   - Wenjie Chen
   - Yue Yin
   - Cheng Qian
-  tldr: null
+  tldr: KLDD corrects underwater color casts via KL-divergence-driven statistical transfer and fuses multistage luminance, contrast, and detail enhancements using cross-scale consistency-guided DWT fusion.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3041,6 +3046,10 @@
   tags:
   - GAN
   - Unsupervised
+  - Transformer
+  - Semi-supervised
+  - Contrast-Enhancement
+  - Color-Correction
   url: https://doi.org/10.3390/jmse14191782
   doi: 10.3390/jmse14191782
   arxiv_id: null
@@ -3052,7 +3061,7 @@
   - Sisi Zhu
   - Jiayi Cui
   - Xinnan Fan
-  tldr: null
+  tldr: A dual-branch network jointly estimates reflectance and illumination with bidirectional supervision, contrastive learning, and style transfer for underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3061,7 +3070,12 @@
   year: 2026
   venue: Ocean Engineering
   type: DeepLearning
-  tags: []
+  tags:
+  - CNN
+  - Color-Correction
+  - Multiscale-Fusion
+  - Lightweight
+  - Real-time
   url: https://doi.org/10.1016/j.oceaneng.2026.128196
   doi: 10.1016/j.oceaneng.2026.128196
   arxiv_id: null
@@ -3071,7 +3085,7 @@
   - Haotian Sun
   - Linlin Qi
   - Tao Liu
-  tldr: null
+  tldr: UDHE decouples color and structure via parallel RGB-grayscale branches with wavelet high-frequency enhancement, cross-scale attention, and dynamic fusion for underwater image restoration.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3143,6 +3157,10 @@
   type: Traditional
   tags:
   - Dehazing
+  - Color-Correction
+  - Contrast-Enhancement
+  - Dark-Channel-Prior
+  - Benchmark
   url: https://doi.org/10.47577/technium.v31i.13800
   doi: 10.47577/technium.v31i.13800
   arxiv_id: null
@@ -3150,7 +3168,7 @@
   project: null
   authors:
   - Rana Talib Saihood
-  tldr: null
+  tldr: A training-free underwater image enhancement pipeline combines color restoration, dark channel dehazing, and lightness-domain Rayleigh CLAHE, outperforming four methods on UIEB.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3165,6 +3183,8 @@
   - Mamba
   - Physical-Model
   - Real-time
+  - Multiscale-Fusion
+  - Lightweight
   url: https://doi.org/10.1371/journal.pone.0354030
   doi: 10.1371/journal.pone.0354030
   arxiv_id: null
@@ -3179,7 +3199,7 @@
   - Caihong Wu
   - Huilong Zhong
   - Shaoji Huang
-  tldr: null
+  tldr: Phys-Mamba uses physics-informed selective state-space modulation and cross-scale fusion for efficient multi-scale underwater image restoration.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3188,7 +3208,11 @@
   year: 2026
   venue: Engineering Research Express
   type: Traditional
-  tags: []
+  tags:
+  - Retinex
+  - Contrast-Enhancement
+  - Color-Correction
+  - Multiscale-Fusion
   url: https://doi.org/10.1088/2631-8695/aea3b2
   doi: 10.1088/2631-8695/aea3b2
   arxiv_id: null
@@ -3199,7 +3223,7 @@
   - Biyuan Li
   - Jinying Ma
   - Jiangtao Liu
-  tldr: null
+  tldr: A variational three-component decomposition framework separates luminance into cartoon, texture, and detail components, applying component-specific enhancement for underwater images.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3208,7 +3232,12 @@
   year: 2026
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Physical-Model
+  - Image-Formation-Model
+  - Domain-Adaptation
+  - Self-supervised
+  - Color-Correction
   url: https://arxiv.org/abs/2608.28020
   doi: null
   arxiv_id: '2608.28020'
@@ -3221,7 +3250,7 @@
   - Chunle Guo
   - Huimin Lu
   - Chongyi Li
-  tldr: null
+  tldr: 3D-USE learns a persistent enhanced 3D Gaussian scene representation from degraded multi-view underwater images, transferring 2D enhancement knowledge to render consistent enhanced novel views.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3232,6 +3261,9 @@
   type: DeepLearning
   tags:
   - Transformer
+  - Color-Correction
+  - Dehazing
+  - Contrast-Enhancement
   url: https://doi.org/10.1109/IROS58592.2024.10802529
   doi: 10.1109/IROS58592.2024.10802529
   arxiv_id: '2608.18662'
@@ -3242,7 +3274,7 @@
   - Tao Yu
   - Shouren Huang
   - Masatoshi Ishikawa
-  tldr: null
+  tldr: Dynamic SpectraFormer uses a frequency-domain transformer with sparse spectrum attention and adaptive band selection to enhance ultra-high-definition underwater images.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3254,6 +3286,10 @@
   tags:
   - GAN
   - Physical-Model
+  - Benchmark
+  - Image-Synthesis
+  - Image-Formation-Model
+  - Domain-Adaptation
   url: https://arxiv.org/abs/2608.10589
   doi: null
   arxiv_id: '2608.10589'
@@ -3264,7 +3300,7 @@
   - Rajini Makam
   - Suresh Sundaram
   - Narasimhan Sundararajan
-  tldr: null
+  tldr: A physics-informed framework generates synthetic underwater benchmark datasets using depth-dependent irradiance, biological absorption, and scattering across Jerlov water types, improving UIE generalization.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3275,6 +3311,9 @@
   type: Traditional
   tags:
   - Physical-Model
+  - Benchmark
+  - Foundation-Model
+  - Large-Model
   url: https://arxiv.org/abs/2608.11425
   doi: null
   arxiv_id: '2608.11425'
@@ -3285,7 +3324,7 @@
   - Yingxue Wang
   - Ieva Bagdonaviciute
   - David Forsyth
-  tldr: null
+  tldr: A systematic evaluation pipeline for underwater image reconstruction shows Vision-Language Models outperform physically based models.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3296,6 +3335,10 @@
   type: DeepLearning
   tags:
   - Color-Correction
+  - Dehazing
+  - Contrast-Enhancement
+  - Low-Light-Enhancement
+  - Task-Driven
   url: https://arxiv.org/abs/2608.08965
   doi: null
   arxiv_id: '2608.08965'
@@ -3307,7 +3350,7 @@
   - Lin Chen
   - Ziheng Cao
   - Guanying Huo
-  tldr: null
+  tldr: CoRe-UIE uses a shared expert and four routed experts with region-adaptive Top-k routing and HSIC constraints to address coexisting, region-wise underwater degradations.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3316,7 +3359,10 @@
   year: 2026
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Task-Driven
+  - Lightweight
+  - Benchmark
   url: https://arxiv.org/abs/2608.08661
   doi: null
   arxiv_id: '2608.08661'
@@ -3331,7 +3377,7 @@
   - Shi Chen
   - Huan Zhang
   - Yong Chen
-  tldr: null
+  tldr: PROTEUS couples degradation-guided feature modulation with task-oriented latent control to improve underwater image restoration while balancing quality and computational cost.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3342,6 +3388,9 @@
   type: Hybrid
   tags:
   - Diffusion
+  - Task-Driven
+  - Domain-Adaptation
+  - Physical-Model
   url: https://arxiv.org/abs/2608.00137
   doi: null
   arxiv_id: '2608.00137'
@@ -3353,7 +3402,7 @@
   - Ye Zheng
   - Zhe Sun
   - Tao Chen
-  tldr: null
+  tldr: A two-stage teacher-student framework learns reliable spatial priors from paired images and transfers them to degraded-only inference for robust underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3365,6 +3414,9 @@
   tags:
   - Real-time
   - Lightweight
+  - Physical-Model
+  - Depth-Estimation
+  - Color-Correction
   url: https://arxiv.org/abs/2607.22801
   doi: null
   arxiv_id: '2607.22801'
@@ -3377,7 +3429,7 @@
   - Zhiheng Zhang
   - Tianyu Wang
   - Yue Yao
-  tldr: null
+  tldr: DY-LUT uses depth-aware YCbCr 4D lookup tables with learned degradation indices for real-time, spatially adaptive underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3386,7 +3438,12 @@
   year: 2026
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Transformer
+  - Color-Correction
+  - Contrast-Enhancement
+  - Backscatter-Removal
+  - Physical-Model
   url: https://arxiv.org/abs/2607.21467
   doi: null
   arxiv_id: '2607.21467'
@@ -3399,7 +3456,7 @@
   - Yan Luo
   - Junjun Jiang
   - Xiaopeng Fan
-  tldr: null
+  tldr: CRWKV reformulates RWKV recurrent propagation into a clustering-aware token trajectory with local structural compensation for region-adaptive underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3412,6 +3469,7 @@
   - CNN
   - Real-time
   - Lightweight
+  - Image-Fusion
   url: https://arxiv.org/abs/2606.30314
   doi: null
   arxiv_id: '2606.30314'
@@ -3421,7 +3479,7 @@
   - Leshen Zhang
   - Ao Li
   - Ce Zhu
-  tldr: null
+  tldr: A lightweight CNN with fixed DCT priors and frequency-guided dual-path attention achieves real-time underwater image enhancement at 4.23K parameters and 600+ FPS.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3433,6 +3491,9 @@
   tags:
   - Physical-Model
   - Color-Correction
+  - Dehazing
+  - Domain-Adaptation
+  - Unsupervised
   url: https://doi.org/10.1016/j.inffus.2026.104557
   doi: 10.1016/j.inffus.2026.104557
   arxiv_id: '2606.15648'
@@ -3445,7 +3506,7 @@
   - Minchen Wei
   - Chih-yung Wen
   - Bing Wang
-  tldr: null
+  tldr: A transfer-learning UIE method decomposes enhancement into color correction, dehazing, and denoising, using cross-domain priors as supervision without paired underwater labels.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3454,7 +3515,12 @@
   year: 2026
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Task-Driven
+  - Color-Correction
+  - Contrast-Enhancement
+  - Lightweight
+  - Image-Fusion
   url: https://arxiv.org/abs/2606.15857
   doi: null
   arxiv_id: '2606.15857'
@@ -3466,7 +3532,7 @@
   - Guanghao Liao
   - Yonghui Yang
   - Qi Li
-  tldr: null
+  tldr: A dual-branch framework jointly optimizes underwater image enhancement and object detection, combining detail enhancement and adaptive color restoration to improve detection accuracy.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3478,6 +3544,9 @@
   tags:
   - Mamba
   - Dehazing
+  - Physical-Model
+  - Image-Formation-Model
+  - Task-Driven
   url: https://arxiv.org/abs/2606.14781
   doi: null
   arxiv_id: '2606.14781'
@@ -3488,7 +3557,7 @@
   - Julia Navarro
   - Catalina Sbert
   - Joan Duran
-  tldr: null
+  tldr: A variational deep unfolding network with Mamba-based nonlocal modeling and proximal trajectory loss enhances underwater images via dehazing decomposition.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3500,6 +3569,8 @@
   tags:
   - Diffusion
   - Self-supervised
+  - Unsupervised
+  - Image-Synthesis
   url: https://arxiv.org/abs/2606.06176
   doi: null
   arxiv_id: '2606.06176'
@@ -3510,7 +3581,7 @@
   - Yanrui Bin
   - Chih-yung Wen
   - Bing Wang
-  tldr: null
+  tldr: A diffusion-based in-dataset self-supervised strategy quantizes label quality into noise-level indices for level-wise supervision, with Fourier refinement for high-frequency reconstruction.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3521,6 +3592,10 @@
   type: Hybrid
   tags:
   - Dehazing
+  - Physical-Model
+  - Depth-Estimation
+  - Image-Formation-Model
+  - Lightweight
   url: https://arxiv.org/abs/2605.13720
   doi: null
   arxiv_id: '2605.13720'
@@ -3529,7 +3604,7 @@
   authors:
   - Sahana Ray
   - Sanjay Ghosh
-  tldr: null
+  tldr: UDehaze-iT estimates scene depth implicitly and derives per-channel transmission via Beer-Lambert law with learnable coefficients for underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3538,7 +3613,11 @@
   year: 2026
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Multiscale-Fusion
+  - Physical-Model
+  - Image-Formation-Model
+  - Low-Light-Enhancement
   url: https://arxiv.org/abs/2605.10374
   doi: null
   arxiv_id: '2605.10374'
@@ -3551,7 +3630,7 @@
   - Shuyi Cao
   - Chengcheng Jiang
   - Jiale Wang
-  tldr: null
+  tldr: An iterative two-subnetwork method separates halos from artificial light and restores underwater images using gradient minimization and multi-scale recovery.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3560,7 +3639,11 @@
   year: 2026
   venue: arXiv
   type: Hybrid
-  tags: []
+  tags:
+  - Multiscale-Fusion
+  - Color-Correction
+  - Dehazing
+  - Lightweight
   url: https://arxiv.org/abs/2605.08376
   doi: null
   arxiv_id: '2605.08376'
@@ -3573,7 +3656,7 @@
   - Ronald Thenius
   - Farshad Arvin
   - Amir Atapour-Abarghouei
-  tldr: null
+  tldr: A scale-aware spiking neural network with multi-scale pooling LIF blocks and spike-driven frequency-attention refinement improves underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3586,6 +3669,8 @@
   - CNN
   - Transformer
   - Mamba
+  - Color-Correction
+  - Image-Fusion
   url: https://arxiv.org/abs/2604.16266
   doi: null
   arxiv_id: '2604.16266'
@@ -3594,7 +3679,7 @@
   authors:
   - Tejeswar Pokuri
   - Shivarth Rai
-  tldr: null
+  tldr: Hero-Mamba uses Mamba-based SS2D blocks for dual-domain spatial and spectral learning, with a background-light-guided ColorFusion block, to enhance underwater images efficiently.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3603,7 +3688,10 @@
   year: 2026
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Domain-Adaptation
+  - Task-Driven
+  - Benchmark
   url: https://arxiv.org/abs/2604.12257
   doi: null
   arxiv_id: '2604.12257'
@@ -3615,7 +3703,7 @@
   - Bing Wang
   - Hao Chen
   - Zhen Dong
-  tldr: null
+  tldr: SDAR-Net decouples degradation style from scene structure and uses adaptive routing to fuse representations, achieving state-of-the-art underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3627,6 +3715,8 @@
   tags:
   - Real-time
   - Lightweight
+  - Color-Correction
+  - CNN
   url: https://arxiv.org/abs/2603.16363
   doi: null
   arxiv_id: '2603.16363'
@@ -3639,7 +3729,7 @@
   - Jijun Lu
   - Ye Zheng
   - Xuelong Li
-  tldr: null
+  tldr: A real-time underwater image enhancement framework uses adaptive channel compensation, re-parameterized dilated convolution, and statistical color adjustment for accurate color restoration.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3648,7 +3738,11 @@
   year: 2026
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Large-Model
+  - Task-Driven
+  - Transformer
+  - Domain-Adaptation
   url: https://arxiv.org/abs/2603.12773
   doi: null
   arxiv_id: '2603.12773'
@@ -3661,7 +3755,7 @@
   - Huiyu Li
   - Jingchun Zhou
   - Jinjiang Li
-  tldr: null
+  tldr: A VLM-based dual-guidance mechanism uses text-image alignment to produce spatial semantic maps that steer UIE networks toward restoring key object features.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3672,6 +3766,10 @@
   type: Hybrid
   tags:
   - Physical-Model
+  - Retinex
+  - Large-Model
+  - Color-Correction
+  - Contrast-Enhancement
   url: https://arxiv.org/abs/2603.07076
   doi: null
   arxiv_id: '2603.07076'
@@ -3683,7 +3781,7 @@
   - Chao Huang
   - Junyu Dong
   - Xinghui Dong
-  tldr: null
+  tldr: A Retinex-based illumination estimator and CLIP-guided restorer enhance underwater images, with a new image-text dataset and semantic similarity loss.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3692,7 +3790,11 @@
   year: 2026
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Task-Driven
+  - CNN
+  - Benchmark
+  - Domain-Adaptation
   url: https://arxiv.org/abs/2603.01767
   doi: null
   arxiv_id: '2603.01767'
@@ -3704,7 +3806,7 @@
   - Yanwei Yu
   - Junyu Dong
   - Qian Du
-  tldr: null
+  tldr: A two-branch task-aware network with perceptual loss and a task-inspired dataset improves underwater image enhancement for downstream segmentation and detection.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3715,6 +3817,10 @@
   type: DeepLearning
   tags:
   - Diffusion
+  - Image-Synthesis
+  - Color-Correction
+  - Contrast-Enhancement
+  - Dehazing
   url: https://arxiv.org/abs/2602.05163
   doi: null
   arxiv_id: '2602.05163'
@@ -3723,7 +3829,7 @@
   authors:
   - Andreas Mentzelopoulos
   - Keith Ellenbogen
-  tldr: null
+  tldr: A diffusion-based image-to-image pipeline trained on synthetic underwater corruptions enhances a small dataset of awareness photography images.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3735,6 +3841,9 @@
   tags:
   - Physical-Model
   - Unsupervised
+  - Color-Correction
+  - Low-Light-Enhancement
+  - Backscatter-Removal
   url: https://arxiv.org/abs/2601.22878
   doi: null
   arxiv_id: '2601.22878'
@@ -3746,7 +3855,7 @@
   - Dhatri Shankari T M
   - Suresh Sundaram
   - Narasimhan Sundararajan
-  tldr: null
+  tldr: DIVER combines unsupervised luminance and spectral correction with physics-guided backscatter and attenuation modeling for domain-invariant underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3758,6 +3867,9 @@
   tags:
   - Physical-Model
   - Real-time
+  - Image-Formation-Model
+  - Depth-Estimation
+  - Self-supervised
   url: https://arxiv.org/abs/2601.19753
   doi: null
   arxiv_id: '2601.19753'
@@ -3770,7 +3882,7 @@
   - Dacheng Qi
   - Wenrui Ding
   - Shuangkang Fang
-  tldr: null
+  tldr: WaterClear-GS reformulates underwater 3D Gaussian splatting to model degradation as intrinsic Gaussian attributes, enabling real-time novel view synthesis and image restoration.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3781,6 +3893,10 @@
   type: Traditional
   tags:
   - Color-Correction
+  - Dehazing
+  - Contrast-Enhancement
+  - Physical-Model
+  - Image-Fusion
   url: https://arxiv.org/abs/2512.07171
   doi: null
   arxiv_id: '2512.07171'
@@ -3791,7 +3907,7 @@
   - Rakesh Raj Madavan
   - Pavan Kumar S
   - Muthu Subash Kavitha
-  tldr: null
+  tldr: TIDE is a two-stage inverse degradation estimation framework that disentangles underwater degradations into color, haze, detail, and noise factors for targeted restoration.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3800,7 +3916,12 @@
   year: 2025
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - GAN
+  - Unsupervised
+  - Image-Synthesis
+  - Benchmark
+  - Domain-Adaptation
   url: https://arxiv.org/abs/2511.14521
   doi: null
   arxiv_id: '2511.14521'
@@ -3815,7 +3936,7 @@
   - Jijun Lu
   - Ye Zheng
   - Xuelong Li
-  tldr: null
+  tldr: A generative framework translates in-air images into underwater-degraded versions to create synthetic datasets with authentic supervision for underwater image restoration and enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3908,6 +4029,9 @@
   type: DeepLearning
   tags:
   - Color-Correction
+  - Image-Fusion
+  - Contrast-Enhancement
+  - Multiscale-Fusion
   url: https://doi.org/10.3390/jmse13091820
   doi: 10.3390/jmse13091820
   arxiv_id: null
@@ -3918,7 +4042,7 @@
   - Wenjing Liu
   - Ji Wang
   - Yuqiang Yang
-  tldr: null
+  tldr: A progressive color correction and vision-inspired decomposition framework enhances underwater images by correcting color, boosting detail, and fusing pathways.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3929,6 +4053,10 @@
   type: DeepLearning
   tags:
   - Diffusion
+  - Physical-Model
+  - Multiscale-Fusion
+  - Color-Correction
+  - Image-Formation-Model
   url: https://doi.org/10.1371/journal.pone.0331465
   doi: 10.1371/journal.pone.0331465
   arxiv_id: null
@@ -3938,7 +4066,7 @@
   - Yuan Fang
   - Qianyi Li
   - Kai Wang
-  tldr: null
+  tldr: A multi-scale diffusion model combining physical priors with deep learning for underwater image restoration, improving PSNR, SSIM, and UIQM.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3947,7 +4075,12 @@
   year: 2025
   venue: Scientific Reports
   type: DeepLearning
-  tags: []
+  tags:
+  - CNN
+  - Dehazing
+  - Dark-Channel-Prior
+  - Image-Fusion
+  - Multiscale-Fusion
   url: https://doi.org/10.1038/s41598-025-96832-8
   doi: 10.1038/s41598-025-96832-8
   arxiv_id: null
@@ -3956,7 +4089,7 @@
   authors:
   - A. Sarala
   - C. Vinoth kumar
-  tldr: null
+  tldr: An ensemble of pyramid CNNs and a deep channel-prior dehazing network restores underwater images via sequential or parallel fusion, improving PSNR, SSIM, and UIQM.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -3968,6 +4101,8 @@
   tags:
   - Color-Correction
   - Lightweight
+  - CNN
+  - Contrast-Enhancement
   url: https://doi.org/10.3390/jmse13081546
   doi: 10.3390/jmse13081546
   arxiv_id: null
@@ -3978,7 +4113,7 @@
   - Yingying Zhang
   - Da Yuan
   - Xiandong Feng
-  tldr: null
+  tldr: A dynamic gray-world color correction module followed by a lightweight attention-embedded SRResNet improves underwater image color and contrast efficiently.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4011,6 +4146,9 @@
   tags:
   - GAN
   - Dehazing
+  - Retinex
+  - Contrast-Enhancement
+  - Color-Correction
   url: https://doi.org/10.1038/s41598-025-11815-z
   doi: 10.1038/s41598-025-11815-z
   arxiv_id: null
@@ -4020,7 +4158,7 @@
   - Amandeep Kaur
   - Shalli Rani
   - Mohammad Shabaz
-  tldr: null
+  tldr: A hybrid GAN with bottleneck attention and improved Retinex enhances underwater images, improving dehazing, color, and contrast on the UIEB dataset.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4074,6 +4212,10 @@
   type: DeepLearning
   tags:
   - Dehazing
+  - CNN
+  - Benchmark
+  - Physical-Model
+  - Lightweight
   url: https://doi.org/10.1109/icassp49660.2025.10890845
   doi: 10.1109/icassp49660.2025.10890845
   arxiv_id: null
@@ -4083,7 +4225,7 @@
   - Praveen Saini
   - Navjot Singh
   - Anshu S. Anand
-  tldr: null
+  tldr: A new 3000-image real-world Andaman underwater dataset and a lightweight CNN dehazing model using scene radiance and transmission map.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4096,6 +4238,8 @@
   - CNN
   - Transformer
   - Color-Correction
+  - Multiscale-Fusion
+  - Real-time
   url: https://doi.org/10.3389/fmars.2025.1523729
   doi: 10.3389/fmars.2025.1523729
   arxiv_id: null
@@ -4107,7 +4251,7 @@
   - Yi Deng
   - Jiahang Wang
   - Hexiang Zhai
-  tldr: null
+  tldr: SwinCNet combines Swin Transformer V2 with CNNs for underwater image restoration, using dual-path extraction and adaptive fusion to improve color and detail.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4118,6 +4262,10 @@
   type: DeepLearning
   tags:
   - Mamba
+  - Depth-Estimation
+  - Physical-Model
+  - Domain-Adaptation
+  - Multiscale-Fusion
   url: https://doi.org/10.1109/tip.2025.3618377
   doi: 10.1109/tip.2025.3618377
   arxiv_id: '2501.12981'
@@ -4130,7 +4278,7 @@
   - Qian Zhang
   - Lefei Zhang
   - Bo Du
-  tldr: null
+  tldr: UniUIR restores underwater images with mixed distortions using a Mamba mixture-of-experts, spatial-frequency prompts, and depth priors.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4180,7 +4328,12 @@
   year: 2025
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - CNN
+  - Color-Correction
+  - Contrast-Enhancement
+  - Lightweight
+  - Benchmark
   url: https://arxiv.org/abs/2512.20213
   doi: null
   arxiv_id: '2512.20213'
@@ -4192,7 +4345,7 @@
   - Chongbing Zhang
   - Haoran Chen
   - Xiaosong Li
-  tldr: null
+  tldr: JDPNet jointly processes coupled underwater degradations via a feature-mining module, probabilistic bootstrap distribution, and AquaBalanceLoss, achieving state-of-the-art enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4206,6 +4359,8 @@
   - GAN
   - Diffusion
   - Color-Correction
+  - Physical-Model
+  - Benchmark
   url: https://arxiv.org/abs/2512.14760
   doi: null
   arxiv_id: '2512.14760'
@@ -4214,7 +4369,7 @@
   authors:
   - Afrah Shaahid
   - Muzammil Behzad
-  tldr: null
+  tldr: AquaDiff uses a chromatic prior-guided conditional diffusion process with cross-attention and a cross-domain consistency loss to correct color distortion in underwater images.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4225,6 +4380,11 @@
   type: Hybrid
   tags:
   - Real-time
+  - CNN
+  - Retinex
+  - Image-Fusion
+  - Color-Correction
+  - Lightweight
   url: https://arxiv.org/abs/2512.05960
   doi: null
   arxiv_id: '2512.05960'
@@ -4236,7 +4396,7 @@
   - Lucia Ventura
   - Davide Di Bari
   - Simonepietro Canese
-  tldr: null
+  tldr: AQUA-Net combines frequency fusion and Retinex-inspired illumination correction in a lightweight encoder-decoder for underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4245,7 +4405,11 @@
   year: 2025
   venue: arXiv
   type: Traditional
-  tags: []
+  tags:
+  - Unsupervised
+  - Physical-Model
+  - Task-Driven
+  - Multiscale-Fusion
   url: https://arxiv.org/abs/2512.05492
   doi: null
   arxiv_id: '2512.05492'
@@ -4259,7 +4423,7 @@
   - Jinghao Zhang
   - Deyi Ji
   - Feng Zhao
-  tldr: null
+  tldr: WaterWave uses a wavelet-based temporal consistency field to enhance underwater videos frame-by-frame from single-image models while preserving motion and temporal coherence.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4270,6 +4434,10 @@
   type: Hybrid
   tags:
   - Real-time
+  - Color-Correction
+  - Lightweight
+  - Physical-Model
+  - Multiscale-Fusion
   url: https://arxiv.org/abs/2511.16321
   doi: null
   arxiv_id: '2511.16321'
@@ -4280,7 +4448,7 @@
   - Jen-Wei Lee
   - Chia-Ming Lee
   - Chih-Chung Hsu
-  tldr: null
+  tldr: WWE-UIE combines adaptive white balance, wavelet decomposition, and Sobel gating for efficient underwater image enhancement with real-time inference.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4289,7 +4457,12 @@
   year: 2025
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Mamba
+  - Lightweight
+  - Multiscale-Fusion
+  - Color-Correction
+  - Contrast-Enhancement
   url: https://doi.org/10.36227/techrxiv.176123627.72622426/v1
   doi: 10.36227/techrxiv.176123627.72622426/v1
   arxiv_id: null
@@ -4300,7 +4473,7 @@
   - Lining Liu
   - Yulong Huang
   - Yonggang Zhang
-  tldr: null
+  tldr: SFUmamba adaptively decouples high and low frequencies with upsampling guidance to enhance underwater images using far fewer parameters.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4309,7 +4482,11 @@
   year: 2025
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Task-Driven
+  - Lightweight
+  - Contrast-Enhancement
+  - Image-Synthesis
   url: https://arxiv.org/abs/2509.23200
   doi: null
   arxiv_id: '2509.23200'
@@ -4323,7 +4500,7 @@
   - Ye Li
   - Runmin Cong
   - Sam Kwong
-  tldr: null
+  tldr: A scalable underwater image compression framework with base and enhancement layers jointly performs compression and enhancement using sparse coefficients and dual-branch filtering.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4335,6 +4512,7 @@
   tags:
   - Physical-Model
   - Lightweight
+  - Image-Fusion
   url: https://arxiv.org/abs/2509.17789
   doi: null
   arxiv_id: '2509.17789'
@@ -4347,7 +4525,7 @@
   - Wenjun Lu
   - David Bull
   - Nantheera Anantrasirichai
-  tldr: null
+  tldr: R-Splatting integrates multiple underwater image restoration outputs into 3D Gaussian Splatting with uncertainty-aware opacity optimization, improving rendering and geometry.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4358,6 +4536,10 @@
   type: Hybrid
   tags:
   - Transformer
+  - Physical-Model
+  - Color-Correction
+  - Contrast-Enhancement
+  - Multiscale-Fusion
   url: https://arxiv.org/abs/2508.18664
   doi: null
   arxiv_id: '2508.18664'
@@ -4370,7 +4552,7 @@
   - Zimeng Li
   - Chi-Man Pun
   - Xuhang Chen
-  tldr: null
+  tldr: SFormer uses frequency-domain SNR priors with Fourier and adaptive transformers in a U-shaped network to enhance underwater images.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4383,6 +4565,9 @@
   - CNN
   - Diffusion
   - Lightweight
+  - Transformer
+  - Physical-Model
+  - Color-Correction
   url: https://arxiv.org/abs/2507.22501
   doi: null
   arxiv_id: '2507.22501'
@@ -4396,7 +4581,7 @@
   - Cong Li
   - Huayong Yang
   - Kaishun Wu
-  tldr: null
+  tldr: A degradation-aware conditional diffusion model with Swin UNet backbone and physical priors enhances underwater images via predicted degradation scores and adaptive noise scheduling.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4408,6 +4593,9 @@
   tags:
   - Diffusion
   - Physical-Model
+  - Image-Synthesis
+  - Image-Formation-Model
+  - Backscatter-Removal
   url: https://arxiv.org/abs/2507.07878
   doi: null
   arxiv_id: '2507.07878'
@@ -4421,7 +4609,7 @@
   - Cornelia Fermuller
   - Yiannis Aloimonos
   - Christopher A. Metzler
-  tldr: null
+  tldr: SLURPP combines a pretrained latent diffusion model with explicit scene decomposition and physics-based synthetic data to restore underwater images in one step.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4432,6 +4620,8 @@
   type: DeepLearning
   tags:
   - Color-Correction
+  - Contrast-Enhancement
+  - Image-Formation-Model
   url: https://arxiv.org/abs/2507.02270
   doi: null
   arxiv_id: '2507.02270'
@@ -4445,7 +4635,7 @@
   - Xiyang Fang
   - Wangyu Wu
   - Xuhang Chen
-  tldr: null
+  tldr: MAC-Lookup uses a conditional 3D lookup table for color correction and multi-axis adaptive enhancement to improve underwater image color, sharpness, and contrast.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4456,6 +4646,10 @@
   type: Hybrid
   tags:
   - Physical-Model
+  - Image-Formation-Model
+  - Unsupervised
+  - Lightweight
+  - Transformer
   url: https://arxiv.org/abs/2506.04753
   doi: null
   arxiv_id: '2506.04753'
@@ -4464,7 +4658,7 @@
   authors:
   - Niki Martinel
   - Rita Pucci
-  tldr: null
+  tldr: A dual-stream variational autoencoder integrates the Jaffe-McGlamery physical model with capsule clustering to estimate transmission and background light for underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4475,6 +4669,10 @@
   type: Hybrid
   tags:
   - Diffusion
+  - Foundation-Model
+  - Domain-Adaptation
+  - Color-Correction
+  - Dehazing
   url: https://arxiv.org/abs/2505.19895
   doi: null
   arxiv_id: '2505.19895'
@@ -4483,7 +4681,7 @@
   authors:
   - Afrah Shaahid
   - Muzammil Behzad
-  tldr: null
+  tldr: UDAN-CLIP is an image-to-image diffusion framework with a vision-language classifier, spatial attention, and CLIP-Diffusion loss for underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4497,6 +4695,7 @@
   - Mamba
   - Real-time
   - Lightweight
+  - Multiscale-Fusion
   url: https://arxiv.org/abs/2505.01224
   doi: null
   arxiv_id: '2505.01224'
@@ -4509,7 +4708,7 @@
   - Ke Gu
   - Nan Ma
   - Xianming Liu
-  tldr: null
+  tldr: VRS-UIE reorders Mamba scanning by a learned value map to prioritize informative underwater regions, improving enhancement and enabling a lightweight real-time variant.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4518,7 +4717,11 @@
   year: 2025
   venue: PR
   type: Hybrid
-  tags: []
+  tags:
+  - Foundation-Model
+  - Contrast-Enhancement
+  - Task-Driven
+  - Unsupervised
   url: https://doi.org/10.1016/j.patcog.2025.111395
   doi: 10.1016/j.patcog.2025.111395
   arxiv_id: '2507.06234'
@@ -4532,7 +4735,7 @@
   - Chunling Fan
   - Gangyi Jiang
   - Weisi Lin
-  tldr: null
+  tldr: A CLIP perception loss and curriculum contrastive regularization guide underwater image enhancement to improve perceptual quality and content restoration.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4541,7 +4744,11 @@
   year: 2025
   venue: AAAI
   type: DeepLearning
-  tags: []
+  tags:
+  - Transformer
+  - Mamba
+  - Multiscale-Fusion
+  - Lightweight
   url: https://doi.org/10.1609/aaai.v39i6.32692
   doi: 10.1609/aaai.v39i6.32692
   arxiv_id: '2504.19198'
@@ -4550,7 +4757,7 @@
   authors:
   - Lingtao Peng
   - Liheng Bian
-  tldr: null
+  tldr: SS-UIE combines spatial multi-scale cycle selective scan and spectral self-attention with a frequency-wise loss for adaptive underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4562,6 +4769,7 @@
   tags:
   - CNN
   - GAN
+  - Benchmark
   url: https://arxiv.org/abs/2504.11063
   doi: null
   arxiv_id: '2504.11063'
@@ -4571,7 +4779,7 @@
   - Pedro Diaz-Garcia
   - Felix Escalona
   - Miguel Cazorla
-  tldr: null
+  tldr: Applies deep learning-based underwater image enhancement to improve keypoint detection and matching, showing gains over traditional methods across datasets.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4583,6 +4791,9 @@
   tags:
   - Dehazing
   - Lightweight
+  - Real-time
+  - Physical-Model
+  - Color-Correction
   url: https://arxiv.org/abs/2504.11482
   doi: null
   arxiv_id: '2504.11482'
@@ -4596,7 +4807,7 @@
   - Hamad Karki
   - Giulia De Masi
   - Jorge Dias
-  tldr: null
+  tldr: A lightweight spiking neural network for underwater image dehazing that processes RGB-LAB sequences with temporal dynamics and achieves efficient state-of-the-art performance.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4609,6 +4820,8 @@
   - CNN
   - Transformer
   - Lightweight
+  - Real-time
+  - Unsupervised
   url: https://arxiv.org/abs/2503.20485
   doi: null
   arxiv_id: '2503.20485'
@@ -4622,7 +4835,7 @@
   - Hamad Karki
   - Giulia De Masi
   - Jorge Dias
-  tldr: null
+  tldr: Introduces UIE-SNN, a 19-layer convolutional spiking encoder-decoder with skip connections trained via surrogate gradient BPTT for energy-efficient underwater image enhancement.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4631,7 +4844,10 @@
   year: 2025
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Domain-Adaptation
+  - Unsupervised
+  - Task-Driven
   url: https://arxiv.org/abs/2503.17937
   doi: null
   arxiv_id: '2503.17937'
@@ -4642,7 +4858,7 @@
   - Minfu Li
   - Lu Li
   - Daoyi Chen
-  tldr: null
+  tldr: Trans-UIE uses transfer learning with no-reference image quality assessment to guide cross-domain underwater image enhancement, reducing pseudo-label and overfitting issues.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4653,6 +4869,10 @@
   type: Hybrid
   tags:
   - Physical-Model
+  - Image-Formation-Model
+  - CNN
+  - Task-Driven
+  - Image-Synthesis
   url: https://arxiv.org/abs/2503.12470
   doi: null
   arxiv_id: '2503.12470'
@@ -4664,7 +4884,7 @@
   - Shuaixin Liu
   - Chengzhi Ma
   - Qianli Jiang
-  tldr: null
+  tldr: DPF-Net is a two-stage network that estimates physical parameters from synthetic data and fuses them into a data-driven enhancement model with physics-based consistency and weak reference losses.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4675,6 +4895,10 @@
   type: Traditional
   tags:
   - Color-Correction
+  - Contrast-Enhancement
+  - Retinex
+  - Image-Fusion
+  - Physical-Model
   url: https://arxiv.org/abs/2503.03640
   doi: null
   arxiv_id: '2503.03640'
@@ -4684,7 +4908,7 @@
   - Yuezhe Tian
   - Kangchen Yao
   - Xiaoyang Yu
-  tldr: null
+  tldr: An adaptive framework combines illumination compensation, multi-domain filtering, and dynamic color compensation to enhance degraded underwater images.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4696,6 +4920,8 @@
   tags:
   - Diffusion
   - Unsupervised
+  - Low-Light-Enhancement
+  - Color-Correction
   url: https://arxiv.org/abs/2501.16211
   doi: null
   arxiv_id: '2501.16211'
@@ -4708,7 +4934,7 @@
   - Rodrigo Andrade de Bem
   - Felipe Gomes de Oliveira
   - Paulo L. J. Drews-Jr
-  tldr: null
+  tldr: UDBE uses conditional diffusion with color and signal-noise maps to enhance brightness in unpaired underwater images without supervision.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4717,7 +4943,11 @@
   year: 2025
   venue: arXiv
   type: DeepLearning
-  tags: []
+  tags:
+  - Benchmark
+  - Color-Correction
+  - Multiscale-Fusion
+  - Physical-Model
   url: https://arxiv.org/abs/2501.02701
   doi: null
   arxiv_id: '2501.02701'
@@ -4728,7 +4958,7 @@
   - Xuhang Chen
   - Shuqiang Wang
   - Chi-Man Pun
-  tldr: null
+  tldr: A color balance prior guided hybrid multi-scale framework restores underwater images and benchmarks 37 existing methods across paired and unpaired datasets.
   status: candidate
   added: '2026-09-27'
   notes: null
@@ -4739,6 +4969,9 @@
   type: DeepLearning
   tags:
   - Color-Correction
+  - Contrast-Enhancement
+  - Image-Fusion
+  - CNN
   url: https://doi.org/10.36227/techrxiv.173610973.39161596/v1
   doi: 10.36227/techrxiv.173610973.39161596/v1
   arxiv_id: null
@@ -4750,7 +4983,7 @@
   - YuJie Yang
   - Xibei Yang
   - Jinlong Shi
-  tldr: null
+  tldr: CCMCS-Net is a two-stage network that corrects underwater color distortion and enhances contrast via multi-color-space stretching and dynamic fusion.
   status: candidate
   added: '2026-09-27'
   notes: null
