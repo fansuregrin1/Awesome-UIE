@@ -3033,29 +3033,6 @@
   status: candidate
   added: '2026-09-27'
   notes: null
-- id: 2026-enhancing-underwater-live-fish-detection-performance-with-yo
-  title: ENHANCING UNDERWATER LIVE FISH DETECTION PERFORMANCE WITH YOLOV11 AND IMAGE ENHANCEMENT TECHNIQUES IN A REAL-TIME SYSTEM
-  year: 2026
-  venue: Jurnal Teknologi Perikanan dan Kelautan
-  type: Traditional
-  tags:
-  - Real-time
-  - Lightweight
-  url: https://doi.org/10.24319/jtpk.17.401-412
-  doi: 10.24319/jtpk.17.401-412
-  arxiv_id: null
-  code: null
-  project: null
-  authors:
-  - Muhammad Iqbal
-  - Indra Jaya
-  - Yeni Herdiyeni
-  - Dedi Jusadi
-  - Totok Hestirianoto
-  tldr: null
-  status: candidate
-  added: '2026-09-27'
-  notes: null
 - id: 2026-dual-branch-underwater-image-enhancement-via-bidirectional-s
   title: Dual-Branch Underwater-Image Enhancement via Bidirectional Supervision, Contrastive Learning, and Style Transfer
   year: 2026
@@ -3226,27 +3203,6 @@
   status: candidate
   added: '2026-09-27'
   notes: null
-- id: 2026-boundary-transition-characterization-in-high-speed-underwate
-  title: Boundary-Transition Characterization in High-Speed Underwater Bubble Imaging Under Broadband and Narrow-Band Illumination
-  year: 2026
-  venue: Sensors
-  type: DeepLearning
-  tags: []
-  url: https://doi.org/10.3390/s26175546
-  doi: 10.3390/s26175546
-  arxiv_id: null
-  code: null
-  project: null
-  authors:
-  - Chen Lu
-  - Songtao Fan
-  - Yuang Yang
-  - Jun He
-  - Yang Cao
-  tldr: null
-  status: candidate
-  added: '2026-09-27'
-  notes: null
 - id: 2026-3d-use-from-image-level-to-scene-level-underwater-enhancemen
   title: '3D-USE: From Image-Level to Scene-Level Underwater Enhancement'
   year: 2026
@@ -3272,7 +3228,7 @@
 - id: 2026-dynamic-spectraformer-for-ultra-high-definition-underwater-i
   title: Dynamic SpectraFormer for Ultra-High-Definition Underwater Image Enhancement
   year: 2026
-  venue: 2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), pp. 8634-8641, 2024
+  venue: IROS
   type: DeepLearning
   tags:
   - Transformer
@@ -3472,7 +3428,7 @@
 - id: 2026-fusing-transferred-priors-and-physics-based-decomposition-fo
   title: Fusing Transferred Priors and Physics-based Decomposition for Underwater Image Enhancement
   year: 2026
-  venue: 'Information Fusion (2026): 104557'
+  venue: Information Fusion
   type: Hybrid
   tags:
   - Physical-Model

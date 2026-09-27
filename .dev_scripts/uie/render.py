@@ -34,6 +34,7 @@ CONFERENCE_VENUES = {
     "ICME",
     "ICRA",
     "ICVGIP",
+    "IROS",
     "WACV",
 }
 
