@@ -99,7 +99,9 @@ class HttpClient:
                 return response.text
             if response.status_code in (429, 500, 502, 503, 504):
                 last_error = f"HTTP {response.status_code}"
-                time.sleep(1.5 * (attempt + 1))
+                retry_after = response.headers.get("Retry-After")
+                delay = float(retry_after) if retry_after and retry_after.isdigit() else 3.0 * (attempt + 1)
+                time.sleep(delay)
                 continue
             last_error = f"HTTP {response.status_code}"
             break

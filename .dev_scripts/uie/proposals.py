@@ -173,9 +173,10 @@ def render_discover_markdown(result: DiscoverResult) -> str:
         venue_note = candidate.venue or "—"
         if candidate.venue_unknown:
             venue_note += " (unmapped)"
+        kind = "preprint" if candidate.is_preprint else "published"
         lines.append(f"### {record.title}")
         lines.append(
-            f"- year {record.year} · venue {venue_note} [tier {candidate.venue_tier}] · "
+            f"- year {record.year} · venue {venue_note} [tier {candidate.venue_tier}, {kind}] · "
             f"source {record.source} · relevance {candidate.relevance:.2f}"
         )
         if record.date:
@@ -236,6 +237,13 @@ def render_discover_markdown(result: DiscoverResult) -> str:
     else:
         lines.append("_none_")
     lines.append("")
+
+    if result.source_errors:
+        lines.append("## Source errors")
+        lines.append("")
+        for error in result.source_errors:
+            lines.append(f"- {error}")
+        lines.append("")
     return "\n".join(lines)
 
 
@@ -249,6 +257,7 @@ def render_discover_json(result: DiscoverResult) -> str:
         "similar": [asdict(candidate) for candidate in result.similar],
         "existing": [asdict(candidate) for candidate in result.existing],
         "unknown_venues": result.unknown_venues,
+        "source_errors": result.source_errors,
     }
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
 

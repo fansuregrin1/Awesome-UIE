@@ -44,6 +44,21 @@ def normalize_issn(issn: Optional[str]) -> Optional[str]:
     return key or None
 
 
+def clean_venue_name(text: Optional[str]) -> str:
+    """Strip volume/issue/page/year tails that leak in from journal references.
+
+    e.g. "Pattern Recognition 162 (2025) 111395" -> "Pattern Recognition";
+    "IEEE Transactions on Image Processing, vol. 34, pp. 1-2, 2025" -> the journal name.
+    Used only as a fallback when the raw name does not match.
+    """
+    if not text:
+        return ""
+    cleaned = re.sub(r"[,;]?\s*(?:vol\.?|volume)\s*\d+.*$", "", text, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\s*[\(\[]\s*(?:19|20)\d{2}\s*[\)\]].*$", "", cleaned)
+    cleaned = re.sub(r"\s+\d{2,}\s*.*$", "", cleaned)
+    return cleaned.strip(" ,;:.-")
+
+
 @dataclass
 class Venue:
     code: str
@@ -79,9 +94,10 @@ class VenueRegistry:
         issn_key = normalize_issn(issn)
         if issn_key and issn_key in self._by_issn:
             return self._by_issn[issn_key], "issn"
-        name_key = normalize_venue(name)
-        if name_key and name_key in self._by_name:
-            return self._by_name[name_key], "name"
+        for candidate in (name, clean_venue_name(name)):
+            name_key = normalize_venue(candidate)
+            if name_key and name_key in self._by_name:
+                return self._by_name[name_key], "name"
         return None, ""
 
     def known(self, code: Optional[str]) -> bool:

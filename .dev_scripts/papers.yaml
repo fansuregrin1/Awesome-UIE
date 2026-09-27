@@ -3819,3 +3819,938 @@
   status: candidate
   added: '2026-09-27'
   notes: null
+- id: 2025-lego-llm-enhanced-genetic-optimization-for-underwater-robot
+  title: 'LEGO: LLM-enhanced genetic optimization for underwater robot image restoration'
+  year: 2025
+  venue: PR
+  type: DeepLearning
+  tags: []
+  url: https://doi.org/10.1016/j.patcog.2025.111782
+  doi: 10.1016/j.patcog.2025.111782
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Yuanzheng Ma
+  - Fan Xia
+  - Liwei Lin
+  - Xun Guan
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-uncore-an-underwater-lightweight-image-enhancement-via-neutr
+  title: 'UNCORE: an underwater lightweight image enhancement via neutrosophic color restoration and refinement'
+  year: 2025
+  venue: Ocean Engineering
+  type: DeepLearning
+  tags:
+  - Lightweight
+  url: https://doi.org/10.1016/j.oceaneng.2025.122069
+  doi: 10.1016/j.oceaneng.2025.122069
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - M. Suresh Kumar
+  - N. Ramesh Babu
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-a-graph-aware-color-correction-and-texture-restoration-frame
+  title: A Graph-Aware Color Correction and Texture Restoration Framework for Underwater Image Enhancement
+  year: 2025
+  venue: Electronics
+  type: DeepLearning
+  tags:
+  - Color-Correction
+  url: https://doi.org/10.3390/electronics14204079
+  doi: 10.3390/electronics14204079
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Jin Qian
+  - Bin Zhang
+  - Hui Li
+  - Xiaoshuang Xing
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-underwater-image-color-correction-via-global-and-local-two-s
+  title: Underwater image color correction via global and local two-step optimization
+  year: 2025
+  venue: PRL
+  type: DeepLearning
+  tags:
+  - Color-Correction
+  url: https://doi.org/10.1016/j.patrec.2025.05.007
+  doi: 10.1016/j.patrec.2025.05.007
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Baiqiang Yu
+  - Ling Zhou
+  - Wenqiang Yu
+  - Peixian Zhuang
+  - Weidong Zhang
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-progressive-color-correction-and-vision-inspired-adaptive-fr
+  title: Progressive Color Correction and Vision-Inspired Adaptive Framework for Underwater Image Enhancement
+  year: 2025
+  venue: Journal of Marine Science and Engineering
+  type: DeepLearning
+  tags:
+  - Color-Correction
+  url: https://doi.org/10.3390/jmse13091820
+  doi: 10.3390/jmse13091820
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Zhenhua Li
+  - Wenjing Liu
+  - Ji Wang
+  - Yuqiang Yang
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-multi-scale-diffusion-model-for-underwater-image-restoration
+  title: Multi-scale diffusion model for underwater image restoration and enhancement
+  year: 2025
+  venue: PLoS ONE
+  type: DeepLearning
+  tags:
+  - Diffusion
+  url: https://doi.org/10.1371/journal.pone.0331465
+  doi: 10.1371/journal.pone.0331465
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Yuan Fang
+  - Qianyi Li
+  - Kai Wang
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-a-cutting-edge-ensemble-model-for-enhanced-underwater-image
+  title: A cutting-edge ensemble model for enhanced underwater image restoration and quality improvement
+  year: 2025
+  venue: Scientific Reports
+  type: DeepLearning
+  tags: []
+  url: https://doi.org/10.1038/s41598-025-96832-8
+  doi: 10.1038/s41598-025-96832-8
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - A. Sarala
+  - C. Vinoth kumar
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-underwater-image-enhancement-using-dynamic-color-correction
+  title: Underwater Image Enhancement Using Dynamic Color Correction and Lightweight Attention-Embedded SRResNet
+  year: 2025
+  venue: Journal of Marine Science and Engineering
+  type: DeepLearning
+  tags:
+  - Color-Correction
+  - Lightweight
+  url: https://doi.org/10.3390/jmse13081546
+  doi: 10.3390/jmse13081546
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Kui Zhang
+  - Yingying Zhang
+  - Da Yuan
+  - Xiandong Feng
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-domain-guided-multi-frequency-underwater-image-enhancement-n
+  title: Domain-guided multi-frequency underwater image enhancement network
+  year: 2025
+  venue: IMAGE
+  type: DeepLearning
+  tags: []
+  url: https://doi.org/10.1016/j.image.2025.117281
+  doi: 10.1016/j.image.2025.117281
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Qingzheng Wang
+  - Bin Li
+  - Ge Shi
+  - Xinyu Wang
+  - Yiliang Chen
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-underwater-image-dehazing-using-a-hybrid-gan-with-bottleneck
+  title: Underwater image dehazing using a hybrid GAN with bottleneck attention and improved Retinex-based optimization
+  year: 2025
+  venue: Scientific Reports
+  type: DeepLearning
+  tags:
+  - GAN
+  - Dehazing
+  url: https://doi.org/10.1038/s41598-025-11815-z
+  doi: 10.1038/s41598-025-11815-z
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Amandeep Kaur
+  - Shalli Rani
+  - Mohammad Shabaz
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-uievus-an-underwater-image-enhancement-method-for-various-un
+  title: 'UIEVUS: An underwater image enhancement method for various underwater scenes'
+  year: 2025
+  venue: IMAGE
+  type: DeepLearning
+  tags: []
+  url: https://doi.org/10.1016/j.image.2025.117264
+  doi: 10.1016/j.image.2025.117264
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Siyi Ren
+  - Xianqiang Bao
+  - Tianjiang Wang
+  - Xinghua Xu
+  - Tao Ma
+  - Kun Yu
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-robust-underwater-imaging-model-and-automatic-parameter-opti
+  title: Robust underwater imaging model and automatic parameter optimization for underwater image restoration
+  year: 2025
+  venue: EAAI
+  type: DeepLearning
+  tags: []
+  url: https://doi.org/10.1016/j.engappai.2025.110651
+  doi: 10.1016/j.engappai.2025.110651
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Chenggang Dai
+  - Dongnian Li
+  - Chengjun Chen
+  - Zhengxu Zhao
+  - Mingxing Lin
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-auied3k-a-new-andaman-underwater-image-enhancement-dataset-f
+  title: 'AUIED3K: A New Andaman Underwater Image Enhancement Dataset for Deep Learning-Driven Image Enhancement with Minimum Loss Dehazing'
+  year: 2025
+  venue: ICASSP
+  type: DeepLearning
+  tags:
+  - Dehazing
+  url: https://doi.org/10.1109/icassp49660.2025.10890845
+  doi: 10.1109/icassp49660.2025.10890845
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Praveen Saini
+  - Navjot Singh
+  - Anshu S. Anand
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-swincnet-leveraging-swin-transformer-v2-and-cnn-for-precise
+  title: SwinCNet leveraging Swin Transformer V2 and CNN for precise color correction and detail enhancement in underwater image restoration
+  year: 2025
+  venue: Frontiers in Marine Science
+  type: DeepLearning
+  tags:
+  - CNN
+  - Transformer
+  - Color-Correction
+  url: https://doi.org/10.3389/fmars.2025.1523729
+  doi: 10.3389/fmars.2025.1523729
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Chun Yang
+  - Liwei Shao
+  - Yi Deng
+  - Jiahang Wang
+  - Hexiang Zhai
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-uniuir-considering-underwater-image-restoration-as-an-all-in
+  title: 'UniUIR: Considering Underwater Image Restoration as an All-in-One Learner'
+  year: 2025
+  venue: TIP
+  type: DeepLearning
+  tags:
+  - Mamba
+  url: https://doi.org/10.1109/tip.2025.3618377
+  doi: 10.1109/tip.2025.3618377
+  arxiv_id: '2501.12981'
+  code: null
+  project: null
+  authors:
+  - Xu Zhang
+  - Huan Zhang
+  - Guoli Wang
+  - Qian Zhang
+  - Lefei Zhang
+  - Bo Du
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-mact-underwater-image-color-correction-via-minimally-attenua
+  title: 'MACT: Underwater image color correction via Minimally Attenuated Channel Transfer'
+  year: 2025
+  venue: PRL
+  type: DeepLearning
+  tags:
+  - Color-Correction
+  url: https://doi.org/10.1016/j.patrec.2024.11.007
+  doi: 10.1016/j.patrec.2024.11.007
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Weibo Zhang
+  - Hao Wang
+  - Peng Ren
+  - Weidong Zhang
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-underwater-image-enhancement-via-brightness-mask-guided-mult
+  title: Underwater image enhancement via brightness mask-guided multi-attention embedding
+  year: 2025
+  venue: IMAGE
+  type: DeepLearning
+  tags: []
+  url: https://doi.org/10.1016/j.image.2024.117200
+  doi: 10.1016/j.image.2024.117200
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Yuanyuan Li
+  - Zetian Mi
+  - Peng Lin
+  - Xianping Fu
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-jdpnet-a-network-based-on-joint-degradation-processing-for-u
+  title: 'JDPNet: A Network Based on Joint Degradation Processing for Underwater Image Enhancement'
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags: []
+  url: https://arxiv.org/abs/2512.20213
+  doi: null
+  arxiv_id: '2512.20213'
+  code: null
+  project: null
+  authors:
+  - Tao Ye
+  - Hongbin Ren
+  - Chongbing Zhang
+  - Haoran Chen
+  - Xiaosong Li
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-aquadiff-diffusion-based-underwater-image-enhancement-for-ad
+  title: 'AquaDiff: Diffusion-Based Underwater Image Enhancement for Addressing Color Distortion'
+  year: 2025
+  venue: arXiv
+  type: Hybrid
+  tags:
+  - CNN
+  - GAN
+  - Diffusion
+  - Color-Correction
+  url: https://arxiv.org/abs/2512.14760
+  doi: null
+  arxiv_id: '2512.14760'
+  code: null
+  project: null
+  authors:
+  - Afrah Shaahid
+  - Muzammil Behzad
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-aqua-net-adaptive-frequency-fusion-and-illumination-aware-ne
+  title: 'AQUA-Net: Adaptive Frequency Fusion and Illumination Aware Network for Underwater Image Enhancement'
+  year: 2025
+  venue: arXiv
+  type: Hybrid
+  tags:
+  - Real-time
+  url: https://arxiv.org/abs/2512.05960
+  doi: null
+  arxiv_id: '2512.05960'
+  code: null
+  project: null
+  authors:
+  - Munsif Ali
+  - Najmul Hassan
+  - Lucia Ventura
+  - Davide Di Bari
+  - Simonepietro Canese
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-waterwave-bridging-underwater-image-enhancement-into-video-s
+  title: 'WaterWave: Bridging Underwater Image Enhancement into Video Streams via Wavelet-based Temporal Consistency Field'
+  year: 2025
+  venue: arXiv
+  type: Traditional
+  tags: []
+  url: https://arxiv.org/abs/2512.05492
+  doi: null
+  arxiv_id: '2512.05492'
+  code: null
+  project: null
+  authors:
+  - Qi Zhu
+  - Jingyi Zhang
+  - Naishan Zheng
+  - Wei Yu
+  - Jinghao Zhang
+  - Deyi Ji
+  - Feng Zhao
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-wwe-uie-a-wavelet-white-balance-efficient-network-for-underw
+  title: 'WWE-UIE: A Wavelet & White Balance Efficient Network for Underwater Image Enhancement'
+  year: 2025
+  venue: arXiv
+  type: Hybrid
+  tags:
+  - Real-time
+  url: https://arxiv.org/abs/2511.16321
+  doi: null
+  arxiv_id: '2511.16321'
+  code: null
+  project: null
+  authors:
+  - Ching-Heng Cheng
+  - Jen-Wei Lee
+  - Chia-Ming Lee
+  - Chih-Chung Hsu
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-an-upsampling-guided-adaptive-frequency-decoupled-model-for
+  title: An Upsampling Guided Adaptive Frequency Decoupled Model for Underwater Image Enhancement
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags: []
+  url: https://doi.org/10.36227/techrxiv.176123627.72622426/v1
+  doi: 10.36227/techrxiv.176123627.72622426/v1
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Fuheng Zhou
+  - Lining Liu
+  - Yulong Huang
+  - Yonggang Zhang
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-enhanced-quality-aware-scalable-underwater-image-compression
+  title: Enhanced Quality Aware-Scalable Underwater Image Compression
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags: []
+  url: https://arxiv.org/abs/2509.23200
+  doi: null
+  arxiv_id: '2509.23200'
+  code: null
+  project: null
+  authors:
+  - Linwei Zhu
+  - Junhao Zhu
+  - Xu Zhang
+  - Huan Zhang
+  - Ye Li
+  - Runmin Cong
+  - Sam Kwong
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-from-restoration-to-reconstruction-rethinking-3d-gaussian-sp
+  title: 'From Restoration to Reconstruction: Rethinking 3D Gaussian Splatting for Underwater Scenes'
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags:
+  - Physical-Model
+  - Lightweight
+  url: https://arxiv.org/abs/2509.17789
+  doi: null
+  arxiv_id: '2509.17789'
+  code: null
+  project: null
+  authors:
+  - Guoxi Huang
+  - Haoran Wang
+  - Zipeng Qi
+  - Wenjun Lu
+  - David Bull
+  - Nantheera Anantrasirichai
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-sformer-snr-guided-transformer-for-underwater-image-enhancem
+  title: 'SFormer: SNR-guided Transformer for Underwater Image Enhancement from the Frequency Domain'
+  year: 2025
+  venue: arXiv
+  type: Hybrid
+  tags:
+  - Transformer
+  url: https://arxiv.org/abs/2508.18664
+  doi: null
+  arxiv_id: '2508.18664'
+  code: null
+  project: null
+  authors:
+  - Xin Tian
+  - Yingtie Lei
+  - Xiujun Zhang
+  - Zimeng Li
+  - Chi-Man Pun
+  - Xuhang Chen
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-daca-net-a-degradation-aware-conditional-diffusion-network-f
+  title: 'DACA-Net: A Degradation-Aware Conditional Diffusion Network for Underwater Image Enhancement'
+  year: 2025
+  venue: arXiv
+  type: Hybrid
+  tags:
+  - CNN
+  - Diffusion
+  - Lightweight
+  url: https://arxiv.org/abs/2507.22501
+  doi: null
+  arxiv_id: '2507.22501'
+  code: null
+  project: null
+  authors:
+  - Chang Huang
+  - Jiahang Cao
+  - Jun Ma
+  - Kieren Yu
+  - Cong Li
+  - Huayong Yang
+  - Kaishun Wu
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-single-step-latent-diffusion-for-underwater-image-restoratio
+  title: Single-Step Latent Diffusion for Underwater Image Restoration
+  year: 2025
+  venue: arXiv
+  type: Hybrid
+  tags:
+  - Diffusion
+  - Physical-Model
+  url: https://arxiv.org/abs/2507.07878
+  doi: null
+  arxiv_id: '2507.07878'
+  code: null
+  project: null
+  authors:
+  - Jiayi Wu
+  - Tianfu Wang
+  - Md Abu Bakr Siddique
+  - Md Jahidul Islam
+  - Cornelia Fermuller
+  - Yiannis Aloimonos
+  - Christopher A. Metzler
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-mac-lookup-multi-axis-conditional-lookup-model-for-underwate
+  title: 'MAC-Lookup: Multi-Axis Conditional Lookup Model for Underwater Image Enhancement'
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags:
+  - Color-Correction
+  url: https://arxiv.org/abs/2507.02270
+  doi: null
+  arxiv_id: '2507.02270'
+  code: null
+  project: null
+  authors:
+  - Fanghai Yi
+  - Zehong Zheng
+  - Zexiao Liang
+  - Yihang Dong
+  - Xiyang Fang
+  - Wangyu Wu
+  - Xuhang Chen
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-physics-informed-capsule-enhanced-variational-autoencoder-fo
+  title: Physics Informed Capsule Enhanced Variational AutoEncoder for Underwater Image Enhancement
+  year: 2025
+  venue: arXiv
+  type: Hybrid
+  tags:
+  - Physical-Model
+  url: https://arxiv.org/abs/2506.04753
+  doi: null
+  arxiv_id: '2506.04753'
+  code: null
+  project: null
+  authors:
+  - Niki Martinel
+  - Rita Pucci
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-underwater-diffusion-attention-network-with-contrastive-lang
+  title: Underwater Diffusion Attention Network with Contrastive Language-Image Joint Learning for Underwater Image Enhancement
+  year: 2025
+  venue: arXiv
+  type: Hybrid
+  tags:
+  - Diffusion
+  url: https://arxiv.org/abs/2505.19895
+  doi: null
+  arxiv_id: '2505.19895'
+  code: null
+  project: null
+  authors:
+  - Afrah Shaahid
+  - Muzammil Behzad
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-vrs-uie-value-driven-reordering-scanning-for-underwater-imag
+  title: 'VRS-UIE: Value-Driven Reordering Scanning for Underwater Image Enhancement'
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags:
+  - CNN
+  - Mamba
+  - Real-time
+  - Lightweight
+  url: https://arxiv.org/abs/2505.01224
+  doi: null
+  arxiv_id: '2505.01224'
+  code: null
+  project: null
+  authors:
+  - Kui Jiang
+  - Yan Luo
+  - Junjun Jiang
+  - Ke Gu
+  - Nan Ma
+  - Xianming Liu
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-unveiling-the-underwater-world-clip-perception-model-guided
+  title: 'Unveiling the Underwater World: CLIP Perception Model-Guided Underwater Image Enhancement'
+  year: 2025
+  venue: PR
+  type: Hybrid
+  tags: []
+  url: https://doi.org/10.1016/j.patcog.2025.111395
+  doi: 10.1016/j.patcog.2025.111395
+  arxiv_id: '2507.06234'
+  code: null
+  project: null
+  authors:
+  - Jiangzhong Cao
+  - Zekai Zeng
+  - Xu Zhang
+  - Huan Zhang
+  - Chunling Fan
+  - Gangyi Jiang
+  - Weisi Lin
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-adaptive-dual-domain-learning-for-underwater-image-enhanceme
+  title: Adaptive Dual-domain Learning for Underwater Image Enhancement
+  year: 2025
+  venue: AAAI
+  type: DeepLearning
+  tags: []
+  url: https://doi.org/10.1609/aaai.v39i6.32692
+  doi: 10.1609/aaai.v39i6.32692
+  arxiv_id: '2504.19198'
+  code: null
+  project: null
+  authors:
+  - Lingtao Peng
+  - Liheng Bian
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-ukdm-underwater-keypoint-detection-and-matching-using-underw
+  title: 'UKDM: Underwater keypoint detection and matching using underwater image enhancement techniques'
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags:
+  - CNN
+  - GAN
+  url: https://arxiv.org/abs/2504.11063
+  doi: null
+  arxiv_id: '2504.11063'
+  code: null
+  project: null
+  authors:
+  - Pedro Diaz-Garcia
+  - Felix Escalona
+  - Miguel Cazorla
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-snntrans-dhz-a-lightweight-spiking-neural-network-architectu
+  title: 'snnTrans-DHZ: A Lightweight Spiking Neural Network Architecture for Underwater Image Dehazing'
+  year: 2025
+  venue: arXiv
+  type: Hybrid
+  tags:
+  - Dehazing
+  - Lightweight
+  url: https://arxiv.org/abs/2504.11482
+  doi: null
+  arxiv_id: '2504.11482'
+  code: null
+  project: null
+  authors:
+  - Vidya Sudevan
+  - Fakhreddine Zayer
+  - Rizwana Kausar
+  - Sajid Javed
+  - Hamad Karki
+  - Giulia De Masi
+  - Jorge Dias
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-underwater-image-enhancement-by-convolutional-spiking-neural
+  title: Underwater Image Enhancement by Convolutional Spiking Neural Networks
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags:
+  - CNN
+  - Transformer
+  - Lightweight
+  url: https://arxiv.org/abs/2503.20485
+  doi: null
+  arxiv_id: '2503.20485'
+  code: null
+  project: null
+  authors:
+  - Vidya Sudevan
+  - Fakhreddine Zayer
+  - Rizwana Kausar
+  - Sajid Javed
+  - Hamad Karki
+  - Giulia De Masi
+  - Jorge Dias
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-cross-domain-underwater-image-enhancement-guided-by-no-refer
+  title: 'Cross-Domain Underwater Image Enhancement Guided by No-Reference Image Quality Assessment: A Transfer Learning Approach'
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags: []
+  url: https://arxiv.org/abs/2503.17937
+  doi: null
+  arxiv_id: '2503.17937'
+  code: null
+  project: null
+  authors:
+  - Zhi Zhang
+  - Minfu Li
+  - Lu Li
+  - Daoyi Chen
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-dpf-net-physical-imaging-model-embedded-data-driven-underwat
+  title: 'DPF-Net: Physical Imaging Model Embedded Data-Driven Underwater Image Enhancement'
+  year: 2025
+  venue: arXiv
+  type: Hybrid
+  tags:
+  - Physical-Model
+  url: https://arxiv.org/abs/2503.12470
+  doi: null
+  arxiv_id: '2503.12470'
+  code: null
+  project: null
+  authors:
+  - Han Mei
+  - Kunqian Li
+  - Shuaixin Liu
+  - Chengzhi Ma
+  - Qianli Jiang
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-an-adaptive-underwater-image-enhancement-framework-via-multi
+  title: An Adaptive Underwater Image Enhancement Framework via Multi-Domain Fusion and Color Compensation
+  year: 2025
+  venue: arXiv
+  type: Traditional
+  tags:
+  - Color-Correction
+  url: https://arxiv.org/abs/2503.03640
+  doi: null
+  arxiv_id: '2503.03640'
+  code: null
+  project: null
+  authors:
+  - Yuezhe Tian
+  - Kangchen Yao
+  - Xiaoyang Yu
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-udbe-unsupervised-diffusion-based-brightness-enhancement-in
+  title: 'UDBE: Unsupervised Diffusion-based Brightness Enhancement in Underwater Images'
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags:
+  - Diffusion
+  - Unsupervised
+  url: https://arxiv.org/abs/2501.16211
+  doi: null
+  arxiv_id: '2501.16211'
+  code: null
+  project: null
+  authors:
+  - Tatiana Taís Schein
+  - Gustavo Pereira de Almeira
+  - Stephanie Loi Brião
+  - Rodrigo Andrade de Bem
+  - Felipe Gomes de Oliveira
+  - Paulo L. J. Drews-Jr
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-underwater-image-restoration-through-a-prior-guided-hybrid-s
+  title: Underwater Image Restoration Through a Prior Guided Hybrid Sense Approach and Extensive Benchmark Analysis
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags: []
+  url: https://arxiv.org/abs/2501.02701
+  doi: null
+  arxiv_id: '2501.02701'
+  code: null
+  project: null
+  authors:
+  - Xiaojiao Guo
+  - Xuhang Chen
+  - Shuqiang Wang
+  - Chi-Man Pun
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null
+- id: 2025-ccmcs-net-integrating-color-correction-and-multi-color-space
+  title: 'CCMCS-Net: Integrating Color Correction and Multi Color-Space Stretching for Improving Underwater Image Quality'
+  year: 2025
+  venue: arXiv
+  type: DeepLearning
+  tags:
+  - Color-Correction
+  url: https://doi.org/10.36227/techrxiv.173610973.39161596/v1
+  doi: 10.36227/techrxiv.173610973.39161596/v1
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Jianjun Chen
+  - Jingjing Song
+  - YuJie Yang
+  - Xibei Yang
+  - Jinlong Shi
+  tldr: null
+  status: candidate
+  added: '2026-09-27'
+  notes: null

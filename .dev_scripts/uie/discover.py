@@ -65,6 +65,7 @@ class Candidate:
     venue: str = ""
     venue_unknown: bool = False
     venue_tier: str = DEFAULT_TIER
+    is_preprint: bool = False
 
 
 @dataclass
@@ -77,6 +78,7 @@ class DiscoverResult:
     similar: List[Candidate] = field(default_factory=list)
     existing: List[Candidate] = field(default_factory=list)
     unknown_venues: List[str] = field(default_factory=list)
+    source_errors: List[str] = field(default_factory=list)
 
     def summary(self) -> Dict[str, int]:
         return {
@@ -85,6 +87,7 @@ class DiscoverResult:
             "pending": len(self.pending),
             "similar": len(self.similar),
             "existing": len(self.existing),
+            "source_errors": len(self.source_errors),
         }
 
 
@@ -193,6 +196,63 @@ def match_status(
     return "new", None
 
 
+_SOURCE_RANK = {"crossref": 0, "openalex": 1, "arxiv": 2}
+
+
+def is_preprint(record: SourceRecord) -> bool:
+    """True when the record has no published venue (arXiv / unknown)."""
+    venue = (record.venue or "").lower()
+    return record.source == "arxiv" or "arxiv" in venue or not record.venue
+
+
+def _merge_records(records: Sequence[SourceRecord]) -> List[SourceRecord]:
+    """Merge the same paper across sources, preferring the published record.
+
+    Records are grouped by normalized title; within a group the best record is a
+    non-preprint one (Crossref > OpenAlex > arXiv), and missing ``doi``/``arxiv_id``/
+    ``abstract``/``issn`` are copied over from the others.
+    """
+    groups: Dict[str, List[SourceRecord]] = {}
+    order: List[str] = []
+    for record in records:
+        if not record.title:
+            continue
+        key = re.sub(r"[^a-z0-9]+", "", record.title.lower()) or _internal_key(record)
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(record)
+
+    merged: List[SourceRecord] = []
+    for key in order:
+        group = groups[key]
+        best = min(group, key=lambda item: (is_preprint(item), _SOURCE_RANK.get(item.source, 9)))
+        for field_name in ("doi", "arxiv_id", "abstract", "issn"):
+            if not getattr(best, field_name):
+                value = next((getattr(item, field_name) for item in group if getattr(item, field_name)), None)
+                if value:
+                    setattr(best, field_name, value)
+        merged.append(best)
+    return merged
+
+
+def _resolve_published(record: SourceRecord, sources: Sequence[object]) -> Optional[SourceRecord]:
+    """Look a record up by DOI on published sources; return a non-arXiv match."""
+    if not record.doi:
+        return None
+    for source in sources:
+        if getattr(source, "name", "") == "arxiv" or not hasattr(source, "lookup"):
+            continue
+        try:
+            records = source.lookup(doi=record.doi)
+        except RuntimeError:
+            continue
+        for candidate in records or []:
+            if candidate.venue and "arxiv" not in candidate.venue.lower():
+                return candidate
+    return None
+
+
 def discover(
     papers: Sequence,
     config: Dict,
@@ -200,9 +260,11 @@ def discover(
     sources: Optional[Sequence[object]] = None,
     registry: Optional[object] = None,
     min_tier: Optional[str] = None,
+    years: Optional[Sequence[int]] = None,
     since_days: Optional[int] = None,
     limit_per_source: int = 25,
     min_relevance: float = 0.25,
+    prefer_published: bool = True,
     today: Optional[date] = None,
 ) -> DiscoverResult:
     if sources is None:
@@ -223,71 +285,92 @@ def discover(
     seen = set()
     unknown_venues = set()
 
+    gathered: List[SourceRecord] = []
     for source in sources:
         for keyword in keywords:
             try:
                 records = source.search(keyword, since=since_iso, limit=limit_per_source)
-            except RuntimeError:
+            except RuntimeError as exc:
+                result.source_errors.append(f"{getattr(source, 'name', 'source')} '{keyword}': {exc}")
                 continue
-            for record in records:
-                if not record.title:
-                    continue
-                if record.date and record.date < since_iso:
-                    continue
-                if not record.date and record.year and record.year < since.year:
-                    continue
+            gathered.extend(records or [])
 
-                relevant, score = is_relevant(record, tokens, min_relevance=min_relevance)
-                if not relevant:
-                    continue
+    in_window: List[SourceRecord] = []
+    for record in gathered:
+        if not record.title:
+            continue
+        if record.date and record.date < since_iso:
+            continue
+        if not record.date and record.year and record.year < since.year:
+            continue
+        in_window.append(record)
 
-                key = _internal_key(record)
-                if key in seen:
-                    continue
-                seen.add(key)
+    for record in _merge_records(in_window):
+        relevant, score = is_relevant(record, tokens, min_relevance=min_relevance)
+        if not relevant:
+            continue
+        if years and record.year not in years:
+            continue
 
-                status, matched = match_status(record, dois, arxiv_ids, titles)
-                paper_type, tags = suggest_classification(record)
+        # A preprint that carries a DOI may have a published version: adopt its venue.
+        if prefer_published and is_preprint(record) and record.doi:
+            published = _resolve_published(record, sources)
+            if published is not None:
+                for field_name in ("venue", "issn", "doi"):
+                    value = getattr(published, field_name, None)
+                    if value:
+                        setattr(record, field_name, value)
 
-                code = None
-                if registry is not None:
-                    code, _ = registry.resolve(record.venue, record.issn)
-                if record.source == "arxiv" and not record.venue:
-                    venue_value, venue_unknown = "arXiv", False
-                elif code:
-                    venue_value, venue_unknown = code, False
-                else:
-                    venue_value = record.venue or record.source
-                    venue_unknown = registry is not None
-                if venue_unknown:
-                    unknown_venues.add(venue_value)
-                venue_tier = registry.tier(venue_value) if registry is not None else DEFAULT_TIER
+        key = _internal_key(record)
+        if key in seen:
+            continue
+        seen.add(key)
 
-                candidate = Candidate(
-                    record=record,
-                    relevance=score,
-                    status=status,
-                    matched_id=matched,
-                    suggested_type=paper_type,
-                    suggested_tags=tags,
-                    suggested_id=make_id(record.year or today.year, record.title),
-                    venue=venue_value,
-                    venue_unknown=venue_unknown,
-                    venue_tier=venue_tier,
-                )
-                result.found += 1
-                if status == "new":
-                    if registry is not None and not registry.meets_min_tier(venue_value, min_tier):
-                        result.pending.append(candidate)
-                    else:
-                        result.new.append(candidate)
-                elif status == "similar":
-                    result.similar.append(candidate)
-                else:
-                    result.existing.append(candidate)
+        status, matched = match_status(record, dois, arxiv_ids, titles)
+        paper_type, tags = suggest_classification(record)
 
-    result.new.sort(key=lambda candidate: (candidate.record.date or "", candidate.relevance), reverse=True)
-    result.pending.sort(key=lambda candidate: (candidate.record.date or "", candidate.relevance), reverse=True)
+        code = None
+        if registry is not None:
+            code, _ = registry.resolve(record.venue, record.issn)
+        if is_preprint(record) and not record.venue:
+            venue_value, venue_unknown = "arXiv", False
+        elif code:
+            venue_value, venue_unknown = code, False
+        else:
+            venue_value = record.venue or record.source
+            venue_unknown = registry is not None
+        if venue_unknown:
+            unknown_venues.add(venue_value)
+        venue_tier = registry.tier(venue_value) if registry is not None else DEFAULT_TIER
+
+        candidate = Candidate(
+            record=record,
+            relevance=score,
+            status=status,
+            matched_id=matched,
+            suggested_type=paper_type,
+            suggested_tags=tags,
+            suggested_id=make_id(record.year or today.year, record.title),
+            venue=venue_value,
+            venue_unknown=venue_unknown,
+            venue_tier=venue_tier,
+            is_preprint=is_preprint(record),
+        )
+        result.found += 1
+        if status == "new":
+            if registry is not None and not registry.meets_min_tier(venue_value, min_tier):
+                result.pending.append(candidate)
+            else:
+                result.new.append(candidate)
+        elif status == "similar":
+            result.similar.append(candidate)
+        else:
+            result.existing.append(candidate)
+
+    # published candidates first, then by date/relevance
+    for group in (result.new, result.pending):
+        group.sort(key=lambda candidate: (candidate.record.date or "", candidate.relevance), reverse=True)
+        group.sort(key=lambda candidate: candidate.is_preprint)
     result.unknown_venues = sorted(unknown_venues)
     return result
 

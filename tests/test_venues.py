@@ -10,7 +10,7 @@ sys.path.insert(0, str(ROOT / ".dev_scripts"))
 
 from uie.discover import discover  # noqa: E402
 from uie.sources.base import SourceRecord  # noqa: E402
-from uie.venues import Venue, VenueRegistry, normalize_issn, normalize_venue  # noqa: E402
+from uie.venues import Venue, VenueRegistry, clean_venue_name, normalize_issn, normalize_venue  # noqa: E402
 
 
 class FakeSource:
@@ -50,6 +50,14 @@ class NormalizeTest(unittest.TestCase):
         self.assertEqual(normalize_issn("1057-7149"), "10577149")
         self.assertIsNone(normalize_issn(None))
 
+    def test_clean_venue_name(self):
+        self.assertEqual(clean_venue_name("Pattern Recognition 162 (2025) 111395"), "Pattern Recognition")
+        self.assertEqual(
+            clean_venue_name("IEEE Transactions on Image Processing, vol. 34, pp. 6963-6977, 2025"),
+            "IEEE Transactions on Image Processing",
+        )
+        self.assertEqual(clean_venue_name("Information Fusion (2026): 104557"), "Information Fusion")
+
 
 class RegistryTest(unittest.TestCase):
     def setUp(self):
@@ -63,6 +71,12 @@ class RegistryTest(unittest.TestCase):
 
     def test_resolve_by_alias(self):
         self.assertEqual(self.reg.resolve("IEEE Trans. on Image Process.")[0], "TIP")
+
+    def test_resolve_cleaned_name(self):
+        self.assertEqual(
+            self.reg.resolve("IEEE Transactions on Image Processing, vol. 34, pp. 1-2, 2025")[0],
+            "TIP",
+        )
 
     def test_resolve_by_code(self):
         self.assertEqual(self.reg.resolve("CVPR")[0], "CVPR")

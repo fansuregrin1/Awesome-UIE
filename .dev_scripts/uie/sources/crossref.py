@@ -96,8 +96,6 @@ class CrossrefSource:
             "query.bibliographic": query,
             "rows": limit,
             "select": SELECT,
-            "sort": "published",
-            "order": "desc",
         }
         if since:
             params["filter"] = f"from-pub-date:{since}"
