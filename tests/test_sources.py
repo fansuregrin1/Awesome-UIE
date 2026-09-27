@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT / ".dev_scripts"))
 from uie.sources.arxiv import parse_feed  # noqa: E402
 from uie.sources.crossref import parse_work as parse_crossref  # noqa: E402
 from uie.sources.openalex import parse_work as parse_openalex  # noqa: E402
+from uie.sources.semantic_scholar import parse_paper as parse_s2  # noqa: E402
 
 FIXTURES = ROOT / "tests" / "fixtures"
 
@@ -50,6 +51,16 @@ class CrossrefParseTest(unittest.TestCase):
         self.assertEqual(record.year, 2020)
         self.assertEqual(record.authors[0], "Chongyi Li")
         self.assertIn("IEEE Transactions on Image Processing", record.venue)
+
+
+class SemanticScholarParseTest(unittest.TestCase):
+    def test_parse_doi_lookup(self):
+        data = json.loads((FIXTURES / "semantic_scholar_doi.json").read_text(encoding="utf-8"))
+        record = parse_s2(data)
+        self.assertIn("Underwater scene prior", record.title)
+        self.assertIsNotNone(record.abstract)
+        self.assertEqual(record.doi, "10.1016/j.patcog.2019.107038")
+        self.assertTrue(record.authors)
 
 
 if __name__ == "__main__":

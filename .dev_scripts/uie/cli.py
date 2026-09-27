@@ -314,7 +314,8 @@ def cmd_llm(args: argparse.Namespace) -> int:
         cache_dir=CACHE_DIR,
         ttl=0 if args.refresh_abstracts else int(config.get("cache_ttl", DEFAULT_TTL)),
     )
-    abstracts = enrich_module.collect_abstracts(papers, http)
+    to_process = papers if args.all else [paper for paper in papers if not paper.tldr]
+    abstracts = enrich_module.collect_abstracts(to_process, http)
 
     llm = llm_module.LlmClient(
         model=args.model or config.get("model", "gpt-4o-mini"),
