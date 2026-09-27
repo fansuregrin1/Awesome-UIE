@@ -16,29 +16,8 @@ from typing import List
 
 from .schema import Paper, PaperType, Status
 
-HEAD = (
-    "<!-- AUTO-GENERATED FILE - DO NOT EDIT.\n"
-    "     Edit .dev_scripts/papers.yaml instead, then run from .dev_scripts:\n"
-    "         python -m uie.cli build\n"
-    "-->\n"
-    "\n"
-    "# Awesome Underwater Image Enhancement (UIE) Methods\n"
-    "\n"
-    "A curated list of Underwater Image Enhancement (UIE) papers and resources, "
-    "inspired by [Awesome-Inpainting-Tech]"
-    "(https://github.com/zengyh1900/Awesome-Image-Inpainting).\n"
-    "\n"
-    "This `README.md` is automatically generated from "
-    "[`.dev_scripts/papers.yaml`](.dev_scripts/papers.yaml).\n"
-    "\n"
-    "We provide [scripts](.dev_scripts/uie) to generate `README.md` "
-    "(plus `collection.csv`, `papers.json`, `papers.bib` and `llms.txt`) "
-    "from the YAML data file.\n"
-    "\n"
-    "🌐 **Browse online:** <https://fansuregrin1.github.io/Awesome-UIE/>\n"
-    "\n"
-    "Welcome to pull request to update or correct this collection. 🥰\n"
-)
+README_TEMPLATE = Path(__file__).resolve().parents[1] / "config" / "README.template.md"
+SITE_URL = "https://fansuregrin1.github.io/Awesome-UIE/"
 
 # Venues treated as conferences in the BibTeX export; everything else is a journal.
 CONFERENCE_VENUES = {
@@ -82,9 +61,42 @@ def _readme_line(paper: Paper) -> str:
     return line + "\n"
 
 
+def _stats(papers: List[Paper]) -> dict:
+    years = [paper.year for paper in papers]
+    by_type = Counter(paper.type.value for paper in papers)
+    return {
+        "COUNT": len(papers),
+        "YEAR_MIN": min(years) if years else "—",
+        "YEAR_MAX": max(years) if years else "—",
+        "WITH_CODE": sum(1 for paper in papers if paper.code),
+        "WITH_DOI": sum(1 for paper in papers if paper.doi),
+        "T_TRADITIONAL": by_type.get("Traditional", 0),
+        "T_DEEPLEARNING": by_type.get("DeepLearning", 0),
+        "T_HYBRID": by_type.get("Hybrid", 0),
+    }
+
+
 def render_readme(papers: List[Paper]) -> str:
+    """Project overview (not the list) with live statistics."""
     papers = _sorted(papers)
-    out = [HEAD]
+    template = README_TEMPLATE.read_text(encoding="utf-8")
+    for key, value in _stats(papers).items():
+        template = template.replace("{{" + key + "}}", str(value))
+    return template
+
+
+def render_papers(papers: List[Paper]) -> str:
+    """The full paper list, grouped by year."""
+    papers = _sorted(papers)
+    header = (
+        "<!-- AUTO-GENERATED FILE - DO NOT EDIT. "
+        "Edit .dev_scripts/papers.yaml and run `python -m uie.cli build`. -->\n\n"
+        "# Underwater Image Enhancement — Paper List\n\n"
+        f"{len(papers)} papers, grouped by year (newest first). "
+        "See the [README](README.md) for an overview and the "
+        f"[interactive site]({SITE_URL}) for search and filtering.\n\n"
+    )
+    out = [header]
     for year in sorted({paper.year for paper in papers}, reverse=True):
         out.append(f"## Year {year}\n")
         for paper in papers:
@@ -174,7 +186,8 @@ def render_llms(papers: List[Paper]) -> str:
         "- [papers.json](papers.json): machine-readable records",
         "- [papers.bib](papers.bib): BibTeX",
         "- [collection.csv](.dev_scripts/collection.csv): flat CSV",
-        "- [README.md](README.md): grouped by year",
+        "- [PAPERS.md](PAPERS.md): year-grouped list",
+        "- [README.md](README.md): project overview",
         "",
         "## Summary",
         f"- papers: {len(papers)}",
@@ -197,6 +210,7 @@ def write_all(root: Path | str, papers: List[Paper]) -> List[Path]:
     papers = published(papers)
     outputs = {
         root / "README.md": render_readme(papers),
+        root / "PAPERS.md": render_papers(papers),
         root / ".dev_scripts" / "collection.csv": render_csv(papers),
         root / "papers.json": render_json(papers),
         root / "papers.bib": render_bib(papers),

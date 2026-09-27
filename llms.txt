@@ -7,7 +7,8 @@
 - [papers.json](papers.json): machine-readable records
 - [papers.bib](papers.bib): BibTeX
 - [collection.csv](.dev_scripts/collection.csv): flat CSV
-- [README.md](README.md): grouped by year
+- [PAPERS.md](PAPERS.md): year-grouped list
+- [README.md](README.md): project overview
 
 ## Summary
 - papers: 124
