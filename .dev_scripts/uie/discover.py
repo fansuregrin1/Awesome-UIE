@@ -20,6 +20,7 @@ from .sources.base import SourceRecord
 from .sources.crossref import CrossrefSource
 from .sources.http import HttpClient
 from .sources.openalex import OpenAlexSource
+from .venues import DEFAULT_TIER
 
 TOKEN_RE = re.compile(r"[a-z0-9]+")
 ANCHOR = "underwater"
@@ -63,6 +64,7 @@ class Candidate:
     suggested_id: str
     venue: str = ""
     venue_unknown: bool = False
+    venue_tier: str = DEFAULT_TIER
 
 
 @dataclass
@@ -71,6 +73,7 @@ class DiscoverResult:
     queries: List[str]
     found: int = 0
     new: List[Candidate] = field(default_factory=list)
+    pending: List[Candidate] = field(default_factory=list)
     similar: List[Candidate] = field(default_factory=list)
     existing: List[Candidate] = field(default_factory=list)
     unknown_venues: List[str] = field(default_factory=list)
@@ -79,6 +82,7 @@ class DiscoverResult:
         return {
             "found": self.found,
             "new": len(self.new),
+            "pending": len(self.pending),
             "similar": len(self.similar),
             "existing": len(self.existing),
         }
@@ -195,6 +199,7 @@ def discover(
     client: Optional[HttpClient] = None,
     sources: Optional[Sequence[object]] = None,
     registry: Optional[object] = None,
+    min_tier: Optional[str] = None,
     since_days: Optional[int] = None,
     limit_per_source: int = 25,
     min_relevance: float = 0.25,
@@ -256,6 +261,7 @@ def discover(
                     venue_unknown = registry is not None
                 if venue_unknown:
                     unknown_venues.add(venue_value)
+                venue_tier = registry.tier(venue_value) if registry is not None else DEFAULT_TIER
 
                 candidate = Candidate(
                     record=record,
@@ -267,16 +273,21 @@ def discover(
                     suggested_id=make_id(record.year or today.year, record.title),
                     venue=venue_value,
                     venue_unknown=venue_unknown,
+                    venue_tier=venue_tier,
                 )
                 result.found += 1
                 if status == "new":
-                    result.new.append(candidate)
+                    if registry is not None and not registry.meets_min_tier(venue_value, min_tier):
+                        result.pending.append(candidate)
+                    else:
+                        result.new.append(candidate)
                 elif status == "similar":
                     result.similar.append(candidate)
                 else:
                     result.existing.append(candidate)
 
     result.new.sort(key=lambda candidate: (candidate.record.date or "", candidate.relevance), reverse=True)
+    result.pending.sort(key=lambda candidate: (candidate.record.date or "", candidate.relevance), reverse=True)
     result.unknown_venues = sorted(unknown_venues)
     return result
 

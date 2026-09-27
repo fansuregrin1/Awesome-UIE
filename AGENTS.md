@@ -92,6 +92,19 @@ through the curated registry `.dev_scripts/config/venues.yaml`:
   the warning appears. Bootstrap drafted the initial entries from the existing
   DOIs via `bootstrap_venues.py`.
 
+### Venue quality tiers
+
+Each venue also carries a **tier** (`A` / `B` / `preprint` / `C` / `unknown`, best → worst;
+`preprint` ranks above `C` so arXiv papers pass a stricter gate than low-impact journals) and a
+snapshot of OpenAlex `metrics` (two-year mean citedness, h-index, works count):
+
+- `python -m uie.cli venues --refresh-metrics` refreshes the metrics from OpenAlex.
+- `discover` auto-ingests only candidates at/above `min_tier` (in `config/discovery.yaml`,
+  default `preprint`); lower-tier candidates are listed under **“Pending”** in the report and are
+  **not** applied by `--apply`.
+- Tiers are curated by hand (conferences) or seeded from metrics (journals); adjust
+  `tier:` in `config/venues.yaml` as needed.
+
 ## LLM enrichment
 
 `python -m uie.cli llm` fetches each paper's abstract (arXiv/OpenAlex/Crossref),
