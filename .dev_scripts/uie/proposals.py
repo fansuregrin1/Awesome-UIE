@@ -175,8 +175,8 @@ def render_discover_markdown(result: DiscoverResult) -> str:
             venue_note += " (unmapped)"
         lines.append(f"### {record.title}")
         lines.append(
-            f"- year {record.year} · venue {venue_note} · source {record.source} · "
-            f"relevance {candidate.relevance:.2f}"
+            f"- year {record.year} · venue {venue_note} [tier {candidate.venue_tier}] · "
+            f"source {record.source} · relevance {candidate.relevance:.2f}"
         )
         if record.date:
             lines.append(f"- published {record.date}")
@@ -198,6 +198,21 @@ def render_discover_markdown(result: DiscoverResult) -> str:
         lines.append(_candidate_yaml(candidate))
         lines.append("```")
         lines.append("")
+
+    lines.append("## Pending (below venue tier)")
+    lines.append("")
+    if result.pending:
+        lines.append("Below the quality threshold; **not** auto-ingested by `--apply`.")
+        lines.append("")
+        for candidate in result.pending:
+            record = candidate.record
+            lines.append(
+                f"- {record.title} — venue {candidate.venue} [tier {candidate.venue_tier}], "
+                f"{record.source}, relevance {candidate.relevance:.2f}"
+            )
+    else:
+        lines.append("_none_")
+    lines.append("")
 
     lines.append("## Similar (possible duplicates or updates)")
     lines.append("")
@@ -230,6 +245,7 @@ def render_discover_json(result: DiscoverResult) -> str:
         "queries": result.queries,
         "summary": result.summary(),
         "new": [asdict(candidate) for candidate in result.new],
+        "pending": [asdict(candidate) for candidate in result.pending],
         "similar": [asdict(candidate) for candidate in result.similar],
         "existing": [asdict(candidate) for candidate in result.existing],
         "unknown_venues": result.unknown_venues,

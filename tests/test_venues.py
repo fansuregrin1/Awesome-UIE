@@ -83,6 +83,32 @@ class EmptyRegistryTest(unittest.TestCase):
         self.assertFalse(registry.known("TIP"))
 
 
+class TierTest(unittest.TestCase):
+    def setUp(self):
+        self.reg = VenueRegistry(
+            [
+                Venue(code="TIP", name="IEEE Transactions on Image Processing", issn="1057-7149", tier="A"),
+                Venue(code="Technium", name="Technium", tier="C"),
+                Venue(code="arXiv", name="arXiv", type="preprint", tier="preprint"),
+            ]
+        )
+
+    def test_tier_lookup(self):
+        self.assertEqual(self.reg.tier("TIP"), "A")
+        self.assertEqual(self.reg.tier("missing"), "unknown")
+
+    def test_meets_min_tier(self):
+        self.assertTrue(self.reg.meets_min_tier("TIP", "A"))
+        self.assertTrue(self.reg.meets_min_tier("TIP", "preprint"))
+        self.assertTrue(self.reg.meets_min_tier("arXiv", "preprint"))
+        self.assertFalse(self.reg.meets_min_tier("Technium", "preprint"))
+        self.assertFalse(self.reg.meets_min_tier("Technium", "B"))
+        self.assertFalse(self.reg.meets_min_tier("unknown-venue", "C"))
+
+    def test_no_min_tier(self):
+        self.assertTrue(self.reg.meets_min_tier("Technium", None))
+
+
 class DiscoverVenueTest(unittest.TestCase):
     CONFIG = {"keywords": ["underwater image enhancement"], "discover_since_days": 90}
 
@@ -117,6 +143,44 @@ class DiscoverVenueTest(unittest.TestCase):
         )
         self.assertTrue(result.new[0].venue_unknown)
         self.assertIn("Optics & Laser Technology", result.unknown_venues)
+
+    def test_min_tier_gate(self):
+        reg = VenueRegistry(
+            [
+                Venue(code="TIP", name="IEEE Transactions on Image Processing", issn="1057-7149", tier="A"),
+                Venue(code="Technium", name="Technium", tier="C"),
+            ]
+        )
+        records = [
+            SourceRecord(
+                source="crossref",
+                title="Underwater Image Enhancement Alpha",
+                venue="IEEE Transactions on Image Processing",
+                issn="1057-7149",
+                doi="10.1/a",
+                year=2026,
+                date="2026-08-01",
+            ),
+            SourceRecord(
+                source="crossref",
+                title="Underwater Image Enhancement Beta",
+                venue="Technium",
+                doi="10.1/b",
+                year=2026,
+                date="2026-08-02",
+            ),
+        ]
+        result = discover(
+            [],
+            self.CONFIG,
+            sources=[FakeSource(records)],
+            registry=reg,
+            min_tier="preprint",
+            today=date(2026, 9, 27),
+        )
+        self.assertEqual([candidate.venue for candidate in result.new], ["TIP"])
+        self.assertEqual([candidate.venue for candidate in result.pending], ["Technium"])
+        self.assertEqual(result.summary()["pending"], 1)
 
 
 if __name__ == "__main__":

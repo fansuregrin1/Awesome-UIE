@@ -1,10 +1,10 @@
 """Venue registry: map full journal/conference names to the collection's short codes.
 
-The APIs only expose full names (and ISO abbreviations), never the community
-short name used here (``TIP``, ``CVPR``, ...). The registry in
-``config/venues.yaml`` is therefore the single source of truth: it maps a
-canonical ``code`` to a full ``name`` plus aliases and, where available, an ISSN
-for stable matching.
+Beyond name/ISSN/alias matching, each venue carries a *quality tier* (``A``/``B``/
+``C``/``preprint``) and a snapshot of OpenAlex ``metrics``. Tiers are curated by
+hand (conferences) or seeded from metrics; they drive the ``discover`` quality
+gate. The registry lives in ``config/venues.yaml`` and is the single source of
+truth for venue codes.
 """
 
 from __future__ import annotations
@@ -16,6 +16,18 @@ from pathlib import Path
 from typing import Dict, List, Optional, Sequence, Tuple
 
 import yaml
+
+DEFAULT_TIER = "unknown"
+# Best -> worst. ``preprint`` ranks above ``C`` so arXiv papers pass a stricter
+# gate than low-impact journals. Used by ``meets_min_tier``.
+TIER_ORDER = {"A": 0, "B": 1, "preprint": 2, "C": 3, "unknown": 4}
+
+HEADER = (
+    "# Venue registry: full name / ISSN / aliases -> the short code used in the collection,\n"
+    "# plus a quality `tier` (A/B/C/preprint) and OpenAlex `metrics`.\n"
+    "# Refresh metrics with:  python -m uie.cli venues --refresh-metrics\n"
+    "# Maintained via the `unknown-venue` validation warning.\n\n"
+)
 
 
 def normalize_venue(text: Optional[str]) -> str:
@@ -38,17 +50,20 @@ class Venue:
     name: str
     type: str = "other"
     issn: Optional[str] = None
+    tier: str = DEFAULT_TIER
+    rank: Dict[str, str] = field(default_factory=dict)
+    metrics: Dict[str, object] = field(default_factory=dict)
     aliases: List[str] = field(default_factory=list)
 
 
 class VenueRegistry:
     def __init__(self, venues: Sequence[Venue]) -> None:
         self.venues = list(venues)
+        self._by_code: Dict[str, Venue] = {}
         self._by_issn: Dict[str, str] = {}
         self._by_name: Dict[str, str] = {}
-        self._codes = set()
         for venue in self.venues:
-            self._codes.add(venue.code)
+            self._by_code[venue.code] = venue
             issn = normalize_issn(venue.issn)
             if issn:
                 self._by_issn[issn] = venue.code
@@ -70,11 +85,20 @@ class VenueRegistry:
         return None, ""
 
     def known(self, code: Optional[str]) -> bool:
-        return bool(code) and code in self._codes
+        return bool(code) and code in self._by_code
+
+    def tier(self, code: Optional[str]) -> str:
+        venue = self._by_code.get(code or "")
+        return venue.tier if venue else DEFAULT_TIER
+
+    def meets_min_tier(self, code: Optional[str], min_tier: Optional[str]) -> bool:
+        if not min_tier:
+            return True
+        return TIER_ORDER.get(self.tier(code), 99) <= TIER_ORDER.get(min_tier, 99)
 
     @property
     def codes(self) -> set:
-        return set(self._codes)
+        return set(self._by_code)
 
 
 def load_registry(path: Path | str) -> Optional[VenueRegistry]:
@@ -88,8 +112,32 @@ def load_registry(path: Path | str) -> Optional[VenueRegistry]:
             name=item.get("name") or item["code"],
             type=item.get("type", "other"),
             issn=item.get("issn"),
+            tier=item.get("tier") or DEFAULT_TIER,
+            rank=dict(item.get("rank") or {}),
+            metrics=dict(item.get("metrics") or {}),
             aliases=list(item.get("aliases") or []),
         )
         for item in raw
     ]
     return VenueRegistry(venues)
+
+
+def save_registry(path: Path | str, registry: VenueRegistry) -> None:
+    """Write the registry back (tool-managed file, keeps a stable field order)."""
+    entries = [
+        {
+            "code": venue.code,
+            "name": venue.name,
+            "type": venue.type,
+            "issn": venue.issn,
+            "tier": venue.tier,
+            "rank": venue.rank,
+            "metrics": venue.metrics,
+            "aliases": venue.aliases,
+        }
+        for venue in registry.venues
+    ]
+    Path(path).write_text(
+        HEADER + yaml.safe_dump(entries, sort_keys=False, allow_unicode=True, width=4096),
+        encoding="utf-8",
+    )

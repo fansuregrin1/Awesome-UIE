@@ -14,6 +14,8 @@ import asyncio
 import json
 import os
 import sys
+from collections import Counter
+from datetime import date
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -217,6 +219,7 @@ def cmd_discover(args: argparse.Namespace) -> int:
         since_days=args.since,
         limit_per_source=args.limit,
         registry=venues_module.load_registry(VENUES_YAML),
+        min_tier=args.min_tier or config.get("min_tier"),
     )
 
     md_path, json_path = proposals.write_discover(result, args.report, args.json)
@@ -224,7 +227,8 @@ def cmd_discover(args: argparse.Namespace) -> int:
     summary = result.summary()
     print(
         f"discovered: found {summary['found']}, new {summary['new']}, "
-        f"similar {summary['similar']}, already in collection {summary['existing']}"
+        f"pending {summary['pending']}, similar {summary['similar']}, "
+        f"already in collection {summary['existing']}"
     )
     print(f"wrote {md_path}")
     print(f"wrote {json_path}")
@@ -241,15 +245,44 @@ def cmd_discover(args: argparse.Namespace) -> int:
 
 
 def cmd_venues(args: argparse.Namespace) -> int:
-    papers = load_papers(PAPERS_YAML)
     registry = venues_module.load_registry(VENUES_YAML)
     if registry is None:
         print("no config/venues.yaml found")
         return 1
 
+    if args.refresh_metrics:
+        client = HttpClient(cache_dir=CACHE_DIR, ttl=args.ttl or DEFAULT_TTL)
+        updated = 0
+        for venue in registry.venues:
+            if not venue.issn:
+                continue
+            try:
+                data = client.get_json(
+                    "https://api.openalex.org/sources", params={"filter": f"issn:{venue.issn}"}
+                )
+            except RuntimeError:
+                continue
+            results = data.get("results") or []
+            if not results:
+                continue
+            source = results[0]
+            stats = source.get("summary_stats") or {}
+            venue.metrics = {
+                "two_year_mean_citedness": round(stats.get("2yr_mean_citedness") or 0.0, 2),
+                "h_index": stats.get("h_index"),
+                "works_count": source.get("works_count"),
+                "as_of": date.today().year,
+            }
+            updated += 1
+        venues_module.save_registry(VENUES_YAML, registry)
+        print(f"refreshed OpenAlex metrics for {updated} venues")
+
+    papers = load_papers(PAPERS_YAML)
     registered = sum(1 for paper in papers if registry.known(paper.venue))
     unknown = sorted({paper.venue for paper in papers if not registry.known(paper.venue)})
+    tiers = Counter(registry.tier(paper.venue) for paper in papers)
     print(f"{registered}/{len(papers)} papers use a registered venue ({len(registry.codes)} codes known)")
+    print("papers by venue tier:", dict(tiers))
     if unknown:
         print("unregistered venues:")
         for venue in unknown:
@@ -370,10 +403,13 @@ def build_parser() -> argparse.ArgumentParser:
     disc.add_argument("--mailto", help="contact e-mail for the API polite pools")
     disc.add_argument("--ttl", type=int, help="cache TTL in seconds")
     disc.add_argument("--refresh", action="store_true", help="bypass the response cache")
+    disc.add_argument("--min-tier", help="only auto-ingest new candidates at/above this venue tier (A/B/preprint/C)")
     disc.add_argument("--apply", action="store_true", help="append new candidates to papers.yaml as status: candidate")
     disc.set_defaults(func=cmd_discover)
 
     venues = sub.add_parser("venues", help="audit venues against config/venues.yaml")
+    venues.add_argument("--refresh-metrics", action="store_true", help="refresh OpenAlex metrics into venues.yaml")
+    venues.add_argument("--ttl", type=int, help="cache TTL in seconds for the metric refresh")
     venues.set_defaults(func=cmd_venues)
 
     llm = sub.add_parser("llm", help="LLM-assisted tldr/tags (needs an API key)")
