@@ -200,6 +200,7 @@ def discover(
     sources: Optional[Sequence[object]] = None,
     registry: Optional[object] = None,
     min_tier: Optional[str] = None,
+    years: Optional[Sequence[int]] = None,
     since_days: Optional[int] = None,
     limit_per_source: int = 25,
     min_relevance: float = 0.25,
@@ -239,6 +240,8 @@ def discover(
 
                 relevant, score = is_relevant(record, tokens, min_relevance=min_relevance)
                 if not relevant:
+                    continue
+                if years and record.year not in years:
                     continue
 
                 key = _internal_key(record)

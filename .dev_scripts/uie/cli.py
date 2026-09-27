@@ -212,6 +212,10 @@ def cmd_discover(args: argparse.Namespace) -> int:
     ttl = 0 if args.refresh else (args.ttl or int(config.get("cache_ttl", DEFAULT_TTL)))
     client = HttpClient(cache_dir=CACHE_DIR, ttl=ttl, mailto=mailto)
 
+    years = None
+    if args.year:
+        years = [int(value) for value in str(args.year).replace(" ", ",").split(",") if value]
+
     result = discover_module.discover(
         papers,
         config,
@@ -220,6 +224,7 @@ def cmd_discover(args: argparse.Namespace) -> int:
         limit_per_source=args.limit,
         registry=venues_module.load_registry(VENUES_YAML),
         min_tier=args.min_tier or config.get("min_tier"),
+        years=years,
     )
 
     md_path, json_path = proposals.write_discover(result, args.report, args.json)
@@ -404,6 +409,7 @@ def build_parser() -> argparse.ArgumentParser:
     disc.add_argument("--ttl", type=int, help="cache TTL in seconds")
     disc.add_argument("--refresh", action="store_true", help="bypass the response cache")
     disc.add_argument("--min-tier", help="only auto-ingest new candidates at/above this venue tier (A/B/preprint/C)")
+    disc.add_argument("--year", help="only keep candidates from these years (comma-separated, e.g. 2025)")
     disc.add_argument("--apply", action="store_true", help="append new candidates to papers.yaml as status: candidate")
     disc.set_defaults(func=cmd_discover)
 

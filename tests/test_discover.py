@@ -238,6 +238,32 @@ class DiscoverTest(unittest.TestCase):
         )
         self.assertEqual(result.summary()["found"], 0)
 
+    def test_year_filter(self):
+        records = [
+            SourceRecord(
+                source="crossref",
+                title="Underwater Image Enhancement Alpha",
+                doi="10.1/a",
+                year=2025,
+                date="2025-05-01",
+            ),
+            SourceRecord(
+                source="crossref",
+                title="Underwater Image Enhancement Beta",
+                doi="10.1/b",
+                year=2026,
+                date="2026-05-01",
+            ),
+        ]
+        result = discover(
+            [],
+            {"keywords": ["underwater image enhancement"], "discover_since_days": 1400},
+            sources=[FakeSource(records)],
+            years=[2025],
+            today=date(2026, 9, 27),
+        )
+        self.assertEqual([candidate.record.year for candidate in result.new], [2025])
+
 
 class ApplyDiscoverTest(unittest.TestCase):
     def test_candidates_to_papers(self):
