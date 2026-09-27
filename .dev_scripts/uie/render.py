@@ -12,11 +12,12 @@ import io
 import json
 from collections import Counter
 from pathlib import Path
-from typing import List
+from typing import Dict, List, Optional
 
 from .schema import Paper, PaperType, Status
 
 README_TEMPLATE = Path(__file__).resolve().parents[1] / "config" / "README.template.md"
+VENUES_YAML = Path(__file__).resolve().parents[1] / "config" / "venues.yaml"
 SITE_URL = "https://fansuregrin1.github.io/Awesome-UIE/"
 
 # Venues treated as conferences in the BibTeX export; everything else is a journal.
@@ -127,13 +128,25 @@ def render_csv(papers: List[Paper]) -> str:
     return buffer.getvalue()
 
 
-def render_json(papers: List[Paper]) -> str:
+def render_json(papers: List[Paper], venue_names: Optional[Dict[str, str]] = None) -> str:
     papers = _sorted(papers)
-    payload = {
+    payload: Dict = {
         "count": len(papers),
         "papers": [paper.model_dump(mode="json") for paper in papers],
     }
+    if venue_names:
+        payload["venues"] = venue_names
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+
+
+def _venue_names() -> Dict[str, str]:
+    """Map venue code -> full name (from the registry) for the website tooltip."""
+    from .venues import load_registry
+
+    registry = load_registry(VENUES_YAML)
+    if registry is None:
+        return {}
+    return {venue.code: venue.name for venue in registry.venues}
 
 
 def _bib_escape(text: str) -> str:
@@ -209,16 +222,17 @@ def write_all(root: Path | str, papers: List[Paper]) -> List[Path]:
     """Generate every artifact. Returns the list of written paths."""
     root = Path(root)
     papers = published(papers)
+    venue_names = _venue_names()
     outputs = {
         root / "README.md": render_readme(papers),
         root / "PAPERS.md": render_papers(papers),
         root / ".dev_scripts" / "collection.csv": render_csv(papers),
-        root / "papers.json": render_json(papers),
+        root / "papers.json": render_json(papers, venue_names),
         root / "papers.bib": render_bib(papers),
         root / "llms.txt": render_llms(papers),
         # Duplicated into the GitHub Pages site, which can only serve files
         # below the published folder (docs/).
-        root / "docs" / "data" / "papers.json": render_json(papers),
+        root / "docs" / "data" / "papers.json": render_json(papers, venue_names),
     }
     for path, content in outputs.items():
         path.parent.mkdir(parents=True, exist_ok=True)
