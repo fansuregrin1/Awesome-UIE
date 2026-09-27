@@ -11,6 +11,7 @@ from uie.code import (  # noqa: E402
     CodeMatch,
     _clean_url,
     apply_code_matches,
+    is_repo_url,
     method_token,
     score_repo,
 )
@@ -61,6 +62,14 @@ class CleanUrlTest(unittest.TestCase):
     def test_strips_trailing_punctuation(self):
         self.assertEqual(_clean_url("https://github.com/a/b)."), "https://github.com/a/b")
         self.assertEqual(_clean_url("https://github.com/a/b."), "https://github.com/a/b")
+
+
+class RepoUrlTest(unittest.TestCase):
+    def test_requires_owner_and_repo(self):
+        self.assertTrue(is_repo_url("https://github.com/a/b"))
+        self.assertTrue(is_repo_url("https://gitee.com/a/b.git"))
+        self.assertFalse(is_repo_url("https://github.com/iN1k1/"))
+        self.assertFalse(is_repo_url("https://example.com/a/b"))
 
 
 class ApplyTest(unittest.TestCase):

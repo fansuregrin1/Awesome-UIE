@@ -52,6 +52,12 @@ def _clean_url(url: str) -> Optional[str]:
     return _as_url(url.rstrip(".,;:)"))
 
 
+def is_repo_url(url: Optional[str]) -> bool:
+    """Require ``host/owner/repo`` (reject bare ``github.com/user/``)."""
+    match = re.match(r"https?://(?:www\.)?(?:github|gitlab|gitee)\.com/([^/?#]+)/([^/?#]+)", url or "")
+    return bool(match and match.group(1) and match.group(2))
+
+
 def _slug_words(text: Optional[str]) -> str:
     return re.sub(r"[-_]+", " ", text or "").strip()
 
@@ -124,6 +130,8 @@ def find_matches(
         code_match = _CODE_RE.search(abstract)
         project_match = _PROJECT_RE.search(abstract)
         code_url = _clean_url(code_match.group(0)) if code_match else None
+        if code_url and not is_repo_url(code_url):
+            code_url = None
         project_url = _clean_url(project_match.group(0)) if project_match else None
         if code_url:
             best = CodeMatch(paper.id, code_url, project_url, None, 1.0, "abstract link", "abstract")

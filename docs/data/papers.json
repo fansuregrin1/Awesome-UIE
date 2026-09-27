@@ -72,7 +72,7 @@
       "url": "https://doi.org/10.1109/IROS58592.2024.10802529",
       "doi": "10.1109/IROS58592.2024.10802529",
       "arxiv_id": "2608.18662",
-      "code": null,
+      "code": "https://github.com/arifence2024/DynamicSpectraFormer.git",
       "project": null,
       "authors": [
         "Zhiqiang Hu",
@@ -125,7 +125,7 @@
       "url": "https://doi.org/10.1016/j.oceaneng.2026.128196",
       "doi": "10.1016/j.oceaneng.2026.128196",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/Qlinlin/UDHE",
       "project": null,
       "authors": [
         "Haotian Sun",
@@ -300,7 +300,7 @@
       "url": "https://ieeexplore.ieee.org/document/11353942",
       "doi": "10.1109/tmm.2026.3654357",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/LaibinChang/DiffColor",
       "project": null,
       "authors": [
         "Laibin Chang",
@@ -360,7 +360,7 @@
       "url": "https://doi.org/10.1016/j.inffus.2026.104557",
       "doi": "10.1016/j.inffus.2026.104557",
       "arxiv_id": "2606.15648",
-      "code": null,
+      "code": "https://github.com/Haru2022/P2-UIE",
       "project": null,
       "authors": [
         "Haochen Hu",
@@ -513,7 +513,7 @@
       "url": "https://ieeexplore.ieee.org/document/10770246",
       "doi": "10.1109/tcsvt.2024.3508102",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/benjaminwp18/underwater-dehazing-python",
       "project": null,
       "authors": [
         "Yuchao Zheng",
@@ -1414,7 +1414,7 @@
       "url": "https://doi.org/10.1109/tip.2025.3618377",
       "doi": "10.1109/tip.2025.3618377",
       "arxiv_id": "2501.12981",
-      "code": null,
+      "code": "https://github.com/House-yuyu/UniUIR",
       "project": null,
       "authors": [
         "Xu Zhang",
@@ -1535,7 +1535,7 @@
       "url": "https://doi.org/10.1016/j.patcog.2025.111395",
       "doi": "10.1016/j.patcog.2025.111395",
       "arxiv_id": "2507.06234",
-      "code": null,
+      "code": "https://github.com/Ave001025/UIE_CLIP",
       "project": null,
       "authors": [
         "Jiangzhong Cao",
@@ -1832,7 +1832,7 @@
       "url": "https://ieeexplore.ieee.org/document/10423039",
       "doi": "10.1109/tgrs.2024.3363037",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/JialeChu0311/NPT-UL",
       "project": null,
       "authors": [
         "Dan Liang",
@@ -2003,7 +2003,7 @@
       "url": "https://ieeexplore.ieee.org/document/10484357",
       "doi": "10.1109/wacv57701.2024.00153",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/chandrasekaraditya/PhISH-Net",
       "project": null,
       "authors": [
         "Aditya Chandrasekar",
@@ -2084,7 +2084,7 @@
       "url": "https://ieeexplore.ieee.org/document/9895452",
       "doi": "10.1109/tcsvt.2022.3208100",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/Zion1123/UnderWaterImgEnhance",
       "project": null,
       "authors": [
         "Yaozu Kang",
@@ -2296,7 +2296,7 @@
       "url": "https://www.sciencedirect.com/science/article/abs/pii/S0952197623001306",
       "doi": "10.1016/j.engappai.2023.105946",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/lilpharaoh1/mfef-reproduction",
       "project": null,
       "authors": [
         "Jingchun Zhou",
@@ -2321,7 +2321,7 @@
       "url": "https://www.sciencedirect.com/science/article/pii/S0957417424021389",
       "doi": "10.1016/j.eswa.2024.125271",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/ddz16/UIEDP",
       "project": "https://ddz16.github.io/",
       "authors": [
         "Dazhao Du",
@@ -2353,7 +2353,7 @@
       "url": "https://ieeexplore.ieee.org/document/10219946",
       "doi": "10.1109/icme55011.2023.00232",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/Zjut-MultimediaPlus/ATDCnet",
       "project": null,
       "authors": [
         "Pan Mu",
@@ -3328,7 +3328,7 @@
       "url": "https://ieeexplore.ieee.org/document/9547341",
       "doi": "10.1109/joe.2021.3104055",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/tjulab540/UIE",
       "project": null,
       "authors": [
         "Yuan Zhou",
@@ -3933,7 +3933,7 @@
       "url": "https://ieeexplore.ieee.org/document/7840002",
       "doi": "10.1109/tip.2017.2663846",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/ytpeng-aimlab/Underwater-Image-Restoration-based-on-Image-Blurriness-and-Light-Absorption",
       "project": null,
       "authors": [
         "Yan‐Tsung Peng",
@@ -4276,7 +4276,7 @@
       "url": "https://ieeexplore.ieee.org/document/1315078",
       "doi": "10.1109/cvpr.2004.1315078",
       "arxiv_id": null,
-      "code": null,
+      "code": "https://github.com/OpenKorabli/ClearUnderwaterVision",
       "project": null,
       "authors": [
         "Yoav Y. Schechner",
