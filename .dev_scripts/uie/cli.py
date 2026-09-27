@@ -233,7 +233,7 @@ def cmd_discover(args: argparse.Namespace) -> int:
     print(
         f"discovered: found {summary['found']}, new {summary['new']}, "
         f"pending {summary['pending']}, similar {summary['similar']}, "
-        f"already in collection {summary['existing']}"
+        f"already in collection {summary['existing']}, source errors {summary['source_errors']}"
     )
     print(f"wrote {md_path}")
     print(f"wrote {json_path}")

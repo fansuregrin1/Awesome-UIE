@@ -10,8 +10,10 @@ sys.path.insert(0, str(ROOT / ".dev_scripts"))
 
 from uie.discover import (  # noqa: E402
     Candidate,
+    _merge_records,
     candidates_to_papers,
     discover,
+    is_preprint,
     is_relevant,
     keyword_tokens,
     match_status,
@@ -70,6 +72,68 @@ def make_candidate(candidate_id="2026-demo", url="https://arxiv.org/abs/2601.000
         venue="arXiv",
         venue_unknown=False,
     )
+
+
+class FakeNamedSource:
+    def __init__(self, name, records):
+        self.name = name
+        self.records = records
+
+    def search(self, query, since=None, limit=25):
+        return list(self.records)
+
+
+class MergeTest(unittest.TestCase):
+    def test_prefers_published_and_carries_arxiv(self):
+        arxiv = SourceRecord(source="arxiv", title="Underwater Image Enhancement Alpha", arxiv_id="2601.00001")
+        published = SourceRecord(
+            source="crossref",
+            title="Underwater Image Enhancement Alpha",
+            doi="10.1/x",
+            venue="Pattern Recognition",
+        )
+        merged = _merge_records([arxiv, published])
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0].venue, "Pattern Recognition")
+        self.assertEqual(merged[0].arxiv_id, "2601.00001")
+        self.assertFalse(is_preprint(merged[0]))
+
+    def test_is_preprint(self):
+        self.assertTrue(is_preprint(SourceRecord(source="arxiv", title="x")))
+        self.assertTrue(
+            is_preprint(SourceRecord(source="openalex", title="x", venue="arXiv (Cornell University)"))
+        )
+        self.assertFalse(is_preprint(SourceRecord(source="crossref", title="x", venue="Pattern Recognition")))
+
+    def test_discover_prefers_published_source(self):
+        records_arxiv = [
+            SourceRecord(
+                source="arxiv",
+                title="Underwater Image Enhancement Alpha",
+                arxiv_id="2601.00001",
+                year=2026,
+                date="2026-05-01",
+            )
+        ]
+        records_pub = [
+            SourceRecord(
+                source="crossref",
+                title="Underwater Image Enhancement Alpha",
+                doi="10.1/x",
+                venue="Pattern Recognition",
+                year=2026,
+                date="2026-05-01",
+            )
+        ]
+        result = discover(
+            [],
+            {"keywords": ["underwater image enhancement"], "discover_since_days": 1400},
+            sources=[FakeNamedSource("arxiv", records_arxiv), FakeNamedSource("crossref", records_pub)],
+            today=date(2026, 9, 27),
+        )
+        self.assertEqual(len(result.new), 1)
+        self.assertEqual(result.new[0].venue, "Pattern Recognition")
+        self.assertFalse(result.new[0].is_preprint)
 
 
 class KeywordTest(unittest.TestCase):
