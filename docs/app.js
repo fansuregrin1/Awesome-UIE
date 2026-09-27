@@ -19,6 +19,7 @@
 
   var state = {
     all: [],
+    venueNames: {},
     search: "",
     year: "",
     type: "",
@@ -130,6 +131,10 @@
     var venue = document.createElement("span");
     venue.className = "badge venue";
     venue.textContent = paper.venue;
+    var fullName = state.venueNames[paper.venue];
+    if (fullName && fullName !== paper.venue) {
+      venue.title = fullName;
+    }
 
     var type = document.createElement("span");
     type.className = "badge type type-" + paper.type;
@@ -416,6 +421,7 @@
       })
       .then(function (data) {
         state.all = data.papers || [];
+        state.venueNames = data.venues || {};
         el("total-count").textContent = state.all.length;
         buildFilters();
         bind();
