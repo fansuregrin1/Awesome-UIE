@@ -12,7 +12,8 @@ from it.
 
 - **Edit only `.dev_scripts/papers.yaml`.**
 - Never edit generated files by hand:
-  - `README.md`
+  - `README.md` (generated from `.dev_scripts/config/README.template.md`)
+  - `PAPERS.md`
   - `.dev_scripts/collection.csv`
   - `papers.json`
   - `papers.bib`
