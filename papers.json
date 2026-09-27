@@ -1,6 +1,142 @@
 {
-  "count": 124,
+  "count": 152,
   "papers": [
+    {
+      "id": "2026-task-tailored-semi-supervised-underwater-image-enhancement-w",
+      "title": "Task-tailored semi-supervised underwater image enhancement with dual-prior guidance",
+      "year": 2026,
+      "venue": "Neurocomputing",
+      "type": "Traditional",
+      "tags": [
+        "Semi-supervised"
+      ],
+      "url": "https://doi.org/10.1016/j.neucom.2026.135043",
+      "doi": "10.1016/j.neucom.2026.135043",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Keyu Chen",
+        "Jiancheng Yu",
+        "Yan Huang",
+        "Jianan Qiao",
+        "Hao Feng",
+        "Dayu Jia"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-kldd-underwater-image-enhancement-via-kl-divergence-driven-c",
+      "title": "KLDD: Underwater image enhancement via KL-divergence-driven color cast correction and multistage enhancement fusion",
+      "year": 2026,
+      "venue": "Optics & Laser Technology",
+      "type": "Traditional",
+      "tags": [
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Multiscale-Fusion",
+        "Image-Fusion",
+        "Low-Light-Enhancement"
+      ],
+      "url": "https://doi.org/10.1016/j.optlastec.2026.116369",
+      "doi": "10.1016/j.optlastec.2026.116369",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Shoubo Zhao",
+        "Wenjie Chen",
+        "Yue Yin",
+        "Cheng Qian"
+      ],
+      "tldr": "KLDD corrects underwater color casts via KL-divergence-driven statistical transfer and fuses multistage luminance, contrast, and detail enhancements using cross-scale consistency-guided DWT fusion.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-dynamic-spectraformer-for-ultra-high-definition-underwater-i",
+      "title": "Dynamic SpectraFormer for Ultra-High-Definition Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "IROS",
+      "type": "DeepLearning",
+      "tags": [
+        "Transformer",
+        "Color-Correction",
+        "Dehazing",
+        "Contrast-Enhancement"
+      ],
+      "url": "https://doi.org/10.1109/IROS58592.2024.10802529",
+      "doi": "10.1109/IROS58592.2024.10802529",
+      "arxiv_id": "2608.18662",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Zhiqiang Hu",
+        "Tao Yu",
+        "Shouren Huang",
+        "Masatoshi Ishikawa"
+      ],
+      "tldr": "Dynamic SpectraFormer uses a frequency-domain transformer with sparse spectrum attention and adaptive band selection to enhance ultra-high-definition underwater images.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-prior-guided-anchor-conditioned-diffusion-for-underwater-ima",
+      "title": "Prior-guided anchor-conditioned diffusion for underwater image enhancement",
+      "year": 2026,
+      "venue": "Neurocomputing",
+      "type": "DeepLearning",
+      "tags": [
+        "Diffusion"
+      ],
+      "url": "https://doi.org/10.1016/j.neucom.2026.135154",
+      "doi": "10.1016/j.neucom.2026.135154",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Yurui Li",
+        "Yakun Ju",
+        "Junyu Dong"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-decoupling-color-and-structure-via-dual-branch-learning-for",
+      "title": "Decoupling color and structure via dual-branch learning for high-fidelity underwater image restoration",
+      "year": 2026,
+      "venue": "Ocean Engineering",
+      "type": "DeepLearning",
+      "tags": [
+        "CNN",
+        "Color-Correction",
+        "Multiscale-Fusion",
+        "Lightweight",
+        "Real-time"
+      ],
+      "url": "https://doi.org/10.1016/j.oceaneng.2026.128196",
+      "doi": "10.1016/j.oceaneng.2026.128196",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Haotian Sun",
+        "Linlin Qi",
+        "Tao Liu"
+      ],
+      "tldr": "UDHE decouples color and structure via parallel RGB-grayscale branches with wavelet high-frequency enhancement, cross-scale attention, and dynamic fusion for underwater image restoration.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
     {
       "id": "2026-underwater-image-enhancement-by-diffusion-model-with-customi",
       "title": "Underwater Image Enhancement by Diffusion Model with Customized CLIP-Classifier",
@@ -205,6 +341,124 @@
       "notes": null
     },
     {
+      "id": "2026-fusing-transferred-priors-and-physics-based-decomposition-fo",
+      "title": "Fusing Transferred Priors and Physics-based Decomposition for Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "Information Fusion",
+      "type": "Hybrid",
+      "tags": [
+        "Physical-Model",
+        "Color-Correction",
+        "Dehazing",
+        "Domain-Adaptation",
+        "Unsupervised"
+      ],
+      "url": "https://doi.org/10.1016/j.inffus.2026.104557",
+      "doi": "10.1016/j.inffus.2026.104557",
+      "arxiv_id": "2606.15648",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Haochen Hu",
+        "Yanrui Bin",
+        "Zhengyan Zhang",
+        "Minchen Wei",
+        "Chih-yung Wen",
+        "Bing Wang"
+      ],
+      "tldr": "A transfer-learning UIE method decomposes enhancement into color correction, dehazing, and denoising, using cross-domain priors as supervision without paired underwater labels.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-dual-branch-underwater-image-enhancement-via-bidirectional-s",
+      "title": "Dual-Branch Underwater-Image Enhancement via Bidirectional Supervision, Contrastive Learning, and Style Transfer",
+      "year": 2026,
+      "venue": "Journal of Marine Science and Engineering",
+      "type": "Hybrid",
+      "tags": [
+        "GAN",
+        "Unsupervised",
+        "Transformer",
+        "Semi-supervised",
+        "Contrast-Enhancement",
+        "Color-Correction"
+      ],
+      "url": "https://doi.org/10.3390/jmse14191782",
+      "doi": "10.3390/jmse14191782",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Xinyu Li",
+        "Zhi Qiao",
+        "Sisi Zhu",
+        "Jiayi Cui",
+        "Xinnan Fan"
+      ],
+      "tldr": "A dual-branch network jointly estimates reflectance and illumination with bidirectional supervision, contrastive learning, and style transfer for underwater image enhancement.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-phys-mamba-physics-informed-selective-state-space-fusion-net",
+      "title": "Phys-Mamba: Physics-informed selective state-space fusion network for high-fidelity underwater image restoration",
+      "year": 2026,
+      "venue": "PLoS ONE",
+      "type": "Hybrid",
+      "tags": [
+        "GAN",
+        "Transformer",
+        "Mamba",
+        "Physical-Model",
+        "Real-time",
+        "Multiscale-Fusion",
+        "Lightweight"
+      ],
+      "url": "https://doi.org/10.1371/journal.pone.0354030",
+      "doi": "10.1371/journal.pone.0354030",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Hongwei Li",
+        "Weishen Li",
+        "Yuqing Lao",
+        "Jie Li",
+        "Junjie He",
+        "Caihong Wu",
+        "Huilong Zhong",
+        "Shaoji Huang"
+      ],
+      "tldr": "Phys-Mamba uses physics-informed selective state-space modulation and cross-scale fusion for efficient multi-scale underwater image restoration.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-enhancing-underwater-image-clarity-a-multi-branch-network-wi",
+      "title": "Enhancing underwater image clarity: a multi-branch network with commonality-specificity fusion",
+      "year": 2026,
+      "venue": "Scientific Reports",
+      "type": "Hybrid",
+      "tags": [],
+      "url": "https://doi.org/10.1038/s41598-026-70325-8",
+      "doi": "10.1038/s41598-026-70325-8",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Xiaofan Lin",
+        "Yinghuai Yu"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
       "id": "2025-an-underwater-image-restoration-method-with-polarization-ima",
       "title": "An Underwater Image Restoration Method With Polarization Imaging Optimization Model for Poor Visible Conditions",
       "year": 2025,
@@ -323,6 +577,81 @@
       "notes": null
     },
     {
+      "id": "2025-adaptive-dual-domain-learning-for-underwater-image-enhanceme",
+      "title": "Adaptive Dual-domain Learning for Underwater Image Enhancement",
+      "year": 2025,
+      "venue": "AAAI",
+      "type": "DeepLearning",
+      "tags": [
+        "Transformer",
+        "Mamba",
+        "Multiscale-Fusion",
+        "Lightweight"
+      ],
+      "url": "https://doi.org/10.1609/aaai.v39i6.32692",
+      "doi": "10.1609/aaai.v39i6.32692",
+      "arxiv_id": "2504.19198",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Lingtao Peng",
+        "Liheng Bian"
+      ],
+      "tldr": "SS-UIE combines spatial multi-scale cycle selective scan and spectral self-attention with a frequency-wise loss for adaptive underwater image enhancement.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-robust-underwater-imaging-model-and-automatic-parameter-opti",
+      "title": "Robust underwater imaging model and automatic parameter optimization for underwater image restoration",
+      "year": 2025,
+      "venue": "EAAI",
+      "type": "DeepLearning",
+      "tags": [],
+      "url": "https://doi.org/10.1016/j.engappai.2025.110651",
+      "doi": "10.1016/j.engappai.2025.110651",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Chenggang Dai",
+        "Dongnian Li",
+        "Chengjun Chen",
+        "Zhengxu Zhao",
+        "Mingxing Lin"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-a-graph-aware-color-correction-and-texture-restoration-frame",
+      "title": "A Graph-Aware Color Correction and Texture Restoration Framework for Underwater Image Enhancement",
+      "year": 2025,
+      "venue": "Electronics",
+      "type": "DeepLearning",
+      "tags": [
+        "Color-Correction"
+      ],
+      "url": "https://doi.org/10.3390/electronics14204079",
+      "doi": "10.3390/electronics14204079",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Jin Qian",
+        "Bin Zhang",
+        "Hui Li",
+        "Xiaoshuang Xing"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
       "id": "2025-deep-dive-into-clarity-leveraging-signal-to-noise-ratio-awar",
       "title": "Deep dive into clarity: Leveraging signal-to-noise ratio awareness and knowledge distillation for underwater image enhancement",
       "year": 2025,
@@ -345,6 +674,64 @@
       "tldr": null,
       "status": "verified",
       "added": "2026-09-26",
+      "notes": null
+    },
+    {
+      "id": "2025-swincnet-leveraging-swin-transformer-v2-and-cnn-for-precise",
+      "title": "SwinCNet leveraging Swin Transformer V2 and CNN for precise color correction and detail enhancement in underwater image restoration",
+      "year": 2025,
+      "venue": "Frontiers in Marine Science",
+      "type": "DeepLearning",
+      "tags": [
+        "CNN",
+        "Transformer",
+        "Color-Correction",
+        "Multiscale-Fusion",
+        "Real-time"
+      ],
+      "url": "https://doi.org/10.3389/fmars.2025.1523729",
+      "doi": "10.3389/fmars.2025.1523729",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Chun Yang",
+        "Liwei Shao",
+        "Yi Deng",
+        "Jiahang Wang",
+        "Hexiang Zhai"
+      ],
+      "tldr": "SwinCNet combines Swin Transformer V2 with CNNs for underwater image restoration, using dual-path extraction and adaptive fusion to improve color and detail.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-auied3k-a-new-andaman-underwater-image-enhancement-dataset-f",
+      "title": "AUIED3K: A New Andaman Underwater Image Enhancement Dataset for Deep Learning-Driven Image Enhancement with Minimum Loss Dehazing",
+      "year": 2025,
+      "venue": "ICASSP",
+      "type": "DeepLearning",
+      "tags": [
+        "Dehazing",
+        "CNN",
+        "Benchmark",
+        "Physical-Model",
+        "Lightweight"
+      ],
+      "url": "https://doi.org/10.1109/icassp49660.2025.10890845",
+      "doi": "10.1109/icassp49660.2025.10890845",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Praveen Saini",
+        "Navjot Singh",
+        "Anshu S. Anand"
+      ],
+      "tldr": "A new 3000-image real-world Andaman underwater dataset and a lightweight CNN dehazing model using scene radiance and transmission map.",
+      "status": "verified",
+      "added": "2026-09-27",
       "notes": null
     },
     {
@@ -378,6 +765,78 @@
       "notes": null
     },
     {
+      "id": "2025-domain-guided-multi-frequency-underwater-image-enhancement-n",
+      "title": "Domain-guided multi-frequency underwater image enhancement network",
+      "year": 2025,
+      "venue": "IMAGE",
+      "type": "DeepLearning",
+      "tags": [],
+      "url": "https://doi.org/10.1016/j.image.2025.117281",
+      "doi": "10.1016/j.image.2025.117281",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Qingzheng Wang",
+        "Bin Li",
+        "Ge Shi",
+        "Xinyu Wang",
+        "Yiliang Chen"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-uievus-an-underwater-image-enhancement-method-for-various-un",
+      "title": "UIEVUS: An underwater image enhancement method for various underwater scenes",
+      "year": 2025,
+      "venue": "IMAGE",
+      "type": "DeepLearning",
+      "tags": [],
+      "url": "https://doi.org/10.1016/j.image.2025.117264",
+      "doi": "10.1016/j.image.2025.117264",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Siyi Ren",
+        "Xianqiang Bao",
+        "Tianjiang Wang",
+        "Xinghua Xu",
+        "Tao Ma",
+        "Kun Yu"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-underwater-image-enhancement-via-brightness-mask-guided-mult",
+      "title": "Underwater image enhancement via brightness mask-guided multi-attention embedding",
+      "year": 2025,
+      "venue": "IMAGE",
+      "type": "DeepLearning",
+      "tags": [],
+      "url": "https://doi.org/10.1016/j.image.2024.117200",
+      "doi": "10.1016/j.image.2024.117200",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Yuanyuan Li",
+        "Zetian Mi",
+        "Peng Lin",
+        "Xianping Fu"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
       "id": "2025-histoformer-histogram-based-transformer-for-efficient-underw",
       "title": "Histoformer: Histogram-Based Transformer for Efficient Underwater Image Enhancement",
       "year": 2025,
@@ -406,6 +865,62 @@
       "notes": null
     },
     {
+      "id": "2025-progressive-color-correction-and-vision-inspired-adaptive-fr",
+      "title": "Progressive Color Correction and Vision-Inspired Adaptive Framework for Underwater Image Enhancement",
+      "year": 2025,
+      "venue": "Journal of Marine Science and Engineering",
+      "type": "DeepLearning",
+      "tags": [
+        "Color-Correction",
+        "Image-Fusion",
+        "Contrast-Enhancement",
+        "Multiscale-Fusion"
+      ],
+      "url": "https://doi.org/10.3390/jmse13091820",
+      "doi": "10.3390/jmse13091820",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Zhenhua Li",
+        "Wenjing Liu",
+        "Ji Wang",
+        "Yuqiang Yang"
+      ],
+      "tldr": "A progressive color correction and vision-inspired decomposition framework enhances underwater images by correcting color, boosting detail, and fusing pathways.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-underwater-image-enhancement-using-dynamic-color-correction",
+      "title": "Underwater Image Enhancement Using Dynamic Color Correction and Lightweight Attention-Embedded SRResNet",
+      "year": 2025,
+      "venue": "Journal of Marine Science and Engineering",
+      "type": "DeepLearning",
+      "tags": [
+        "Color-Correction",
+        "Lightweight",
+        "CNN",
+        "Contrast-Enhancement"
+      ],
+      "url": "https://doi.org/10.3390/jmse13081546",
+      "doi": "10.3390/jmse13081546",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Kui Zhang",
+        "Yingying Zhang",
+        "Da Yuan",
+        "Xiandong Feng"
+      ],
+      "tldr": "A dynamic gray-world color correction module followed by a lightweight attention-embedded SRResNet improves underwater image color and contrast efficiently.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
       "id": "2025-bdmuie-underwater-image-enhancement-based-on-bayesian-diffus",
       "title": "BDMUIE: Underwater image enhancement based on Bayesian diffusion model",
       "year": 2025,
@@ -429,6 +944,186 @@
       "tldr": null,
       "status": "verified",
       "added": "2026-09-26",
+      "notes": null
+    },
+    {
+      "id": "2025-uncore-an-underwater-lightweight-image-enhancement-via-neutr",
+      "title": "UNCORE: an underwater lightweight image enhancement via neutrosophic color restoration and refinement",
+      "year": 2025,
+      "venue": "Ocean Engineering",
+      "type": "DeepLearning",
+      "tags": [
+        "Lightweight"
+      ],
+      "url": "https://doi.org/10.1016/j.oceaneng.2025.122069",
+      "doi": "10.1016/j.oceaneng.2025.122069",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "M. Suresh Kumar",
+        "N. Ramesh Babu"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-multi-scale-diffusion-model-for-underwater-image-restoration",
+      "title": "Multi-scale diffusion model for underwater image restoration and enhancement",
+      "year": 2025,
+      "venue": "PLoS ONE",
+      "type": "DeepLearning",
+      "tags": [
+        "Diffusion",
+        "Physical-Model",
+        "Multiscale-Fusion",
+        "Color-Correction",
+        "Image-Formation-Model"
+      ],
+      "url": "https://doi.org/10.1371/journal.pone.0331465",
+      "doi": "10.1371/journal.pone.0331465",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Yuan Fang",
+        "Qianyi Li",
+        "Kai Wang"
+      ],
+      "tldr": "A multi-scale diffusion model combining physical priors with deep learning for underwater image restoration, improving PSNR, SSIM, and UIQM.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-lego-llm-enhanced-genetic-optimization-for-underwater-robot",
+      "title": "LEGO: LLM-enhanced genetic optimization for underwater robot image restoration",
+      "year": 2025,
+      "venue": "PR",
+      "type": "DeepLearning",
+      "tags": [],
+      "url": "https://doi.org/10.1016/j.patcog.2025.111782",
+      "doi": "10.1016/j.patcog.2025.111782",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Yuanzheng Ma",
+        "Fan Xia",
+        "Liwei Lin",
+        "Xun Guan"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-mact-underwater-image-color-correction-via-minimally-attenua",
+      "title": "MACT: Underwater image color correction via Minimally Attenuated Channel Transfer",
+      "year": 2025,
+      "venue": "PRL",
+      "type": "DeepLearning",
+      "tags": [
+        "Color-Correction"
+      ],
+      "url": "https://doi.org/10.1016/j.patrec.2024.11.007",
+      "doi": "10.1016/j.patrec.2024.11.007",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Weibo Zhang",
+        "Hao Wang",
+        "Peng Ren",
+        "Weidong Zhang"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-underwater-image-color-correction-via-global-and-local-two-s",
+      "title": "Underwater image color correction via global and local two-step optimization",
+      "year": 2025,
+      "venue": "PRL",
+      "type": "DeepLearning",
+      "tags": [
+        "Color-Correction"
+      ],
+      "url": "https://doi.org/10.1016/j.patrec.2025.05.007",
+      "doi": "10.1016/j.patrec.2025.05.007",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Baiqiang Yu",
+        "Ling Zhou",
+        "Wenqiang Yu",
+        "Peixian Zhuang",
+        "Weidong Zhang"
+      ],
+      "tldr": null,
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-a-cutting-edge-ensemble-model-for-enhanced-underwater-image",
+      "title": "A cutting-edge ensemble model for enhanced underwater image restoration and quality improvement",
+      "year": 2025,
+      "venue": "Scientific Reports",
+      "type": "DeepLearning",
+      "tags": [
+        "CNN",
+        "Dehazing",
+        "Dark-Channel-Prior",
+        "Image-Fusion",
+        "Multiscale-Fusion"
+      ],
+      "url": "https://doi.org/10.1038/s41598-025-96832-8",
+      "doi": "10.1038/s41598-025-96832-8",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "A. Sarala",
+        "C. Vinoth kumar"
+      ],
+      "tldr": "An ensemble of pyramid CNNs and a deep channel-prior dehazing network restores underwater images via sequential or parallel fusion, improving PSNR, SSIM, and UIQM.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-underwater-image-dehazing-using-a-hybrid-gan-with-bottleneck",
+      "title": "Underwater image dehazing using a hybrid GAN with bottleneck attention and improved Retinex-based optimization",
+      "year": 2025,
+      "venue": "Scientific Reports",
+      "type": "DeepLearning",
+      "tags": [
+        "GAN",
+        "Dehazing",
+        "Retinex",
+        "Contrast-Enhancement",
+        "Color-Correction"
+      ],
+      "url": "https://doi.org/10.1038/s41598-025-11815-z",
+      "doi": "10.1038/s41598-025-11815-z",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Amandeep Kaur",
+        "Shalli Rani",
+        "Mohammad Shabaz"
+      ],
+      "tldr": "A hybrid GAN with bottleneck attention and improved Retinex enhances underwater images, improving dehazing, color, and contrast on the UIEB dataset.",
+      "status": "verified",
+      "added": "2026-09-27",
       "notes": null
     },
     {
@@ -693,6 +1388,37 @@
       "notes": null
     },
     {
+      "id": "2025-uniuir-considering-underwater-image-restoration-as-an-all-in",
+      "title": "UniUIR: Considering Underwater Image Restoration as an All-in-One Learner",
+      "year": 2025,
+      "venue": "TIP",
+      "type": "DeepLearning",
+      "tags": [
+        "Mamba",
+        "Depth-Estimation",
+        "Physical-Model",
+        "Domain-Adaptation",
+        "Multiscale-Fusion"
+      ],
+      "url": "https://doi.org/10.1109/tip.2025.3618377",
+      "doi": "10.1109/tip.2025.3618377",
+      "arxiv_id": "2501.12981",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Xu Zhang",
+        "Huan Zhang",
+        "Guoli Wang",
+        "Qian Zhang",
+        "Lefei Zhang",
+        "Bo Du"
+      ],
+      "tldr": "UniUIR restores underwater images with mixed distortions using a Mamba mixture-of-experts, spatial-frequency prompts, and depth priors.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
       "id": "2025-phaseformer-phase-based-attention-mechanism-for-underwater-i",
       "title": "Phaseformer: Phase-based Attention Mechanism for Underwater Image Restoration and Beyond",
       "year": 2025,
@@ -781,6 +1507,37 @@
       "tldr": "HUPE uses an invertible network with Fourier transform and semantic collaborative learning to enhance underwater images while improving downstream task performance.",
       "status": "verified",
       "added": "2026-09-26",
+      "notes": null
+    },
+    {
+      "id": "2025-unveiling-the-underwater-world-clip-perception-model-guided",
+      "title": "Unveiling the Underwater World: CLIP Perception Model-Guided Underwater Image Enhancement",
+      "year": 2025,
+      "venue": "PR",
+      "type": "Hybrid",
+      "tags": [
+        "Foundation-Model",
+        "Contrast-Enhancement",
+        "Task-Driven",
+        "Unsupervised"
+      ],
+      "url": "https://doi.org/10.1016/j.patcog.2025.111395",
+      "doi": "10.1016/j.patcog.2025.111395",
+      "arxiv_id": "2507.06234",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Jiangzhong Cao",
+        "Zekai Zeng",
+        "Xu Zhang",
+        "Huan Zhang",
+        "Chunling Fan",
+        "Gangyi Jiang",
+        "Weisi Lin"
+      ],
+      "tldr": "A CLIP perception loss and curriculum contrastive regularization guide underwater image enhancement to improve perceptual quality and content restoration.",
+      "status": "verified",
+      "added": "2026-09-27",
       "notes": null
     },
     {

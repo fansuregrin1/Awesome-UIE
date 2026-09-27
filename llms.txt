@@ -1,6 +1,6 @@
 # Awesome Underwater Image Enhancement (UIE)
 
-> Auto-generated index of 124 underwater image enhancement papers (2004-2026).
+> Auto-generated index of 152 underwater image enhancement papers (2004-2026).
 > For programmatic access prefer `papers.json` (all fields) or `collection.csv`.
 
 ## Data files
@@ -11,13 +11,18 @@
 - [README.md](README.md): project overview
 
 ## Summary
-- papers: 124
+- papers: 152
 - with code: 73
-- Traditional: 35
-- DeepLearning: 76
-- Hybrid: 13
+- Traditional: 37
+- DeepLearning: 97
+- Hybrid: 18
 
 ## Papers
+- [2026] Neurocomputing — Task-tailored semi-supervised underwater image enhancement with dual-prior guidance (Semi-supervised) — https://doi.org/10.1016/j.neucom.2026.135043
+- [2026] Optics & Laser Technology — KLDD: Underwater image enhancement via KL-divergence-driven color cast correction and multistage enhancement fusion (Color-Correction; Contrast-Enhancement; Multiscale-Fusion; Image-Fusion; Low-Light-Enhancement) — https://doi.org/10.1016/j.optlastec.2026.116369
+- [2026] IROS — Dynamic SpectraFormer for Ultra-High-Definition Underwater Image Enhancement (Transformer; Color-Correction; Dehazing; Contrast-Enhancement) — https://doi.org/10.1109/IROS58592.2024.10802529
+- [2026] Neurocomputing — Prior-guided anchor-conditioned diffusion for underwater image enhancement (Diffusion) — https://doi.org/10.1016/j.neucom.2026.135154
+- [2026] Ocean Engineering — Decoupling color and structure via dual-branch learning for high-fidelity underwater image restoration (CNN; Color-Correction; Multiscale-Fusion; Lightweight; Real-time) — https://doi.org/10.1016/j.oceaneng.2026.128196
 - [2026] PR — Underwater Image Enhancement by Diffusion Model with Customized CLIP-Classifier (Diffusion) — https://www.sciencedirect.com/science/article/abs/pii/S0031320325008933 [code](https://github.com/OUCVisionGroup/CLIP-UIE)
 - [2026] TCSVT — UPI2Diff: Restoring Underwater Polarization Image and Information in Turbid Conditions via Polarization Guided Diffusion Model (Diffusion) — https://ieeexplore.ieee.org/document/11361112
 - [2026] TGARS — DA-GAN: Dual-Attention GAN for Underwater Image Enhancement With Contrast and Color Correction (GAN; Transformer; CNN; Color-Correction; Contrast-Enhancement) — https://ieeexplore.ieee.org/document/11322545 [code](https://github.com/littlebearRedgood/DAGAN)
@@ -25,14 +30,35 @@
 - [2026] TIP — Task-Driven Underwater Image Enhancement via Hierarchical Semantic Refinement (Task-Driven; Self-supervised; Multiscale-Fusion; Foundation-Model; Image-Fusion) — https://ieeexplore.ieee.org/document/11321080 [code](https://github.com/gemyumeng/HSRUIE)
 - [2026] TMM — Color Correction Meets Cross-Spectral Refinement: A Distribution-Aware Diffusion for Underwater Image Restoration (Diffusion; Color-Correction; Multiscale-Fusion; Physical-Model) — https://ieeexplore.ieee.org/document/11353942
 - [2026] TMM — PyUIE: A Coarse-to-Fine Deep Pyramid Network for Underwater Image Enhancement (CNN; Color-Correction; Contrast-Enhancement; Multiscale-Fusion; Lightweight) — https://ieeexplore.ieee.org/document/11330175 [code](https://github.com/ttttllt/PyUIE)
+- [2026] Information Fusion — Fusing Transferred Priors and Physics-based Decomposition for Underwater Image Enhancement (Physical-Model; Color-Correction; Dehazing; Domain-Adaptation; Unsupervised) — https://doi.org/10.1016/j.inffus.2026.104557
+- [2026] Journal of Marine Science and Engineering — Dual-Branch Underwater-Image Enhancement via Bidirectional Supervision, Contrastive Learning, and Style Transfer (GAN; Unsupervised; Transformer; Semi-supervised; Contrast-Enhancement; Color-Correction) — https://doi.org/10.3390/jmse14191782
+- [2026] PLoS ONE — Phys-Mamba: Physics-informed selective state-space fusion network for high-fidelity underwater image restoration (GAN; Transformer; Mamba; Physical-Model; Real-time; Multiscale-Fusion; Lightweight) — https://doi.org/10.1371/journal.pone.0354030
+- [2026] Scientific Reports — Enhancing underwater image clarity: a multi-branch network with commonality-specificity fusion — https://doi.org/10.1038/s41598-026-70325-8
 - [2025] TCSVT — An Underwater Image Restoration Method With Polarization Imaging Optimization Model for Poor Visible Conditions (Polarization; Physical-Model; Image-Formation-Model; Backscatter-Removal; Contrast-Enhancement) — https://ieeexplore.ieee.org/document/10781421 [code](https://github.com/liyafengLYF/UIRPIOM)
 - [2025] TCSVT — High-Turbidity Underwater Image Enhancement via Turbidity Suppression Fusion (Color-Correction; Contrast-Enhancement; Dark-Channel-Prior; Physical-Model; Image-Fusion) — https://ieeexplore.ieee.org/document/10770246
 - [2025] TCSVT — Underwater Image Enhancement via Wavelet Decomposition Fusion of Advantage Contrast (Color-Correction; Contrast-Enhancement; Image-Fusion; Multiscale-Fusion) — https://ieeexplore.ieee.org/document/10902578 [code](https://www.researchgate.net/publication/386508762_2024WFAC)
 - [2025] TGARS — ICAD-UIE: Naturalness-Ensuring Underwater Image Enhancement With Interchannel Attenuation Difference-Based Dewatering Model (Physical-Model; Color-Correction; Image-Fusion; Real-time; Image-Formation-Model) — https://ieeexplore.ieee.org/document/11313551/ [code](https://zenodo.org/records/17511319)
+- [2025] AAAI — Adaptive Dual-domain Learning for Underwater Image Enhancement (Transformer; Mamba; Multiscale-Fusion; Lightweight) — https://doi.org/10.1609/aaai.v39i6.32692
+- [2025] EAAI — Robust underwater imaging model and automatic parameter optimization for underwater image restoration — https://doi.org/10.1016/j.engappai.2025.110651
+- [2025] Electronics — A Graph-Aware Color Correction and Texture Restoration Framework for Underwater Image Enhancement (Color-Correction) — https://doi.org/10.3390/electronics14204079
 - [2025] ESWA — Deep dive into clarity: Leveraging signal-to-noise ratio awareness and knowledge distillation for underwater image enhancement (CNN) — https://www.sciencedirect.com/science/article/pii/S0957417424031841
+- [2025] Frontiers in Marine Science — SwinCNet leveraging Swin Transformer V2 and CNN for precise color correction and detail enhancement in underwater image restoration (CNN; Transformer; Color-Correction; Multiscale-Fusion; Real-time) — https://doi.org/10.3389/fmars.2025.1523729
+- [2025] ICASSP — AUIED3K: A New Andaman Underwater Image Enhancement Dataset for Deep Learning-Driven Image Enhancement with Minimum Loss Dehazing (Dehazing; CNN; Benchmark; Physical-Model; Lightweight) — https://doi.org/10.1109/icassp49660.2025.10890845
 - [2025] ICASSP — Underwater Image Restoration via Polymorphic Large Kernel CNNs (CNN; Lightweight; Multiscale-Fusion) — https://ieeexplore.ieee.org/document/10890803 [code](https://github.com/CXH-Research/UIR-PolyKernel)
+- [2025] IMAGE — Domain-guided multi-frequency underwater image enhancement network — https://doi.org/10.1016/j.image.2025.117281
+- [2025] IMAGE — UIEVUS: An underwater image enhancement method for various underwater scenes — https://doi.org/10.1016/j.image.2025.117264
+- [2025] IMAGE — Underwater image enhancement via brightness mask-guided multi-attention embedding — https://doi.org/10.1016/j.image.2024.117200
 - [2025] JOE — Histoformer: Histogram-Based Transformer for Efficient Underwater Image Enhancement (Transformer; GAN; Color-Correction; Contrast-Enhancement) — https://ieeexplore.ieee.org/document/10762843 [code](https://github.com/ytpeng-aimlab/Histoformer)
+- [2025] Journal of Marine Science and Engineering — Progressive Color Correction and Vision-Inspired Adaptive Framework for Underwater Image Enhancement (Color-Correction; Image-Fusion; Contrast-Enhancement; Multiscale-Fusion) — https://doi.org/10.3390/jmse13091820
+- [2025] Journal of Marine Science and Engineering — Underwater Image Enhancement Using Dynamic Color Correction and Lightweight Attention-Embedded SRResNet (Color-Correction; Lightweight; CNN; Contrast-Enhancement) — https://doi.org/10.3390/jmse13081546
 - [2025] Neurocomputing — BDMUIE: Underwater image enhancement based on Bayesian diffusion model (Diffusion) — https://www.sciencedirect.com/science/article/pii/S0925231224020459
+- [2025] Ocean Engineering — UNCORE: an underwater lightweight image enhancement via neutrosophic color restoration and refinement (Lightweight) — https://doi.org/10.1016/j.oceaneng.2025.122069
+- [2025] PLoS ONE — Multi-scale diffusion model for underwater image restoration and enhancement (Diffusion; Physical-Model; Multiscale-Fusion; Color-Correction; Image-Formation-Model) — https://doi.org/10.1371/journal.pone.0331465
+- [2025] PR — LEGO: LLM-enhanced genetic optimization for underwater robot image restoration — https://doi.org/10.1016/j.patcog.2025.111782
+- [2025] PRL — MACT: Underwater image color correction via Minimally Attenuated Channel Transfer (Color-Correction) — https://doi.org/10.1016/j.patrec.2024.11.007
+- [2025] PRL — Underwater image color correction via global and local two-step optimization (Color-Correction) — https://doi.org/10.1016/j.patrec.2025.05.007
+- [2025] Scientific Reports — A cutting-edge ensemble model for enhanced underwater image restoration and quality improvement (CNN; Dehazing; Dark-Channel-Prior; Image-Fusion; Multiscale-Fusion) — https://doi.org/10.1038/s41598-025-96832-8
+- [2025] Scientific Reports — Underwater image dehazing using a hybrid GAN with bottleneck attention and improved Retinex-based optimization (GAN; Dehazing; Retinex; Contrast-Enhancement; Color-Correction) — https://doi.org/10.1038/s41598-025-11815-z
 - [2025] TCSVT — FDCE-Net: Underwater Image Enhancement With Embedding Frequency and Dual Color Encoder (CNN; Transformer; Color-Correction; Image-Fusion; Multiscale-Fusion) — https://ieeexplore.ieee.org/document/10720919 [code](https://github.com/Alexande-rChan/FDCE-Net)
 - [2025] TCSVT — Globally Deformable Information Selection Transformer for Underwater Image Enhancement (Transformer; Lightweight; Real-time; Multiscale-Fusion) — https://ieeexplore.ieee.org/document/10659034
 - [2025] TCSVT — TAFormer: A Transmission-Aware Transformer for Underwater Image Enhancement (Transformer; Physical-Model; Image-Formation-Model; CNN) — https://ieeexplore.ieee.org/document/10669071
@@ -42,9 +68,11 @@
 - [2025] TGARS — MDA-Net: A Multidistribution Aware Network for Underwater Image Enhancement (CNN; Color-Correction; Contrast-Enhancement; Low-Light-Enhancement) — https://ieeexplore.ieee.org/document/10829689
 - [2025] TGARS — Multicolor Attribute Information Fusion for Real-World Underwater Image Enhancement (CNN; Color-Correction; Contrast-Enhancement; Image-Fusion; Task-Driven) — https://ieeexplore.ieee.org/document/11296899
 - [2025] TIP — Multi-Prior Fusion Transfer Plugin for Adapting In-Air Models to Underwater Image Enhancement and Detection (CNN; Domain-Adaptation; Lightweight; Multiscale-Fusion; Task-Driven) — https://ieeexplore.ieee.org/document/11267029 [code](https://github.com/zhoujingchun03/IA2U)
+- [2025] TIP — UniUIR: Considering Underwater Image Restoration as an All-in-One Learner (Mamba; Depth-Estimation; Physical-Model; Domain-Adaptation; Multiscale-Fusion) — https://doi.org/10.1109/tip.2025.3618377
 - [2025] WACV — Phaseformer: Phase-based Attention Mechanism for Underwater Image Restoration and Beyond (Transformer; Lightweight; Low-Light-Enhancement; Color-Correction; Dehazing) — https://arxiv.org/abs/2412.01456 [code](https://github.com/Mdraqibkhan/Phaseformer)
 - [2025] arXiv — OceanLens: An Adaptive Backscatter and Edge Correction using Deep Learning Model for Enhanced Underwater Imaging (CNN; Physical-Model; Backscatter-Removal; Depth-Estimation; Color-Correction) — https://arxiv.org/abs/2411.13230 [code](https://github.com/AIRLabIISc/OceanLens)
 - [2025] IJCV — HUPE: Heuristic Underwater Perceptual Enhancement with Semantic Collaborative Learning (Task-Driven; Physical-Model; Unsupervised; Image-Formation-Model; Color-Correction) — https://link.springer.com/article/10.1007/s11263-024-02318-x [code](https://github.com/ZengxiZhang/HUPE)
+- [2025] PR — Unveiling the Underwater World: CLIP Perception Model-Guided Underwater Image Enhancement (Foundation-Model; Contrast-Enhancement; Task-Driven; Unsupervised) — https://doi.org/10.1016/j.patcog.2025.111395
 - [2024] AAAI — Synergistic Multiscale Detail Refinement via Intrinsic Supervision for Underwater Image Enhancement (CNN; Multiscale-Fusion; Self-supervised; Contrast-Enhancement; Benchmark) — https://ojs.aaai.org/index.php/AAAI/article/view/28530 [code](https://github.com/zhoujingchun03/SMDR-IS)
 - [2024] ACCV — PixMamba: Leveraging State Space Models in a Dual-Level Architecture for Underwater Image Enhancement (Mamba; Lightweight; Color-Correction; Multiscale-Fusion) — https://openaccess.thecvf.com/content/ACCV2024/papers/Lin_PixMamba_Leveraging_State_Space_Models_in_a_Dual-Level_Architecture_for_ACCV_2024_paper.pdf [code](https://github.com/weitunglin/pixmamba)
 - [2024] arXiv — A Comprehensive Survey on Underwater Image Enhancement Based on Deep Learning (Survey; Benchmark; Physical-Model; Image-Formation-Model; Domain-Adaptation) — https://arxiv.org/abs/2405.19684 [code](https://github.com/YuZhao1999/UIE)
