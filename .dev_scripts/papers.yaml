@@ -195,7 +195,12 @@
   year: 2015
   venue: JVCIR
   type: Traditional
-  tags: []
+  tags:
+  - Physical-Model
+  - Color-Correction
+  - Contrast-Enhancement
+  - Depth-Estimation
+  - Dark-Channel-Prior
   url: https://csms.haifa.ac.il/profiles/tTreibitz/datasets/sea_thru/index.html
   doi: 10.1016/j.jvcir.2014.11.006
   arxiv_id: null
@@ -206,7 +211,7 @@
   - David Pardo
   - Artzai Picón
   - Aitor Álvarez-Gila
-  tldr: null
+  tldr: A Red Channel method estimates depth and handles artificial illumination to restore underwater images, correcting color and improving contrast.
   status: verified
   added: '2026-09-26'
   notes: null
@@ -720,6 +725,9 @@
   type: DeepLearning
   tags:
   - CNN
+  - Color-Correction
+  - Contrast-Enhancement
+  - Lightweight
   url: https://www.sciencedirect.com/science/article/pii/S0923596520300965
   doi: 10.1016/j.image.2020.115892
   arxiv_id: null
@@ -728,7 +736,7 @@
   authors:
   - Xueyang Fu
   - Xiangyong Cao
-  tldr: null
+  tldr: A two-branch global-local CNN compensates color and contrast, combined with compressed-histogram equalization for underwater image enhancement.
   status: verified
   added: '2026-09-26'
   notes: null
@@ -739,6 +747,9 @@
   type: DeepLearning
   tags:
   - CNN
+  - Lightweight
+  - Image-Synthesis
+  - Physical-Model
   url: https://www.sciencedirect.com/science/article/pii/S0031320319303401
   doi: 10.1016/j.patcog.2019.107038
   arxiv_id: null
@@ -748,7 +759,7 @@
   - Chongyi Li
   - Saeed Anwar
   - Fatih Porikli
-  tldr: null
+  tldr: A lightweight CNN trained on synthetic underwater data from scene priors directly reconstructs clear images and extends to video enhancement.
   status: verified
   added: '2026-09-26'
   notes: null
@@ -2195,6 +2206,10 @@
   type: DeepLearning
   tags:
   - CNN
+  - Physical-Model
+  - Color-Correction
+  - Image-Formation-Model
+  - Multiscale-Fusion
   url: https://ieeexplore.ieee.org/document/10798483
   doi: 10.1109/tcsvt.2024.3516781
   arxiv_id: null
@@ -2206,7 +2221,7 @@
   - Jingchun Zhou
   - Danling Meng
   - Yi Lin
-  tldr: null
+  tldr: A multi-scale joint prior network heuristically models underwater imaging with color constancy to estimate background light and correct colors.
   status: verified
   added: '2026-09-26'
   notes: null
@@ -2997,6 +3012,10 @@
   type: DeepLearning
   tags:
   - Diffusion
+  - Polarization
+  - Physical-Model
+  - Task-Driven
+  - Image-Formation-Model
   url: https://ieeexplore.ieee.org/document/11361112
   doi: 10.1109/tcsvt.2026.3656897
   arxiv_id: null
@@ -3009,7 +3028,7 @@
   - Qianwen Ma
   - Xiaobo Li
   - Haofeng Hu
-  tldr: null
+  tldr: A polarization-guided dual-stream diffusion model jointly restores underwater intensity and polarization information in turbid conditions using polarization hybrid attention and a polarization-aware loss.
   status: verified
   added: '2026-09-26'
   notes: null
@@ -3094,7 +3113,11 @@
   year: 2026
   venue: Scientific Reports
   type: Hybrid
-  tags: []
+  tags:
+  - CNN
+  - Image-Fusion
+  - Multiscale-Fusion
+  - Benchmark
   url: https://doi.org/10.1038/s41598-026-70325-8
   doi: 10.1038/s41598-026-70325-8
   arxiv_id: null
@@ -3103,7 +3126,7 @@
   authors:
   - Xiaofan Lin
   - Yinghuai Yu
-  tldr: null
+  tldr: An edge-guided multi-branch network fuses RGB and edge features via commonality-specificity modeling to enhance underwater images.
   status: verified
   added: '2026-09-27'
   notes: null
@@ -3986,6 +4009,8 @@
   type: DeepLearning
   tags:
   - Color-Correction
+  - Image-Fusion
+  - Benchmark
   url: https://doi.org/10.3390/electronics14204079
   doi: 10.3390/electronics14204079
   arxiv_id: null
@@ -3996,7 +4021,7 @@
   - Bin Zhang
   - Hui Li
   - Xiaoshuang Xing
-  tldr: null
+  tldr: GA-UIE uses graph priors to jointly correct color and restore texture in underwater images, outperforming benchmarks on UIEB and U45.
   status: verified
   added: '2026-09-27'
   notes: null

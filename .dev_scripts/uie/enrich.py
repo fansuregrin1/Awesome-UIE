@@ -18,6 +18,7 @@ from .sources.base import SourceRecord
 from .sources.crossref import CrossrefSource
 from .sources.http import HttpClient
 from .sources.openalex import OpenAlexSource
+from .sources.semantic_scholar import SemanticScholarSource
 
 # Only these fields are proposed for automatic filling in Phase 1.
 FILL_FIELDS = ("doi", "arxiv_id", "authors")
@@ -101,13 +102,24 @@ class EnrichResult:
 
 
 def build_sources(client: HttpClient) -> List[object]:
-    return [ArxivSource(client), OpenAlexSource(client), CrossrefSource(client)]
+    return [
+        ArxivSource(client),
+        OpenAlexSource(client),
+        CrossrefSource(client),
+        SemanticScholarSource(client),
+    ]
+
+
+_DOI_SOURCES = {"crossref", "openalex", "semantic_scholar"}
 
 
 def _lookup(source, paper: Paper) -> List[SourceRecord]:
+    name = getattr(source, "name", "")
     try:
-        if getattr(source, "name", "") == "arxiv" and paper.arxiv_id:
+        if name == "arxiv" and paper.arxiv_id:
             return source.lookup(arxiv_id=paper.arxiv_id)
+        if paper.doi and name in _DOI_SOURCES:
+            return source.lookup(doi=paper.doi)
         return source.lookup(title=paper.title, year=paper.year)
     except RuntimeError:
         return []
