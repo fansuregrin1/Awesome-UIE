@@ -375,7 +375,7 @@
       "id": "2026-dual-branch-underwater-image-enhancement-via-bidirectional-s",
       "title": "Dual-Branch Underwater-Image Enhancement via Bidirectional Supervision, Contrastive Learning, and Style Transfer",
       "year": 2026,
-      "venue": "Journal of Marine Science and Engineering",
+      "venue": "JMSE",
       "type": "Hybrid",
       "tags": [
         "GAN",
@@ -837,38 +837,10 @@
       "notes": null
     },
     {
-      "id": "2025-histoformer-histogram-based-transformer-for-efficient-underw",
-      "title": "Histoformer: Histogram-Based Transformer for Efficient Underwater Image Enhancement",
-      "year": 2025,
-      "venue": "JOE",
-      "type": "DeepLearning",
-      "tags": [
-        "Transformer",
-        "GAN",
-        "Color-Correction",
-        "Contrast-Enhancement"
-      ],
-      "url": "https://ieeexplore.ieee.org/document/10762843",
-      "doi": "10.1109/joe.2024.3474919",
-      "arxiv_id": null,
-      "code": "https://github.com/ytpeng-aimlab/Histoformer",
-      "project": null,
-      "authors": [
-        "Yan‐Tsung Peng",
-        "Yen-Rong Chen",
-        "Guan-Rong Chen",
-        "Chun-Jung Liao"
-      ],
-      "tldr": "Histoformer learns histogram distributions of high-contrast color-corrected underwater images and integrates with a GAN for pixel-level refinement.",
-      "status": "verified",
-      "added": "2026-09-26",
-      "notes": null
-    },
-    {
       "id": "2025-progressive-color-correction-and-vision-inspired-adaptive-fr",
       "title": "Progressive Color Correction and Vision-Inspired Adaptive Framework for Underwater Image Enhancement",
       "year": 2025,
-      "venue": "Journal of Marine Science and Engineering",
+      "venue": "JMSE",
       "type": "DeepLearning",
       "tags": [
         "Color-Correction",
@@ -896,7 +868,7 @@
       "id": "2025-underwater-image-enhancement-using-dynamic-color-correction",
       "title": "Underwater Image Enhancement Using Dynamic Color Correction and Lightweight Attention-Embedded SRResNet",
       "year": 2025,
-      "venue": "Journal of Marine Science and Engineering",
+      "venue": "JMSE",
       "type": "DeepLearning",
       "tags": [
         "Color-Correction",
@@ -918,6 +890,34 @@
       "tldr": "A dynamic gray-world color correction module followed by a lightweight attention-embedded SRResNet improves underwater image color and contrast efficiently.",
       "status": "verified",
       "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2025-histoformer-histogram-based-transformer-for-efficient-underw",
+      "title": "Histoformer: Histogram-Based Transformer for Efficient Underwater Image Enhancement",
+      "year": 2025,
+      "venue": "JOE",
+      "type": "DeepLearning",
+      "tags": [
+        "Transformer",
+        "GAN",
+        "Color-Correction",
+        "Contrast-Enhancement"
+      ],
+      "url": "https://ieeexplore.ieee.org/document/10762843",
+      "doi": "10.1109/joe.2024.3474919",
+      "arxiv_id": null,
+      "code": "https://github.com/ytpeng-aimlab/Histoformer",
+      "project": null,
+      "authors": [
+        "Yan‐Tsung Peng",
+        "Yen-Rong Chen",
+        "Guan-Rong Chen",
+        "Chun-Jung Liao"
+      ],
+      "tldr": "Histoformer learns histogram distributions of high-contrast color-corrected underwater images and integrates with a GAN for pixel-level refinement.",
+      "status": "verified",
+      "added": "2026-09-26",
       "notes": null
     },
     {

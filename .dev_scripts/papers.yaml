@@ -3041,7 +3041,7 @@
 - id: 2026-dual-branch-underwater-image-enhancement-via-bidirectional-s
   title: Dual-Branch Underwater-Image Enhancement via Bidirectional Supervision, Contrastive Learning, and Style Transfer
   year: 2026
-  venue: Journal of Marine Science and Engineering
+  venue: JMSE
   type: Hybrid
   tags:
   - GAN
@@ -4025,7 +4025,7 @@
 - id: 2025-progressive-color-correction-and-vision-inspired-adaptive-fr
   title: Progressive Color Correction and Vision-Inspired Adaptive Framework for Underwater Image Enhancement
   year: 2025
-  venue: Journal of Marine Science and Engineering
+  venue: JMSE
   type: DeepLearning
   tags:
   - Color-Correction
@@ -4096,7 +4096,7 @@
 - id: 2025-underwater-image-enhancement-using-dynamic-color-correction
   title: Underwater Image Enhancement Using Dynamic Color Correction and Lightweight Attention-Embedded SRResNet
   year: 2025
-  venue: Journal of Marine Science and Engineering
+  venue: JMSE
   type: DeepLearning
   tags:
   - Color-Correction
