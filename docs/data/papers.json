@@ -1,5 +1,12 @@
 {
   "count": 152,
+  "stats": {
+    "count": 152,
+    "with_code": 89,
+    "year_min": 2004,
+    "year_max": 2026,
+    "year_range": "2004-2026"
+  },
   "papers": [
     {
       "id": "2026-task-tailored-semi-supervised-underwater-image-enhancement-w",
