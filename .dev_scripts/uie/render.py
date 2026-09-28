@@ -128,10 +128,22 @@ def render_csv(papers: List[Paper]) -> str:
     return buffer.getvalue()
 
 
+def _stats_dict(papers: List[Paper]) -> Dict:
+    years = [paper.year for paper in papers]
+    return {
+        "count": len(papers),
+        "with_code": sum(1 for paper in papers if paper.code),
+        "year_min": min(years) if years else None,
+        "year_max": max(years) if years else None,
+        "year_range": f"{min(years)}-{max(years)}" if years else "",
+    }
+
+
 def render_json(papers: List[Paper], venue_names: Optional[Dict[str, str]] = None) -> str:
     papers = _sorted(papers)
     payload: Dict = {
         "count": len(papers),
+        "stats": _stats_dict(papers),
         "papers": [paper.model_dump(mode="json") for paper in papers],
     }
     if venue_names:
@@ -147,6 +159,82 @@ def _venue_names() -> Dict[str, str]:
     if registry is None:
         return {}
     return {venue.code: venue.name for venue in registry.venues}
+
+
+TYPE_LABELS = [
+    ("Traditional", "Traditional", "#7a6a56"),
+    ("DeepLearning", "Deep learning", "#0b6bcb"),
+    ("Hybrid", "Hybrid", "#2e8b6f"),
+]
+
+
+def render_year_svg(papers: List[Paper]) -> str:
+    counts = Counter(paper.year for paper in papers)
+    years = sorted(counts)
+    width, height = 680, 210
+    pad_left, pad_right, pad_top, pad_bottom = 40, 10, 24, 28
+    chart_w = width - pad_left - pad_right
+    chart_h = height - pad_top - pad_bottom
+    base_y = pad_top + chart_h
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
+        f'viewBox="0 0 {width} {height}" '
+        'font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">',
+        f'<rect width="{width}" height="{height}" fill="#ffffff"/>',
+        f'<text x="{pad_left}" y="16" font-size="13" font-weight="700" fill="#1b2430">Papers per year</text>',
+        f'<line x1="{pad_left}" y1="{base_y}" x2="{width - pad_right}" y2="{base_y}" stroke="#dde5ee"/>',
+    ]
+    if years:
+        max_count = max(counts.values()) or 1
+        gap = 4.0
+        bar_w = max(3.0, (chart_w - gap * (len(years) - 1)) / len(years))
+        for index, year in enumerate(years):
+            count = counts[year]
+            bar_h = count / max_count * chart_h
+            x = pad_left + index * (bar_w + gap)
+            y = base_y - bar_h
+            parts.append(
+                f'<rect x="{x:.1f}" y="{y:.1f}" width="{bar_w:.1f}" height="{bar_h:.1f}" '
+                f'fill="#0b6bcb" rx="2"><title>{year}: {count}</title></rect>'
+            )
+            parts.append(
+                f'<text x="{x + bar_w / 2:.1f}" y="{y - 3:.1f}" font-size="8" fill="#5b6b7c" '
+                f'text-anchor="middle">{count}</text>'
+            )
+            parts.append(
+                f'<text x="{x + bar_w / 2:.1f}" y="{base_y + 14:.1f}" font-size="8" fill="#5b6b7c" '
+                f'text-anchor="middle">{str(year)[2:]}</text>'
+            )
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def render_type_svg(papers: List[Paper]) -> str:
+    counts = Counter(paper.type.value for paper in papers)
+    total = sum(counts.values()) or 1
+    width, height = 680, 132
+    pad_left, pad_right, pad_top = 120, 60, 30
+    row_h = 24
+    track_w = width - pad_left - pad_right
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
+        f'viewBox="0 0 {width} {height}" '
+        'font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">',
+        f'<rect width="{width}" height="{height}" fill="#ffffff"/>',
+        '<text x="16" y="18" font-size="13" font-weight="700" fill="#1b2430">By type</text>',
+    ]
+    for index, (key, label, color) in enumerate(TYPE_LABELS):
+        count = counts.get(key, 0)
+        y = pad_top + index * row_h
+        bar_w = count / total * track_w
+        parts.append(f'<text x="16" y="{y + 12:.1f}" font-size="11" fill="#1b2430">{label}</text>')
+        parts.append(f'<rect x="{pad_left}" y="{y + 2:.1f}" width="{track_w}" height="12" rx="6" fill="#eef2f7"/>')
+        parts.append(f'<rect x="{pad_left}" y="{y + 2:.1f}" width="{bar_w:.1f}" height="12" rx="6" fill="{color}"/>')
+        parts.append(
+            f'<text x="{width - 10}" y="{y + 12:.1f}" font-size="11" fill="#5b6b7c" text-anchor="end">{count}</text>'
+        )
+    parts.append("</svg>")
+    return "".join(parts)
 
 
 def _bib_escape(text: str) -> str:
@@ -233,6 +321,9 @@ def write_all(root: Path | str, papers: List[Paper]) -> List[Path]:
         # Duplicated into the GitHub Pages site, which can only serve files
         # below the published folder (docs/).
         root / "docs" / "data" / "papers.json": render_json(papers, venue_names),
+        # Charts embedded in the README (and usable by the site).
+        root / "docs" / "assets" / "papers-per-year.svg": render_year_svg(papers),
+        root / "docs" / "assets" / "by-type.svg": render_type_svg(papers),
     }
     for path, content in outputs.items():
         path.parent.mkdir(parents=True, exist_ok=True)
