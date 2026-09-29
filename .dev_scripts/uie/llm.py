@@ -200,6 +200,7 @@ def summarize_papers(
     only_missing: bool = True,
     known_tags: Sequence[str] = KNOWN_TAGS,
     max_tags: int = 5,
+    progress=None,
 ) -> LlmResult:
     result = LlmResult(total=len(papers))
     for paper in papers:
@@ -208,6 +209,8 @@ def summarize_papers(
         abstract = abstracts.get(paper.id)
         if not abstract:
             result.skipped_no_abstract.append(paper.id)
+            if progress:
+                progress.update(paper.id)
             continue
         system, user = build_prompt(
             paper, abstract, known_tags=known_tags, max_tags=max_tags, current_tags=paper.tags
@@ -216,6 +219,8 @@ def summarize_papers(
             data = llm.complete_json(system, user)
         except Exception as exc:  # noqa: BLE001 - report per-paper failures
             result.errors.append(f"{paper.id}: {exc}")
+            if progress:
+                progress.update(paper.id)
             continue
         parsed = parse_suggestion(data)
         result.suggestions.append(
@@ -226,6 +231,8 @@ def summarize_papers(
                 **parsed,
             )
         )
+        if progress:
+            progress.update(paper.id)
     return result
 
 

@@ -27,6 +27,7 @@ from . import enrich as enrich_module
 from . import links, proposals, render, validate
 from . import llm as llm_module
 from . import venues as venues_module
+from .progress import Progress
 from .schema import Paper, dump_papers, load_papers
 from .sources.http import DEFAULT_TTL, HttpClient
 
@@ -104,7 +105,11 @@ def cmd_check_links(args: argparse.Namespace) -> int:
     allowlist = _load_allowlist()
     urls = _collect_urls(papers, args.scope)
 
-    results = asyncio.run(links.check_urls(urls, cache_path=LINK_CACHE, ttl=args.ttl))
+    progress = _progress(args, len(urls), "links")
+    try:
+        results = asyncio.run(links.check_urls(urls, cache_path=LINK_CACHE, ttl=args.ttl, progress=progress))
+    finally:
+        progress.close()
 
     issues: List[validate.Issue] = []
     for url, result in sorted(results.items()):
@@ -142,6 +147,20 @@ def cmd_check_links(args: argparse.Namespace) -> int:
     return 1 if any(issue.level == "error" for issue in all_issues) else 0
 
 
+def _add_progress_args(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--no-progress", action="store_true", help="disable progress output")
+    parser.add_argument("--verbose", action="store_true", help="print one line per item")
+
+
+def _progress(args: argparse.Namespace, total: int, desc: str) -> Progress:
+    return Progress(
+        total,
+        desc,
+        enabled=not getattr(args, "no_progress", False),
+        verbose=getattr(args, "verbose", False),
+    )
+
+
 def _load_config() -> Dict[str, Any]:
     if not CONFIG_YAML.exists():
         return {}
@@ -170,9 +189,13 @@ def cmd_enrich(args: argparse.Namespace) -> int:
     ttl = 0 if args.refresh else (args.ttl or int(config.get("cache_ttl", DEFAULT_TTL)))
 
     client = HttpClient(cache_dir=CACHE_DIR, ttl=ttl, mailto=mailto)
-    result = enrich_module.enrich_papers(
-        papers, client, threshold=threshold, ambiguous_margin=ambiguous_margin
-    )
+    progress = _progress(args, len(papers), "enrich")
+    try:
+        result = enrich_module.enrich_papers(
+            papers, client, threshold=threshold, ambiguous_margin=ambiguous_margin, progress=progress
+        )
+    finally:
+        progress.close()
 
     titles = {paper.id: paper.title for paper in papers}
     md_path, json_path = proposals.write(result, titles, args.report, args.json)
@@ -217,16 +240,21 @@ def cmd_discover(args: argparse.Namespace) -> int:
     if args.year:
         years = [int(value) for value in str(args.year).replace(" ", ",").split(",") if value]
 
-    result = discover_module.discover(
-        papers,
-        config,
-        client=client,
-        since_days=args.since,
-        limit_per_source=args.limit,
-        registry=venues_module.load_registry(VENUES_YAML),
-        min_tier=args.min_tier or config.get("min_tier"),
-        years=years,
-    )
+    progress = _progress(args, len(config.get("keywords") or []) * 3, "discover")
+    try:
+        result = discover_module.discover(
+            papers,
+            config,
+            client=client,
+            since_days=args.since,
+            limit_per_source=args.limit,
+            registry=venues_module.load_registry(VENUES_YAML),
+            min_tier=args.min_tier or config.get("min_tier"),
+            years=years,
+            progress=progress,
+        )
+    finally:
+        progress.close()
 
     md_path, json_path = proposals.write_discover(result, args.report, args.json)
 
@@ -259,27 +287,31 @@ def cmd_venues(args: argparse.Namespace) -> int:
     if args.refresh_metrics:
         client = HttpClient(cache_dir=CACHE_DIR, ttl=args.ttl or DEFAULT_TTL)
         updated = 0
+        progress = _progress(args, len(registry.venues), "venues")
         for venue in registry.venues:
             if not venue.issn:
+                progress.update(venue.code)
                 continue
             try:
                 data = client.get_json(
                     "https://api.openalex.org/sources", params={"filter": f"issn:{venue.issn}"}
                 )
             except RuntimeError:
+                progress.update(venue.code)
                 continue
             results = data.get("results") or []
-            if not results:
-                continue
-            source = results[0]
-            stats = source.get("summary_stats") or {}
-            venue.metrics = {
-                "two_year_mean_citedness": round(stats.get("2yr_mean_citedness") or 0.0, 2),
-                "h_index": stats.get("h_index"),
-                "works_count": source.get("works_count"),
-                "as_of": date.today().year,
-            }
-            updated += 1
+            if results:
+                source = results[0]
+                stats = source.get("summary_stats") or {}
+                venue.metrics = {
+                    "two_year_mean_citedness": round(stats.get("2yr_mean_citedness") or 0.0, 2),
+                    "h_index": stats.get("h_index"),
+                    "works_count": source.get("works_count"),
+                    "as_of": date.today().year,
+                }
+                updated += 1
+            progress.update(venue.code)
+        progress.close()
         venues_module.save_registry(VENUES_YAML, registry)
         print(f"refreshed OpenAlex metrics for {updated} venues")
 
@@ -316,7 +348,11 @@ def cmd_llm(args: argparse.Namespace) -> int:
         ttl=0 if args.refresh_abstracts else int(config.get("cache_ttl", DEFAULT_TTL)),
     )
     to_process = papers if args.all else [paper for paper in papers if not paper.tldr]
-    abstracts = enrich_module.collect_abstracts(to_process, http)
+    abstracts_progress = _progress(args, len(to_process), "abstracts")
+    try:
+        abstracts = enrich_module.collect_abstracts(to_process, http, progress=abstracts_progress)
+    finally:
+        abstracts_progress.close()
 
     llm = llm_module.LlmClient(
         model=args.model or config.get("model", "gpt-4o-mini"),
@@ -325,13 +361,18 @@ def cmd_llm(args: argparse.Namespace) -> int:
         cache_dir=CACHE_DIR,
         ttl=int(config.get("cache_ttl", DEFAULT_TTL)),
     )
-    result = llm_module.summarize_papers(
-        papers,
-        llm,
-        abstracts,
-        only_missing=not args.all,
-        max_tags=int(config.get("max_tags", 5)),
-    )
+    llm_progress = _progress(args, len(to_process), "llm")
+    try:
+        result = llm_module.summarize_papers(
+            papers,
+            llm,
+            abstracts,
+            only_missing=not args.all,
+            max_tags=int(config.get("max_tags", 5)),
+            progress=llm_progress,
+        )
+    finally:
+        llm_progress.close()
 
     titles = {paper.id: paper.title for paper in papers}
     md_path, json_path = proposals.write_llm(result, titles, args.report, args.json)
@@ -376,7 +417,13 @@ def cmd_code(args: argparse.Namespace) -> int:
 
     token = os.environ.get(args.token_env) if args.token_env else None
     client = HttpClient(cache_dir=CACHE_DIR, ttl=args.ttl or DEFAULT_TTL)
-    matches = code_module.find_matches(selected, client, token=token, threshold=args.threshold)
+    progress = _progress(args, len(selected), "code")
+    try:
+        matches = code_module.find_matches(
+            selected, client, token=token, threshold=args.threshold, progress=progress
+        )
+    finally:
+        progress.close()
 
     titles = {paper.id: paper.title for paper in selected}
     md_path, json_path = proposals.write_code(matches, titles, args.report, args.json)
@@ -420,6 +467,7 @@ def build_parser() -> argparse.ArgumentParser:
     link.add_argument("--skip-repos", action="store_true", help="skip GitHub repository checks")
     link.add_argument("--no-fail", action="store_true", help="report issues but always exit 0")
     link.set_defaults(func=cmd_check_links)
+    _add_progress_args(link)
 
     enrich = sub.add_parser("enrich", help="suggest metadata updates from arXiv/OpenAlex/Crossref")
     enrich.add_argument("--report", default=str(ROOT / "proposals" / "enrich.md"), help="Markdown report path")
@@ -438,6 +486,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     enrich.add_argument("--min-score", type=float, help="minimum match score required to apply (default: threshold)")
     enrich.set_defaults(func=cmd_enrich)
+    _add_progress_args(enrich)
 
     disc = sub.add_parser("discover", help="find new papers from arXiv/OpenAlex/Crossref")
     disc.add_argument("--report", default=str(ROOT / "proposals" / "discover.md"), help="Markdown report path")
@@ -451,11 +500,13 @@ def build_parser() -> argparse.ArgumentParser:
     disc.add_argument("--year", help="only keep candidates from these years (comma-separated, e.g. 2025)")
     disc.add_argument("--apply", action="store_true", help="append new candidates to papers.yaml as status: candidate")
     disc.set_defaults(func=cmd_discover)
+    _add_progress_args(disc)
 
     venues = sub.add_parser("venues", help="audit venues against config/venues.yaml")
     venues.add_argument("--refresh-metrics", action="store_true", help="refresh OpenAlex metrics into venues.yaml")
     venues.add_argument("--ttl", type=int, help="cache TTL in seconds for the metric refresh")
     venues.set_defaults(func=cmd_venues)
+    _add_progress_args(venues)
 
     llm = sub.add_parser("llm", help="LLM-assisted tldr/tags (needs an API key)")
     llm.add_argument("--report", default=str(ROOT / "proposals" / "llm.md"), help="Markdown report path")
@@ -476,6 +527,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     llm.add_argument("--refresh-abstracts", action="store_true", help="bypass the source response cache")
     llm.set_defaults(func=cmd_llm)
+    _add_progress_args(llm)
 
     code = sub.add_parser("code", help="find code repositories and project pages (GitHub)")
     code.add_argument("--report", default=str(ROOT / "proposals" / "code.md"))
@@ -488,6 +540,7 @@ def build_parser() -> argparse.ArgumentParser:
     code.add_argument("--ttl", type=int, help="cache TTL in seconds")
     code.add_argument("--apply", action="store_true", help="fill code/project links (fill-only)")
     code.set_defaults(func=cmd_code)
+    _add_progress_args(code)
 
     return parser
 

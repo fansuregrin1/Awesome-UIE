@@ -265,6 +265,7 @@ def discover(
     limit_per_source: int = 25,
     min_relevance: float = 0.25,
     prefer_published: bool = True,
+    progress=None,
     today: Optional[date] = None,
 ) -> DiscoverResult:
     if sources is None:
@@ -292,8 +293,10 @@ def discover(
                 records = source.search(keyword, since=since_iso, limit=limit_per_source)
             except RuntimeError as exc:
                 result.source_errors.append(f"{getattr(source, 'name', 'source')} '{keyword}': {exc}")
-                continue
+                records = []
             gathered.extend(records or [])
+            if progress:
+                progress.update(f"{getattr(source, 'name', 'source')}: {keyword[:28]}")
 
     in_window: List[SourceRecord] = []
     for record in gathered:

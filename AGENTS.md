@@ -51,6 +51,10 @@ Run the offline tests from the repository root:
 python -m unittest discover -s tests -v
 ```
 
+Long-running commands (`enrich`, `discover`, `llm`, `code`, `check-links`,
+`venues --refresh-metrics`) print progress to **stderr**; use `--verbose` for one
+line per item or `--no-progress` to silence it.
+
 `enrich` queries arXiv / OpenAlex / Crossref and writes reports under
 `proposals/` (gitignored). By default it is read-only and a human applies the
 suggestions. `enrich --apply` writes high-confidence, fill-only `doi`/`authors`
