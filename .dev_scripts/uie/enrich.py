@@ -169,6 +169,7 @@ def enrich_papers(
     threshold: float = 0.9,
     ambiguous_margin: float = 0.15,
     sources: Optional[Sequence[object]] = None,
+    progress=None,
 ) -> EnrichResult:
     if sources is None:
         if client is None:
@@ -177,6 +178,8 @@ def enrich_papers(
     result = EnrichResult(total=len(papers))
 
     for paper in papers:
+        if progress:
+            progress.update(paper.id)
         candidates = gather_candidates(paper, sources)
         if not candidates:
             result.unmatched.append(paper.id)
@@ -245,7 +248,7 @@ def enrich_papers(
 
 
 def collect_abstracts(
-    papers: Sequence[Paper], client: HttpClient, threshold: float = 0.9
+    papers: Sequence[Paper], client: HttpClient, threshold: float = 0.9, progress=None
 ) -> Dict[str, str]:
     """Return the best-matching source abstract for each paper (reference text)."""
     sources = build_sources(client)
@@ -256,6 +259,8 @@ def collect_abstracts(
         if accepted:
             best = max(accepted, key=lambda candidate: candidate.score)
             abstracts[paper.id] = best.record.abstract or ""
+        if progress:
+            progress.update(paper.id)
     return abstracts
 
 

@@ -35,6 +35,7 @@ async def check_urls(
     ttl: int = DEFAULT_TTL,
     timeout: float = 20.0,
     concurrency: int = 12,
+    progress=None,
 ) -> Dict[str, Dict[str, Any]]:
     urls = sorted(set(urls))
     cache: Dict[str, Dict[str, Any]] = {}
@@ -52,6 +53,8 @@ async def check_urls(
         hit = cache.get(url)
         if hit and now - hit.get("checked_at", 0) < ttl:
             results[url] = hit
+            if progress:
+                progress.update(url)
         else:
             pending.append(url)
 
@@ -70,6 +73,8 @@ async def check_urls(
             for url, result in await asyncio.gather(*(worker(url) for url in pending)):
                 results[url] = result
                 cache[url] = result
+                if progress:
+                    progress.update(url)
         if cache_file:
             cache_file.write_text(json.dumps(cache, indent=2, sort_keys=True), encoding="utf-8")
 

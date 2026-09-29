@@ -116,6 +116,7 @@ def find_matches(
     client: HttpClient,
     token: Optional[str] = None,
     threshold: float = 0.55,
+    progress=None,
 ) -> List[CodeMatch]:
     headers = _headers(token)
     # GitHub search: 10 req/min unauthenticated, 30 with a token.
@@ -154,6 +155,8 @@ def find_matches(
 
         if best is not None and (best.code or best.project):
             matches.append(best)
+        if progress:
+            progress.update(paper.id)
 
     return matches
 
