@@ -25,11 +25,25 @@ _GITHUB_RE = re.compile(r"^https?://github\.com/([^/]+)/([^/#?]+)")
 
 
 async def _fetch(client: httpx.AsyncClient, url: str) -> Dict[str, Any]:
+    """Check a URL without downloading the body.
+
+    Uses ``HEAD`` (no body) and falls back to a **streamed** GET that is closed
+    before reading the body — so large files (zips, PDFs) can't cause a
+    ``ReadTimeout``.
+    """
     try:
-        response = await client.get(url, follow_redirects=True)
-        return {"status": response.status_code, "error": None}
-    except Exception as exc:  # noqa: BLE001 - report any transport failure
-        return {"status": None, "error": f"{type(exc).__name__}: {str(exc)[:140]}"}
+        response = await client.head(url, follow_redirects=True)
+        status = response.status_code
+        if status in (405, 501):  # HEAD not allowed -> streamed GET
+            async with client.stream("GET", url, follow_redirects=True) as streamed:
+                status = streamed.status_code
+        return {"status": status, "error": None}
+    except Exception:
+        try:
+            async with client.stream("GET", url, follow_redirects=True) as streamed:
+                return {"status": streamed.status_code, "error": None}
+        except Exception as exc:  # noqa: BLE001 - report any transport failure
+            return {"status": None, "error": f"{type(exc).__name__}: {str(exc)[:140]}"}
 
 
 async def check_urls(
@@ -75,7 +89,9 @@ async def check_urls(
 
             for url, result in await asyncio.gather(*(worker(url) for url in pending)):
                 results[url] = result
-                cache[url] = result
+                # Only cache definitive responses; don't persist transient transport errors.
+                if result.get("status") is not None:
+                    cache[url] = result
                 if progress:
                     progress.update(url)
         if cache_file:
