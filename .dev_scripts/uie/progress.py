@@ -7,6 +7,7 @@ otherwise it prints a line every ~10% so CI logs stay readable.
 
 from __future__ import annotations
 
+import shutil
 import sys
 import time
 from typing import Optional
@@ -46,7 +47,11 @@ class Progress:
             return
         percent = self._percent()
         if self._isatty:
-            self.stream.write(f"\r{self.desc} [{self.count}/{self.total}] {percent:3d}%  {detail[:48]:<48}")
+            prefix = f"{self.desc} [{self.count}/{self.total}] {percent:3d}%  "
+            width = shutil.get_terminal_size((100, 20)).columns
+            available = max(1, width - len(prefix) - 1)
+            text = detail if len(detail) <= available else detail[: available - 1] + "…"
+            self.stream.write("\r" + prefix + text + "\x1b[K")
             self.stream.flush()
         elif percent >= self._last_percent + 10 or self.count == self.total:
             self._last_percent = percent
