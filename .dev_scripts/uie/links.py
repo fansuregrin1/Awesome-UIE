@@ -85,6 +85,8 @@ async def check_urls(
                 async with semaphore:
                     result = await _fetch(client, url)
                     result["checked_at"] = now
+                    if progress:
+                        progress.update(url)
                     return url, result
 
             for url, result in await asyncio.gather(*(worker(url) for url in pending)):
@@ -92,8 +94,6 @@ async def check_urls(
                 # Only cache definitive responses; don't persist transient transport errors.
                 if result.get("status") is not None:
                     cache[url] = result
-                if progress:
-                    progress.update(url)
         if cache_file:
             cache_file.write_text(json.dumps(cache, indent=2, sort_keys=True), encoding="utf-8")
 
