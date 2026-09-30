@@ -14,6 +14,7 @@ from datetime import date, timedelta
 from typing import Dict, List, Optional, Sequence, Tuple
 
 from .enrich import normalize_arxiv, normalize_doi, similarity
+from .progress import Progress
 from .schema import KNOWN_TAGS, Paper, Status, make_id
 from .sources.arxiv import ArxivSource
 from .sources.base import SourceRecord
@@ -265,7 +266,7 @@ def discover(
     limit_per_source: int = 25,
     min_relevance: float = 0.25,
     prefer_published: bool = True,
-    progress=None,
+    progress: Optional[Progress] = None,
     today: Optional[date] = None,
 ) -> DiscoverResult:
     if sources is None:

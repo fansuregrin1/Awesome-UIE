@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 from difflib import SequenceMatcher
 from typing import Dict, List, Optional, Sequence
 
+from .progress import Progress
 from .schema import Paper
 from .sources.arxiv import ArxivSource
 from .sources.base import SourceRecord
@@ -169,7 +170,7 @@ def enrich_papers(
     threshold: float = 0.9,
     ambiguous_margin: float = 0.15,
     sources: Optional[Sequence[object]] = None,
-    progress=None,
+    progress: Optional[Progress] = None,
 ) -> EnrichResult:
     if sources is None:
         if client is None:
@@ -248,7 +249,7 @@ def enrich_papers(
 
 
 def collect_abstracts(
-    papers: Sequence[Paper], client: HttpClient, threshold: float = 0.9, progress=None
+    papers: Sequence[Paper], client: HttpClient, threshold: float = 0.9, progress: Optional[Progress] = None
 ) -> Dict[str, str]:
     """Return the best-matching source abstract for each paper (reference text)."""
     sources = build_sources(client)
