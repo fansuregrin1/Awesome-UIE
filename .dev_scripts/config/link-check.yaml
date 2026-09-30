@@ -1,0 +1,25 @@
+# Link-checker settings (used by `python -m uie.cli check-links`).
+#
+# Publishers behind Cloudflare/bot protection answer our HTTP client with 403.
+# Those responses are reported as "blocked" (unverifiable), not "dead", and can
+# be verified via their DOI on Crossref instead.
+
+# Hosts known to challenge bots: skip the plain fetch and go straight to the
+# blocked / DOI-verification path. Matched by suffix.
+blocked_hosts:
+  - dl.acm.org
+  - mdpi.com
+  - sciencedirect.com
+  - link.springer.com
+  - researchgate.net
+  - ieeexplore.ieee.org
+  - techrxiv.org
+  - frontiersin.org
+  - nature.com
+
+# Retry a bot-blocked response once with a browser-like User-Agent (default on;
+# may still be blocked by TLS fingerprinting).
+browser_ua_retry: true
+
+# For blocked links whose paper has a `doi`, verify liveness via Crossref.
+verify_doi_via_crossref: true

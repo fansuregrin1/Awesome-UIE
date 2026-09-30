@@ -24,26 +24,111 @@ USER_AGENT = "Awesome-UIE-link-checker/1.0 (+https://github.com/fansuregrin1/Awe
 _GITHUB_RE = re.compile(r"^https?://github\.com/([^/]+)/([^/#?]+)")
 
 
-async def _fetch(client: httpx.AsyncClient, url: str) -> Dict[str, Any]:
-    """Check a URL without downloading the body.
+BROWSER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+CROSSREF_WORKS = "https://api.crossref.org/works/"
 
-    Uses ``HEAD`` (no body) and falls back to a **streamed** GET that is closed
-    before reading the body — so large files (zips, PDFs) can't cause a
-    ``ReadTimeout``.
-    """
+
+def _host_blocked(url: str, hosts: Sequence[str]) -> bool:
+    host = (httpx.URL(url).host or "").lower()
+    return any(host == entry.lower() or host.endswith("." + entry.lower()) for entry in hosts)
+
+
+def _is_antibot(status: Optional[int], headers) -> bool:
+    if status not in (403, 429, 503):
+        return False
+    server = (headers.get("server") or "").lower()
+    return "cloudflare" in server or "cf-mitigated" in headers
+
+
+async def _probe(client: httpx.AsyncClient, url: str, headers: Optional[Dict[str, str]] = None) -> Dict[str, Any]:
+    """Return ``{"status", "error", "cloudflare"}`` without downloading the body."""
     try:
-        response = await client.head(url, follow_redirects=True)
-        status = response.status_code
-        if status in (405, 501):  # HEAD not allowed -> streamed GET
-            async with client.stream("GET", url, follow_redirects=True) as streamed:
-                status = streamed.status_code
-        return {"status": status, "error": None}
+        response = await client.head(url, follow_redirects=True, headers=headers)
+        if response.status_code in (405, 501):  # HEAD not allowed -> streamed GET
+            async with client.stream("GET", url, follow_redirects=True, headers=headers) as streamed:
+                return {
+                    "status": streamed.status_code,
+                    "error": None,
+                    "cloudflare": _is_antibot(streamed.status_code, streamed.headers),
+                }
+        return {
+            "status": response.status_code,
+            "error": None,
+            "cloudflare": _is_antibot(response.status_code, response.headers),
+        }
     except Exception:
         try:
-            async with client.stream("GET", url, follow_redirects=True) as streamed:
-                return {"status": streamed.status_code, "error": None}
+            async with client.stream("GET", url, follow_redirects=True, headers=headers) as streamed:
+                return {
+                    "status": streamed.status_code,
+                    "error": None,
+                    "cloudflare": _is_antibot(streamed.status_code, streamed.headers),
+                }
         except Exception as exc:  # noqa: BLE001 - report any transport failure
-            return {"status": None, "error": f"{type(exc).__name__}: {str(exc)[:140]}"}
+            return {"status": None, "error": f"{type(exc).__name__}: {str(exc)[:140]}", "cloudflare": False}
+
+
+def _result_kind(url: str, probe: Dict[str, Any], blocked_hosts: Sequence[str]) -> str:
+    status = probe.get("status")
+    if status is None:
+        return "error"
+    if status in (404, 410):
+        return "dead"
+    if 200 <= status < 400:
+        return "ok"
+    # 403/429/503 from publishers are almost always bot protection; also honour
+    # the configured host list.
+    if status in (403, 429, 503) or _host_blocked(url, blocked_hosts):
+        return "blocked"
+    if status >= 400:
+        return "http_error"
+    return "unknown"
+
+
+async def _fetch(
+    client: httpx.AsyncClient,
+    url: str,
+    blocked_hosts: Sequence[str] = (),
+    browser_ua_retry: bool = False,
+) -> Dict[str, Any]:
+    """Check a URL without downloading its body.
+
+    Uses ``HEAD`` (falling back to a streamed GET) and classifies the outcome as
+    ``ok`` / ``dead`` / ``blocked`` (anti-bot) / ``http_error`` / ``error``. Bot
+    blocks may be retried once with a browser-like User-Agent.
+    """
+    probe = await _probe(client, url)
+    kind = _result_kind(url, probe, blocked_hosts)
+    if kind == "blocked" and browser_ua_retry:
+        retry = await _probe(client, url, headers=BROWSER_HEADERS)
+        if retry.get("status") is not None and retry["status"] < 400:
+            return {"status": retry["status"], "error": None, "kind": "ok", "note": "via browser UA"}
+    return {"status": probe.get("status"), "error": probe.get("error"), "kind": kind}
+
+
+def verify_doi(doi: str, client) -> bool:
+    """Confirm a DOI is registered via Crossref (bypasses publisher anti-bot)."""
+    try:
+        client.get_text(f"{CROSSREF_WORKS}{doi}", min_interval=0.2)
+        return True
+    except Exception:  # noqa: BLE001
+        return False
+
+
+_DOI_IN_URL = re.compile(r"10\.\d{4,9}/[^\s?#]+", re.IGNORECASE)
+
+
+def extract_doi(url: str) -> Optional[str]:
+    """Pull a DOI out of a URL like ``https://doi.org/10.3390/jmse13081546``."""
+    match = _DOI_IN_URL.search(url or "")
+    return match.group(0).rstrip(".") if match else None
 
 
 async def check_urls(
@@ -53,6 +138,8 @@ async def check_urls(
     timeout: float = 20.0,
     concurrency: int = 12,
     progress: Optional[Progress] = None,
+    blocked_hosts: Sequence[str] = (),
+    browser_ua_retry: bool = False,
 ) -> Dict[str, Dict[str, Any]]:
     urls = sorted(set(urls))
     cache: Dict[str, Dict[str, Any]] = {}
@@ -83,7 +170,7 @@ async def check_urls(
 
             async def worker(url: str):
                 async with semaphore:
-                    result = await _fetch(client, url)
+                    result = await _fetch(client, url, blocked_hosts, browser_ua_retry)
                     result["checked_at"] = now
                     if progress:
                         progress.update(url)
@@ -103,16 +190,22 @@ async def check_urls(
 def classify(url: str, result: Dict[str, Any], allowlist: Optional[Dict[str, Any]] = None) -> str:
     """Return ``"ok"``, ``"warning"`` or ``"error"`` for one link result."""
     allowed = set((allowlist or {}).get("link_warnings") or [])
-    status = result.get("status")
-    if result.get("error"):
-        return "warning" if url in allowed else "error"
-    if status in (404, 410):
-        return "warning" if url in allowed else "error"
-    if status is not None and status >= 400:
-        return "warning"
-    if status is not None and 200 <= status < 400:
+    kind = result.get("kind")
+    if kind is None:  # backward-compatible derivation for old cache entries
+        status = result.get("status")
+        if status is None:
+            kind = "error"
+        elif status in (404, 410):
+            kind = "dead"
+        elif 200 <= status < 400:
+            kind = "ok"
+        else:
+            kind = "http_error"
+    if kind == "ok":
         return "ok"
-    return "warning"
+    if kind in ("dead", "error"):
+        return "warning" if url in allowed else "error"
+    return "warning"  # blocked / http_error / unknown
 
 
 def github_repo(url: str) -> Optional[str]:

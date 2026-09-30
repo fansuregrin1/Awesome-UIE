@@ -39,6 +39,7 @@ LINK_CACHE = ROOT / ".dev_scripts" / ".link-cache.json"
 CONFIG_YAML = ROOT / ".dev_scripts" / "config" / "discovery.yaml"
 VENUES_YAML = ROOT / ".dev_scripts" / "config" / "venues.yaml"
 LLM_CONFIG_YAML = ROOT / ".dev_scripts" / "config" / "llm.yaml"
+LINK_CONFIG_YAML = ROOT / ".dev_scripts" / "config" / "link-check.yaml"
 CACHE_DIR = ROOT / ".dev_scripts" / ".cache"
 
 
@@ -103,24 +104,61 @@ def _collect_urls(papers: List[Paper], scope: str) -> List[str]:
 def cmd_check_links(args: argparse.Namespace) -> int:
     papers = load_papers(PAPERS_YAML)
     allowlist = _load_allowlist()
+    link_config = _load_link_config()
+    blocked_hosts = link_config.get("blocked_hosts") or []
+    browser_retry = bool(link_config.get("browser_ua_retry", True))
     urls = _collect_urls(papers, args.scope)
 
     progress = _progress(args, len(urls), "links")
     try:
-        results = asyncio.run(links.check_urls(urls, cache_path=LINK_CACHE, ttl=args.ttl, progress=progress))
+        results = asyncio.run(
+            links.check_urls(
+                urls,
+                cache_path=LINK_CACHE,
+                ttl=args.ttl,
+                progress=progress,
+                blocked_hosts=blocked_hosts,
+                browser_ua_retry=browser_retry,
+            )
+        )
     finally:
         progress.close()
+
+    # Bot-blocked links: confirm liveness via the paper's DOI on Crossref.
+    if link_config.get("verify_doi_via_crossref", True):
+        url_doi = {str(paper.url): paper.doi for paper in papers if paper.doi}
+        http = HttpClient(cache_dir=CACHE_DIR, ttl=args.ttl or DEFAULT_TTL)
+        for url, result in results.items():
+            if result.get("kind") not in ("blocked", "http_error"):
+                continue
+            doi = url_doi.get(url) or links.extract_doi(url)
+            if doi and links.verify_doi(doi, http):
+                result["kind"] = "ok"
+                result["note"] = "verified via DOI"
 
     issues: List[validate.Issue] = []
     for url, result in sorted(results.items()):
         level = links.classify(url, result, allowlist)
         if level == "ok":
             continue
-        detail = result.get("error") or f"HTTP {result.get('status')}"
-        issues.append(validate.Issue("warning" if level == "warning" else "error", "link-dead", detail, url))
+        kind = result.get("kind")
+        if kind == "dead":
+            code, detail = "link-dead", result.get("error") or f"HTTP {result.get('status')}"
+        elif kind == "blocked":
+            code, detail = "link-blocked", "blocked by anti-bot (not verified)"
+        elif kind == "error":
+            code, detail = "link-unreachable", result.get("error") or "transport error"
+        else:
+            code, detail = "link-http", result.get("error") or f"HTTP {result.get('status')}"
+        issues.append(validate.Issue("warning" if level == "warning" else "error", code, detail, url))
 
     if args.format == "text":
-        print(f"checked {len(urls)} links")
+        kinds = Counter(result.get("kind") for result in results.values())
+        print(
+            f"checked {len(urls)} links: ok {kinds.get('ok', 0)}, blocked {kinds.get('blocked', 0)}, "
+            f"dead {kinds.get('dead', 0)}, "
+            f"other {kinds.get('http_error', 0) + kinds.get('unknown', 0) + kinds.get('error', 0)}"
+        )
     _print_issues(issues, args.format)
 
     # Repository checks only make sense when the scope includes code links.
@@ -187,6 +225,12 @@ def _load_llm_config() -> Dict[str, Any]:
     if not LLM_CONFIG_YAML.exists():
         return {}
     return yaml.safe_load(LLM_CONFIG_YAML.read_text(encoding="utf-8")) or {}
+
+
+def _load_link_config() -> Dict[str, Any]:
+    if not LINK_CONFIG_YAML.exists():
+        return {}
+    return yaml.safe_load(LINK_CONFIG_YAML.read_text(encoding="utf-8")) or {}
 
 
 def cmd_enrich(args: argparse.Namespace) -> int:

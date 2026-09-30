@@ -83,5 +83,68 @@ class RepoClassifyTest(unittest.TestCase):
         self.assertEqual(result["reason"], "http_error")
 
 
+class ClassifyKindTest(unittest.TestCase):
+    def test_host_blocked_suffix(self):
+        self.assertTrue(links._host_blocked("https://www.mdpi.com/2079", ["mdpi.com"]))
+        self.assertFalse(links._host_blocked("https://example.com", ["mdpi.com"]))
+
+    def test_result_kind(self):
+        self.assertEqual(links._result_kind("https://x/y", {"status": 200, "cloudflare": False}, []), "ok")
+        self.assertEqual(links._result_kind("https://x/y", {"status": 404, "cloudflare": False}, []), "dead")
+        self.assertEqual(links._result_kind("https://x/y", {"status": None, "cloudflare": False}, []), "error")
+        self.assertEqual(links._result_kind("https://x/y", {"status": 500, "cloudflare": False}, []), "http_error")
+        # blocked via cloudflare signature / via host list
+        self.assertEqual(links._result_kind("https://x/y", {"status": 403, "cloudflare": True}, []), "blocked")
+        self.assertEqual(
+            links._result_kind("https://www.mdpi.com/a", {"status": 403, "cloudflare": False}, ["mdpi.com"]),
+            "blocked",
+        )
+
+    def test_classify_severity(self):
+        self.assertEqual(links.classify("u", {"kind": "ok", "status": 200}), "ok")
+        self.assertEqual(links.classify("u", {"kind": "blocked", "status": 403}), "warning")
+        self.assertEqual(links.classify("u", {"kind": "dead", "status": 404}), "error")
+        self.assertEqual(links.classify("u", {"status": 404}), "error")  # legacy cache entry
+
+    def test_extract_doi(self):
+        self.assertEqual(links.extract_doi("https://doi.org/10.3390/jmse13081546"), "10.3390/jmse13081546")
+        self.assertEqual(
+            links.extract_doi("https://dl.acm.org/doi/10.1145/3581783.3611727"), "10.1145/3581783.3611727"
+        )
+        self.assertIsNone(links.extract_doi("https://example.com/x"))
+
+
+class BrowserUaRetryTest(unittest.TestCase):
+    def test_retries_blocked_with_browser_ua(self):
+        def handler(request):
+            if "Mozilla" in request.headers.get("user-agent", ""):
+                return httpx.Response(200)
+            return httpx.Response(403, headers={"server": "cloudflare"})
+
+        client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+        result = asyncio.run(
+            links._fetch(client, "https://dl.acm.org/doi/10.1/x", blocked_hosts=[], browser_ua_retry=True)
+        )
+        self.assertEqual(result["kind"], "ok")
+        self.assertEqual(result["note"], "via browser UA")
+
+
+class VerifyDoiTest(unittest.TestCase):
+    class _Client:
+        def __init__(self, ok):
+            self.ok = ok
+
+        def get_text(self, url, **kwargs):
+            if not self.ok:
+                raise RuntimeError("HTTP 404")
+            return "{}"
+
+    def test_ok(self):
+        self.assertTrue(links.verify_doi("10.1/x", self._Client(True)))
+
+    def test_failure(self):
+        self.assertFalse(links.verify_doi("10.1/x", self._Client(False)))
+
+
 if __name__ == "__main__":
     unittest.main()
