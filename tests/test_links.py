@@ -51,5 +51,37 @@ class FetchTest(unittest.TestCase):
         self.assertIn("ConnectError", result["error"])
 
 
+class RepoClassifyTest(unittest.TestCase):
+    def test_ok_repo(self):
+        result = links._classify_repo(
+            "a/b", httpx.Response(200, json={"archived": True, "stargazers_count": 5})
+        )
+        self.assertTrue(result["ok"])
+        self.assertTrue(result["archived"])
+        self.assertEqual(result["stars"], 5)
+
+    def test_moved_repo_is_ok(self):
+        result = links._classify_repo("a/b", httpx.Response(301))
+        self.assertTrue(result["ok"])
+        self.assertTrue(result["moved"])
+
+    def test_404_is_missing(self):
+        result = links._classify_repo("a/b", httpx.Response(404))
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["reason"], "missing")
+
+    def test_403_with_exhausted_budget_is_rate_limited(self):
+        result = links._classify_repo("a/b", httpx.Response(403, headers={"x-ratelimit-remaining": "0"}))
+        self.assertEqual(result["reason"], "rate_limited")
+
+    def test_429_is_rate_limited(self):
+        result = links._classify_repo("a/b", httpx.Response(429))
+        self.assertEqual(result["reason"], "rate_limited")
+
+    def test_500_is_generic_error(self):
+        result = links._classify_repo("a/b", httpx.Response(500))
+        self.assertEqual(result["reason"], "http_error")
+
+
 if __name__ == "__main__":
     unittest.main()

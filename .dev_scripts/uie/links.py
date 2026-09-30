@@ -125,6 +125,28 @@ def github_repo(url: str) -> Optional[str]:
     return f"{match.group(1)}/{repo}"
 
 
+def _classify_repo(repo: str, response: httpx.Response) -> Dict[str, Any]:
+    """Turn a GitHub repo API response into a result dict (never raises)."""
+    status = response.status_code
+    if status == 200:
+        data = response.json()
+        return {
+            "ok": True,
+            "archived": bool(data.get("archived")),
+            "stars": data.get("stargazers_count"),
+            "pushed_at": data.get("pushed_at"),
+        }
+    # 301/302 mean the repository was renamed or moved, not deleted.
+    if status in (301, 302, 307, 308):
+        return {"ok": True, "moved": True, "status": status}
+    if status == 404:
+        return {"ok": False, "status": status, "reason": "missing"}
+    # 403/429 (or an exhausted rate-limit budget) are transient, not "missing".
+    if status in (403, 429) or response.headers.get("x-ratelimit-remaining") == "0":
+        return {"ok": False, "status": status, "reason": "rate_limited"}
+    return {"ok": False, "status": status, "reason": "http_error"}
+
+
 async def check_github_repos(
     repos: Sequence[str],
     token: Optional[str] = None,
@@ -148,20 +170,9 @@ async def check_github_repos(
             async with semaphore:
                 try:
                     response = await client.get(f"https://api.github.com/repos/{repo}")
-                    if response.status_code == 200:
-                        data = response.json()
-                        return repo, {
-                            "ok": True,
-                            "archived": bool(data.get("archived")),
-                            "stars": data.get("stargazers_count"),
-                            "pushed_at": data.get("pushed_at"),
-                        }
-                    # 301/302 mean the repository was renamed or moved, not deleted.
-                    if response.status_code in (301, 302, 307, 308):
-                        return repo, {"ok": True, "moved": True, "status": response.status_code}
-                    return repo, {"ok": False, "status": response.status_code}
                 except Exception as exc:  # noqa: BLE001
                     return repo, {"ok": None, "error": f"{type(exc).__name__}: {str(exc)[:120]}"}
+                return repo, _classify_repo(repo, response)
 
         for repo, result in await asyncio.gather(*(worker(repo) for repo in repos)):
             out[repo] = result

@@ -132,10 +132,27 @@ def cmd_check_links(args: argparse.Namespace) -> int:
     repo_results = asyncio.run(links.check_github_repos(repos, token=os.environ.get("GITHUB_TOKEN")))
     repo_issues: List[validate.Issue] = []
     for repo, info in sorted(repo_results.items()):
-        if info.get("ok") is False:
-            repo_issues.append(validate.Issue("error", "repo-missing", f"GitHub API status {info.get('status')}", repo))
-        elif info.get("archived"):
-            repo_issues.append(validate.Issue("warning", "repo-archived", "repository is archived", repo))
+        if info.get("ok") is True:
+            if info.get("archived"):
+                repo_issues.append(validate.Issue("warning", "repo-archived", "repository is archived", repo))
+            continue
+        reason = info.get("reason")
+        if reason == "missing":
+            repo_issues.append(
+                validate.Issue("error", "repo-missing", "GitHub API 404 (repository not found)", repo)
+            )
+        elif reason == "rate_limited":
+            repo_issues.append(
+                validate.Issue(
+                    "warning",
+                    "github-rate-limit",
+                    f"GitHub API {info.get('status')} (rate limited) — set GITHUB_TOKEN or retry later",
+                    repo,
+                )
+            )
+        else:
+            detail = info.get("error") or f"GitHub API status {info.get('status')}"
+            repo_issues.append(validate.Issue("warning", "repo-check", detail, repo))
 
     if args.format == "text":
         print(f"checked {len(repos)} code repositories")
