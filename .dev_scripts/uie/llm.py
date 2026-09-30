@@ -14,8 +14,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence
 
-import httpx
-
+from .net import make_client
 from .schema import KNOWN_TAGS, Paper, PaperType
 
 TYPES = [PaperType.TRADITIONAL.value, PaperType.DEEP_LEARNING.value, PaperType.HYBRID.value]
@@ -91,7 +90,7 @@ class LlmClient:
             self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.ttl = ttl
         self.temperature = temperature
-        self._client = httpx.Client(timeout=timeout)
+        self._client = make_client(timeout=timeout)
 
     def _cache_path(self, key: str) -> Optional[Path]:
         if not self.cache_dir:

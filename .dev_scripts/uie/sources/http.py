@@ -14,6 +14,8 @@ from typing import Any, Dict, Optional
 
 import httpx
 
+from ..net import make_client
+
 DEFAULT_TTL = 30 * 24 * 3600
 DEFAULT_CACHE_DIR = Path(__file__).resolve().parents[2] / ".cache"
 USER_AGENT = "Awesome-UIE-enricher/1.0 (+https://github.com/fansuregrin1/Awesome-UIE)"
@@ -32,7 +34,7 @@ class HttpClient:
         self.ttl = ttl
         self.mailto = mailto
         self._last_request: Dict[str, float] = {}
-        self._client = httpx.Client(
+        self._client = make_client(
             headers={"User-Agent": USER_AGENT},
             timeout=timeout,
             follow_redirects=True,
