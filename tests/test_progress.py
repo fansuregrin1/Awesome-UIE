@@ -1,9 +1,11 @@
 """Tests for the dependency-free progress reporter."""
 
 import io
+import os
 import sys
 import unittest
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / ".dev_scripts"))
@@ -41,6 +43,33 @@ class ProgressTest(unittest.TestCase):
         output = buffer.getvalue()
         self.assertIn("[1/3] a", output)
         self.assertIn("[3/3] c", output)
+
+
+class TtyTest(unittest.TestCase):
+    URL = "https://xueyangfu.github.io/projects/spic2020.html"
+
+    def _progress(self, stream):
+        progress = Progress(1, "links", stream=stream)
+        progress._isatty = True  # simulate a terminal
+        return progress
+
+    def test_full_detail_when_it_fits(self):
+        buffer = io.StringIO()
+        progress = self._progress(buffer)
+        with mock.patch("shutil.get_terminal_size", return_value=os.terminal_size((200, 24))):
+            progress.update(self.URL)
+        output = buffer.getvalue()
+        self.assertIn(self.URL, output)  # not truncated
+        self.assertTrue(output.endswith("\x1b[K"))  # clears leftover line
+
+    def test_truncates_to_terminal_width(self):
+        buffer = io.StringIO()
+        progress = self._progress(buffer)
+        with mock.patch("shutil.get_terminal_size", return_value=os.terminal_size((40, 24))):
+            progress.update(self.URL)
+        output = buffer.getvalue()
+        self.assertIn("…", output)
+        self.assertNotIn(self.URL, output)
 
 
 if __name__ == "__main__":
