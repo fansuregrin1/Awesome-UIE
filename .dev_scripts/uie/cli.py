@@ -123,40 +123,39 @@ def cmd_check_links(args: argparse.Namespace) -> int:
         print(f"checked {len(urls)} links")
     _print_issues(issues, args.format)
 
-    if args.skip_repos:
-        if args.no_fail:
-            return 0
-        return 1 if any(issue.level == "error" for issue in issues) else 0
-
-    repos = sorted({repo for paper in papers if paper.code for repo in [links.github_repo(str(paper.code))] if repo})
-    repo_results = asyncio.run(links.check_github_repos(repos, token=os.environ.get("GITHUB_TOKEN")))
+    # Repository checks only make sense when the scope includes code links.
     repo_issues: List[validate.Issue] = []
-    for repo, info in sorted(repo_results.items()):
-        if info.get("ok") is True:
-            if info.get("archived"):
-                repo_issues.append(validate.Issue("warning", "repo-archived", "repository is archived", repo))
-            continue
-        reason = info.get("reason")
-        if reason == "missing":
-            repo_issues.append(
-                validate.Issue("error", "repo-missing", "GitHub API 404 (repository not found)", repo)
-            )
-        elif reason == "rate_limited":
-            repo_issues.append(
-                validate.Issue(
-                    "warning",
-                    "github-rate-limit",
-                    f"GitHub API {info.get('status')} (rate limited) — set GITHUB_TOKEN or retry later",
-                    repo,
+    if args.scope in ("all", "code") and not args.skip_repos:
+        repos = sorted(
+            {repo for paper in papers if paper.code for repo in [links.github_repo(str(paper.code))] if repo}
+        )
+        repo_results = asyncio.run(links.check_github_repos(repos, token=os.environ.get("GITHUB_TOKEN")))
+        for repo, info in sorted(repo_results.items()):
+            if info.get("ok") is True:
+                if info.get("archived"):
+                    repo_issues.append(validate.Issue("warning", "repo-archived", "repository is archived", repo))
+                continue
+            reason = info.get("reason")
+            if reason == "missing":
+                repo_issues.append(
+                    validate.Issue("error", "repo-missing", "GitHub API 404 (repository not found)", repo)
                 )
-            )
-        else:
-            detail = info.get("error") or f"GitHub API status {info.get('status')}"
-            repo_issues.append(validate.Issue("warning", "repo-check", detail, repo))
+            elif reason == "rate_limited":
+                repo_issues.append(
+                    validate.Issue(
+                        "warning",
+                        "github-rate-limit",
+                        f"GitHub API {info.get('status')} (rate limited) — set GITHUB_TOKEN or retry later",
+                        repo,
+                    )
+                )
+            else:
+                detail = info.get("error") or f"GitHub API status {info.get('status')}"
+                repo_issues.append(validate.Issue("warning", "repo-check", detail, repo))
 
-    if args.format == "text":
-        print(f"checked {len(repos)} code repositories")
-    _print_issues(repo_issues, args.format)
+        if args.format == "text":
+            print(f"checked {len(repos)} code repositories")
+        _print_issues(repo_issues, args.format)
 
     all_issues = issues + repo_issues
     if args.no_fail:
