@@ -16,6 +16,8 @@ from typing import Any, Dict, List, Optional, Sequence
 
 import httpx
 
+from .net import make_async_client
+
 DEFAULT_TTL = 7 * 24 * 3600
 USER_AGENT = "Awesome-UIE-link-checker/1.0 (+https://github.com/fansuregrin1/Awesome-UIE)"
 _GITHUB_RE = re.compile(r"^https?://github\.com/([^/]+)/([^/#?]+)")
@@ -61,7 +63,7 @@ async def check_urls(
     if pending:
         limits = httpx.Limits(max_connections=concurrency, max_keepalive_connections=concurrency)
         headers = {"User-Agent": USER_AGENT}
-        async with httpx.AsyncClient(timeout=timeout, headers=headers, limits=limits) as client:
+        async with make_async_client(timeout=timeout, headers=headers, limits=limits) as client:
             semaphore = asyncio.Semaphore(concurrency)
 
             async def worker(url: str):
@@ -120,7 +122,7 @@ async def check_github_repos(
         headers["Authorization"] = f"Bearer {token}"
     limits = httpx.Limits(max_connections=concurrency, max_keepalive_connections=concurrency)
     out: Dict[str, Dict[str, Any]] = {}
-    async with httpx.AsyncClient(
+    async with make_async_client(
         timeout=timeout, headers=headers, limits=limits, follow_redirects=True
     ) as client:
         semaphore = asyncio.Semaphore(concurrency)

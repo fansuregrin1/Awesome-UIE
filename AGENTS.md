@@ -166,3 +166,16 @@ Each entry is a list item with these fields:
   tags, duplicate code/project links, suspicious title length, dead links.
 
 Exceptions go in `.dev_scripts/validation-allowlist.yaml` with a reason.
+
+## Troubleshooting
+
+- **`ImportError: Using SOCKS proxy, but the 'socksio' package is not installed`** —
+  a SOCKS proxy is configured (`ALL_PROXY` / `all_proxy`). Fix any of these:
+  - install the extra — `pip install "httpx[socks]"`, or, if the venv was created
+    with `uv` (no `pip` binary), `uv pip install --python .venv/bin/python "httpx[socks]"`
+    or `.venv/bin/python -m pip install "httpx[socks]"`;
+  - unset the proxy environment variable; or
+  - set `NO_PROXY=*` to bypass it.
+- To ignore **all** proxy/CA environment variables, set `UIE_TRUST_ENV=0`.
+  (By default `trust_env` is on, so HTTP/HTTPS/SOCKS proxies are honoured and
+  machines without a proxy connect directly.)
