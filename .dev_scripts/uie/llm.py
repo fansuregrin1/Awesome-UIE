@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Sequence
 
 from .net import make_client
+from .progress import Progress
 from .schema import KNOWN_TAGS, Paper, PaperType
 
 TYPES = [PaperType.TRADITIONAL.value, PaperType.DEEP_LEARNING.value, PaperType.HYBRID.value]
@@ -199,7 +200,7 @@ def summarize_papers(
     only_missing: bool = True,
     known_tags: Sequence[str] = KNOWN_TAGS,
     max_tags: int = 5,
-    progress=None,
+    progress: Optional[Progress] = None,
 ) -> LlmResult:
     result = LlmResult(total=len(papers))
     for paper in papers:

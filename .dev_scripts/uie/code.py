@@ -14,6 +14,7 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 from pydantic import HttpUrl, TypeAdapter
 
 from .enrich import collect_abstracts, similarity
+from .progress import Progress
 from .schema import Paper
 from .sources.http import HttpClient
 
@@ -116,7 +117,7 @@ def find_matches(
     client: HttpClient,
     token: Optional[str] = None,
     threshold: float = 0.55,
-    progress=None,
+    progress: Optional[Progress] = None,
 ) -> List[CodeMatch]:
     headers = _headers(token)
     # GitHub search: 10 req/min unauthenticated, 30 with a token.

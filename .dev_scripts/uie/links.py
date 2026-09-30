@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Sequence
 import httpx
 
 from .net import make_async_client
+from .progress import Progress
 
 DEFAULT_TTL = 7 * 24 * 3600
 USER_AGENT = "Awesome-UIE-link-checker/1.0 (+https://github.com/fansuregrin1/Awesome-UIE)"
@@ -37,7 +38,7 @@ async def check_urls(
     ttl: int = DEFAULT_TTL,
     timeout: float = 20.0,
     concurrency: int = 12,
-    progress=None,
+    progress: Optional[Progress] = None,
 ) -> Dict[str, Dict[str, Any]]:
     urls = sorted(set(urls))
     cache: Dict[str, Dict[str, Any]] = {}
