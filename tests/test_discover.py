@@ -175,15 +175,15 @@ class RelevanceTest(unittest.TestCase):
 
 
 class ClassificationTest(unittest.TestCase):
-    def test_diffusion(self):
-        paper_type, tags = suggest_classification(
+    def test_diffusion_is_deep_learning(self):
+        paper_type, tags, _ = suggest_classification(
             SourceRecord(source="x", title="Underwater Image Enhancement Diffusion Network")
         )
         self.assertEqual(paper_type, "DeepLearning")
         self.assertIn("Diffusion", tags)
 
     def test_hybrid(self):
-        paper_type, tags = suggest_classification(
+        paper_type, tags, _ = suggest_classification(
             SourceRecord(
                 source="x",
                 title="Underwater Image Enhancement",
@@ -193,11 +193,36 @@ class ClassificationTest(unittest.TestCase):
         self.assertEqual(paper_type, "Hybrid")
         self.assertIn("Physical-Model", tags)
 
-    def test_traditional(self):
-        paper_type, _ = suggest_classification(
+    def test_traditional_from_keywords(self):
+        paper_type, _, _ = suggest_classification(
             SourceRecord(source="x", title="Underwater image enhancement via histogram and retinex fusion")
         )
         self.assertEqual(paper_type, "Traditional")
+
+    def test_physical_only_is_traditional(self):
+        paper_type, _, basis = suggest_classification(
+            SourceRecord(
+                source="x",
+                title="Underwater Image Restoration",
+                abstract="A revised underwater image formation model with attenuation.",
+            )
+        )
+        self.assertEqual(paper_type, "Traditional")
+        self.assertIn("physical", basis)
+
+    def test_year_prior_when_no_signal(self):
+        # 'Self-Tuning Underwater Image Restoration' (2006): no abstract, no keywords.
+        paper_type, _, basis = suggest_classification(
+            SourceRecord(source="x", title="Self-Tuning Underwater Image Restoration", year=2006)
+        )
+        self.assertEqual(paper_type, "Traditional")
+        self.assertIn("no signals", basis)
+
+    def test_recent_no_signal_defaults_to_deep_learning(self):
+        paper_type, _, _ = suggest_classification(
+            SourceRecord(source="x", title="An Underwater Method", year=2025)
+        )
+        self.assertEqual(paper_type, "DeepLearning")
 
 
 class MatchTest(unittest.TestCase):

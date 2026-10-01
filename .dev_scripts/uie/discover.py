@@ -67,6 +67,7 @@ class Candidate:
     venue_unknown: bool = False
     venue_tier: str = DEFAULT_TIER
     is_preprint: bool = False
+    type_basis: str = ""
 
 
 @dataclass
@@ -125,7 +126,26 @@ def is_relevant(
     return score >= min_relevance, score
 
 
-def suggest_classification(record: SourceRecord) -> Tuple[str, List[str]]:
+# Deep-learning UIE essentially begins around 2017; earlier papers without a
+# deep-learning signal are almost always classical/physical methods.
+DEEP_LEARNING_YEAR = 2016
+_LEARNING_WORDS = (
+    "network", "learning", "neural", "cnn", "gan",
+    "transformer", "diffusion", "mamba", "deep",
+)
+_PHYSICAL_WORDS = ("physical model", "formation model", "physics", "attenuation", "scattering")
+_CLASSICAL_WORDS = (
+    "retinex", "histogram", "fusion", "dark channel", "prior",
+    "polarization", "dehazing", "filter", "restoration model",
+)
+
+
+def suggest_classification(record: SourceRecord, year: Optional[int] = None) -> Tuple[str, List[str], str]:
+    """Suggest ``(type, tags, basis)`` for a source record.
+
+    ``basis`` is a short human-readable explanation of the decision. With no
+    textual signal, the year decides (older papers → Traditional).
+    """
     text = ((record.title or "") + " " + (record.abstract or "")).lower()
     tags: List[str] = []
     for needles, tag in ARCH_TAG_RULES + THEME_TAG_RULES:
@@ -134,24 +154,20 @@ def suggest_classification(record: SourceRecord) -> Tuple[str, List[str]]:
         if tag not in tags and any(needle in text for needle in needles):
             tags.append(tag)
 
-    learning_words = (
-        "network", "learning", "neural", "cnn", "gan",
-        "transformer", "diffusion", "mamba", "deep",
-    )
-    physical_words = ("physical model", "formation model", "physics", "attenuation", "scattering")
-    learning = any(word in text for word in learning_words)
-    physical = any(word in text for word in physical_words)
-    classical = any(word in text for word in ("retinex", "histogram", "fusion", "dark channel", "prior"))
+    learning = any(word in text for word in _LEARNING_WORDS)
+    physical = any(word in text for word in _PHYSICAL_WORDS)
+    classical = any(word in text for word in _CLASSICAL_WORDS)
+    year = year if year is not None else record.year
 
     if learning and physical:
-        paper_type = "Hybrid"
-    elif learning:
-        paper_type = "DeepLearning"
-    elif classical:
-        paper_type = "Traditional"
-    else:
-        paper_type = "DeepLearning"
-    return paper_type, tags
+        return "Hybrid", tags, "physical + deep-learning signals"
+    if learning:
+        return "DeepLearning", tags, "deep-learning keywords"
+    if physical or classical:
+        return "Traditional", tags, "classical / physical-model keywords"
+    if year and year <= DEEP_LEARNING_YEAR:
+        return "Traditional", tags, f"no signals, year <= {DEEP_LEARNING_YEAR}"
+    return "DeepLearning", tags, "default (recent paper, no signals)"
 
 
 def build_index(papers: Sequence) -> Tuple[set, set, List[Tuple[str, str]]]:
@@ -341,7 +357,7 @@ def discover(
         seen.add(key)
 
         status, matched = match_status(record, dois, arxiv_ids, titles)
-        paper_type, tags = suggest_classification(record)
+        paper_type, tags, type_basis = suggest_classification(record)
 
         code = None
         if registry is not None:
@@ -369,6 +385,7 @@ def discover(
             venue_unknown=venue_unknown,
             venue_tier=venue_tier,
             is_preprint=is_preprint(record),
+            type_basis=type_basis,
         )
         result.found += 1
         if status == "new":

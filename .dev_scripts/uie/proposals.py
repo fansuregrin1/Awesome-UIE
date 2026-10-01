@@ -182,6 +182,11 @@ def render_discover_markdown(result: DiscoverResult) -> str:
             f"- year {record.year} · venue {venue_note} [tier {candidate.venue_tier}, {kind}] · "
             f"source {record.source} · relevance {candidate.relevance:.2f}"
         )
+        if candidate.type_basis:
+            lines.append(
+                f"- suggested type: {candidate.suggested_type} "
+                f"({candidate.type_basis}); tags: {', '.join(candidate.suggested_tags) or '—'}"
+            )
         if record.date:
             lines.append(f"- published {record.date}")
         if record.authors:
