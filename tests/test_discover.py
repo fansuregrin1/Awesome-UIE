@@ -20,7 +20,7 @@ from uie.discover import (  # noqa: E402
     relevance,
     suggest_classification,
 )
-from uie.cli import _resolve_window  # noqa: E402
+from uie.cli import _resolve_window, build_parser  # noqa: E402
 from uie.render import published  # noqa: E402
 from uie.schema import Paper, PaperType, Status  # noqa: E402
 from uie.sources.base import SourceRecord  # noqa: E402
@@ -387,6 +387,10 @@ class ResolveWindowTest(unittest.TestCase):
     def test_default_none(self):
         args = argparse.Namespace(year=None, date_from=None, date_to=None)
         self.assertEqual(_resolve_window(args), (None, None, None))
+
+    def test_years_alias(self):
+        args = build_parser().parse_args(["discover", "--years", "2004,2005"])
+        self.assertEqual(args.year, "2004,2005")
 
 
 class WindowFilterTest(unittest.TestCase):

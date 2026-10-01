@@ -305,7 +305,7 @@ def discover(
                 records = []
             gathered.extend(records or [])
             if progress:
-                progress.update(f"{getattr(source, 'name', 'source')}: {keyword[:28]}")
+                progress.update(f"{getattr(source, 'name', 'source')}: {keyword}")
 
     in_window: List[SourceRecord] = []
     for record in gathered:

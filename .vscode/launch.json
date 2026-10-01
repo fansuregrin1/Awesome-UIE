@@ -1,0 +1,16 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "debug uie.cli discover",
+            "cwd": "${workspaceFolder}/.dev_scripts",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uie.cli",
+            "args": ["discover", "--year", "2004,2005,2006"]
+        }
+    ]
+}

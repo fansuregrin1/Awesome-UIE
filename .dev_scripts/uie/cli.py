@@ -574,7 +574,10 @@ def build_parser() -> argparse.ArgumentParser:
     disc.add_argument("--ttl", type=int, help="cache TTL in seconds")
     disc.add_argument("--refresh", action="store_true", help="bypass the response cache")
     disc.add_argument("--min-tier", help="only auto-ingest new candidates at/above this venue tier (A/B/preprint/C)")
-    disc.add_argument("--year", help="only keep candidates from these years (comma-separated, e.g. 2025)")
+    disc.add_argument(
+        "--year", "--years", dest="year",
+        help="only keep candidates from these years (comma-separated, e.g. 2025)",
+    )
     disc.add_argument("--from", dest="date_from", help="start of the discovery window (YYYY-MM-DD)")
     disc.add_argument("--to", dest="date_to", help="end of the discovery window (YYYY-MM-DD)")
     disc.add_argument("--apply", action="store_true", help="append new candidates to papers.yaml as status: candidate")
