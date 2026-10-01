@@ -73,6 +73,8 @@ class Candidate:
 class DiscoverResult:
     since: str
     queries: List[str]
+    until: str = ""
+    years: List[int] = field(default_factory=list)
     found: int = 0
     new: List[Candidate] = field(default_factory=list)
     pending: List[Candidate] = field(default_factory=list)
@@ -263,6 +265,8 @@ def discover(
     min_tier: Optional[str] = None,
     years: Optional[Sequence[int]] = None,
     since_days: Optional[int] = None,
+    since: Optional[str] = None,
+    until: Optional[str] = None,
     limit_per_source: int = 25,
     min_relevance: float = 0.25,
     prefer_published: bool = True,
@@ -276,14 +280,18 @@ def discover(
 
     keywords = list(config.get("keywords") or [])
     tokens = keyword_tokens(keywords)
-    if since_days is None:
-        since_days = int(config.get("discover_since_days", 90))
     today = today or date.today()
-    since = today - timedelta(days=since_days)
-    since_iso = since.isoformat()
+    if since:
+        since_date = date.fromisoformat(since)
+    else:
+        if since_days is None:
+            since_days = int(config.get("discover_since_days", 90))
+        since_date = today - timedelta(days=since_days)
+    until_date = date.fromisoformat(until) if until else today
+    since_iso, until_iso = since_date.isoformat(), until_date.isoformat()
 
     dois, arxiv_ids, titles = build_index(papers)
-    result = DiscoverResult(since=since_iso, queries=keywords)
+    result = DiscoverResult(since=since_iso, until=until_iso, queries=keywords, years=list(years or []))
     seen = set()
     unknown_venues = set()
 
@@ -291,7 +299,7 @@ def discover(
     for source in sources:
         for keyword in keywords:
             try:
-                records = source.search(keyword, since=since_iso, limit=limit_per_source)
+                records = source.search(keyword, since=since_iso, until=until_iso, limit=limit_per_source)
             except RuntimeError as exc:
                 result.source_errors.append(f"{getattr(source, 'name', 'source')} '{keyword}': {exc}")
                 records = []
@@ -303,10 +311,12 @@ def discover(
     for record in gathered:
         if not record.title:
             continue
-        if record.date and record.date < since_iso:
-            continue
-        if not record.date and record.year and record.year < since.year:
-            continue
+        if record.date:
+            if record.date < since_iso or record.date > until_iso:
+                continue
+        elif record.year:
+            if record.year < since_date.year or record.year > until_date.year:
+                continue
         in_window.append(record)
 
     for record in _merge_records(in_window):

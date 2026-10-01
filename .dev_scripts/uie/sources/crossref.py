@@ -91,14 +91,25 @@ class CrossrefSource:
         items = (data.get("message") or {}).get("items", []) or []
         return [parse_work(item) for item in items]
 
-    def search(self, query: str, since: Optional[str] = None, limit: int = 25) -> List[SourceRecord]:
+    def search(
+        self,
+        query: str,
+        since: Optional[str] = None,
+        until: Optional[str] = None,
+        limit: int = 25,
+    ) -> List[SourceRecord]:
         params: Dict[str, Any] = {
             "query.bibliographic": query,
             "rows": limit,
             "select": SELECT,
         }
+        filters = []
         if since:
-            params["filter"] = f"from-pub-date:{since}"
+            filters.append(f"from-pub-date:{since}")
+        if until:
+            filters.append(f"until-pub-date:{until}")
+        if filters:
+            params["filter"] = ",".join(filters)
         if self.client.mailto:
             params["mailto"] = self.client.mailto
         data = self.client.get_json(API, params=params, min_interval=MIN_INTERVAL)

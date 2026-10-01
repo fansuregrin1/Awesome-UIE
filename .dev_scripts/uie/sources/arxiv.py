@@ -83,9 +83,20 @@ class ArxivSource:
         text = self.client.get_text(API, params=params, min_interval=MIN_INTERVAL)
         return parse_feed(text)
 
-    def search(self, query: str, since: Optional[str] = None, limit: int = 25) -> List[SourceRecord]:
+    def search(
+        self,
+        query: str,
+        since: Optional[str] = None,
+        until: Optional[str] = None,
+        limit: int = 25,
+    ) -> List[SourceRecord]:
+        expression = f'all:"{query}"'
+        if since or until:
+            start = (since or "1991-01-01").replace("-", "") + "0000"
+            end = (until or "2100-12-31").replace("-", "") + "2359"
+            expression += f" AND submittedDate:[{start} TO {end}]"
         params = {
-            "search_query": f'all:"{query}"',
+            "search_query": expression,
             "sortBy": "submittedDate",
             "sortOrder": "descending",
             "max_results": limit,

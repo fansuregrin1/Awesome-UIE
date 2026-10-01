@@ -150,12 +150,14 @@ def _candidate_yaml(candidate: Candidate) -> str:
 
 def render_discover_markdown(result: DiscoverResult) -> str:
     summary = result.summary()
+    window = f"{result.since} → {result.until}" if result.until else f"since {result.since}"
+    if result.years:
+        window += f" (years {','.join(str(year) for year in result.years)})"
     lines = ["# Discovery report", ""]
+    lines.append(f"window: {window} · queries {len(result.queries)} · found {summary['found']}")
     lines.append(
-        f"window: since {result.since} · queries {len(result.queries)} · found {summary['found']}"
-    )
-    lines.append(
-        f"new {summary['new']} · similar {summary['similar']} · already in collection {summary['existing']}"
+        f"new {summary['new']} · pending {summary['pending']} · similar {summary['similar']} · "
+        f"already in collection {summary['existing']}"
     )
     lines.append("")
 

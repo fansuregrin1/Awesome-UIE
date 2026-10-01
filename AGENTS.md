@@ -82,6 +82,10 @@ python -m uie.cli discover --since 90 --limit 25            # report only
 python -m uie.cli discover --since 90 --limit 25 --apply    # also ingest candidates
 ```
 
+`--year 2025` (and `--from`/`--to`) define the **fetch window** *and* filter the
+results — so historical years work, e.g.
+`discover --year 2004,2005,2006` or `discover --from 2004-01-01 --to 2006-12-31`.
+
 ## Venues
 
 `venue` is the collection's short code (`TIP`, `CVPR`, `Neurocomputing`, ...). The

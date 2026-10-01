@@ -288,6 +288,23 @@ def cmd_enrich(args: argparse.Namespace) -> int:
     return 0
 
 
+def _resolve_window(args: argparse.Namespace) -> tuple:
+    """Resolve the discovery window from --year / --from / --to.
+
+    ``--year`` is a shortcut that derives the window when no explicit dates are
+    given; explicit ``--from``/``--to`` always win.
+    """
+    years = None
+    if getattr(args, "year", None):
+        years = [int(value) for value in str(args.year).replace(" ", ",").split(",") if value]
+    since = getattr(args, "date_from", None)
+    until = getattr(args, "date_to", None)
+    if years and not since and not until:
+        since = f"{min(years):04d}-01-01"
+        until = f"{max(years):04d}-12-31"
+    return since, until, years
+
+
 def cmd_discover(args: argparse.Namespace) -> int:
     config = _load_config()
     papers = load_papers(PAPERS_YAML)
@@ -296,9 +313,7 @@ def cmd_discover(args: argparse.Namespace) -> int:
     ttl = 0 if args.refresh else (args.ttl or int(config.get("cache_ttl", DEFAULT_TTL)))
     client = HttpClient(cache_dir=CACHE_DIR, ttl=ttl, mailto=mailto)
 
-    years = None
-    if args.year:
-        years = [int(value) for value in str(args.year).replace(" ", ",").split(",") if value]
+    since, until, years = _resolve_window(args)
 
     progress = _progress(args, len(config.get("keywords") or []) * 3, "discover")
     try:
@@ -307,6 +322,8 @@ def cmd_discover(args: argparse.Namespace) -> int:
             config,
             client=client,
             since_days=args.since,
+            since=since,
+            until=until,
             limit_per_source=args.limit,
             registry=venues_module.load_registry(VENUES_YAML),
             min_tier=args.min_tier or config.get("min_tier"),
@@ -558,6 +575,8 @@ def build_parser() -> argparse.ArgumentParser:
     disc.add_argument("--refresh", action="store_true", help="bypass the response cache")
     disc.add_argument("--min-tier", help="only auto-ingest new candidates at/above this venue tier (A/B/preprint/C)")
     disc.add_argument("--year", help="only keep candidates from these years (comma-separated, e.g. 2025)")
+    disc.add_argument("--from", dest="date_from", help="start of the discovery window (YYYY-MM-DD)")
+    disc.add_argument("--to", dest="date_to", help="end of the discovery window (YYYY-MM-DD)")
     disc.add_argument("--apply", action="store_true", help="append new candidates to papers.yaml as status: candidate")
     disc.set_defaults(func=cmd_discover)
     _add_progress_args(disc)

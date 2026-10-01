@@ -1,5 +1,6 @@
 """Tests for the discovery pipeline (offline)."""
 
+import argparse
 import sys
 import unittest
 from datetime import date
@@ -7,7 +8,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / ".dev_scripts"))
-
 from uie.discover import (  # noqa: E402
     Candidate,
     _merge_records,
@@ -20,6 +20,7 @@ from uie.discover import (  # noqa: E402
     relevance,
     suggest_classification,
 )
+from uie.cli import _resolve_window  # noqa: E402
 from uie.render import published  # noqa: E402
 from uie.schema import Paper, PaperType, Status  # noqa: E402
 from uie.sources.base import SourceRecord  # noqa: E402
@@ -31,7 +32,7 @@ class FakeSource:
     def __init__(self, records):
         self.records = records
 
-    def search(self, query, since=None, limit=25):
+    def search(self, query, since=None, until=None, limit=25):
         return list(self.records)
 
 
@@ -79,7 +80,7 @@ class FakeNamedSource:
         self.name = name
         self.records = records
 
-    def search(self, query, since=None, limit=25):
+    def search(self, query, since=None, until=None, limit=25):
         return list(self.records)
 
 
@@ -372,6 +373,50 @@ class ApplyDiscoverTest(unittest.TestCase):
         verified = make_paper(id="verified")
         candidate = make_paper(id="candidate", status=Status.CANDIDATE, url="https://example.org/c")
         self.assertEqual([paper.id for paper in published([verified, candidate])], ["verified"])
+
+
+class ResolveWindowTest(unittest.TestCase):
+    def test_year_derives_window(self):
+        args = argparse.Namespace(year="2004,2005,2006", date_from=None, date_to=None)
+        self.assertEqual(_resolve_window(args), ("2004-01-01", "2006-12-31", [2004, 2005, 2006]))
+
+    def test_explicit_dates_win(self):
+        args = argparse.Namespace(year="2004", date_from="2020-01-01", date_to="2020-12-31")
+        self.assertEqual(_resolve_window(args), ("2020-01-01", "2020-12-31", [2004]))
+
+    def test_default_none(self):
+        args = argparse.Namespace(year=None, date_from=None, date_to=None)
+        self.assertEqual(_resolve_window(args), (None, None, None))
+
+
+class WindowFilterTest(unittest.TestCase):
+    def test_records_outside_window_are_excluded(self):
+        records = [
+            SourceRecord(
+                source="crossref",
+                title="Underwater Image Enhancement In Window",
+                doi="10.1/a",
+                year=2005,
+                date="2005-05-01",
+            ),
+            SourceRecord(
+                source="crossref",
+                title="Underwater Image Enhancement Out Of Window",
+                doi="10.1/b",
+                year=2010,
+                date="2010-05-01",
+            ),
+        ]
+        result = discover(
+            [],
+            {"keywords": ["underwater image enhancement"]},
+            sources=[FakeSource(records)],
+            since="2004-01-01",
+            until="2006-12-31",
+            today=date(2026, 9, 27),
+        )
+        self.assertEqual([candidate.record.year for candidate in result.new], [2005])
+        self.assertEqual(result.until, "2006-12-31")
 
 
 if __name__ == "__main__":
