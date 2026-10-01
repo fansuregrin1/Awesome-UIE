@@ -81,10 +81,21 @@ class OpenAlexSource:
         data = self.client.get_json(API, params=params, min_interval=MIN_INTERVAL)
         return [parse_work(work) for work in data.get("results", []) or []]
 
-    def search(self, query: str, since: Optional[str] = None, limit: int = 25) -> List[SourceRecord]:
+    def search(
+        self,
+        query: str,
+        since: Optional[str] = None,
+        until: Optional[str] = None,
+        limit: int = 25,
+    ) -> List[SourceRecord]:
         params: Dict[str, Any] = {"search": query, "per_page": limit, "sort": "publication_date:desc"}
+        filters = []
         if since:
-            params["filter"] = f"from_publication_date:{since}"
+            filters.append(f"from_publication_date:{since}")
+        if until:
+            filters.append(f"to_publication_date:{until}")
+        if filters:
+            params["filter"] = ",".join(filters)
         if self.client.mailto:
             params["mailto"] = self.client.mailto
         data = self.client.get_json(API, params=params, min_interval=MIN_INTERVAL)

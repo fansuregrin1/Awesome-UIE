@@ -19,7 +19,7 @@ class FakeSource:
     def __init__(self, records):
         self.records = records
 
-    def search(self, query, since=None, limit=25):
+    def search(self, query, since=None, until=None, limit=25):
         return list(self.records)
 
 

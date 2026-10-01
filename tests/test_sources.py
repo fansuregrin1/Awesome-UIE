@@ -8,9 +8,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / ".dev_scripts"))
 
-from uie.sources.arxiv import parse_feed  # noqa: E402
-from uie.sources.crossref import parse_work as parse_crossref  # noqa: E402
-from uie.sources.openalex import parse_work as parse_openalex  # noqa: E402
+from uie.sources.arxiv import ArxivSource, parse_feed  # noqa: E402
+from uie.sources.crossref import CrossrefSource, parse_work as parse_crossref  # noqa: E402
+from uie.sources.openalex import OpenAlexSource, parse_work as parse_openalex  # noqa: E402
 from uie.sources.semantic_scholar import parse_paper as parse_s2  # noqa: E402
 
 FIXTURES = ROOT / "tests" / "fixtures"
@@ -61,6 +61,40 @@ class SemanticScholarParseTest(unittest.TestCase):
         self.assertIsNotNone(record.abstract)
         self.assertEqual(record.doi, "10.1016/j.patcog.2019.107038")
         self.assertTrue(record.authors)
+
+
+class SearchWindowTest(unittest.TestCase):
+    class _Client:
+        def __init__(self, text="{}", data=None):
+            self.text = text
+            self.data = data if data is not None else {}
+            self.calls = []
+            self.mailto = None
+
+        def get_text(self, url, params=None, **kwargs):
+            self.calls.append(params)
+            return self.text
+
+        def get_json(self, url, params=None, **kwargs):
+            self.calls.append(params)
+            return self.data
+
+    def test_arxiv_submitted_date_range(self):
+        client = self._Client(text="<feed xmlns='http://www.w3.org/2005/Atom'></feed>")
+        ArxivSource(client).search("q", since="2004-01-01", until="2006-12-31")
+        self.assertIn("submittedDate:[200401010000 TO 200612312359]", client.calls[0]["search_query"])
+
+    def test_openalex_date_range(self):
+        client = self._Client(data={"results": []})
+        OpenAlexSource(client).search("q", since="2004-01-01", until="2006-12-31")
+        self.assertIn("from_publication_date:2004-01-01", client.calls[0]["filter"])
+        self.assertIn("to_publication_date:2006-12-31", client.calls[0]["filter"])
+
+    def test_crossref_date_range(self):
+        client = self._Client(data={"message": {"items": []}})
+        CrossrefSource(client).search("q", since="2004-01-01", until="2006-12-31")
+        self.assertIn("from-pub-date:2004-01-01", client.calls[0]["filter"])
+        self.assertIn("until-pub-date:2006-12-31", client.calls[0]["filter"])
 
 
 if __name__ == "__main__":

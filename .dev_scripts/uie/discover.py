@@ -67,12 +67,15 @@ class Candidate:
     venue_unknown: bool = False
     venue_tier: str = DEFAULT_TIER
     is_preprint: bool = False
+    type_basis: str = ""
 
 
 @dataclass
 class DiscoverResult:
     since: str
     queries: List[str]
+    until: str = ""
+    years: List[int] = field(default_factory=list)
     found: int = 0
     new: List[Candidate] = field(default_factory=list)
     pending: List[Candidate] = field(default_factory=list)
@@ -123,7 +126,26 @@ def is_relevant(
     return score >= min_relevance, score
 
 
-def suggest_classification(record: SourceRecord) -> Tuple[str, List[str]]:
+# Deep-learning UIE essentially begins around 2017; earlier papers without a
+# deep-learning signal are almost always classical/physical methods.
+DEEP_LEARNING_YEAR = 2016
+_LEARNING_WORDS = (
+    "network", "learning", "neural", "cnn", "gan",
+    "transformer", "diffusion", "mamba", "deep",
+)
+_PHYSICAL_WORDS = ("physical model", "formation model", "physics", "attenuation", "scattering")
+_CLASSICAL_WORDS = (
+    "retinex", "histogram", "fusion", "dark channel", "prior",
+    "polarization", "dehazing", "filter", "restoration model",
+)
+
+
+def suggest_classification(record: SourceRecord, year: Optional[int] = None) -> Tuple[str, List[str], str]:
+    """Suggest ``(type, tags, basis)`` for a source record.
+
+    ``basis`` is a short human-readable explanation of the decision. With no
+    textual signal, the year decides (older papers → Traditional).
+    """
     text = ((record.title or "") + " " + (record.abstract or "")).lower()
     tags: List[str] = []
     for needles, tag in ARCH_TAG_RULES + THEME_TAG_RULES:
@@ -132,24 +154,20 @@ def suggest_classification(record: SourceRecord) -> Tuple[str, List[str]]:
         if tag not in tags and any(needle in text for needle in needles):
             tags.append(tag)
 
-    learning_words = (
-        "network", "learning", "neural", "cnn", "gan",
-        "transformer", "diffusion", "mamba", "deep",
-    )
-    physical_words = ("physical model", "formation model", "physics", "attenuation", "scattering")
-    learning = any(word in text for word in learning_words)
-    physical = any(word in text for word in physical_words)
-    classical = any(word in text for word in ("retinex", "histogram", "fusion", "dark channel", "prior"))
+    learning = any(word in text for word in _LEARNING_WORDS)
+    physical = any(word in text for word in _PHYSICAL_WORDS)
+    classical = any(word in text for word in _CLASSICAL_WORDS)
+    year = year if year is not None else record.year
 
     if learning and physical:
-        paper_type = "Hybrid"
-    elif learning:
-        paper_type = "DeepLearning"
-    elif classical:
-        paper_type = "Traditional"
-    else:
-        paper_type = "DeepLearning"
-    return paper_type, tags
+        return "Hybrid", tags, "physical + deep-learning signals"
+    if learning:
+        return "DeepLearning", tags, "deep-learning keywords"
+    if physical or classical:
+        return "Traditional", tags, "classical / physical-model keywords"
+    if year and year <= DEEP_LEARNING_YEAR:
+        return "Traditional", tags, f"no signals, year <= {DEEP_LEARNING_YEAR}"
+    return "DeepLearning", tags, "default (recent paper, no signals)"
 
 
 def build_index(papers: Sequence) -> Tuple[set, set, List[Tuple[str, str]]]:
@@ -263,6 +281,8 @@ def discover(
     min_tier: Optional[str] = None,
     years: Optional[Sequence[int]] = None,
     since_days: Optional[int] = None,
+    since: Optional[str] = None,
+    until: Optional[str] = None,
     limit_per_source: int = 25,
     min_relevance: float = 0.25,
     prefer_published: bool = True,
@@ -276,14 +296,18 @@ def discover(
 
     keywords = list(config.get("keywords") or [])
     tokens = keyword_tokens(keywords)
-    if since_days is None:
-        since_days = int(config.get("discover_since_days", 90))
     today = today or date.today()
-    since = today - timedelta(days=since_days)
-    since_iso = since.isoformat()
+    if since:
+        since_date = date.fromisoformat(since)
+    else:
+        if since_days is None:
+            since_days = int(config.get("discover_since_days", 90))
+        since_date = today - timedelta(days=since_days)
+    until_date = date.fromisoformat(until) if until else today
+    since_iso, until_iso = since_date.isoformat(), until_date.isoformat()
 
     dois, arxiv_ids, titles = build_index(papers)
-    result = DiscoverResult(since=since_iso, queries=keywords)
+    result = DiscoverResult(since=since_iso, until=until_iso, queries=keywords, years=list(years or []))
     seen = set()
     unknown_venues = set()
 
@@ -291,22 +315,24 @@ def discover(
     for source in sources:
         for keyword in keywords:
             try:
-                records = source.search(keyword, since=since_iso, limit=limit_per_source)
+                records = source.search(keyword, since=since_iso, until=until_iso, limit=limit_per_source)
             except RuntimeError as exc:
                 result.source_errors.append(f"{getattr(source, 'name', 'source')} '{keyword}': {exc}")
                 records = []
             gathered.extend(records or [])
             if progress:
-                progress.update(f"{getattr(source, 'name', 'source')}: {keyword[:28]}")
+                progress.update(f"{getattr(source, 'name', 'source')}: {keyword}")
 
     in_window: List[SourceRecord] = []
     for record in gathered:
         if not record.title:
             continue
-        if record.date and record.date < since_iso:
-            continue
-        if not record.date and record.year and record.year < since.year:
-            continue
+        if record.date:
+            if record.date < since_iso or record.date > until_iso:
+                continue
+        elif record.year:
+            if record.year < since_date.year or record.year > until_date.year:
+                continue
         in_window.append(record)
 
     for record in _merge_records(in_window):
@@ -331,7 +357,7 @@ def discover(
         seen.add(key)
 
         status, matched = match_status(record, dois, arxiv_ids, titles)
-        paper_type, tags = suggest_classification(record)
+        paper_type, tags, type_basis = suggest_classification(record)
 
         code = None
         if registry is not None:
@@ -359,6 +385,7 @@ def discover(
             venue_unknown=venue_unknown,
             venue_tier=venue_tier,
             is_preprint=is_preprint(record),
+            type_basis=type_basis,
         )
         result.found += 1
         if status == "new":
