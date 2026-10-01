@@ -417,6 +417,10 @@ class ResolveWindowTest(unittest.TestCase):
         args = build_parser().parse_args(["discover", "--years", "2004,2005"])
         self.assertEqual(args.year, "2004,2005")
 
+    def test_min_relevance_arg(self):
+        args = build_parser().parse_args(["discover", "--min-relevance", "0.5"])
+        self.assertEqual(args.min_relevance, 0.5)
+
 
 class WindowFilterTest(unittest.TestCase):
     def test_records_outside_window_are_excluded(self):

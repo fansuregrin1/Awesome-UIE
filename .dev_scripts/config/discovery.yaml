@@ -27,6 +27,7 @@ keywords:
 
 venue_allowlist: []
 min_tier: preprint
+min_relevance: 0.25
 sources:
   - arxiv
   - openalex

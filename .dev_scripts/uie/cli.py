@@ -327,6 +327,11 @@ def cmd_discover(args: argparse.Namespace) -> int:
             limit_per_source=args.limit,
             registry=venues_module.load_registry(VENUES_YAML),
             min_tier=args.min_tier or config.get("min_tier"),
+            min_relevance=(
+                args.min_relevance
+                if args.min_relevance is not None
+                else float(config.get("min_relevance", 0.25))
+            ),
             years=years,
             progress=progress,
         )
@@ -580,6 +585,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     disc.add_argument("--from", dest="date_from", help="start of the discovery window (YYYY-MM-DD)")
     disc.add_argument("--to", dest="date_to", help="end of the discovery window (YYYY-MM-DD)")
+    disc.add_argument(
+        "--min-relevance", dest="min_relevance", type=float,
+        help="minimum keyword relevance (0-1) for a candidate (default from config, 0.25)",
+    )
     disc.add_argument("--apply", action="store_true", help="append new candidates to papers.yaml as status: candidate")
     disc.set_defaults(func=cmd_discover)
     _add_progress_args(disc)
