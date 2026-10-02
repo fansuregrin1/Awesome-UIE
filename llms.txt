@@ -1,6 +1,6 @@
 # Awesome Underwater Image Enhancement (UIE)
 
-> Auto-generated index of 152 underwater image enhancement papers (2004-2026).
+> Auto-generated index of 153 underwater image enhancement papers (2004-2026).
 > For programmatic access prefer `papers.json` (all fields) or `collection.csv`.
 
 ## Data files
@@ -11,9 +11,9 @@
 - [README.md](README.md): project overview
 
 ## Summary
-- papers: 152
+- papers: 153
 - with code: 89
-- Traditional: 37
+- Traditional: 38
 - DeepLearning: 97
 - Hybrid: 18
 
@@ -168,5 +168,6 @@
 - [2012] CVPR — Enhancing Underwater Images and Videos by Fusion (Image-Fusion; Color-Correction; Contrast-Enhancement; Dehazing; Physical-Model) — https://ieeexplore.ieee.org/document/6247661 [code](https://github.com/bilityniu/underwater_image_fusion)
 - [2012] TIP — Turbid Scene Enhancement Using Multi-Directional Illumination Fusion (Physical-Model; Image-Fusion; Backscatter-Removal; Contrast-Enhancement) — https://ieeexplore.ieee.org/document/6241430
 - [2012] TIP — Underwater Image Enhancement by Wavelength Compensation and Dehazing (Physical-Model; Dehazing; Color-Correction; Depth-Estimation; Image-Formation-Model) — https://ieeexplore.ieee.org/document/6104148 [code](https://github.com/mohitkumarahuja/Underwater-Image-Enhancement-by-Wavelength-Compensation-and-Dehazing)
+- [2006] JOE — Self-Tuning Underwater Image Restoration — https://doi.org/10.1109/joe.2004.836395
 - [2005] JOE — Recovery of Underwater Visibility and Structure by Polarization Analysis (Physical-Model; Polarization; Image-Formation-Model; Depth-Estimation; Contrast-Enhancement) — https://ieeexplore.ieee.org/document/1593804
 - [2004] CVPR — Clear Underwater Vision (Physical-Model; Polarization; Image-Formation-Model; Depth-Estimation; Color-Correction) — https://ieeexplore.ieee.org/document/1315078 [code](https://github.com/OpenKorabli/ClearUnderwaterVision)

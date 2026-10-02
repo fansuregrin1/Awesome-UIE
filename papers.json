@@ -1,7 +1,7 @@
 {
-  "count": 152,
+  "count": 153,
   "stats": {
-    "count": 152,
+    "count": 153,
     "with_code": 89,
     "year_min": 2004,
     "year_max": 2026,
@@ -4238,6 +4238,27 @@
       "tldr": "A systematic underwater image enhancement method compensates wavelength attenuation and dehazes, accounting for artificial lighting via depth-based foreground-background segmentation.",
       "status": "verified",
       "added": "2026-09-26",
+      "notes": null
+    },
+    {
+      "id": "2006-self-tuning-underwater-image-restoration",
+      "title": "Self-Tuning Underwater Image Restoration",
+      "year": 2006,
+      "venue": "JOE",
+      "type": "Traditional",
+      "tags": [],
+      "url": "https://doi.org/10.1109/joe.2004.836395",
+      "doi": "10.1109/joe.2004.836395",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "E. Trucco",
+        "A.T. Olmos-Antillon"
+      ],
+      "tldr": "A self-tuning restoration filter based on a simplified Jaffe-McGlamery model automatically estimates parameters per image by optimizing a global contrast criterion.",
+      "status": "verified",
+      "added": "2026-10-02",
       "notes": null
     },
     {
