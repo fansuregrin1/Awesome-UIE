@@ -530,6 +530,31 @@ class LlmRelevanceTest(unittest.TestCase):
         self.assertIn("OCEANS 2010", {candidate.venue for candidate in result.new})
         self.assertIn("Low Journal", {candidate.venue for candidate in result.pending})
 
+    def test_llm_venue_b_stays_pending(self):
+        class VenueB:
+            def complete(self, system, user):
+                if "venue's tier" in user:
+                    return '{"results": [{"i": 0, "tier": "B"}]}'
+                return '{"results": [{"i": 0, "s": 0.9}]}'
+
+        records = [
+            SourceRecord(
+                source="crossref", title="Underwater Restoration Approach", venue="Mid Conference",
+                doi="10.1/m", year=2020, date="2020-01-01",
+            ),
+        ]
+        registry = VenueRegistry(
+            [Venue(code="TIP", name="IEEE Transactions on Image Processing", tier="A")]
+        )
+        result = discover(
+            [], self.CONFIG, sources=[FakeSource(records)], registry=registry, min_tier="preprint",
+            llm_relevance=VenueB(), llm_venue_tier=True,
+            since="2019-01-01", until="2021-12-31", today=date(2026, 9, 27),
+        )
+        self.assertEqual(result.venue_tiers, {"Mid Conference": "B"})
+        self.assertEqual(result.new, [])
+        self.assertEqual([candidate.venue for candidate in result.pending], ["Mid Conference"])
+
 
 class RoutingLlm:
     """Returns a paper-batch or venue-batch response based on the prompt."""

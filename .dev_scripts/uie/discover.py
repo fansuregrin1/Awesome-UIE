@@ -459,9 +459,11 @@ def discover(
             venue_unknown = registry is not None
         if venue_unknown:
             unknown_venues.add(venue_value)
-        venue_tier = registry.tier(venue_value) if registry is not None else DEFAULT_TIER
-        if not (registry is not None and registry.known(venue_value)) and venue_value in venue_tiers:
-            venue_tier = venue_tiers[venue_value]
+        registered = registry is not None and registry.known(venue_value)
+        if registered:
+            venue_tier = registry.tier(venue_value)
+        else:
+            venue_tier = venue_tiers.get(venue_value, DEFAULT_TIER)
 
         candidate = Candidate(
             record=record,
@@ -481,10 +483,18 @@ def discover(
         )
         result.found += 1
         if status == "new":
-            if min_tier and TIER_ORDER.get(venue_tier, 99) > TIER_ORDER.get(min_tier, 99):
-                result.pending.append(candidate)
+            if registry is None or not min_tier:
+                meets_tier = True
+            elif registered:
+                meets_tier = TIER_ORDER.get(venue_tier, 99) <= TIER_ORDER.get(min_tier, 99)
             else:
+                # An unregistered venue may only auto-promote on the LLM's top tier;
+                # anything less waits for a human to add it to config/venues.yaml.
+                meets_tier = venue_tier == "A"
+            if meets_tier:
                 result.new.append(candidate)
+            else:
+                result.pending.append(candidate)
         elif status == "similar":
             result.similar.append(candidate)
         else:

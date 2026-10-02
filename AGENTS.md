@@ -95,10 +95,9 @@ OpenAI-compatible LLM (`config/llm.yaml`, or `--model` / `--base-url` / `--api-k
   (`[--llm-band-low, --llm-auto-accept)`), in batches (`--llm-batch`), sending
   `title + abstract[:--llm-abstract-chars]`. The same call also returns a `type`
   (`Traditional` / `DeepLearning` / `Hybrid`) that overrides the rule guess.
-- `--llm-venue-tier` rates the tier of each **unregistered** venue (once per venue) so
-  venues missing from `config/venues.yaml` still pass/fail the `min_tier` gate instead
-  of defaulting to `unknown`. The estimate is advisory — add agreed venues to the
-  registry by hand.
+- `--llm-venue-tier` rates the tier of each **unregistered** venue (once per venue).
+  Only an `A` estimate auto-promotes a candidate to New; `B`/`C`/`unknown` stay Pending
+  for human review. The estimate is advisory — add agreed venues to the registry by hand.
 
 Both degrade gracefully: on any failure (missing key, network, timeout) `discover`
 falls back to the rule-based result and prints a warning.
