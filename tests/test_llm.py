@@ -1,12 +1,16 @@
 """Tests for the LLM enrichment module (offline, no API calls)."""
 
+import argparse
+import os
 import sys
 import unittest
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / ".dev_scripts"))
 
+from uie import cli  # noqa: E402
 from uie.llm import (  # noqa: E402
     LlmSuggestion,
     apply_llm_suggestions,
@@ -201,6 +205,46 @@ class ApplyTest(unittest.TestCase):
         self.assertEqual(paper.tldr, "keep")           # not overwritten
         self.assertEqual(paper.tags, ["CNN"])           # empty -> filled
         self.assertEqual([entry[1] for entry in applied], ["tags"])
+
+
+class CmdLlmApplyTest(unittest.TestCase):
+    def test_ids_apply_keeps_all_papers(self):
+        papers = [make_paper(id="a"), make_paper(id="b"), make_paper(id="c")]
+
+        class DummyProgress:
+            def update(self, *args, **kwargs):
+                pass
+
+            def close(self):
+                pass
+
+        captured = {}
+        args = argparse.Namespace(
+            api_key_env="FAKE_KEY", ids="a", limit=None, refresh_abstracts=False,
+            model=None, base_url=None, all=False, apply=True, fields="tldr",
+            tag_mode="fill", report="r.md", json="r.json",
+        )
+        response = {"tldr": "one sentence", "type": "DeepLearning", "tags": []}
+
+        with mock.patch.dict(os.environ, {"FAKE_KEY": "k"}), \
+                mock.patch.object(cli, "_load_llm_config", return_value={}), \
+                mock.patch.object(cli, "load_papers", return_value=papers), \
+                mock.patch.object(cli, "HttpClient", lambda **kwargs: object()), \
+                mock.patch.object(cli.enrich_module, "collect_abstracts", return_value={"a": "abs"}), \
+                mock.patch.object(cli.llm_module, "LlmClient", lambda **kwargs: FakeLlm(response)), \
+                mock.patch.object(
+                    cli, "dump_papers", side_effect=lambda path, value: captured.update(papers=value)
+                ), \
+                mock.patch.object(cli, "render"), \
+                mock.patch.object(cli.proposals, "write_llm", return_value=("m", "j")), \
+                mock.patch.object(cli, "_progress", return_value=DummyProgress()):
+            rc = cli.cmd_llm(args)
+
+        self.assertEqual(rc, 0)
+        # Regression: --ids/--limit must not drop the unselected papers on write-back.
+        self.assertEqual([paper.id for paper in captured["papers"]], ["a", "b", "c"])
+        self.assertEqual(captured["papers"][0].tldr, "one sentence")
+        self.assertIsNone(captured["papers"][1].tldr)
 
 
 if __name__ == "__main__":
