@@ -452,5 +452,40 @@ class WindowFilterTest(unittest.TestCase):
         self.assertEqual(result.until, "2006-12-31")
 
 
+class FakeLlm:
+    def __init__(self, response):
+        self.response = response
+        self.prompts = []
+
+    def complete(self, system, user):
+        self.prompts.append(user)
+        return self.response
+
+
+class LlmRelevanceTest(unittest.TestCase):
+    CONFIG = {"keywords": ["underwater image enhancement"]}
+
+    def test_only_borderline_uses_llm(self):
+        records = [
+            SourceRecord(
+                source="crossref", title="Underwater Image Enhancement Method",
+                doi="10.1/high", year=2020, date="2020-01-01",
+            ),
+            SourceRecord(
+                source="crossref", title="Underwater Restoration Approach",
+                doi="10.1/band", year=2020, date="2020-01-01",
+            ),
+        ]
+        llm = FakeLlm('{"results": [{"i": 0, "s": 0.1}]}')
+        result = discover(
+            [], self.CONFIG, sources=[FakeSource(records)],
+            llm_relevance=llm, since="2019-01-01", until="2021-12-31", today=date(2026, 9, 27),
+        )
+        # rule score 1.0 -> auto-accepted without LLM; borderline rejected by LLM (0.1 < 0.5)
+        self.assertEqual([candidate.record.doi for candidate in result.new], ["10.1/high"])
+        self.assertEqual(len(llm.prompts), 1)
+        self.assertIn("Underwater Restoration Approach", llm.prompts[0])
+
+
 if __name__ == "__main__":
     unittest.main()

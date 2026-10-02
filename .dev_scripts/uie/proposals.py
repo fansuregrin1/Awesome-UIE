@@ -187,6 +187,10 @@ def render_discover_markdown(result: DiscoverResult) -> str:
                 f"- suggested type: {candidate.suggested_type} "
                 f"({candidate.type_basis}); tags: {', '.join(candidate.suggested_tags) or '—'}"
             )
+        if candidate.llm_relevance is not None:
+            lines.append(
+                f"- relevance: llm {candidate.llm_relevance:.2f} (rule {candidate.relevance:.2f})"
+            )
         if record.date:
             lines.append(f"- published {record.date}")
         if record.authors:
