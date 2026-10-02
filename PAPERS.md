@@ -2,7 +2,7 @@
 
 # Underwater Image Enhancement — Paper List
 
-152 papers, grouped by year (newest first). See the [README](README.md) for an overview and the [interactive site](https://fansuregrin1.github.io/Awesome-UIE/) for search and filtering.
+153 papers, grouped by year (newest first). See the [README](README.md) for an overview and the [interactive site](https://fansuregrin1.github.io/Awesome-UIE/) for search and filtering.
 
 ## Year 2026
 - **Neurocomputing** (Traditional) [Task-tailored semi-supervised underwater image enhancement with dual-prior guidance](https://doi.org/10.1016/j.neucom.2026.135043). `Semi-supervised`
@@ -169,6 +169,8 @@
 - **CVPR** (Traditional) [Enhancing Underwater Images and Videos by Fusion](https://ieeexplore.ieee.org/document/6247661). `Image-Fusion` `Color-Correction` `Contrast-Enhancement` `Dehazing` `Physical-Model` [[code]](https://github.com/bilityniu/underwater_image_fusion)
 - **TIP** (Traditional) [Turbid Scene Enhancement Using Multi-Directional Illumination Fusion](https://ieeexplore.ieee.org/document/6241430). `Physical-Model` `Image-Fusion` `Backscatter-Removal` `Contrast-Enhancement`
 - **TIP** (Traditional) [Underwater Image Enhancement by Wavelength Compensation and Dehazing](https://ieeexplore.ieee.org/document/6104148). `Physical-Model` `Dehazing` `Color-Correction` `Depth-Estimation` `Image-Formation-Model` [[code]](https://github.com/mohitkumarahuja/Underwater-Image-Enhancement-by-Wavelength-Compensation-and-Dehazing)
+## Year 2006
+- **JOE** (Traditional) [Self-Tuning Underwater Image Restoration](https://doi.org/10.1109/joe.2004.836395).
 ## Year 2005
 - **JOE** (Traditional) [Recovery of Underwater Visibility and Structure by Polarization Analysis](https://ieeexplore.ieee.org/document/1593804). `Physical-Model` `Polarization` `Image-Formation-Model` `Depth-Estimation` `Contrast-Enhancement`
 ## Year 2004
