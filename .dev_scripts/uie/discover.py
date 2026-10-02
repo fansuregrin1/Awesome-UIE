@@ -13,6 +13,7 @@ from dataclasses import dataclass, field
 from datetime import date, timedelta
 from typing import Dict, List, Optional, Sequence, Tuple
 
+from . import relevance as relevance_module
 from .enrich import normalize_arxiv, normalize_doi, similarity
 from .progress import Progress
 from .schema import KNOWN_TAGS, Paper, Status, make_id
@@ -68,6 +69,7 @@ class Candidate:
     venue_tier: str = DEFAULT_TIER
     is_preprint: bool = False
     type_basis: str = ""
+    llm_relevance: Optional[float] = None
 
 
 @dataclass
@@ -286,6 +288,12 @@ def discover(
     limit_per_source: int = 25,
     min_relevance: float = 0.25,
     prefer_published: bool = True,
+    llm_relevance: Optional[object] = None,
+    llm_min_relevance: float = 0.5,
+    llm_auto_accept: float = 0.6,
+    llm_band_low: float = 0.1,
+    llm_batch: int = 10,
+    llm_abstract_chars: int = 300,
     progress: Optional[Progress] = None,
     today: Optional[date] = None,
 ) -> DiscoverResult:
@@ -335,11 +343,45 @@ def discover(
                 continue
         in_window.append(record)
 
+    gated: List[tuple] = []
     for record in _merge_records(in_window):
-        relevant, score = is_relevant(record, tokens, min_relevance=min_relevance)
+        relevant, score = is_relevant(record, tokens, min_relevance=0.0)
         if not relevant:
             continue
         if years and record.year not in years:
+            continue
+        gated.append((record, score))
+
+    # Optional LLM relevance: judge only the borderline band (token-frugal).
+    llm_scores: List[Optional[float]] = [None] * len(gated)
+    if llm_relevance is not None:
+        band = [
+            index
+            for index, (_, rule_score) in enumerate(gated)
+            if llm_band_low <= rule_score < llm_auto_accept
+        ]
+        if band:
+            band_records = [gated[index][0] for index in band]
+            scored = relevance_module.score_records(
+                band_records, llm_relevance, batch=llm_batch, abstract_chars=llm_abstract_chars
+            )
+            for index, value in zip(band, scored):
+                llm_scores[index] = value
+
+    for index, (record, score) in enumerate(gated):
+        if llm_relevance is not None:
+            if score >= llm_auto_accept:
+                pass
+            elif score < llm_band_low:
+                continue
+            else:
+                llm_score = llm_scores[index]
+                if llm_score is not None:
+                    if llm_score < llm_min_relevance:
+                        continue
+                elif score < min_relevance:
+                    continue
+        elif score < min_relevance:
             continue
 
         # A preprint that carries a DOI may have a published version: adopt its venue.
@@ -386,6 +428,7 @@ def discover(
             venue_tier=venue_tier,
             is_preprint=is_preprint(record),
             type_basis=type_basis,
+            llm_relevance=llm_scores[index],
         )
         result.found += 1
         if status == "new":

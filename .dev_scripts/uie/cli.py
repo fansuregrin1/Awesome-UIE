@@ -315,6 +315,22 @@ def cmd_discover(args: argparse.Namespace) -> int:
 
     since, until, years = _resolve_window(args)
 
+    llm = None
+    if args.llm_relevance:
+        llm_config = _load_llm_config()
+        key_env = args.api_key_env or llm_config.get("api_key_env", "OPENAI_API_KEY")
+        api_key = os.environ.get(key_env)
+        if not api_key:
+            print(f"warning: --llm-relevance given but {key_env} is not set; using rule-based relevance")
+        else:
+            llm = llm_module.LlmClient(
+                model=args.model or llm_config.get("model", "gpt-4o-mini"),
+                api_key=api_key,
+                base_url=args.base_url or llm_config.get("base_url", "https://api.openai.com/v1"),
+                cache_dir=CACHE_DIR,
+                ttl=int(llm_config.get("cache_ttl", DEFAULT_TTL)),
+            )
+
     progress = _progress(args, len(config.get("keywords") or []) * 3, "discover")
     try:
         result = discover_module.discover(
@@ -332,6 +348,12 @@ def cmd_discover(args: argparse.Namespace) -> int:
                 if args.min_relevance is not None
                 else float(config.get("min_relevance", 0.25))
             ),
+            llm_relevance=llm,
+            llm_min_relevance=args.llm_min_relevance,
+            llm_auto_accept=args.llm_auto_accept,
+            llm_band_low=args.llm_band_low,
+            llm_batch=args.llm_batch,
+            llm_abstract_chars=args.llm_abstract_chars,
             years=years,
             progress=progress,
         )
@@ -348,6 +370,15 @@ def cmd_discover(args: argparse.Namespace) -> int:
     )
     print(f"wrote {md_path}")
     print(f"wrote {json_path}")
+
+    if llm is not None:
+        found = result.new + result.pending + result.similar + result.existing
+        scored = sum(1 for candidate in found if candidate.llm_relevance is not None)
+        if found and scored == 0:
+            print(
+                "warning: LLM relevance produced no scores — check --model / --base-url / API key; "
+                "fell back to rule-based relevance"
+            )
 
     if args.apply:
         added = discover_module.candidates_to_papers(papers, result)
@@ -589,6 +620,30 @@ def build_parser() -> argparse.ArgumentParser:
         "--min-relevance", dest="min_relevance", type=float,
         help="minimum keyword relevance (0-1) for a candidate (default from config, 0.25)",
     )
+    disc.add_argument("--llm-relevance", action="store_true", help="judge relevance with an LLM (opt-in)")
+    disc.add_argument(
+        "--llm-min-relevance", dest="llm_min_relevance", type=float, default=0.5,
+        help="LLM score threshold to accept",
+    )
+    disc.add_argument(
+        "--llm-auto-accept", dest="llm_auto_accept", type=float, default=0.6,
+        help="rule score at/above which no LLM call is made",
+    )
+    disc.add_argument(
+        "--llm-band-low", dest="llm_band_low", type=float, default=0.1,
+        help="rule score below which candidates are dropped without an LLM call",
+    )
+    disc.add_argument(
+        "--llm-batch", dest="llm_batch", type=int, default=10,
+        help="candidates per LLM request",
+    )
+    disc.add_argument(
+        "--llm-abstract-chars", dest="llm_abstract_chars", type=int, default=300,
+        help="abstract characters sent to the LLM",
+    )
+    disc.add_argument("--model", help="LLM model (default from config/llm.yaml)")
+    disc.add_argument("--base-url", dest="base_url", help="OpenAI-compatible base URL")
+    disc.add_argument("--api-key-env", dest="api_key_env", help="env var with the LLM API key")
     disc.add_argument("--apply", action="store_true", help="append new candidates to papers.yaml as status: candidate")
     disc.set_defaults(func=cmd_discover)
     _add_progress_args(disc)
