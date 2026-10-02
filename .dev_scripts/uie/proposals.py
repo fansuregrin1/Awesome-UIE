@@ -260,8 +260,9 @@ def render_discover_markdown(result: DiscoverResult) -> str:
         lines.append("## Venue tiers (LLM)")
         lines.append("")
         lines.append(
-            "LLM estimate for venues missing from the registry (advisory — add to "
-            "`config/venues.yaml` if you agree):"
+            "LLM estimate for venues missing from the registry. Only **A** auto-promotes a "
+            "candidate to New; B/C/unknown stay Pending — add the venue to `config/venues.yaml` "
+            "to set its tier yourself."
         )
         lines.append("")
         for venue in sorted(result.venue_tiers):
