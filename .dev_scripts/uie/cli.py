@@ -456,17 +456,18 @@ def cmd_llm(args: argparse.Namespace) -> int:
         return 1
 
     papers = load_papers(PAPERS_YAML)
+    selected = papers
     if args.ids:
         wanted = {value.strip() for value in args.ids.split(",") if value.strip()}
-        papers = [paper for paper in papers if paper.id in wanted]
+        selected = [paper for paper in papers if paper.id in wanted]
     if args.limit:
-        papers = papers[: args.limit]
+        selected = selected[: args.limit]
 
     http = HttpClient(
         cache_dir=CACHE_DIR,
         ttl=0 if args.refresh_abstracts else int(config.get("cache_ttl", DEFAULT_TTL)),
     )
-    to_process = papers if args.all else [paper for paper in papers if not paper.tldr]
+    to_process = selected if args.all else [paper for paper in selected if not paper.tldr]
     abstracts_progress = _progress(args, len(to_process), "abstracts")
     try:
         abstracts = enrich_module.collect_abstracts(to_process, http, progress=abstracts_progress)
@@ -483,7 +484,7 @@ def cmd_llm(args: argparse.Namespace) -> int:
     llm_progress = _progress(args, len(to_process), "llm")
     try:
         result = llm_module.summarize_papers(
-            papers,
+            selected,
             llm,
             abstracts,
             only_missing=not args.all,
@@ -493,7 +494,7 @@ def cmd_llm(args: argparse.Namespace) -> int:
     finally:
         llm_progress.close()
 
-    titles = {paper.id: paper.title for paper in papers}
+    titles = {paper.id: paper.title for paper in selected}
     md_path, json_path = proposals.write_llm(result, titles, args.report, args.json)
 
     summary = result.summary()
