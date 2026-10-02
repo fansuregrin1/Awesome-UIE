@@ -5012,3 +5012,40 @@
   status: candidate
   added: '2026-09-27'
   notes: null
+- id: 2006-self-tuning-underwater-image-restoration
+  title: Self-Tuning Underwater Image Restoration
+  year: 2006
+  venue: JOE
+  type: Traditional
+  tags: []
+  url: https://doi.org/10.1109/joe.2004.836395
+  doi: 10.1109/joe.2004.836395
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - E. Trucco
+  - A.T. Olmos-Antillon
+  tldr: A self-tuning restoration filter based on a simplified Jaffe-McGlamery model automatically estimates parameters per image by optimizing a global contrast criterion.
+  status: candidate
+  added: '2026-10-02'
+  notes: null
+- id: 2006-image-enhancement-and-automated-target-recognition-technique
+  title: Image Enhancement and Automated Target Recognition Techniques for Underwater Electro-Optic Imagery
+  year: 2006
+  venue: arXiv
+  type: Traditional
+  tags: []
+  url: https://doi.org/10.21236/ada521885
+  doi: 10.21236/ada521885
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Thomas Giddings
+  - Cetin Savkli
+  - Joseph Shirron
+  tldr: Describes a modular automated target recognition framework with interchangeable algorithms for detecting and classifying targets in cluttered underwater electro-optical imagery.
+  status: candidate
+  added: '2026-10-02'
+  notes: null
