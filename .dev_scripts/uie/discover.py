@@ -22,7 +22,7 @@ from .sources.base import SourceRecord
 from .sources.crossref import CrossrefSource
 from .sources.http import HttpClient
 from .sources.openalex import OpenAlexSource
-from .venues import DEFAULT_TIER
+from .venues import DEFAULT_TIER, TIER_ORDER
 
 TOKEN_RE = re.compile(r"[a-z0-9]+")
 ANCHOR = "underwater"
@@ -54,6 +54,21 @@ THEME_TAG_RULES: List[Tuple[Tuple[str, ...], str]] = [
     (("polarization",), "Polarization"),
 ]
 
+# Needles that are word prefixes (e.g. "dehaz" -> dehazing/dehazed). Everything
+# else is matched as a whole word so short needles like "gan" don't hit "organic".
+_PREFIX_NEEDLES = {"dehaz"}
+
+
+def _tag_pattern(needle: str):
+    escaped = re.escape(needle)
+    return re.compile(r"\b" + escaped) if needle in _PREFIX_NEEDLES else re.compile(r"\b" + escaped + r"\b")
+
+
+TAG_PATTERNS: List[Tuple[Tuple, str]] = [
+    (tuple(_tag_pattern(needle) for needle in needles), tag)
+    for needles, tag in ARCH_TAG_RULES + THEME_TAG_RULES
+]
+
 
 @dataclass
 class Candidate:
@@ -70,6 +85,7 @@ class Candidate:
     is_preprint: bool = False
     type_basis: str = ""
     llm_relevance: Optional[float] = None
+    llm_type: Optional[str] = None
 
 
 @dataclass
@@ -84,6 +100,7 @@ class DiscoverResult:
     similar: List[Candidate] = field(default_factory=list)
     existing: List[Candidate] = field(default_factory=list)
     unknown_venues: List[str] = field(default_factory=list)
+    venue_tiers: Dict[str, str] = field(default_factory=dict)
     source_errors: List[str] = field(default_factory=list)
 
     def summary(self) -> Dict[str, int]:
@@ -140,6 +157,9 @@ _CLASSICAL_WORDS = (
     "retinex", "histogram", "fusion", "dark channel", "prior",
     "polarization", "dehazing", "filter", "restoration model",
 )
+_LEARNING_RE = re.compile(r"\b(?:" + "|".join(re.escape(word) for word in _LEARNING_WORDS) + r")\b")
+_PHYSICAL_RE = re.compile(r"\b(?:" + "|".join(re.escape(word) for word in _PHYSICAL_WORDS) + r")\b")
+_CLASSICAL_RE = re.compile(r"\b(?:" + "|".join(re.escape(word) for word in _CLASSICAL_WORDS) + r")\b")
 
 
 def suggest_classification(record: SourceRecord, year: Optional[int] = None) -> Tuple[str, List[str], str]:
@@ -150,15 +170,15 @@ def suggest_classification(record: SourceRecord, year: Optional[int] = None) -> 
     """
     text = ((record.title or "") + " " + (record.abstract or "")).lower()
     tags: List[str] = []
-    for needles, tag in ARCH_TAG_RULES + THEME_TAG_RULES:
+    for patterns, tag in TAG_PATTERNS:
         if tag not in KNOWN_TAGS:
             continue
-        if tag not in tags and any(needle in text for needle in needles):
+        if tag not in tags and any(pattern.search(text) for pattern in patterns):
             tags.append(tag)
 
-    learning = any(word in text for word in _LEARNING_WORDS)
-    physical = any(word in text for word in _PHYSICAL_WORDS)
-    classical = any(word in text for word in _CLASSICAL_WORDS)
+    learning = bool(_LEARNING_RE.search(text))
+    physical = bool(_PHYSICAL_RE.search(text))
+    classical = bool(_CLASSICAL_RE.search(text))
     year = year if year is not None else record.year
 
     if learning and physical:
@@ -294,6 +314,7 @@ def discover(
     llm_band_low: float = 0.1,
     llm_batch: int = 10,
     llm_abstract_chars: int = 300,
+    llm_venue_tier: bool = False,
     progress: Optional[Progress] = None,
     today: Optional[date] = None,
 ) -> DiscoverResult:
@@ -352,8 +373,9 @@ def discover(
             continue
         gated.append((record, score))
 
-    # Optional LLM relevance: judge only the borderline band (token-frugal).
+    # Optional LLM assessment: judge only the borderline band (token-frugal).
     llm_scores: List[Optional[float]] = [None] * len(gated)
+    llm_types: List[Optional[str]] = [None] * len(gated)
     if llm_relevance is not None:
         band = [
             index
@@ -362,11 +384,32 @@ def discover(
         ]
         if band:
             band_records = [gated[index][0] for index in band]
-            scored = relevance_module.score_records(
+            assessments = relevance_module.assess_records(
                 band_records, llm_relevance, batch=llm_batch, abstract_chars=llm_abstract_chars
             )
-            for index, value in zip(band, scored):
-                llm_scores[index] = value
+            for index, assessment in zip(band, assessments):
+                if assessment is not None:
+                    llm_scores[index] = assessment.score
+                    llm_types[index] = assessment.type
+
+    # Venue tiers (LLM) for venues missing from the registry, rated once per unique venue.
+    venue_tiers: Dict[str, str] = {}
+    if llm_relevance is not None and llm_venue_tier and registry is not None:
+        def _venue_name(record: SourceRecord) -> str:
+            name, _ = registry.resolve(record.venue, record.issn)
+            if name:
+                return name
+            if is_preprint(record) and not record.venue:
+                return "arXiv"
+            return record.venue or record.source
+
+        unregistered = {
+            _venue_name(record)
+            for record, _ in gated
+            if _venue_name(record) != "arXiv" and not registry.known(_venue_name(record))
+        }
+        if unregistered:
+            venue_tiers = relevance_module.score_venues(sorted(unregistered), llm_relevance)
 
     for index, (record, score) in enumerate(gated):
         if llm_relevance is not None:
@@ -400,6 +443,9 @@ def discover(
 
         status, matched = match_status(record, dois, arxiv_ids, titles)
         paper_type, tags, type_basis = suggest_classification(record)
+        if llm_types[index]:
+            paper_type = llm_types[index]
+            type_basis = f"llm, rule: {type_basis}" if type_basis else "llm"
 
         code = None
         if registry is not None:
@@ -414,6 +460,8 @@ def discover(
         if venue_unknown:
             unknown_venues.add(venue_value)
         venue_tier = registry.tier(venue_value) if registry is not None else DEFAULT_TIER
+        if not (registry is not None and registry.known(venue_value)) and venue_value in venue_tiers:
+            venue_tier = venue_tiers[venue_value]
 
         candidate = Candidate(
             record=record,
@@ -429,10 +477,11 @@ def discover(
             is_preprint=is_preprint(record),
             type_basis=type_basis,
             llm_relevance=llm_scores[index],
+            llm_type=llm_types[index],
         )
         result.found += 1
         if status == "new":
-            if registry is not None and not registry.meets_min_tier(venue_value, min_tier):
+            if min_tier and TIER_ORDER.get(venue_tier, 99) > TIER_ORDER.get(min_tier, 99):
                 result.pending.append(candidate)
             else:
                 result.new.append(candidate)
@@ -446,6 +495,7 @@ def discover(
         group.sort(key=lambda candidate: (candidate.record.date or "", candidate.relevance), reverse=True)
         group.sort(key=lambda candidate: candidate.is_preprint)
     result.unknown_venues = sorted(unknown_venues)
+    result.venue_tiers = venue_tiers
     return result
 
 

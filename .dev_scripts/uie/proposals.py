@@ -177,9 +177,12 @@ def render_discover_markdown(result: DiscoverResult) -> str:
         if candidate.venue_unknown:
             venue_note += " (unmapped)"
         kind = "preprint" if candidate.is_preprint else "published"
+        tier_note = candidate.venue_tier
+        if candidate.venue in result.venue_tiers:
+            tier_note += " (llm)"
         lines.append(f"### {record.title}")
         lines.append(
-            f"- year {record.year} · venue {venue_note} [tier {candidate.venue_tier}, {kind}] · "
+            f"- year {record.year} · venue {venue_note} [tier {tier_note}, {kind}] · "
             f"source {record.source} · relevance {candidate.relevance:.2f}"
         )
         if candidate.type_basis:
@@ -219,8 +222,11 @@ def render_discover_markdown(result: DiscoverResult) -> str:
         lines.append("")
         for candidate in result.pending:
             record = candidate.record
+            tier_note = candidate.venue_tier
+            if candidate.venue in result.venue_tiers:
+                tier_note += " (llm)"
             lines.append(
-                f"- {record.title} — venue {candidate.venue} [tier {candidate.venue_tier}], "
+                f"- {record.title} — venue {candidate.venue} [tier {tier_note}], "
                 f"{record.source}, relevance {candidate.relevance:.2f}"
             )
     else:
@@ -250,6 +256,18 @@ def render_discover_markdown(result: DiscoverResult) -> str:
         lines.append("_none_")
     lines.append("")
 
+    if result.venue_tiers:
+        lines.append("## Venue tiers (LLM)")
+        lines.append("")
+        lines.append(
+            "LLM estimate for venues missing from the registry (advisory — add to "
+            "`config/venues.yaml` if you agree):"
+        )
+        lines.append("")
+        for venue in sorted(result.venue_tiers):
+            lines.append(f"- {venue} → **{result.venue_tiers[venue]}**")
+        lines.append("")
+
     if result.source_errors:
         lines.append("## Source errors")
         lines.append("")
@@ -269,6 +287,7 @@ def render_discover_json(result: DiscoverResult) -> str:
         "similar": [asdict(candidate) for candidate in result.similar],
         "existing": [asdict(candidate) for candidate in result.existing],
         "unknown_venues": result.unknown_venues,
+        "venue_tiers": result.venue_tiers,
         "source_errors": result.source_errors,
     }
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"

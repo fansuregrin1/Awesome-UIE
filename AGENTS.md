@@ -86,6 +86,23 @@ python -m uie.cli discover --since 90 --limit 25 --apply    # also ingest candid
 results — so historical years work, e.g.
 `discover --year 2004,2005,2006` or `discover --from 2004-01-01 --to 2006-12-31`.
 
+### LLM assessment (opt-in)
+
+Default `discover` relevance and classification are rule-based. Two opt-in flags add an
+OpenAI-compatible LLM (`config/llm.yaml`, or `--model` / `--base-url` / `--api-key-env`):
+
+- `--llm-relevance` judges the **borderline band** of rule scores only
+  (`[--llm-band-low, --llm-auto-accept)`), in batches (`--llm-batch`), sending
+  `title + abstract[:--llm-abstract-chars]`. The same call also returns a `type`
+  (`Traditional` / `DeepLearning` / `Hybrid`) that overrides the rule guess.
+- `--llm-venue-tier` rates the tier of each **unregistered** venue (once per venue) so
+  venues missing from `config/venues.yaml` still pass/fail the `min_tier` gate instead
+  of defaulting to `unknown`. The estimate is advisory — add agreed venues to the
+  registry by hand.
+
+Both degrade gracefully: on any failure (missing key, network, timeout) `discover`
+falls back to the rule-based result and prints a warning.
+
 ## Venues
 
 `venue` is the collection's short code (`TIP`, `CVPR`, `Neurocomputing`, ...). The

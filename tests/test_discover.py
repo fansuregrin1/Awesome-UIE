@@ -24,6 +24,7 @@ from uie.cli import _resolve_window, build_parser  # noqa: E402
 from uie.render import published  # noqa: E402
 from uie.schema import Paper, PaperType, Status  # noqa: E402
 from uie.sources.base import SourceRecord  # noqa: E402
+from uie.venues import Venue, VenueRegistry  # noqa: E402
 
 
 class FakeSource:
@@ -485,6 +486,62 @@ class LlmRelevanceTest(unittest.TestCase):
         self.assertEqual([candidate.record.doi for candidate in result.new], ["10.1/high"])
         self.assertEqual(len(llm.prompts), 1)
         self.assertIn("Underwater Restoration Approach", llm.prompts[0])
+
+    def test_llm_type_overrides_rule(self):
+        records = [
+            SourceRecord(
+                source="crossref", title="Underwater Restoration Approach",
+                doi="10.1/band", year=2020, date="2020-01-01",
+            ),
+        ]
+        llm = FakeLlm('{"results": [{"i": 0, "s": 0.9, "t": "Hybrid"}]}')
+        result = discover(
+            [], self.CONFIG, sources=[FakeSource(records)],
+            llm_relevance=llm, since="2019-01-01", until="2021-12-31", today=date(2026, 9, 27),
+        )
+        self.assertEqual(len(result.new), 1)
+        candidate = result.new[0]
+        self.assertEqual(candidate.llm_type, "Hybrid")
+        self.assertEqual(candidate.suggested_type, "Hybrid")
+        self.assertIn("llm", candidate.type_basis)
+
+    def test_llm_venue_tier_gates(self):
+        records = [
+            SourceRecord(
+                source="crossref", title="Underwater Restoration Alpha", venue="OCEANS 2010",
+                doi="10.1/a", year=2020, date="2020-01-01",
+            ),
+            SourceRecord(
+                source="crossref", title="Underwater Restoration Beta", venue="Low Journal",
+                doi="10.1/b", year=2020, date="2020-01-01",
+            ),
+        ]
+        llm = RoutingLlm()
+        registry = VenueRegistry(
+            [Venue(code="TIP", name="IEEE Transactions on Image Processing", tier="A")]
+        )
+        result = discover(
+            [], self.CONFIG, sources=[FakeSource(records)], registry=registry, min_tier="B",
+            llm_relevance=llm, llm_venue_tier=True,
+            since="2019-01-01", until="2021-12-31", today=date(2026, 9, 27),
+        )
+        # sorted unique venues: "Low Journal" (C), "OCEANS 2010" (A)
+        self.assertEqual(result.venue_tiers, {"Low Journal": "C", "OCEANS 2010": "A"})
+        self.assertIn("OCEANS 2010", {candidate.venue for candidate in result.new})
+        self.assertIn("Low Journal", {candidate.venue for candidate in result.pending})
+
+
+class RoutingLlm:
+    """Returns a paper-batch or venue-batch response based on the prompt."""
+
+    def __init__(self):
+        self.prompts = []
+
+    def complete(self, system, user):
+        self.prompts.append(user)
+        if "venue's tier" in user:
+            return '{"results": [{"i": 0, "tier": "C"}, {"i": 1, "tier": "A"}]}'
+        return '{"results": [{"i": 0, "s": 0.9}, {"i": 1, "s": 0.9}]}'
 
 
 if __name__ == "__main__":

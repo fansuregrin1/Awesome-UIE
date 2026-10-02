@@ -316,12 +316,12 @@ def cmd_discover(args: argparse.Namespace) -> int:
     since, until, years = _resolve_window(args)
 
     llm = None
-    if args.llm_relevance:
+    if args.llm_relevance or args.llm_venue_tier:
         llm_config = _load_llm_config()
         key_env = args.api_key_env or llm_config.get("api_key_env", "OPENAI_API_KEY")
         api_key = os.environ.get(key_env)
         if not api_key:
-            print(f"warning: --llm-relevance given but {key_env} is not set; using rule-based relevance")
+            print(f"warning: LLM assessment requested but {key_env} is not set; using rule-based relevance")
         else:
             llm = llm_module.LlmClient(
                 model=args.model or llm_config.get("model", "gpt-4o-mini"),
@@ -354,6 +354,7 @@ def cmd_discover(args: argparse.Namespace) -> int:
             llm_band_low=args.llm_band_low,
             llm_batch=args.llm_batch,
             llm_abstract_chars=args.llm_abstract_chars,
+            llm_venue_tier=args.llm_venue_tier,
             years=years,
             progress=progress,
         )
@@ -374,10 +375,15 @@ def cmd_discover(args: argparse.Namespace) -> int:
     if llm is not None:
         found = result.new + result.pending + result.similar + result.existing
         scored = sum(1 for candidate in found if candidate.llm_relevance is not None)
-        if found and scored == 0:
+        if args.llm_relevance and found and scored == 0:
             print(
                 "warning: LLM relevance produced no scores — check --model / --base-url / API key; "
                 "fell back to rule-based relevance"
+            )
+        if args.llm_venue_tier and result.unknown_venues and not result.venue_tiers:
+            print(
+                "warning: LLM venue-tier assessment returned nothing — check --model / --base-url / API key; "
+                "unregistered venues stay at tier 'unknown'"
             )
 
     if args.apply:
@@ -640,6 +646,10 @@ def build_parser() -> argparse.ArgumentParser:
     disc.add_argument(
         "--llm-abstract-chars", dest="llm_abstract_chars", type=int, default=300,
         help="abstract characters sent to the LLM",
+    )
+    disc.add_argument(
+        "--llm-venue-tier", dest="llm_venue_tier", action="store_true",
+        help="let the LLM rate unregistered venue tiers (used for the min-tier gate)",
     )
     disc.add_argument("--model", help="LLM model (default from config/llm.yaml)")
     disc.add_argument("--base-url", dest="base_url", help="OpenAI-compatible base URL")
