@@ -138,8 +138,11 @@ Every model response is cached under `.dev_scripts/.cache/`.
 
 - Requires the API key named in `config/llm.yaml` (`OPENAI_API_KEY` by default).
 - `--model` / `--base-url` override the config (any OpenAI-compatible endpoint).
-- `--apply` writes fill-only `tldr` (default) or `--fields tldr,tags`, then
-  regenerates artifacts.
+- `--ids` / `--status verified|candidate` / `--limit` select which papers to process.
+- `--apply` writes fill-only `tldr` (default) or `--fields tldr,type,tags`, then
+  regenerates artifacts. `type` is fill-only unless `--type-mode replace`; `tags`
+  honour `--tag-mode fill|merge|replace`. Use `--all` to re-review papers that
+  already have a `tldr` (e.g. a `type` audit of the candidates).
 
 `validate --changed-only --base origin/main` checks only entries changed versus
 the base revision.
