@@ -153,6 +153,23 @@ class ApplyTest(unittest.TestCase):
     def test_apply_empty(self):
         self.assertEqual(apply_llm_suggestions([make_paper()], []), [])
 
+    def test_replace_type(self):
+        paper = make_paper(type=PaperType.DEEP_LEARNING)
+        suggestion = LlmSuggestion(
+            paper_id=paper.id, tldr=None, type="Traditional", tags=[], new_tags=[], model="m"
+        )
+        applied = apply_llm_suggestions([paper], [suggestion], fields=("type",), type_mode="replace")
+        self.assertEqual(paper.type, PaperType.TRADITIONAL)
+        self.assertEqual([entry[1] for entry in applied], ["type"])
+
+    def test_fill_type_keeps_existing(self):
+        paper = make_paper(type=PaperType.DEEP_LEARNING)
+        suggestion = LlmSuggestion(
+            paper_id=paper.id, tldr=None, type="Traditional", tags=[], new_tags=[], model="m"
+        )
+        self.assertEqual(apply_llm_suggestions([paper], [suggestion], fields=("type",)), [])
+        self.assertEqual(paper.type, PaperType.DEEP_LEARNING)
+
     def test_replace_tags(self):
         paper = make_paper(tags=["CNN"])
         suggestion = LlmSuggestion(
@@ -222,7 +239,7 @@ class CmdLlmApplyTest(unittest.TestCase):
         args = argparse.Namespace(
             api_key_env="FAKE_KEY", ids="a", limit=None, refresh_abstracts=False,
             model=None, base_url=None, all=False, apply=True, fields="tldr",
-            tag_mode="fill", report="r.md", json="r.json",
+            tag_mode="fill", type_mode="fill", status=None, report="r.md", json="r.json",
         )
         response = {"tldr": "one sentence", "type": "DeepLearning", "tags": []}
 
