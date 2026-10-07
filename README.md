@@ -5,7 +5,7 @@
 
 # Awesome Underwater Image Enhancement (UIE)
 
-> A curated, **machine-readable** collection of underwater image enhancement papers — 153 entries (2004–2026) with venues, authors, DOIs, code links, controlled tags and one-sentence summaries.
+> A curated, **machine-readable** collection of underwater image enhancement papers — 176 entries (2004–2026) with venues, authors, DOIs, code links, controlled tags and one-sentence summaries.
 
 [![papers](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffansuregrin1%2FAwesome-UIE%2Fmain%2Fpapers.json&query=%24.stats.count&label=papers&color=0b6bcb)](papers.json)
 [![with code](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffansuregrin1%2FAwesome-UIE%2Fmain%2Fpapers.json&query=%24.stats.with_code&label=with%20code&color=2e8b6f)](papers.json)
@@ -28,7 +28,7 @@ Search, filter by **year / type / venue / tag**, and browse **live statistics**.
 
 ## ✨ Highlights
 
-- **153 papers** (2004–2026), curated and deduplicated.
+- **176 papers** (2004–2026), curated and deduplicated.
 - **Rich metadata**: venue, year, authors, DOI, tags, code/project links and an LLM-written **TL;DR**.
 - **Coarse `type` + fine-grained `tags`** — `type` stays stable (`Traditional` / `DeepLearning` / `Hybrid`); `tags` capture architecture (`CNN`, `GAN`, `Diffusion`, `Transformer`, `Mamba`, …) and themes (`Color-Correction`, `Physical-Model`, `Dehazing`, `Image-Fusion`, …).
 - **Machine-readable**: JSON, BibTeX and CSV exports plus an [`llms.txt`](llms.txt) index.
@@ -43,13 +43,13 @@ Search, filter by **year / type / venue / tag**, and browse **live statistics**.
 
 | Metric | Value |
 | --- | --- |
-| Papers | 153 |
+| Papers | 176 |
 | Year range | 2004–2026 |
-| With code | 89 |
-| With DOI | 146 |
-| Traditional | 38 |
-| Deep learning | 97 |
-| Hybrid | 18 |
+| With code | 99 |
+| With DOI | 148 |
+| Traditional | 39 |
+| Deep learning | 109 |
+| Hybrid | 28 |
 
 ## 🤖 How it stays up to date
 

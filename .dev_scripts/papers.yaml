@@ -3173,28 +3173,6 @@
   status: verified
   added: '2026-09-27'
   notes: null
-- id: 2026-underwater-image-enhancement-by-dark-channel-dehazing-and-li
-  title: Underwater Image Enhancement by Dark Channel Dehazing and Lightness-Domain Rayleigh CLAHE
-  year: 2026
-  venue: Technium Romanian Journal of Applied Sciences and Technology
-  type: Traditional
-  tags:
-  - Dehazing
-  - Color-Correction
-  - Contrast-Enhancement
-  - Dark-Channel-Prior
-  - Benchmark
-  url: https://doi.org/10.47577/technium.v31i.13800
-  doi: 10.47577/technium.v31i.13800
-  arxiv_id: null
-  code: null
-  project: null
-  authors:
-  - Rana Talib Saihood
-  tldr: A training-free underwater image enhancement pipeline combines color restoration, dark channel dehazing, and lightness-domain Rayleigh CLAHE, outperforming four methods on UIEB.
-  status: candidate
-  added: '2026-09-27'
-  notes: null
 - id: 2026-phys-mamba-physics-informed-selective-state-space-fusion-net
   title: 'Phys-Mamba: Physics-informed selective state-space fusion network for high-fidelity underwater image restoration'
   year: 2026
@@ -3224,57 +3202,6 @@
   - Shaoji Huang
   tldr: Phys-Mamba uses physics-informed selective state-space modulation and cross-scale fusion for efficient multi-scale underwater image restoration.
   status: verified
-  added: '2026-09-27'
-  notes: null
-- id: 2026-component-aware-variational-three-component-decomposition-fo
-  title: Component-aware variational three-component decomposition for underwater image enhancement with shock-driven texture refinement
-  year: 2026
-  venue: Engineering Research Express
-  type: Traditional
-  tags:
-  - Retinex
-  - Contrast-Enhancement
-  - Color-Correction
-  - Multiscale-Fusion
-  url: https://doi.org/10.1088/2631-8695/aea3b2
-  doi: 10.1088/2631-8695/aea3b2
-  arxiv_id: null
-  code: null
-  project: null
-  authors:
-  - Mengyao Lun
-  - Biyuan Li
-  - Jinying Ma
-  - Jiangtao Liu
-  tldr: A variational three-component decomposition framework separates luminance into cartoon, texture, and detail components, applying component-specific enhancement for underwater images.
-  status: candidate
-  added: '2026-09-27'
-  notes: null
-- id: 2026-3d-use-from-image-level-to-scene-level-underwater-enhancemen
-  title: '3D-USE: From Image-Level to Scene-Level Underwater Enhancement'
-  year: 2026
-  venue: arXiv
-  type: Hybrid
-  tags:
-  - Physical-Model
-  - Image-Formation-Model
-  - Domain-Adaptation
-  - Self-supervised
-  - Color-Correction
-  url: https://arxiv.org/abs/2608.28020
-  doi: null
-  arxiv_id: '2608.28020'
-  code: https://github.com/bilityniu/3D-USE
-  project: https://bilityniu.github.io/3D-USE/
-  authors:
-  - Jieyu Yuan
-  - Yuanlin Zhang
-  - Jihong Li
-  - Chunle Guo
-  - Huimin Lu
-  - Chongyi Li
-  tldr: 3D-USE learns a persistent enhanced 3D Gaussian scene representation from degraded multi-view underwater images, transferring 2D enhancement knowledge to render consistent enhanced novel views.
-  status: candidate
   added: '2026-09-27'
   notes: null
 - id: 2026-dynamic-spectraformer-for-ultra-high-definition-underwater-i
@@ -3882,33 +3809,6 @@
   status: candidate
   added: '2026-09-27'
   notes: null
-- id: 2026-waterclear-gs-optical-aware-gaussian-splatting-for-underwate
-  title: 'WaterClear-GS: Optical-Aware Gaussian Splatting for Underwater Reconstruction and Restoration'
-  year: 2026
-  venue: arXiv
-  type: Hybrid
-  tags:
-  - Physical-Model
-  - Real-time
-  - Image-Formation-Model
-  - Depth-Estimation
-  - Self-supervised
-  url: https://arxiv.org/abs/2601.19753
-  doi: null
-  arxiv_id: '2601.19753'
-  code: null
-  project: null
-  authors:
-  - Xinrui Zhang
-  - Yufeng Wang
-  - Zesheng Wang
-  - Dacheng Qi
-  - Wenrui Ding
-  - Shuangkang Fang
-  tldr: WaterClear-GS reformulates underwater 3D Gaussian splatting to model degradation as intrinsic Gaussian attributes, enabling real-time novel view synthesis and image restoration.
-  status: candidate
-  added: '2026-09-27'
-  notes: null
 - id: 2025-tide-two-stage-inverse-degradation-estimation-with-guided-pr
   title: 'TIDE: Two-Stage Inverse Degradation Estimation with Guided Prior Disentanglement for Underwater Image Restoration'
   year: 2025
@@ -3931,7 +3831,7 @@
   - Pavan Kumar S
   - Muthu Subash Kavitha
   tldr: TIDE is a two-stage inverse degradation estimation framework that disentangles underwater degradations into color, haze, detail, and noise factors for targeted restoration.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-a-generative-data-framework-with-authentic-supervision-for-u
@@ -3960,7 +3860,7 @@
   - Ye Zheng
   - Xuelong Li
   tldr: A generative framework translates in-air images into underwater-degraded versions to create synthetic datasets with authentic supervision for underwater image restoration and enhancement.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-lego-llm-enhanced-genetic-optimization-for-underwater-robot
@@ -4371,7 +4271,7 @@
   - Haoran Chen
   - Xiaosong Li
   tldr: JDPNet jointly processes coupled underwater degradations via a feature-mining module, probabilistic bootstrap distribution, and AquaBalanceLoss, achieving state-of-the-art enhancement.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-aquadiff-diffusion-based-underwater-image-enhancement-for-ad
@@ -4395,7 +4295,7 @@
   - Afrah Shaahid
   - Muzammil Behzad
   tldr: AquaDiff uses a chromatic prior-guided conditional diffusion process with cross-attention and a cross-domain consistency loss to correct color distortion in underwater images.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-aqua-net-adaptive-frequency-fusion-and-illumination-aware-ne
@@ -4422,34 +4322,7 @@
   - Davide Di Bari
   - Simonepietro Canese
   tldr: AQUA-Net combines frequency fusion and Retinex-inspired illumination correction in a lightweight encoder-decoder for underwater image enhancement.
-  status: candidate
-  added: '2026-09-27'
-  notes: null
-- id: 2025-waterwave-bridging-underwater-image-enhancement-into-video-s
-  title: 'WaterWave: Bridging Underwater Image Enhancement into Video Streams via Wavelet-based Temporal Consistency Field'
-  year: 2025
-  venue: arXiv
-  type: Hybrid
-  tags:
-  - Unsupervised
-  - Physical-Model
-  - Task-Driven
-  - Multiscale-Fusion
-  url: https://arxiv.org/abs/2512.05492
-  doi: null
-  arxiv_id: '2512.05492'
-  code: null
-  project: null
-  authors:
-  - Qi Zhu
-  - Jingyi Zhang
-  - Naishan Zheng
-  - Wei Yu
-  - Jinghao Zhang
-  - Deyi Ji
-  - Feng Zhao
-  tldr: WaterWave uses a wavelet-based temporal consistency field to enhance underwater videos frame-by-frame from single-image models while preserving motion and temporal coherence.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-wwe-uie-a-wavelet-white-balance-efficient-network-for-underw
@@ -4474,7 +4347,7 @@
   - Chia-Ming Lee
   - Chih-Chung Hsu
   tldr: WWE-UIE combines adaptive white balance, wavelet decomposition, and Sobel gating for efficient underwater image enhancement with real-time inference.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-an-upsampling-guided-adaptive-frequency-decoupled-model-for
@@ -4499,34 +4372,7 @@
   - Yulong Huang
   - Yonggang Zhang
   tldr: SFUmamba adaptively decouples high and low frequencies with upsampling guidance to enhance underwater images using far fewer parameters.
-  status: candidate
-  added: '2026-09-27'
-  notes: null
-- id: 2025-enhanced-quality-aware-scalable-underwater-image-compression
-  title: Enhanced Quality Aware-Scalable Underwater Image Compression
-  year: 2025
-  venue: arXiv
-  type: Hybrid
-  tags:
-  - Task-Driven
-  - Lightweight
-  - Contrast-Enhancement
-  - Image-Synthesis
-  url: https://arxiv.org/abs/2509.23200
-  doi: null
-  arxiv_id: '2509.23200'
-  code: null
-  project: null
-  authors:
-  - Linwei Zhu
-  - Junhao Zhu
-  - Xu Zhang
-  - Huan Zhang
-  - Ye Li
-  - Runmin Cong
-  - Sam Kwong
-  tldr: A scalable underwater image compression framework with base and enhancement layers jointly performs compression and enhancement using sparse coefficients and dual-branch filtering.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-from-restoration-to-reconstruction-rethinking-3d-gaussian-sp
@@ -4551,7 +4397,7 @@
   - David Bull
   - Nantheera Anantrasirichai
   tldr: R-Splatting integrates multiple underwater image restoration outputs into 3D Gaussian Splatting with uncertainty-aware opacity optimization, improving rendering and geometry.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-sformer-snr-guided-transformer-for-underwater-image-enhancem
@@ -4578,7 +4424,7 @@
   - Chi-Man Pun
   - Xuhang Chen
   tldr: SFormer uses frequency-domain SNR priors with Fourier and adaptive transformers in a U-shaped network to enhance underwater images.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-daca-net-a-degradation-aware-conditional-diffusion-network-f
@@ -4607,7 +4453,7 @@
   - Huayong Yang
   - Kaishun Wu
   tldr: A degradation-aware conditional diffusion model with Swin UNet backbone and physical priors enhances underwater images via predicted degradation scores and adaptive noise scheduling.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-single-step-latent-diffusion-for-underwater-image-restoratio
@@ -4635,7 +4481,7 @@
   - Yiannis Aloimonos
   - Christopher A. Metzler
   tldr: SLURPP combines a pretrained latent diffusion model with explicit scene decomposition and physics-based synthetic data to restore underwater images in one step.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-mac-lookup-multi-axis-conditional-lookup-model-for-underwate
@@ -4661,7 +4507,7 @@
   - Wangyu Wu
   - Xuhang Chen
   tldr: MAC-Lookup uses a conditional 3D lookup table for color correction and multi-axis adaptive enhancement to improve underwater image color, sharpness, and contrast.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-physics-informed-capsule-enhanced-variational-autoencoder-fo
@@ -4684,7 +4530,7 @@
   - Niki Martinel
   - Rita Pucci
   tldr: A dual-stream variational autoencoder integrates the Jaffe-McGlamery physical model with capsule clustering to estimate transmission and background light for underwater image enhancement.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-underwater-diffusion-attention-network-with-contrastive-lang
@@ -4707,7 +4553,7 @@
   - Afrah Shaahid
   - Muzammil Behzad
   tldr: UDAN-CLIP is an image-to-image diffusion framework with a vision-language classifier, spatial attention, and CLIP-Diffusion loss for underwater image enhancement.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-vrs-uie-value-driven-reordering-scanning-for-underwater-imag
@@ -4734,7 +4580,7 @@
   - Nan Ma
   - Xianming Liu
   tldr: VRS-UIE reorders Mamba scanning by a learned value map to prioritize informative underwater regions, improving enhancement and enabling a lightweight real-time variant.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-unveiling-the-underwater-world-clip-perception-model-guided
@@ -4786,28 +4632,6 @@
   status: verified
   added: '2026-09-27'
   notes: null
-- id: 2025-ukdm-underwater-keypoint-detection-and-matching-using-underw
-  title: 'UKDM: Underwater keypoint detection and matching using underwater image enhancement techniques'
-  year: 2025
-  venue: arXiv
-  type: DeepLearning
-  tags:
-  - CNN
-  - GAN
-  - Benchmark
-  url: https://arxiv.org/abs/2504.11063
-  doi: null
-  arxiv_id: '2504.11063'
-  code: null
-  project: null
-  authors:
-  - Pedro Diaz-Garcia
-  - Felix Escalona
-  - Miguel Cazorla
-  tldr: Applies deep learning-based underwater image enhancement to improve keypoint detection and matching, showing gains over traditional methods across datasets.
-  status: candidate
-  added: '2026-09-27'
-  notes: null
 - id: 2025-snntrans-dhz-a-lightweight-spiking-neural-network-architectu
   title: 'snnTrans-DHZ: A Lightweight Spiking Neural Network Architecture for Underwater Image Dehazing'
   year: 2025
@@ -4833,7 +4657,7 @@
   - Giulia De Masi
   - Jorge Dias
   tldr: A lightweight spiking neural network for underwater image dehazing that processes RGB-LAB sequences with temporal dynamics and achieves efficient state-of-the-art performance.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-underwater-image-enhancement-by-convolutional-spiking-neural
@@ -4861,7 +4685,7 @@
   - Giulia De Masi
   - Jorge Dias
   tldr: Introduces UIE-SNN, a 19-layer convolutional spiking encoder-decoder with skip connections trained via surrogate gradient BPTT for energy-efficient underwater image enhancement.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-cross-domain-underwater-image-enhancement-guided-by-no-refer
@@ -4884,7 +4708,7 @@
   - Lu Li
   - Daoyi Chen
   tldr: Trans-UIE uses transfer learning with no-reference image quality assessment to guide cross-domain underwater image enhancement, reducing pseudo-label and overfitting issues.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-dpf-net-physical-imaging-model-embedded-data-driven-underwat
@@ -4910,7 +4734,7 @@
   - Chengzhi Ma
   - Qianli Jiang
   tldr: DPF-Net is a two-stage network that estimates physical parameters from synthetic data and fuses them into a data-driven enhancement model with physics-based consistency and weak reference losses.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-an-adaptive-underwater-image-enhancement-framework-via-multi
@@ -4934,7 +4758,7 @@
   - Kangchen Yao
   - Xiaoyang Yu
   tldr: An adaptive framework combines illumination compensation, multi-domain filtering, and dynamic color compensation to enhance degraded underwater images.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-udbe-unsupervised-diffusion-based-brightness-enhancement-in
@@ -4960,7 +4784,7 @@
   - Felipe Gomes de Oliveira
   - Paulo L. J. Drews-Jr
   tldr: UDBE uses conditional diffusion with color and signal-noise maps to enhance brightness in unpaired underwater images without supervision.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-underwater-image-restoration-through-a-prior-guided-hybrid-s
@@ -4984,7 +4808,7 @@
   - Shuqiang Wang
   - Chi-Man Pun
   tldr: A color balance prior guided hybrid multi-scale framework restores underwater images and benchmarks 37 existing methods across paired and unpaired datasets.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2025-ccmcs-net-integrating-color-correction-and-multi-color-space
@@ -5009,7 +4833,7 @@
   - Xibei Yang
   - Jinlong Shi
   tldr: CCMCS-Net is a two-stage network that corrects underwater color distortion and enhances contrast via multi-color-space stretching and dynamic fusion.
-  status: candidate
+  status: verified
   added: '2026-09-27'
   notes: null
 - id: 2006-self-tuning-underwater-image-restoration
