@@ -1,6 +1,6 @@
 # Awesome Underwater Image Enhancement (UIE)
 
-> Auto-generated index of 176 underwater image enhancement papers (2004-2026).
+> Auto-generated index of 198 underwater image enhancement papers (2004-2026).
 > For programmatic access prefer `papers.json` (all fields) or `collection.csv`.
 
 ## Data files
@@ -11,15 +11,30 @@
 - [README.md](README.md): project overview
 
 ## Summary
-- papers: 176
-- with code: 99
+- papers: 198
+- with code: 106
 - Traditional: 39
-- DeepLearning: 109
-- Hybrid: 28
+- DeepLearning: 124
+- Hybrid: 35
 
 ## Papers
 - [2026] Neurocomputing — Task-tailored semi-supervised underwater image enhancement with dual-prior guidance (Semi-supervised) — https://doi.org/10.1016/j.neucom.2026.135043
 - [2026] Optics & Laser Technology — KLDD: Underwater image enhancement via KL-divergence-driven color cast correction and multistage enhancement fusion (Color-Correction; Contrast-Enhancement; Multiscale-Fusion; Image-Fusion; Low-Light-Enhancement) — https://doi.org/10.1016/j.optlastec.2026.116369
+- [2026] arXiv — A Dual-Branch Collaborative Framework for Joint Optimization of Underwater Image Enhancement and Object Detection (Task-Driven; Color-Correction; Contrast-Enhancement; Lightweight; Image-Fusion) — https://arxiv.org/abs/2606.15857
+- [2026] arXiv — Advancing Visual Reliability: Color-Accurate Underwater Image Enhancement for Real-Time Underwater Missions (Real-time; Lightweight; Color-Correction; CNN) — https://arxiv.org/abs/2603.16363
+- [2026] arXiv — CLUIE: Clustering-Aware Recurrent Propagation with Local Structural Compensation for Underwater Image Enhancement (Transformer; Color-Correction; Contrast-Enhancement; Backscatter-Removal; Physical-Model) — https://arxiv.org/abs/2607.21467 [code](https://github.com/geekpool/CLUIE)
+- [2026] arXiv — CoRe-UIE: Rethinking Coexisting and Region-wise Degradation for Underwater Image Enhancement (Color-Correction; Dehazing; Contrast-Enhancement; Low-Light-Enhancement; Task-Driven) — https://arxiv.org/abs/2608.08965
+- [2026] arXiv — Degradation-Guided Underwater Image Restoration with Task-Oriented Latent Control (Task-Driven; Lightweight; Benchmark) — https://arxiv.org/abs/2608.08661
+- [2026] arXiv — Downstream Task Inspired Underwater Image Enhancement: A Perception-Aware Study from Dataset Construction to Network Design (Task-Driven; CNN; Benchmark; Domain-Adaptation) — https://arxiv.org/abs/2603.01767 [code](https://github.com/oucailab/DTIUIE)
+- [2026] arXiv — Empowering Semantic-Sensitive Underwater Image Enhancement with VLM (Large-Model; Task-Driven; Transformer; Domain-Adaptation) — https://arxiv.org/abs/2603.12773
+- [2026] arXiv — Halo Separation-guided Underwater Multi-scale Image Restoration (Multiscale-Fusion; Physical-Model; Image-Formation-Model; Low-Light-Enhancement) — https://arxiv.org/abs/2605.10374
+- [2026] arXiv — LOBSTgER-enhance: an underwater image enhancement pipeline (Diffusion; Image-Synthesis; Color-Correction; Contrast-Enhancement; Dehazing) — https://arxiv.org/abs/2602.05163
+- [2026] arXiv — Real-Time Underwater Image Enhancement via Frequency-Guided Dual-Path Attention (CNN; Real-time; Lightweight; Image-Fusion) — https://arxiv.org/abs/2606.30314 [code](https://github.com/LethyZhang/FGDPA)
+- [2026] arXiv — RQUL-UIE: Revitalizing Quality-Unstable Labels for Underwater Image Enhancement via In-Dataset Self-Supervision (Diffusion; Self-supervised; Unsupervised; Image-Synthesis) — https://arxiv.org/abs/2606.06176
+- [2026] arXiv — Style-Decoupled Adaptive Routing Network for Underwater Image Enhancement (Domain-Adaptation; Task-Driven; Benchmark) — https://arxiv.org/abs/2604.12257 [code](https://github.com/WHU-USI3DV/SDAR-Net)
+- [2026] arXiv — Two-Stage Teacher-Student Reliable Prior Learning for Robust Underwater Image Enhancement (Diffusion; Task-Driven; Domain-Adaptation; Physical-Model) — https://arxiv.org/abs/2608.00137
+- [2026] arXiv — UIESNN: A Scale-Aware Spiking Network for Underwater Image Enhancement (Multiscale-Fusion; Color-Correction; Dehazing; Lightweight) — https://arxiv.org/abs/2605.08376
+- [2026] arXiv — VLMs Win a Systematic Evaluation of Underwater Image Reconstruction (Physical-Model; Benchmark; Foundation-Model; Large-Model) — https://arxiv.org/abs/2608.11425
 - [2026] IROS — Dynamic SpectraFormer for Ultra-High-Definition Underwater Image Enhancement (Transformer; Color-Correction; Dehazing; Contrast-Enhancement) — https://doi.org/10.1109/IROS58592.2024.10802529 [code](https://github.com/arifence2024/DynamicSpectraFormer.git)
 - [2026] Neurocomputing — Prior-guided anchor-conditioned diffusion for underwater image enhancement (Diffusion) — https://doi.org/10.1016/j.neucom.2026.135154
 - [2026] Ocean Engineering — Decoupling color and structure via dual-branch learning for high-fidelity underwater image restoration (CNN; Color-Correction; Multiscale-Fusion; Lightweight; Real-time) — https://doi.org/10.1016/j.oceaneng.2026.128196 [code](https://github.com/Qlinlin/UDHE)
@@ -30,6 +45,13 @@
 - [2026] TIP — Task-Driven Underwater Image Enhancement via Hierarchical Semantic Refinement (Task-Driven; Self-supervised; Multiscale-Fusion; Foundation-Model; Image-Fusion) — https://ieeexplore.ieee.org/document/11321080 [code](https://github.com/gemyumeng/HSRUIE)
 - [2026] TMM — Color Correction Meets Cross-Spectral Refinement: A Distribution-Aware Diffusion for Underwater Image Restoration (Diffusion; Color-Correction; Multiscale-Fusion; Physical-Model) — https://ieeexplore.ieee.org/document/11353942 [code](https://github.com/LaibinChang/DiffColor)
 - [2026] TMM — PyUIE: A Coarse-to-Fine Deep Pyramid Network for Underwater Image Enhancement (CNN; Color-Correction; Contrast-Enhancement; Multiscale-Fusion; Lightweight) — https://ieeexplore.ieee.org/document/11330175 [code](https://github.com/ttttllt/PyUIE)
+- [2026] arXiv — $π$-SUB: A Physics-Informed Synthetic Underwater Benchmark Dataset for Underwater Image Enhancement (GAN; Physical-Model; Benchmark; Image-Synthesis; Image-Formation-Model; Domain-Adaptation) — https://arxiv.org/abs/2608.10589 [code](https://github.com/airl-iisc/pi-SUB)
+- [2026] arXiv — An Underwater Dehazing Network with Implicit Transmission Estimation (Dehazing; Physical-Model; Depth-Estimation; Image-Formation-Model; Lightweight) — https://arxiv.org/abs/2605.13720
+- [2026] arXiv — Development of Domain-Invariant Visual Enhancement and Restoration (DIVER) Approach for Underwater Images (Physical-Model; Unsupervised; Color-Correction; Low-Light-Enhancement; Backscatter-Removal) — https://arxiv.org/abs/2601.22878
+- [2026] arXiv — DY-LUT: Depth-Aware YCbCr Lookup Tables for Real-Time Underwater Image Enhancement (Real-time; Lightweight; Physical-Model; Depth-Estimation; Color-Correction) — https://arxiv.org/abs/2607.22801 [code](https://github.com/cunhaozhu/DY-LUT)
+- [2026] arXiv — Hero-Mamba: Mamba-based Dual Domain Learning for Underwater Image Enhancement (CNN; Transformer; Mamba; Color-Correction; Image-Fusion) — https://arxiv.org/abs/2604.16266
+- [2026] arXiv — Retinex Meets Language: A Physics-Semantics-Guided Underwater Image Enhancement Network (Physical-Model; Retinex; Large-Model; Color-Correction; Contrast-Enhancement) — https://arxiv.org/abs/2603.07076
+- [2026] arXiv — Variational Deep Unfolding with Mamba-Based Nonlocal Modeling for Underwater Image Enhancement (Mamba; Dehazing; Physical-Model; Image-Formation-Model; Task-Driven) — https://arxiv.org/abs/2606.14781 [code](https://github.com/MIA-UIB/Variational-Unfolding-Mamba-Underwater-Enhancement)
 - [2026] Information Fusion — Fusing Transferred Priors and Physics-based Decomposition for Underwater Image Enhancement (Physical-Model; Color-Correction; Dehazing; Domain-Adaptation; Unsupervised) — https://doi.org/10.1016/j.inffus.2026.104557 [code](https://github.com/Haru2022/P2-UIE)
 - [2026] JMSE — Dual-Branch Underwater-Image Enhancement via Bidirectional Supervision, Contrastive Learning, and Style Transfer (GAN; Unsupervised; Transformer; Semi-supervised; Contrast-Enhancement; Color-Correction) — https://doi.org/10.3390/jmse14191782
 - [2026] PLoS ONE — Phys-Mamba: Physics-informed selective state-space fusion network for high-fidelity underwater image restoration (GAN; Transformer; Mamba; Physical-Model; Real-time; Multiscale-Fusion; Lightweight) — https://doi.org/10.1371/journal.pone.0354030
