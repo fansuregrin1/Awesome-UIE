@@ -460,6 +460,8 @@ def cmd_llm(args: argparse.Namespace) -> int:
     if args.ids:
         wanted = {value.strip() for value in args.ids.split(",") if value.strip()}
         selected = [paper for paper in papers if paper.id in wanted]
+    if args.status:
+        selected = [paper for paper in selected if paper.status.value == args.status]
     if args.limit:
         selected = selected[: args.limit]
 
@@ -508,7 +510,7 @@ def cmd_llm(args: argparse.Namespace) -> int:
     if args.apply:
         fields = [field.strip() for field in args.fields.split(",") if field.strip()]
         applied = llm_module.apply_llm_suggestions(
-            papers, result.suggestions, fields=fields, tag_mode=args.tag_mode
+            papers, result.suggestions, fields=fields, tag_mode=args.tag_mode, type_mode=args.type_mode
         )
         if applied:
             dump_papers(PAPERS_YAML, papers)
@@ -669,13 +671,20 @@ def build_parser() -> argparse.ArgumentParser:
     llm.add_argument("--report", default=str(ROOT / "proposals" / "llm.md"), help="Markdown report path")
     llm.add_argument("--json", default=str(ROOT / "proposals" / "llm.json"), help="JSON report path")
     llm.add_argument("--ids", help="comma-separated paper ids to limit the run")
+    llm.add_argument("--status", choices=["verified", "candidate"], help="only process papers with this status")
     llm.add_argument("--limit", type=int, help="only process the first N papers")
     llm.add_argument("--model", help="override the model from config/llm.yaml")
     llm.add_argument("--base-url", help="override the OpenAI-compatible base URL")
     llm.add_argument("--api-key-env", help="override the API-key environment variable name")
     llm.add_argument("--all", action="store_true", help="include papers that already have a tldr")
-    llm.add_argument("--apply", action="store_true", help="write tldr/tags to papers.yaml")
+    llm.add_argument("--apply", action="store_true", help="write tldr/type/tags to papers.yaml")
     llm.add_argument("--fields", default="tldr", help="comma-separated fields to apply (default: tldr)")
+    llm.add_argument(
+        "--type-mode",
+        choices=["fill", "replace"],
+        default="fill",
+        help="how to apply type: fill (only when unset) or replace (adopt the reviewed type)",
+    )
     llm.add_argument(
         "--tag-mode",
         choices=["fill", "merge", "replace"],

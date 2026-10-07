@@ -158,7 +158,11 @@ def build_prompt(
         "Return a JSON object with these keys:\n"
         '- "tldr": one sentence (at most 30 words) describing the method and its main contribution. '
         "No marketing language, no first person.\n"
-        f'- "type": exactly one of {TYPES}.\n'
+        f'- "type": exactly one of {TYPES}, defined as: '
+        "Traditional = a classical / physical-model method with no learned network; "
+        "DeepLearning = an end-to-end learned network is the core contribution; "
+        "Hybrid = explicitly combines a physical or classical model/prior with a learned component. "
+        "Pick the one that best matches the paper's main method.\n"
         f'- "tags": the final recommended tags (at most {max_tags}), chosen only from this '
         f"controlled vocabulary: {vocabulary}. "
         "Keep a current tag only if the title/abstract supports it, drop it otherwise, and add any missing ones.\n"
@@ -241,12 +245,13 @@ def apply_llm_suggestions(
     suggestions: Sequence[LlmSuggestion],
     fields: Sequence[str] = ("tldr",),
     tag_mode: str = "fill",
+    type_mode: str = "fill",
 ) -> List[tuple]:
-    """Apply ``tldr`` / ``tags`` suggestions in place.
+    """Apply ``tldr`` / ``type`` / ``tags`` suggestions in place.
 
-    ``tldr`` is always fill-only. ``tag_mode`` controls tags:
-    ``fill`` (only when empty), ``merge`` (union with the reviewed set) or
-    ``replace`` (use the reviewed set verbatim).
+    ``tldr`` is always fill-only. ``type_mode`` is ``fill`` (only when unset) or
+    ``replace``. ``tag_mode`` controls tags: ``fill`` (only when empty), ``merge``
+    (union with the reviewed set) or ``replace`` (use the reviewed set verbatim).
     """
     by_id = {paper.id: paper for paper in papers}
     wanted = set(fields)
@@ -258,6 +263,11 @@ def apply_llm_suggestions(
         if "tldr" in wanted and suggestion.tldr and not paper.tldr:
             paper.tldr = suggestion.tldr
             applied.append((paper.id, "tldr", suggestion.tldr))
+        if "type" in wanted and suggestion.type:
+            current = paper.type.value if paper.type else None
+            if suggestion.type != current and (type_mode == "replace" or current is None):
+                paper.type = PaperType(suggestion.type)
+                applied.append((paper.id, "type", suggestion.type))
         if "tags" not in wanted or not suggestion.tags:
             continue
         if tag_mode == "replace":

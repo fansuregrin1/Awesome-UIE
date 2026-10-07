@@ -40,7 +40,10 @@ def build_batch_prompt(records: Sequence[SourceRecord], abstract_chars: int = 30
         items.append(f"{index} | {record.year or '?'} | {record.title} | {abstract}")
     user = (
         "For each item, score 0-1 how clearly it is an underwater image enhancement paper "
-        "(1 = clearly in scope) and give its type (Traditional / DeepLearning / Hybrid). "
+        "(1 = clearly in scope) and give its type. Type is one of: "
+        "Traditional = a classical / physical-model method with no learned network; "
+        "DeepLearning = an end-to-end learned network is the core contribution; "
+        "Hybrid = explicitly combines a physical or classical model/prior with a learned component. "
         "Items are 'index | year | title | abstract'.\n\n"
         + "\n".join(items)
         + '\n\nReturn JSON: {"results": [{"i": 0, "s": 0.9, "t": "Traditional"}, ...]}. '

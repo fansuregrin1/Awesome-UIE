@@ -3254,7 +3254,7 @@
   title: '3D-USE: From Image-Level to Scene-Level Underwater Enhancement'
   year: 2026
   venue: arXiv
-  type: DeepLearning
+  type: Hybrid
   tags:
   - Physical-Model
   - Image-Formation-Model
@@ -3331,7 +3331,7 @@
   title: VLMs Win a Systematic Evaluation of Underwater Image Reconstruction
   year: 2026
   venue: arXiv
-  type: Traditional
+  type: DeepLearning
   tags:
   - Physical-Model
   - Benchmark
@@ -3408,7 +3408,7 @@
   title: Two-Stage Teacher-Student Reliable Prior Learning for Robust Underwater Image Enhancement
   year: 2026
   venue: arXiv
-  type: Hybrid
+  type: DeepLearning
   tags:
   - Diffusion
   - Task-Driven
@@ -3563,7 +3563,7 @@
   title: Variational Deep Unfolding with Mamba-Based Nonlocal Modeling for Underwater Image Enhancement
   year: 2026
   venue: arXiv
-  type: DeepLearning
+  type: Hybrid
   tags:
   - Mamba
   - Dehazing
@@ -3661,7 +3661,7 @@
   title: 'UIESNN: A Scale-Aware Spiking Network for Underwater Image Enhancement'
   year: 2026
   venue: arXiv
-  type: Hybrid
+  type: DeepLearning
   tags:
   - Multiscale-Fusion
   - Color-Correction
@@ -3734,7 +3734,7 @@
   title: 'Advancing Visual Reliability: Color-Accurate Underwater Image Enhancement for Real-Time Underwater Missions'
   year: 2026
   venue: arXiv
-  type: Traditional
+  type: DeepLearning
   tags:
   - Real-time
   - Lightweight
@@ -3913,7 +3913,7 @@
   title: 'TIDE: Two-Stage Inverse Degradation Estimation with Guided Prior Disentanglement for Underwater Image Restoration'
   year: 2025
   venue: arXiv
-  type: Traditional
+  type: DeepLearning
   tags:
   - Color-Correction
   - Dehazing
@@ -4429,7 +4429,7 @@
   title: 'WaterWave: Bridging Underwater Image Enhancement into Video Streams via Wavelet-based Temporal Consistency Field'
   year: 2025
   venue: arXiv
-  type: Traditional
+  type: Hybrid
   tags:
   - Unsupervised
   - Physical-Model
@@ -4506,7 +4506,7 @@
   title: Enhanced Quality Aware-Scalable Underwater Image Compression
   year: 2025
   venue: arXiv
-  type: DeepLearning
+  type: Hybrid
   tags:
   - Task-Driven
   - Lightweight
@@ -4533,7 +4533,7 @@
   title: 'From Restoration to Reconstruction: Rethinking 3D Gaussian Splatting for Underwater Scenes'
   year: 2025
   venue: arXiv
-  type: DeepLearning
+  type: Hybrid
   tags:
   - Physical-Model
   - Lightweight
@@ -4691,7 +4691,7 @@
   title: Underwater Diffusion Attention Network with Contrastive Language-Image Joint Learning for Underwater Image Enhancement
   year: 2025
   venue: arXiv
-  type: Hybrid
+  type: DeepLearning
   tags:
   - Diffusion
   - Foundation-Model
@@ -4812,7 +4812,7 @@
   title: 'snnTrans-DHZ: A Lightweight Spiking Neural Network Architecture for Underwater Image Dehazing'
   year: 2025
   venue: arXiv
-  type: Hybrid
+  type: DeepLearning
   tags:
   - Dehazing
   - Lightweight
@@ -4967,7 +4967,7 @@
   title: Underwater Image Restoration Through a Prior Guided Hybrid Sense Approach and Extensive Benchmark Analysis
   year: 2025
   venue: arXiv
-  type: DeepLearning
+  type: Hybrid
   tags:
   - Benchmark
   - Color-Correction
