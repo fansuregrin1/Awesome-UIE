@@ -1,8 +1,8 @@
 {
-  "count": 176,
+  "count": 198,
   "stats": {
-    "count": 176,
-    "with_code": 99,
+    "count": 198,
+    "with_code": 106,
     "year_min": 2004,
     "year_max": 2026,
     "year_range": "2004-2026"
@@ -60,6 +60,444 @@
         "Cheng Qian"
       ],
       "tldr": "KLDD corrects underwater color casts via KL-divergence-driven statistical transfer and fuses multistage luminance, contrast, and detail enhancements using cross-scale consistency-guided DWT fusion.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-a-dual-branch-collaborative-framework-for-joint-optimization",
+      "title": "A Dual-Branch Collaborative Framework for Joint Optimization of Underwater Image Enhancement and Object Detection",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Task-Driven",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Lightweight",
+        "Image-Fusion"
+      ],
+      "url": "https://arxiv.org/abs/2606.15857",
+      "doi": null,
+      "arxiv_id": "2606.15857",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Liyuan Cao",
+        "Zheng Liu",
+        "Guanghao Liao",
+        "Yonghui Yang",
+        "Qi Li"
+      ],
+      "tldr": "A dual-branch framework jointly optimizes underwater image enhancement and object detection, combining detail enhancement and adaptive color restoration to improve detection accuracy.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-advancing-visual-reliability-color-accurate-underwater-image",
+      "title": "Advancing Visual Reliability: Color-Accurate Underwater Image Enhancement for Real-Time Underwater Missions",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Real-time",
+        "Lightweight",
+        "Color-Correction",
+        "CNN"
+      ],
+      "url": "https://arxiv.org/abs/2603.16363",
+      "doi": null,
+      "arxiv_id": "2603.16363",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Yiqiang Zhou",
+        "Yifan Chen",
+        "Zhe Sun",
+        "Jijun Lu",
+        "Ye Zheng",
+        "Xuelong Li"
+      ],
+      "tldr": "A real-time underwater image enhancement framework uses adaptive channel compensation, re-parameterized dilated convolution, and statistical color adjustment for accurate color restoration.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-cluie-clustering-aware-recurrent-propagation-with-local-stru",
+      "title": "CLUIE: Clustering-Aware Recurrent Propagation with Local Structural Compensation for Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Transformer",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Backscatter-Removal",
+        "Physical-Model"
+      ],
+      "url": "https://arxiv.org/abs/2607.21467",
+      "doi": null,
+      "arxiv_id": "2607.21467",
+      "code": "https://github.com/geekpool/CLUIE",
+      "project": null,
+      "authors": [
+        "Kui Jiang",
+        "Zefan Feng",
+        "Laibin Chang",
+        "Yan Luo",
+        "Junjun Jiang",
+        "Xiaopeng Fan"
+      ],
+      "tldr": "CRWKV reformulates RWKV recurrent propagation into a clustering-aware token trajectory with local structural compensation for region-adaptive underwater image enhancement.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-core-uie-rethinking-coexisting-and-region-wise-degradation-f",
+      "title": "CoRe-UIE: Rethinking Coexisting and Region-wise Degradation for Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Color-Correction",
+        "Dehazing",
+        "Contrast-Enhancement",
+        "Low-Light-Enhancement",
+        "Task-Driven"
+      ],
+      "url": "https://arxiv.org/abs/2608.08965",
+      "doi": null,
+      "arxiv_id": "2608.08965",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Weifeng Kong",
+        "Chenghao Xu",
+        "Lin Chen",
+        "Ziheng Cao",
+        "Guanying Huo"
+      ],
+      "tldr": "CoRe-UIE uses a shared expert and four routed experts with region-adaptive Top-k routing and HSIC constraints to address coexisting, region-wise underwater degradations.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-degradation-guided-underwater-image-restoration-with-task-or",
+      "title": "Degradation-Guided Underwater Image Restoration with Task-Oriented Latent Control",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Task-Driven",
+        "Lightweight",
+        "Benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2608.08661",
+      "doi": null,
+      "arxiv_id": "2608.08661",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Xu Zhang",
+        "Xuhui Cao",
+        "Kangzhe Yuan",
+        "Laibin Chang",
+        "Yichu Xu",
+        "Shi Chen",
+        "Huan Zhang",
+        "Yong Chen"
+      ],
+      "tldr": "PROTEUS couples degradation-guided feature modulation with task-oriented latent control to improve underwater image restoration while balancing quality and computational cost.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-downstream-task-inspired-underwater-image-enhancement-a-perc",
+      "title": "Downstream Task Inspired Underwater Image Enhancement: A Perception-Aware Study from Dataset Construction to Network Design",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Task-Driven",
+        "CNN",
+        "Benchmark",
+        "Domain-Adaptation"
+      ],
+      "url": "https://arxiv.org/abs/2603.01767",
+      "doi": null,
+      "arxiv_id": "2603.01767",
+      "code": "https://github.com/oucailab/DTIUIE",
+      "project": null,
+      "authors": [
+        "Bosen Lin",
+        "Feng Gao",
+        "Yanwei Yu",
+        "Junyu Dong",
+        "Qian Du"
+      ],
+      "tldr": "A two-branch task-aware network with perceptual loss and a task-inspired dataset improves underwater image enhancement for downstream segmentation and detection.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-empowering-semantic-sensitive-underwater-image-enhancement-w",
+      "title": "Empowering Semantic-Sensitive Underwater Image Enhancement with VLM",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Large-Model",
+        "Task-Driven",
+        "Transformer",
+        "Domain-Adaptation"
+      ],
+      "url": "https://arxiv.org/abs/2603.12773",
+      "doi": null,
+      "arxiv_id": "2603.12773",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Guodong Fan",
+        "Shengning Zhou",
+        "Genji Yuan",
+        "Huiyu Li",
+        "Jingchun Zhou",
+        "Jinjiang Li"
+      ],
+      "tldr": "A VLM-based dual-guidance mechanism uses text-image alignment to produce spatial semantic maps that steer UIE networks toward restoring key object features.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-halo-separation-guided-underwater-multi-scale-image-restorat",
+      "title": "Halo Separation-guided Underwater Multi-scale Image Restoration",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Multiscale-Fusion",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Low-Light-Enhancement"
+      ],
+      "url": "https://arxiv.org/abs/2605.10374",
+      "doi": null,
+      "arxiv_id": "2605.10374",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Jiaxin Yang",
+        "Honglin Liu",
+        "Yongli Wang",
+        "Shuyi Cao",
+        "Chengcheng Jiang",
+        "Jiale Wang"
+      ],
+      "tldr": "An iterative two-subnetwork method separates halos from artificial light and restores underwater images using gradient minimization and multi-scale recovery.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-lobstger-enhance-an-underwater-image-enhancement-pipeline",
+      "title": "LOBSTgER-enhance: an underwater image enhancement pipeline",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Diffusion",
+        "Image-Synthesis",
+        "Color-Correction",
+        "Contrast-Enhancement",
+        "Dehazing"
+      ],
+      "url": "https://arxiv.org/abs/2602.05163",
+      "doi": null,
+      "arxiv_id": "2602.05163",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Andreas Mentzelopoulos",
+        "Keith Ellenbogen"
+      ],
+      "tldr": "A diffusion-based image-to-image pipeline trained on synthetic underwater corruptions enhances a small dataset of awareness photography images.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-real-time-underwater-image-enhancement-via-frequency-guided",
+      "title": "Real-Time Underwater Image Enhancement via Frequency-Guided Dual-Path Attention",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "CNN",
+        "Real-time",
+        "Lightweight",
+        "Image-Fusion"
+      ],
+      "url": "https://arxiv.org/abs/2606.30314",
+      "doi": null,
+      "arxiv_id": "2606.30314",
+      "code": "https://github.com/LethyZhang/FGDPA",
+      "project": null,
+      "authors": [
+        "Leshen Zhang",
+        "Ao Li",
+        "Ce Zhu"
+      ],
+      "tldr": "A lightweight CNN with fixed DCT priors and frequency-guided dual-path attention achieves real-time underwater image enhancement at 4.23K parameters and 600+ FPS.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-rqul-uie-revitalizing-quality-unstable-labels-for-underwater",
+      "title": "RQUL-UIE: Revitalizing Quality-Unstable Labels for Underwater Image Enhancement via In-Dataset Self-Supervision",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Diffusion",
+        "Self-supervised",
+        "Unsupervised",
+        "Image-Synthesis"
+      ],
+      "url": "https://arxiv.org/abs/2606.06176",
+      "doi": null,
+      "arxiv_id": "2606.06176",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Haochen Hu",
+        "Yanrui Bin",
+        "Chih-yung Wen",
+        "Bing Wang"
+      ],
+      "tldr": "A diffusion-based in-dataset self-supervised strategy quantizes label quality into noise-level indices for level-wise supervision, with Fourier refinement for high-frequency reconstruction.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-style-decoupled-adaptive-routing-network-for-underwater-imag",
+      "title": "Style-Decoupled Adaptive Routing Network for Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Domain-Adaptation",
+        "Task-Driven",
+        "Benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2604.12257",
+      "doi": null,
+      "arxiv_id": "2604.12257",
+      "code": "https://github.com/WHU-USI3DV/SDAR-Net",
+      "project": null,
+      "authors": [
+        "Hang Xu",
+        "Chen Long",
+        "Bing Wang",
+        "Hao Chen",
+        "Zhen Dong"
+      ],
+      "tldr": "SDAR-Net decouples degradation style from scene structure and uses adaptive routing to fuse representations, achieving state-of-the-art underwater image enhancement.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-two-stage-teacher-student-reliable-prior-learning-for-robust",
+      "title": "Two-Stage Teacher-Student Reliable Prior Learning for Robust Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Diffusion",
+        "Task-Driven",
+        "Domain-Adaptation",
+        "Physical-Model"
+      ],
+      "url": "https://arxiv.org/abs/2608.00137",
+      "doi": null,
+      "arxiv_id": "2608.00137",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Yifan Chen",
+        "Jiaming Liu",
+        "Ye Zheng",
+        "Zhe Sun",
+        "Tao Chen"
+      ],
+      "tldr": "A two-stage teacher-student framework learns reliable spatial priors from paired images and transfers them to degraded-only inference for robust underwater image enhancement.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-uiesnn-a-scale-aware-spiking-network-for-underwater-image-en",
+      "title": "UIESNN: A Scale-Aware Spiking Network for Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Multiscale-Fusion",
+        "Color-Correction",
+        "Dehazing",
+        "Lightweight"
+      ],
+      "url": "https://arxiv.org/abs/2605.08376",
+      "doi": null,
+      "arxiv_id": "2605.08376",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Shuang Chen",
+        "Ruochen Li",
+        "Zihan Zhu",
+        "Ronald Thenius",
+        "Farshad Arvin",
+        "Amir Atapour-Abarghouei"
+      ],
+      "tldr": "A scale-aware spiking neural network with multi-scale pooling LIF blocks and spike-driven frequency-attention refinement improves underwater image enhancement.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-vlms-win-a-systematic-evaluation-of-underwater-image-reconst",
+      "title": "VLMs Win a Systematic Evaluation of Underwater Image Reconstruction",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "DeepLearning",
+      "tags": [
+        "Physical-Model",
+        "Benchmark",
+        "Foundation-Model",
+        "Large-Model"
+      ],
+      "url": "https://arxiv.org/abs/2608.11425",
+      "doi": null,
+      "arxiv_id": "2608.11425",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Sara Aghajanzadeh",
+        "Yingxue Wang",
+        "Ieva Bagdonaviciute",
+        "David Forsyth"
+      ],
+      "tldr": "A systematic evaluation pipeline for underwater image reconstruction shows Vision-Language Models outperform physically based models.",
       "status": "verified",
       "added": "2026-09-27",
       "notes": null
@@ -349,6 +787,210 @@
       "tldr": "PyUIE uses a Laplacian pyramid to separate low-frequency color and high-frequency detail, enhancing details coarse-to-fine with multi-scale supervision.",
       "status": "verified",
       "added": "2026-09-26",
+      "notes": null
+    },
+    {
+      "id": "2026-sub-a-physics-informed-synthetic-underwater-benchmark-datase",
+      "title": "$π$-SUB: A Physics-Informed Synthetic Underwater Benchmark Dataset for Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "Hybrid",
+      "tags": [
+        "GAN",
+        "Physical-Model",
+        "Benchmark",
+        "Image-Synthesis",
+        "Image-Formation-Model",
+        "Domain-Adaptation"
+      ],
+      "url": "https://arxiv.org/abs/2608.10589",
+      "doi": null,
+      "arxiv_id": "2608.10589",
+      "code": "https://github.com/airl-iisc/pi-SUB",
+      "project": null,
+      "authors": [
+        "Namritha Lasyapriya Maddali",
+        "Rajini Makam",
+        "Suresh Sundaram",
+        "Narasimhan Sundararajan"
+      ],
+      "tldr": "A physics-informed framework generates synthetic underwater benchmark datasets using depth-dependent irradiance, biological absorption, and scattering across Jerlov water types, improving UIE generalization.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-an-underwater-dehazing-network-with-implicit-transmission-es",
+      "title": "An Underwater Dehazing Network with Implicit Transmission Estimation",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "Hybrid",
+      "tags": [
+        "Dehazing",
+        "Physical-Model",
+        "Depth-Estimation",
+        "Image-Formation-Model",
+        "Lightweight"
+      ],
+      "url": "https://arxiv.org/abs/2605.13720",
+      "doi": null,
+      "arxiv_id": "2605.13720",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Sahana Ray",
+        "Sanjay Ghosh"
+      ],
+      "tldr": "UDehaze-iT estimates scene depth implicitly and derives per-channel transmission via Beer-Lambert law with learnable coefficients for underwater image enhancement.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-development-of-domain-invariant-visual-enhancement-and-resto",
+      "title": "Development of Domain-Invariant Visual Enhancement and Restoration (DIVER) Approach for Underwater Images",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "Hybrid",
+      "tags": [
+        "Physical-Model",
+        "Unsupervised",
+        "Color-Correction",
+        "Low-Light-Enhancement",
+        "Backscatter-Removal"
+      ],
+      "url": "https://arxiv.org/abs/2601.22878",
+      "doi": null,
+      "arxiv_id": "2601.22878",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Rajini Makam",
+        "Sharanya Patil",
+        "Dhatri Shankari T M",
+        "Suresh Sundaram",
+        "Narasimhan Sundararajan"
+      ],
+      "tldr": "DIVER combines unsupervised luminance and spectral correction with physics-guided backscatter and attenuation modeling for domain-invariant underwater image enhancement.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-dy-lut-depth-aware-ycbcr-lookup-tables-for-real-time-underwa",
+      "title": "DY-LUT: Depth-Aware YCbCr Lookup Tables for Real-Time Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "Hybrid",
+      "tags": [
+        "Real-time",
+        "Lightweight",
+        "Physical-Model",
+        "Depth-Estimation",
+        "Color-Correction"
+      ],
+      "url": "https://arxiv.org/abs/2607.22801",
+      "doi": null,
+      "arxiv_id": "2607.22801",
+      "code": "https://github.com/cunhaozhu/DY-LUT",
+      "project": "https://arxiv.org/abs/2607.22801",
+      "authors": [
+        "Cunhao Zhu",
+        "Xiangtao Kong",
+        "Dongliang Xu",
+        "Zhiheng Zhang",
+        "Tianyu Wang",
+        "Yue Yao"
+      ],
+      "tldr": "DY-LUT uses depth-aware YCbCr 4D lookup tables with learned degradation indices for real-time, spatially adaptive underwater image enhancement.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-hero-mamba-mamba-based-dual-domain-learning-for-underwater-i",
+      "title": "Hero-Mamba: Mamba-based Dual Domain Learning for Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "Hybrid",
+      "tags": [
+        "CNN",
+        "Transformer",
+        "Mamba",
+        "Color-Correction",
+        "Image-Fusion"
+      ],
+      "url": "https://arxiv.org/abs/2604.16266",
+      "doi": null,
+      "arxiv_id": "2604.16266",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Tejeswar Pokuri",
+        "Shivarth Rai"
+      ],
+      "tldr": "Hero-Mamba uses Mamba-based SS2D blocks for dual-domain spatial and spectral learning, with a background-light-guided ColorFusion block, to enhance underwater images efficiently.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-retinex-meets-language-a-physics-semantics-guided-underwater",
+      "title": "Retinex Meets Language: A Physics-Semantics-Guided Underwater Image Enhancement Network",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "Hybrid",
+      "tags": [
+        "Physical-Model",
+        "Retinex",
+        "Large-Model",
+        "Color-Correction",
+        "Contrast-Enhancement"
+      ],
+      "url": "https://arxiv.org/abs/2603.07076",
+      "doi": null,
+      "arxiv_id": "2603.07076",
+      "code": null,
+      "project": null,
+      "authors": [
+        "Shixuan Xu",
+        "Yabo Liu",
+        "Chao Huang",
+        "Junyu Dong",
+        "Xinghui Dong"
+      ],
+      "tldr": "A Retinex-based illumination estimator and CLIP-guided restorer enhance underwater images, with a new image-text dataset and semantic similarity loss.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-variational-deep-unfolding-with-mamba-based-nonlocal-modelin",
+      "title": "Variational Deep Unfolding with Mamba-Based Nonlocal Modeling for Underwater Image Enhancement",
+      "year": 2026,
+      "venue": "arXiv",
+      "type": "Hybrid",
+      "tags": [
+        "Mamba",
+        "Dehazing",
+        "Physical-Model",
+        "Image-Formation-Model",
+        "Task-Driven"
+      ],
+      "url": "https://arxiv.org/abs/2606.14781",
+      "doi": null,
+      "arxiv_id": "2606.14781",
+      "code": "https://github.com/MIA-UIB/Variational-Unfolding-Mamba-Underwater-Enhancement",
+      "project": null,
+      "authors": [
+        "Daniel Torres",
+        "Julia Navarro",
+        "Catalina Sbert",
+        "Joan Duran"
+      ],
+      "tldr": "A variational deep unfolding network with Mamba-based nonlocal modeling and proximal trajectory loss enhances underwater images via dehazing decomposition.",
+      "status": "verified",
+      "added": "2026-09-27",
       "notes": null
     },
     {
