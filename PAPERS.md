@@ -2,7 +2,7 @@
 
 # Underwater Image Enhancement — Paper List
 
-198 papers, grouped by year (newest first). See the [README](README.md) for an overview and the [interactive site](https://fansuregrin1.github.io/Awesome-UIE/) for search and filtering.
+200 papers, grouped by year (newest first). See the [README](README.md) for an overview and the [interactive site](https://fansuregrin1.github.io/Awesome-UIE/) for search and filtering.
 
 ## Year 2026
 - **Optics & Laser Technology** (Traditional) [KLDD: Underwater image enhancement via KL-divergence-driven color cast correction and multistage enhancement fusion](https://doi.org/10.1016/j.optlastec.2026.116369). `Color-Correction` `Contrast-Enhancement` `Multiscale-Fusion` `Image-Fusion` `Low-Light-Enhancement`
@@ -214,6 +214,10 @@
 - **CVPR** (Traditional) [Enhancing Underwater Images and Videos by Fusion](https://ieeexplore.ieee.org/document/6247661). `Image-Fusion` `Color-Correction` `Contrast-Enhancement` `Dehazing` `Physical-Model` [[code]](https://github.com/bilityniu/underwater_image_fusion)
 - **TIP** (Traditional) [Turbid Scene Enhancement Using Multi-Directional Illumination Fusion](https://ieeexplore.ieee.org/document/6241430). `Physical-Model` `Image-Fusion` `Backscatter-Removal` `Contrast-Enhancement`
 - **TIP** (Traditional) [Underwater Image Enhancement by Wavelength Compensation and Dehazing](https://ieeexplore.ieee.org/document/6104148). `Physical-Model` `Dehazing` `Color-Correction` `Depth-Estimation` `Image-Formation-Model` [[code]](https://github.com/mohitkumarahuja/Underwater-Image-Enhancement-by-Wavelength-Compensation-and-Dehazing)
+## Year 2009
+- **ICASSP** (Traditional) [Underwater image enhancement by attenuation inversionwith quaternions](https://doi.org/10.1109/icassp.2009.4959799).
+## Year 2007
+- **ICIP** (Traditional) [Reconstruction of Underwater Image by Bispectrum](https://doi.org/10.1109/icip.2007.4379367).
 ## Year 2006
 - **JOE** (Traditional) [Self-Tuning Underwater Image Restoration](https://doi.org/10.1109/joe.2004.836395).
 ## Year 2005
