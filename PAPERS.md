@@ -2,7 +2,7 @@
 
 # Underwater Image Enhancement — Paper List
 
-200 papers, grouped by year (newest first). See the [README](README.md) for an overview and the [interactive site](https://fansuregrin1.github.io/Awesome-UIE/) for search and filtering.
+202 papers, grouped by year (newest first). See the [README](README.md) for an overview and the [interactive site](https://fansuregrin1.github.io/Awesome-UIE/) for search and filtering.
 
 ## Year 2026
 - **Optics & Laser Technology** (Traditional) [KLDD: Underwater image enhancement via KL-divergence-driven color cast correction and multistage enhancement fusion](https://doi.org/10.1016/j.optlastec.2026.116369). `Color-Correction` `Contrast-Enhancement` `Multiscale-Fusion` `Image-Fusion` `Low-Light-Enhancement`
@@ -214,6 +214,9 @@
 - **CVPR** (Traditional) [Enhancing Underwater Images and Videos by Fusion](https://ieeexplore.ieee.org/document/6247661). `Image-Fusion` `Color-Correction` `Contrast-Enhancement` `Dehazing` `Physical-Model` [[code]](https://github.com/bilityniu/underwater_image_fusion)
 - **TIP** (Traditional) [Turbid Scene Enhancement Using Multi-Directional Illumination Fusion](https://ieeexplore.ieee.org/document/6241430). `Physical-Model` `Image-Fusion` `Backscatter-Removal` `Contrast-Enhancement`
 - **TIP** (Traditional) [Underwater Image Enhancement by Wavelength Compensation and Dehazing](https://ieeexplore.ieee.org/document/6104148). `Physical-Model` `Dehazing` `Color-Correction` `Depth-Estimation` `Image-Formation-Model` [[code]](https://github.com/mohitkumarahuja/Underwater-Image-Enhancement-by-Wavelength-Compensation-and-Dehazing)
+## Year 2011
+- **ICIP** (Traditional) [Fusion-based restoration of the underwater images](https://doi.org/10.1109/icip.2011.6115744).
+- **Optics Letters** (Traditional) [Estimation-based approach for underwater image restoration](https://doi.org/10.1364/ol.36.002384).
 ## Year 2009
 - **ICASSP** (Traditional) [Underwater image enhancement by attenuation inversionwith quaternions](https://doi.org/10.1109/icassp.2009.4959799).
 ## Year 2007

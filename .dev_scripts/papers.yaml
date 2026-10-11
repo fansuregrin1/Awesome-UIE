@@ -4910,7 +4910,7 @@
   - Tom Haber
   - Philippe Bekaert
   tldr: Fuses contrast-enhanced and color-corrected versions of a single underwater image with a Laplacian weight pyramid, restoring visibility and color without specialized hardware or prior knowledge.
-  status: candidate
+  status: verified
   added: '2026-10-11'
   notes: null
 - id: 2011-estimation-based-approach-for-underwater-image-restoration
@@ -4929,6 +4929,6 @@
   - Bing Zheng
   - Fei Fei Sun
   tldr: Estimates the underwater image formation parameters (background light and attenuation) from the image itself to invert the degradation model, restoring color and contrast for single underwater images.
-  status: candidate
+  status: verified
   added: '2026-10-11'
   notes: null
