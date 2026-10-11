@@ -133,7 +133,10 @@
     venue.textContent = paper.venue;
     var fullName = state.venueNames[paper.venue];
     if (fullName && fullName !== paper.venue) {
-      venue.title = fullName;
+      venue.classList.add("has-tip");
+      venue.setAttribute("data-tip", fullName);
+      venue.setAttribute("tabindex", "0");
+      venue.setAttribute("aria-label", paper.venue + " — " + fullName);
     }
 
     var type = document.createElement("span");
@@ -215,7 +218,7 @@
     return limit ? entries.slice(0, limit) : entries;
   }
 
-  function renderBarChart(container, entries) {
+  function renderBarChart(container, entries, tooltipMap) {
     container.textContent = "";
     if (!entries.length) return;
     var max = entries.reduce(function (current, entry) {
@@ -228,7 +231,14 @@
       var label = document.createElement("span");
       label.className = "stat-label";
       label.textContent = entry.label;
-      label.title = entry.label;
+      var full = tooltipMap && tooltipMap[entry.label];
+      if (full && full !== entry.label) {
+        label.classList.add("has-tip");
+        label.setAttribute("data-tip", full);
+        label.setAttribute("tabindex", "0");
+      } else {
+        label.title = entry.label;
+      }
 
       var track = document.createElement("span");
       track.className = "stat-track";
@@ -299,7 +309,7 @@
     renderBarChart(el("chart-authors"), entriesFrom(authorCounts, 8));
 
     var venueCounts = countBy(papers, function (paper) { return paper.venue; });
-    renderBarChart(el("chart-venues"), entriesFrom(venueCounts, 8));
+    renderBarChart(el("chart-venues"), entriesFrom(venueCounts, 8), state.venueNames);
   }
 
   function render() {

@@ -9,6 +9,9 @@
   --input-bg: #ffffff;
   --badge-venue-bg: #eef2f7;
   --badge-venue-fg: #37475a;
+  --tip-bg: #1b2430;
+  --tip-fg: #f2f6fb;
+  --tip-border: #1b2430;
   --shadow: 0 1px 2px rgba(16, 32, 56, 0.06), 0 4px 14px rgba(16, 32, 56, 0.06);
   --radius: 10px;
 }
@@ -26,6 +29,9 @@
   --input-bg: #101820;
   --badge-venue-bg: #222d3a;
   --badge-venue-fg: #c3d0de;
+  --tip-bg: #2a3746;
+  --tip-fg: #eef4fb;
+  --tip-border: #3b4b5e;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
@@ -136,9 +142,9 @@ select {
 
 input[type="search"]:focus,
 select:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
+  outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
 .field-check {
@@ -148,7 +154,19 @@ select:focus {
   height: 38px;
 }
 
-.field-check input { width: 16px; height: 16px; }
+.field-check input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  border-radius: 3px;
+}
+
+.field-check input:focus,
+.field-check input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
 .field-check label { text-transform: none; font-size: 0.9rem; color: var(--text); }
 
 .reset {
@@ -252,6 +270,64 @@ select:focus {
 }
 
 .badge.venue { background: var(--badge-venue-bg); color: var(--badge-venue-fg); }
+
+.badge.venue.has-tip {
+  position: relative;
+  cursor: help;
+}
+
+.has-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  z-index: 30;
+  max-width: 280px;
+  width: max-content;
+  padding: 8px 11px;
+  border-radius: 8px;
+  background: var(--tip-bg);
+  color: var(--tip-fg);
+  border: 1px solid var(--tip-border);
+  box-shadow: var(--shadow);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+  white-space: normal;
+  text-transform: none;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.14s ease, transform 0.14s ease;
+}
+
+.has-tip::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  bottom: calc(100% + 4px);
+  z-index: 31;
+  border: 6px solid transparent;
+  border-top-color: var(--tip-border);
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.14s ease, transform 0.14s ease;
+}
+
+.has-tip:hover::after,
+.has-tip:hover::before,
+.has-tip:focus-visible::after,
+.has-tip:focus-visible::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stat-label.has-tip { position: relative; cursor: help; }
+/* Anchor the chart-label tooltip to the right edge so it never overflows the panel. */
+.stat-label.has-tip::after { left: auto; right: 0; }
+.stat-label.has-tip::before { left: auto; right: 14px; }
 
 .badge.type { color: #fff; }
 .type-Traditional { background: #7a6a56; }
