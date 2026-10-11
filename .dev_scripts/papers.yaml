@@ -3001,7 +3001,7 @@
   - Kunqian Li
   - Yilin Ding
   - Qi Qi
-  tldr: null
+  tldr: CLIP-UIE fine-tunes an image-to-image diffusion model with an explicit CLIP classifier trained on in-air natural-domain priors, using a 10x-faster partial fine-tuning strategy to move enhancement toward natural appearance despite synthetic references.
   status: verified
   added: '2026-09-26'
   notes: null
