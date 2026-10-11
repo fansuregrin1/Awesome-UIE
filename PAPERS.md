@@ -5,7 +5,6 @@
 198 papers, grouped by year (newest first). See the [README](README.md) for an overview and the [interactive site](https://fansuregrin1.github.io/Awesome-UIE/) for search and filtering.
 
 ## Year 2026
-- **Neurocomputing** (Traditional) [Task-tailored semi-supervised underwater image enhancement with dual-prior guidance](https://doi.org/10.1016/j.neucom.2026.135043). `Semi-supervised`
 - **Optics & Laser Technology** (Traditional) [KLDD: Underwater image enhancement via KL-divergence-driven color cast correction and multistage enhancement fusion](https://doi.org/10.1016/j.optlastec.2026.116369). `Color-Correction` `Contrast-Enhancement` `Multiscale-Fusion` `Image-Fusion` `Low-Light-Enhancement`
 - **arXiv** (DeepLearning) [A Dual-Branch Collaborative Framework for Joint Optimization of Underwater Image Enhancement and Object Detection](https://arxiv.org/abs/2606.15857). `Task-Driven` `Color-Correction` `Contrast-Enhancement` `Lightweight` `Image-Fusion`
 - **arXiv** (DeepLearning) [Advancing Visual Reliability: Color-Accurate Underwater Image Enhancement for Real-Time Underwater Missions](https://arxiv.org/abs/2603.16363). `Real-time` `Lightweight` `Color-Correction` `CNN`
@@ -24,6 +23,7 @@
 - **arXiv** (DeepLearning) [VLMs Win a Systematic Evaluation of Underwater Image Reconstruction](https://arxiv.org/abs/2608.11425). `Physical-Model` `Benchmark` `Foundation-Model` `Large-Model`
 - **IROS** (DeepLearning) [Dynamic SpectraFormer for Ultra-High-Definition Underwater Image Enhancement](https://doi.org/10.1109/IROS58592.2024.10802529). `Transformer` `Color-Correction` `Dehazing` `Contrast-Enhancement` [[code]](https://github.com/arifence2024/DynamicSpectraFormer.git)
 - **Neurocomputing** (DeepLearning) [Prior-guided anchor-conditioned diffusion for underwater image enhancement](https://doi.org/10.1016/j.neucom.2026.135154). `Diffusion`
+- **Neurocomputing** (DeepLearning) [Task-tailored semi-supervised underwater image enhancement with dual-prior guidance](https://doi.org/10.1016/j.neucom.2026.135043). `Semi-supervised`
 - **Ocean Engineering** (DeepLearning) [Decoupling color and structure via dual-branch learning for high-fidelity underwater image restoration](https://doi.org/10.1016/j.oceaneng.2026.128196). `CNN` `Color-Correction` `Multiscale-Fusion` `Lightweight` `Real-time` [[code]](https://github.com/Qlinlin/UDHE)
 - **PR** (DeepLearning) [Underwater Image Enhancement by Diffusion Model with Customized CLIP-Classifier](https://www.sciencedirect.com/science/article/abs/pii/S0031320325008933). `Diffusion` [[code]](https://github.com/OUCVisionGroup/CLIP-UIE) [[project]](https://oucvisiongroup.github.io/CLIP-UIE.html/)
 - **TCSVT** (DeepLearning) [UPI2Diff: Restoring Underwater Polarization Image and Information in Turbid Conditions via Polarization Guided Diffusion Model](https://ieeexplore.ieee.org/document/11361112). `Diffusion` `Polarization` `Physical-Model` `Task-Driven` `Image-Formation-Model`

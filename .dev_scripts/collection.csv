@@ -1,5 +1,4 @@
 Year,Pub,Type,Tags,Title,URL,Code,Project
-2026,Neurocomputing,Traditional,Semi-supervised,Task-tailored semi-supervised underwater image enhancement with dual-prior guidance,https://doi.org/10.1016/j.neucom.2026.135043,,
 2026,Optics & Laser Technology,Traditional,Color-Correction;Contrast-Enhancement;Multiscale-Fusion;Image-Fusion;Low-Light-Enhancement,KLDD: Underwater image enhancement via KL-divergence-driven color cast correction and multistage enhancement fusion,https://doi.org/10.1016/j.optlastec.2026.116369,,
 2026,arXiv,DeepLearning,Task-Driven;Color-Correction;Contrast-Enhancement;Lightweight;Image-Fusion,A Dual-Branch Collaborative Framework for Joint Optimization of Underwater Image Enhancement and Object Detection,https://arxiv.org/abs/2606.15857,,
 2026,arXiv,DeepLearning,Real-time;Lightweight;Color-Correction;CNN,Advancing Visual Reliability: Color-Accurate Underwater Image Enhancement for Real-Time Underwater Missions,https://arxiv.org/abs/2603.16363,,
@@ -18,6 +17,7 @@ Year,Pub,Type,Tags,Title,URL,Code,Project
 2026,arXiv,DeepLearning,Physical-Model;Benchmark;Foundation-Model;Large-Model,VLMs Win a Systematic Evaluation of Underwater Image Reconstruction,https://arxiv.org/abs/2608.11425,,
 2026,IROS,DeepLearning,Transformer;Color-Correction;Dehazing;Contrast-Enhancement,Dynamic SpectraFormer for Ultra-High-Definition Underwater Image Enhancement,https://doi.org/10.1109/IROS58592.2024.10802529,https://github.com/arifence2024/DynamicSpectraFormer.git,
 2026,Neurocomputing,DeepLearning,Diffusion,Prior-guided anchor-conditioned diffusion for underwater image enhancement,https://doi.org/10.1016/j.neucom.2026.135154,,
+2026,Neurocomputing,DeepLearning,Semi-supervised,Task-tailored semi-supervised underwater image enhancement with dual-prior guidance,https://doi.org/10.1016/j.neucom.2026.135043,,
 2026,Ocean Engineering,DeepLearning,CNN;Color-Correction;Multiscale-Fusion;Lightweight;Real-time,Decoupling color and structure via dual-branch learning for high-fidelity underwater image restoration,https://doi.org/10.1016/j.oceaneng.2026.128196,https://github.com/Qlinlin/UDHE,
 2026,PR,DeepLearning,Diffusion,Underwater Image Enhancement by Diffusion Model with Customized CLIP-Classifier,https://www.sciencedirect.com/science/article/abs/pii/S0031320325008933,https://github.com/OUCVisionGroup/CLIP-UIE,https://oucvisiongroup.github.io/CLIP-UIE.html/
 2026,TCSVT,DeepLearning,Diffusion;Polarization;Physical-Model;Task-Driven;Image-Formation-Model,UPI2Diff: Restoring Underwater Polarization Image and Information in Turbid Conditions via Polarization Guided Diffusion Model,https://ieeexplore.ieee.org/document/11361112,,

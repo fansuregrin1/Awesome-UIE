@@ -9,33 +9,6 @@
   },
   "papers": [
     {
-      "id": "2026-task-tailored-semi-supervised-underwater-image-enhancement-w",
-      "title": "Task-tailored semi-supervised underwater image enhancement with dual-prior guidance",
-      "year": 2026,
-      "venue": "Neurocomputing",
-      "type": "Traditional",
-      "tags": [
-        "Semi-supervised"
-      ],
-      "url": "https://doi.org/10.1016/j.neucom.2026.135043",
-      "doi": "10.1016/j.neucom.2026.135043",
-      "arxiv_id": null,
-      "code": null,
-      "project": null,
-      "authors": [
-        "Keyu Chen",
-        "Jiancheng Yu",
-        "Yan Huang",
-        "Jianan Qiao",
-        "Hao Feng",
-        "Dayu Jia"
-      ],
-      "tldr": null,
-      "status": "verified",
-      "added": "2026-09-27",
-      "notes": null
-    },
-    {
       "id": "2026-kldd-underwater-image-enhancement-via-kl-divergence-driven-c",
       "title": "KLDD: Underwater image enhancement via KL-divergence-driven color cast correction and multistage enhancement fusion",
       "year": 2026,
@@ -549,7 +522,34 @@
         "Yakun Ju",
         "Junyu Dong"
       ],
-      "tldr": null,
+      "tldr": "A prior-guided anchor-conditioned diffusion framework builds a degradation-regularized restoration anchor via structure and dynamic color-correction branches, then uses that anchor rather than the raw image to condition diffusion refinement for stable color and structure.",
+      "status": "verified",
+      "added": "2026-09-27",
+      "notes": null
+    },
+    {
+      "id": "2026-task-tailored-semi-supervised-underwater-image-enhancement-w",
+      "title": "Task-tailored semi-supervised underwater image enhancement with dual-prior guidance",
+      "year": 2026,
+      "venue": "Neurocomputing",
+      "type": "DeepLearning",
+      "tags": [
+        "Semi-supervised"
+      ],
+      "url": "https://doi.org/10.1016/j.neucom.2026.135043",
+      "doi": "10.1016/j.neucom.2026.135043",
+      "arxiv_id": null,
+      "code": null,
+      "project": null,
+      "authors": [
+        "Keyu Chen",
+        "Jiancheng Yu",
+        "Yan Huang",
+        "Jianan Qiao",
+        "Hao Feng",
+        "Dayu Jia"
+      ],
+      "tldr": "A teacher-student Semi-DPGNet combines supervised synthetic training with semi-supervised learning on underwater data, using depth and dehazing dual priors and curriculum consistency for more balanced enhancement.",
       "status": "verified",
       "added": "2026-09-27",
       "notes": null
@@ -602,7 +602,7 @@
         "Yilin Ding",
         "Qi Qi"
       ],
-      "tldr": null,
+      "tldr": "CLIP-UIE fine-tunes an image-to-image diffusion model with an explicit CLIP classifier trained on in-air natural-domain priors, using a 10x-faster partial fine-tuning strategy to move enhancement toward natural appearance despite synthetic references.",
       "status": "verified",
       "added": "2026-09-26",
       "notes": null
