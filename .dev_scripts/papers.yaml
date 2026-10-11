@@ -4854,3 +4854,42 @@
   status: verified
   added: '2026-10-02'
   notes: null
+- id: 2009-underwater-image-enhancement-by-attenuation-inversionwith-qu
+  title: Underwater image enhancement by attenuation inversionwith quaternions
+  year: 2009
+  venue: ICASSP
+  type: Traditional
+  tags: []
+  url: https://doi.org/10.1109/icassp.2009.4959799
+  doi: 10.1109/icassp.2009.4959799
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Frederic Petit
+  - Anne-Sophie Capelle-Laize
+  - Philippe Carre
+  tldr: Uses quaternion representation to invert wavelength-dependent attenuation in underwater images, estimating attenuation parameters that restore balanced color without requiring a reference.
+  status: candidate
+  added: '2026-10-11'
+  notes: null
+- id: 2007-reconstruction-of-underwater-image-by-bispectrum
+  title: Reconstruction of Underwater Image by Bispectrum
+  year: 2007
+  venue: ICIP
+  type: Traditional
+  tags: []
+  url: https://doi.org/10.1109/icip.2007.4379367
+  doi: 10.1109/icip.2007.4379367
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Z.Y. Wen
+  - D. Fraser
+  - A. Lambert
+  - H.D. Li
+  tldr: Casts underwater image reconstruction as blind deconvolution and solves it in the bispectrum domain, exploiting the bispectrum's insensitivity to Gaussian noise and blur to recover underwater scenes.
+  status: candidate
+  added: '2026-10-11'
+  notes: null
