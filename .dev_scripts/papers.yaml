@@ -3154,7 +3154,7 @@
   title: Task-tailored semi-supervised underwater image enhancement with dual-prior guidance
   year: 2026
   venue: Neurocomputing
-  type: Traditional
+  type: DeepLearning
   tags:
   - Semi-supervised
   url: https://doi.org/10.1016/j.neucom.2026.135043
@@ -3169,7 +3169,7 @@
   - Jianan Qiao
   - Hao Feng
   - Dayu Jia
-  tldr: null
+  tldr: A teacher-student Semi-DPGNet combines supervised synthetic training with semi-supervised learning on underwater data, using depth and dehazing dual priors and curriculum consistency for more balanced enhancement.
   status: verified
   added: '2026-09-27'
   notes: null

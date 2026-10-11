@@ -47,8 +47,8 @@ Search, filter by **year / type / venue / tag**, and browse **live statistics**.
 | Year range | 2004–2026 |
 | With code | 106 |
 | With DOI | 148 |
-| Traditional | 39 |
-| Deep learning | 124 |
+| Traditional | 38 |
+| Deep learning | 125 |
 | Hybrid | 35 |
 
 ## 🤖 How it stays up to date

@@ -13,12 +13,11 @@
 ## Summary
 - papers: 198
 - with code: 106
-- Traditional: 39
-- DeepLearning: 124
+- Traditional: 38
+- DeepLearning: 125
 - Hybrid: 35
 
 ## Papers
-- [2026] Neurocomputing — Task-tailored semi-supervised underwater image enhancement with dual-prior guidance (Semi-supervised) — https://doi.org/10.1016/j.neucom.2026.135043
 - [2026] Optics & Laser Technology — KLDD: Underwater image enhancement via KL-divergence-driven color cast correction and multistage enhancement fusion (Color-Correction; Contrast-Enhancement; Multiscale-Fusion; Image-Fusion; Low-Light-Enhancement) — https://doi.org/10.1016/j.optlastec.2026.116369
 - [2026] arXiv — A Dual-Branch Collaborative Framework for Joint Optimization of Underwater Image Enhancement and Object Detection (Task-Driven; Color-Correction; Contrast-Enhancement; Lightweight; Image-Fusion) — https://arxiv.org/abs/2606.15857
 - [2026] arXiv — Advancing Visual Reliability: Color-Accurate Underwater Image Enhancement for Real-Time Underwater Missions (Real-time; Lightweight; Color-Correction; CNN) — https://arxiv.org/abs/2603.16363
@@ -37,6 +36,7 @@
 - [2026] arXiv — VLMs Win a Systematic Evaluation of Underwater Image Reconstruction (Physical-Model; Benchmark; Foundation-Model; Large-Model) — https://arxiv.org/abs/2608.11425
 - [2026] IROS — Dynamic SpectraFormer for Ultra-High-Definition Underwater Image Enhancement (Transformer; Color-Correction; Dehazing; Contrast-Enhancement) — https://doi.org/10.1109/IROS58592.2024.10802529 [code](https://github.com/arifence2024/DynamicSpectraFormer.git)
 - [2026] Neurocomputing — Prior-guided anchor-conditioned diffusion for underwater image enhancement (Diffusion) — https://doi.org/10.1016/j.neucom.2026.135154
+- [2026] Neurocomputing — Task-tailored semi-supervised underwater image enhancement with dual-prior guidance (Semi-supervised) — https://doi.org/10.1016/j.neucom.2026.135043
 - [2026] Ocean Engineering — Decoupling color and structure via dual-branch learning for high-fidelity underwater image restoration (CNN; Color-Correction; Multiscale-Fusion; Lightweight; Real-time) — https://doi.org/10.1016/j.oceaneng.2026.128196 [code](https://github.com/Qlinlin/UDHE)
 - [2026] PR — Underwater Image Enhancement by Diffusion Model with Customized CLIP-Classifier (Diffusion) — https://www.sciencedirect.com/science/article/abs/pii/S0031320325008933 [code](https://github.com/OUCVisionGroup/CLIP-UIE)
 - [2026] TCSVT — UPI2Diff: Restoring Underwater Polarization Image and Information in Turbid Conditions via Polarization Guided Diffusion Model (Diffusion; Polarization; Physical-Model; Task-Driven; Image-Formation-Model) — https://ieeexplore.ieee.org/document/11361112
