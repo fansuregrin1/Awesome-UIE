@@ -522,7 +522,7 @@
         "Yakun Ju",
         "Junyu Dong"
       ],
-      "tldr": null,
+      "tldr": "A prior-guided anchor-conditioned diffusion framework builds a degradation-regularized restoration anchor via structure and dynamic color-correction branches, then uses that anchor rather than the raw image to condition diffusion refinement for stable color and structure.",
       "status": "verified",
       "added": "2026-09-27",
       "notes": null
