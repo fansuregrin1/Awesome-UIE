@@ -4870,7 +4870,7 @@
   - Anne-Sophie Capelle-Laize
   - Philippe Carre
   tldr: Uses quaternion representation to invert wavelength-dependent attenuation in underwater images, estimating attenuation parameters that restore balanced color without requiring a reference.
-  status: candidate
+  status: verified
   added: '2026-10-11'
   notes: null
 - id: 2007-reconstruction-of-underwater-image-by-bispectrum
@@ -4890,6 +4890,6 @@
   - A. Lambert
   - H.D. Li
   tldr: Casts underwater image reconstruction as blind deconvolution and solves it in the bispectrum domain, exploiting the bispectrum's insensitivity to Gaussian noise and blur to recover underwater scenes.
-  status: candidate
+  status: verified
   added: '2026-10-11'
   notes: null
