@@ -4893,3 +4893,42 @@
   status: verified
   added: '2026-10-11'
   notes: null
+- id: 2011-fusion-based-restoration-of-the-underwater-images
+  title: Fusion-based restoration of the underwater images
+  year: 2011
+  venue: ICIP
+  type: Traditional
+  tags: []
+  url: https://doi.org/10.1109/icip.2011.6115744
+  doi: 10.1109/icip.2011.6115744
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Codruta Orniana Ancuti
+  - Cosmin Ancuti
+  - Tom Haber
+  - Philippe Bekaert
+  tldr: Fuses contrast-enhanced and color-corrected versions of a single underwater image with a Laplacian weight pyramid, restoring visibility and color without specialized hardware or prior knowledge.
+  status: candidate
+  added: '2026-10-11'
+  notes: null
+- id: 2011-estimation-based-approach-for-underwater-image-restoration
+  title: Estimation-based approach for underwater image restoration
+  year: 2011
+  venue: Optics Letters
+  type: Traditional
+  tags: []
+  url: https://doi.org/10.1364/ol.36.002384
+  doi: 10.1364/ol.36.002384
+  arxiv_id: null
+  code: null
+  project: null
+  authors:
+  - Guoyu Wang
+  - Bing Zheng
+  - Fei Fei Sun
+  tldr: Estimates the underwater image formation parameters (background light and attenuation) from the image itself to invert the degradation model, restoring color and contrast for single underwater images.
+  status: candidate
+  added: '2026-10-11'
+  notes: null
